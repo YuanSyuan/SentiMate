@@ -1,0 +1,6 @@
+framework module Pods_SentiMate {
+  umbrella header "Pods-SentiMate-umbrella.h"
+
+  export *
+  module * { export * }
+}
