@@ -65,9 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xxO-WJ-cXr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xxO-WJ-cXr">
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="date" rowHeight="73" id="iDD-dw-CeZ" customClass="DateCell" customModule="SentiMate" customModuleProvider="target">
@@ -136,11 +135,11 @@
                                             <outlet property="emotionLbl" destination="dqb-0o-I0b" id="Txw-OT-Xwr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="category" rowHeight="193" id="ise-4l-nYi" customClass="CategoryCell" customModule="SentiMate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="249" width="393" height="193"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="category" rowHeight="233" id="ise-4l-nYi" customClass="CategoryCell" customModule="SentiMate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="249" width="393" height="233"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ise-4l-nYi" id="WIE-33-I61">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="193"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="233"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我想是因為" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmL-69-JnS">
@@ -161,7 +160,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textfield" rowHeight="291" id="fn9-cS-Pl2" customClass="TextFieldCell" customModule="SentiMate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="442" width="393" height="291"/>
+                                        <rect key="frame" x="0.0" y="482" width="393" height="291"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fn9-cS-Pl2" id="8gm-Jy-UwX">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="291"/>
@@ -204,6 +203,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gyh-6r-xpd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xxO-WJ-cXr" firstAttribute="trailing" secondItem="Gyh-6r-xpd" secondAttribute="trailing" id="3N1-Ka-VXZ"/>
+                            <constraint firstAttribute="bottom" secondItem="xxO-WJ-cXr" secondAttribute="bottom" id="FcS-nT-t2R"/>
+                            <constraint firstItem="xxO-WJ-cXr" firstAttribute="leading" secondItem="Gyh-6r-xpd" secondAttribute="leading" id="KG8-Ht-8Es"/>
+                            <constraint firstItem="xxO-WJ-cXr" firstAttribute="top" secondItem="Gyh-6r-xpd" secondAttribute="top" id="zR7-cE-aSR"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="xxO-WJ-cXr" id="Ks5-a4-lw2"/>
@@ -257,6 +262,7 @@
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Gjq-Dy-aUZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RAR-uw-lbS">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -275,6 +281,7 @@
                     <tabBarItem key="tabBarItem" title="" image="pencil" catalog="system" id="2GS-EJ-VdC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bQL-4K-DzL">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
