@@ -100,6 +100,9 @@
                                                 <constraint firstItem="abz-dJ-VAn" firstAttribute="leading" secondItem="Kc9-12-gza" secondAttribute="leading" constant="16" id="wnE-e6-hiM"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="datePicker" destination="HM8-OV-Ncq" id="mxw-BR-EWk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emotion" rowHeight="126" id="YI7-Ov-IwF" customClass="EmotionCell" customModule="SentiMate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="123" width="393" height="126"/>
@@ -184,6 +187,9 @@
                                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         </backgroundConfiguration>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="saveBtnTapped:" destination="fn9-cS-Pl2" eventType="touchUpInside" id="PHm-vd-7Vs"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

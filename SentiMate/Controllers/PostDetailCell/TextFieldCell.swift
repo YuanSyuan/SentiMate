@@ -22,4 +22,8 @@ class TextFieldCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func saveBtnTapped(_ sender: Any) {
+    }
+    
 }
+

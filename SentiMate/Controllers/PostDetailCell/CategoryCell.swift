@@ -8,8 +8,9 @@
 import UIKit
 
 class CategoryCell: UITableViewCell {
-
+    
     @IBOutlet weak var categoryLbl: UILabel!
+    var onCategorySelected: ((Int) -> Void)?
     
     let buttonTitles = ["工作", "學習", "感情", "社會", "家庭", "人際", "健康", "文化", "娛樂", "休閒", "生活", "個人目標"]
     
@@ -17,10 +18,10 @@ class CategoryCell: UITableViewCell {
         super.awakeFromNib()
         setupButtons()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -29,7 +30,7 @@ class CategoryCell: UITableViewCell {
         let numberOfColumns = 4
         let buttonHeight: CGFloat = 30
         let buttonWidth: CGFloat = (self.bounds.width - (CGFloat(numberOfColumns + 1) * 10)) / CGFloat(numberOfColumns) // Assuming 10 points space between buttons
-
+        
         for rowIndex in 0..<numberOfRows {
             for columnIndex in 0..<numberOfColumns {
                 let buttonIndex = rowIndex * numberOfColumns + columnIndex
@@ -57,10 +58,13 @@ class CategoryCell: UITableViewCell {
             }
         }
     }
-
+    
     @objc func categoryButtonTapped(sender: UIButton) {
-            guard let buttonTitle = sender.titleLabel?.text else { return }
-            // Do something with the button title
-            print("\(buttonTitle) button tapped")
-        }
+        guard let buttonTitle = sender.titleLabel?.text,
+                      let index = buttonTitles.firstIndex(of: buttonTitle) else {
+                    return
+                }
+                onCategorySelected?(index)
+    }
+    
 }

@@ -12,6 +12,10 @@ class PostDetailVC: UIViewController {
     
     var emotion: String? 
     
+    var selectedDate: Date?
+    var selectedCategoryIndex: Int?
+    var userInput: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +37,12 @@ extension PostDetailVC: UITableViewDataSource {
             case 0:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "date", for: indexPath) as? DateCell else {
                     fatalError("Could not dequeue DateCell")
-                    // there is date picker in this cell
                 }
+                
+                cell.onDateSelected = { [weak self] date in
+                            self?.selectedDate = date
+                        }
+                
                 return cell
             case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "emotion", for: indexPath) as? EmotionCell else {
@@ -45,15 +53,18 @@ extension PostDetailVC: UITableViewDataSource {
             case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as? CategoryCell else {
                     fatalError("Could not dequeue CategoryCell")
-                    // there is a chosen category btn in this cell
                 }
+                
+                cell.onCategorySelected = { [weak self] index in
+                            self?.selectedCategoryIndex = index
+                        }
+               
                 return cell
             default:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "textfield", for: indexPath) as? TextFieldCell else {
                     fatalError("Could not dequeue TextFieldCell")
-                    // there is text in this cell
-                    // there is a saveBtn in this cell, that handle save to firebase
                 }
+                cell.textField.text = userInput
                 return cell
             }
         }
@@ -74,6 +85,4 @@ extension PostDetailVC: UITableViewDelegate {
     }
     
 }
-
-
 
