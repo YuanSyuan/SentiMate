@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		0502F3402BC67B4200B89FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */; };
 		0502F3422BC67B4200B89FE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3412BC67B4200B89FE5 /* SceneDelegate.swift */; };
-		0502F3442BC67B4200B89FE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3432BC67B4200B89FE5 /* ViewController.swift */; };
+		0502F3442BC67B4200B89FE5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3432BC67B4200B89FE5 /* HomeVC.swift */; };
 		0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0502F3452BC67B4200B89FE5 /* Main.storyboard */; };
 		0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */; };
 		0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34B2BC67B4500B89FE5 /* Assets.xcassets */; };
 		0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */; };
+		059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E44692BC6A5DF00184989 /* AnalyticsVC.swift */; };
+		059E446C2BC6A7A900184989 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446B2BC6A7A900184989 /* PostVC.swift */; };
+		059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446D2BC6A7FE00184989 /* MusicVC.swift */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +24,15 @@
 		0502F33C2BC67B4200B89FE5 /* SentiMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentiMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0502F3412BC67B4200B89FE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0502F3432BC67B4200B89FE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0502F3432BC67B4200B89FE5 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		0502F3462BC67B4200B89FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0502F3492BC67B4200B89FE5 /* SentiMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SentiMate.xcdatamodel; sourceTree = "<group>"; };
 		0502F34B2BC67B4500B89FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0502F34E2BC67B4500B89FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0502F3502BC67B4500B89FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		059E44692BC6A5DF00184989 /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
+		059E446B2BC6A7A900184989 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
+		059E446D2BC6A7FE00184989 /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
 		1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.debug.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.debug.xcconfig"; sourceTree = "<group>"; };
 		52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentiMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC50F02A987BF42F8DC6D074 /* Pods-SentiMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.release.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,7 +56,6 @@
 				1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */,
 				EC50F02A987BF42F8DC6D074 /* Pods-SentiMate.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -77,7 +82,10 @@
 			children = (
 				0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */,
 				0502F3412BC67B4200B89FE5 /* SceneDelegate.swift */,
-				0502F3432BC67B4200B89FE5 /* ViewController.swift */,
+				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
+				059E446B2BC6A7A900184989 /* PostVC.swift */,
+				059E44692BC6A5DF00184989 /* AnalyticsVC.swift */,
+				0502F3432BC67B4200B89FE5 /* HomeVC.swift */,
 				0502F3452BC67B4200B89FE5 /* Main.storyboard */,
 				0502F34B2BC67B4500B89FE5 /* Assets.xcassets */,
 				0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */,
@@ -107,6 +115,7 @@
 				0502F3392BC67B4200B89FE5 /* Frameworks */,
 				0502F33A2BC67B4200B89FE5 /* Resources */,
 				42C6686651C79C02C3E74C59 /* [CP] Embed Pods Frameworks */,
+				0571E2E82BC7727C0049B73E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -164,6 +173,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0571E2E82BC7727C0049B73E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		42C6686651C79C02C3E74C59 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,8 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */,
+				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
-				0502F3442BC67B4200B89FE5 /* ViewController.swift in Sources */,
+				059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */,
+				0502F3442BC67B4200B89FE5 /* HomeVC.swift in Sources */,
 				0502F3402BC67B4200B89FE5 /* AppDelegate.swift in Sources */,
 				0502F3422BC67B4200B89FE5 /* SceneDelegate.swift in Sources */,
 			);
