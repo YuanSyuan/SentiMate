@@ -14,6 +14,7 @@
 		0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */; };
 		0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34B2BC67B4500B89FE5 /* Assets.xcassets */; };
 		0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */; };
+		0571E2EA2BC790340049B73E /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */; };
 		059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E44692BC6A5DF00184989 /* AnalyticsVC.swift */; };
 		059E446C2BC6A7A900184989 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446B2BC6A7A900184989 /* PostVC.swift */; };
 		059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446D2BC6A7FE00184989 /* MusicVC.swift */; };
@@ -30,6 +31,7 @@
 		0502F34B2BC67B4500B89FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0502F34E2BC67B4500B89FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0502F3502BC67B4500B89FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		059E44692BC6A5DF00184989 /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
 		059E446B2BC6A7A900184989 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		059E446D2BC6A7FE00184989 /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
@@ -80,19 +82,36 @@
 		0502F33E2BC67B4200B89FE5 /* SentiMate */ = {
 			isa = PBXGroup;
 			children = (
+				0571E2F12BC799000049B73E /* Model */,
+				0571E2EB2BC7979E0049B73E /* Controllers */,
 				0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */,
 				0502F3412BC67B4200B89FE5 /* SceneDelegate.swift */,
-				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
-				059E446B2BC6A7A900184989 /* PostVC.swift */,
-				059E44692BC6A5DF00184989 /* AnalyticsVC.swift */,
-				0502F3432BC67B4200B89FE5 /* HomeVC.swift */,
 				0502F3452BC67B4200B89FE5 /* Main.storyboard */,
 				0502F34B2BC67B4500B89FE5 /* Assets.xcassets */,
 				0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */,
 				0502F3502BC67B4500B89FE5 /* Info.plist */,
+				0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */,
 				0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */,
 			);
 			path = SentiMate;
+			sourceTree = "<group>";
+		};
+		0571E2EB2BC7979E0049B73E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
+				059E446B2BC6A7A900184989 /* PostVC.swift */,
+				059E44692BC6A5DF00184989 /* AnalyticsVC.swift */,
+				0502F3432BC67B4200B89FE5 /* HomeVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0571E2F12BC799000049B73E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		39F4C3CCA6CB76156DBBC777 /* Frameworks */ = {
@@ -236,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0571E2EA2BC790340049B73E /* CNNEmotions.mlmodel in Sources */,
 				059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,13 +19,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Gjq-Dy-aUZ"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Gjq-Dy-aUZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="773.28244274809163" y="-27.464788732394368"/>
         </scene>
-        <!--Item-->
+        <!--AnalyticsVC-->
         <scene sceneID="MFB-dx-dtd">
             <objects>
                 <viewController id="rlI-CG-0uM" customClass="AnalyticsVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,13 +35,13 @@
                         <viewLayoutGuide key="safeArea" id="ZwO-PF-rti"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="j1X-Ts-Ms9"/>
+                    <tabBarItem key="tabBarItem" title="" image="chart.bar" catalog="system" id="j1X-Ts-Ms9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0z-1Q-daK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="773" y="706"/>
         </scene>
-        <!--Item-->
+        <!--PostVC-->
         <scene sceneID="oN2-PA-qTb">
             <objects>
                 <viewController id="JQ2-kv-bCZ" customClass="PostVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,13 +51,13 @@
                         <viewLayoutGuide key="safeArea" id="qdn-db-CHk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2GS-EJ-VdC"/>
+                    <tabBarItem key="tabBarItem" title="" image="pencil" catalog="system" id="2GS-EJ-VdC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hB7-Km-7DU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="1422"/>
         </scene>
-        <!--Item-->
+        <!--MusicVC-->
         <scene sceneID="Qw5-yP-Ilb">
             <objects>
                 <viewController id="MLr-BN-X6A" customClass="MusicVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                         <viewLayoutGuide key="safeArea" id="JZW-Nk-4Hp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="uxs-pk-0An"/>
+                    <tabBarItem key="tabBarItem" title="" image="music.note.list" catalog="system" id="uxs-pk-0An"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WL-Vn-vrB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,6 +79,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jOU-If-qMy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Poo-9f-my4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -95,6 +96,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.bar" catalog="system" width="128" height="89"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
