@@ -10,6 +10,7 @@ import UIKit
 class TextFieldCell: UITableViewCell {
 
     @IBOutlet weak var textField: UITextView!
+    var onSave: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,7 @@ class TextFieldCell: UITableViewCell {
     }
 
     @IBAction func saveBtnTapped(_ sender: Any) {
+        onSave?()
     }
     
 }

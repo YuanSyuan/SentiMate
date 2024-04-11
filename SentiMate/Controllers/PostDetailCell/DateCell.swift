@@ -10,12 +10,11 @@ import UIKit
 class DateCell: UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!
-    var onDateSelected: ((Date) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        datePicker.datePickerMode = .date
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,8 +23,5 @@ class DateCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @objc func dateChanged(_ sender: UIDatePicker) {
-            onDateSelected?(sender.date)
-        }
 }
 

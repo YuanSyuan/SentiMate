@@ -39,10 +39,8 @@ extension PostDetailVC: UITableViewDataSource {
                     fatalError("Could not dequeue DateCell")
                 }
                 
-                cell.onDateSelected = { [weak self] date in
-                            self?.selectedDate = date
-                        }
-                
+                self.selectedDate = cell.datePicker.date
+                        
                 return cell
             case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "emotion", for: indexPath) as? EmotionCell else {
@@ -58,13 +56,35 @@ extension PostDetailVC: UITableViewDataSource {
                 cell.onCategorySelected = { [weak self] index in
                             self?.selectedCategoryIndex = index
                         }
-               
                 return cell
             default:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "textfield", for: indexPath) as? TextFieldCell else {
                     fatalError("Could not dequeue TextFieldCell")
                 }
-                cell.textField.text = userInput
+                
+                cell.onSave = { [weak self] in
+                    self?.userInput = cell.textField.text
+                    
+                let newEntry: [String: Any] = [
+                    "userID": "kellyli",
+                    "customTime": self?.selectedDate,
+                    "emotion": self?.emotion, // This should come from user input
+                    "category": self?.selectedCategoryIndex, // This should come from user input
+                    "content": self?.userInput // This should come from user input
+                ]
+                
+                FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
+                                switch result {
+                                case .success():
+                                    print("Data saved successfully")
+                                    // Handle success, such as showing an alert or updating the UI
+                                case .failure(let error):
+                                    print("Error saving data: \(error)")
+                                    // Handle failure, such as showing an error message to the user
+                                }
+                            }
+                        }
+                
                 return cell
             }
         }
