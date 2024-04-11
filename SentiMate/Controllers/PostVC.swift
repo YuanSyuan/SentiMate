@@ -18,11 +18,16 @@ class PostVC: UIViewController {
     
     let captureSession = AVCaptureSession()
     var emotionLabel = UILabel()
+    let confirmEmotionBtn = UIButton()
     let saveEmotionBtn = UIButton()
+    var currentEmotion: String?
+    var isSessionRunning = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
+        saveEmotionBtn.isEnabled = false
         
         guard ARWorldTrackingConfiguration.isSupported else { return }
          
@@ -43,12 +48,18 @@ class PostVC: UIViewController {
         
         // Set up the button for checking emotion
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
-        saveEmotionBtn.setTitle("Check Emotion", for: .normal)
+        saveEmotionBtn.setTitle("儲存", for: .normal)
         saveEmotionBtn.backgroundColor = .blue
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
         
-        // Set up the sceneView constraints to not cover the entire screen
+        confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
+                confirmEmotionBtn.setTitle("確認", for: .normal)
+                confirmEmotionBtn.backgroundColor = .green
+                confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
+                view.addSubview(confirmEmotionBtn)
+                
+        
             sceneView.translatesAutoresizingMaskIntoConstraints = false
             view.insertSubview(sceneView, at: 0) // Make sure the sceneView is behind all other views
             NSLayoutConstraint.activate([
@@ -66,18 +77,40 @@ class PostVC: UIViewController {
             emotionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             emotionLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            saveEmotionBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            saveEmotionBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             saveEmotionBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            saveEmotionBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-            saveEmotionBtn.heightAnchor.constraint(equalToConstant: 50)
+            saveEmotionBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
+            saveEmotionBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            confirmEmotionBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            confirmEmotionBtn.centerYAnchor.constraint(equalTo: saveEmotionBtn.centerYAnchor),
+            confirmEmotionBtn.widthAnchor.constraint(equalTo: saveEmotionBtn.widthAnchor),
+            confirmEmotionBtn.heightAnchor.constraint(equalTo: saveEmotionBtn.heightAnchor)
         ])
     }
     
     @objc func saveEmotionTapped() {
-        // Placeholder for action to check emotion
-        // You would trigger the emotion check here
-        print("Check emotion button tapped")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let pushVC = storyboard.instantiateViewController(withIdentifier: "detail") as? PostDetailVC {
+            pushVC.emotion = currentEmotion
+            self.navigationController?.pushViewController(pushVC, animated: true)
+        }
     }
+    
+    @objc func confirmEmotionTapped() {
+        if self.isSessionRunning == true {
+                sceneView.session.pause()
+                isSessionRunning = false
+                saveEmotionBtn.isEnabled = true
+                confirmEmotionBtn.setTitle("再拍一次", for: .normal)
+            } else {
+                isSessionRunning = true
+                saveEmotionBtn.isEnabled = false
+                let configuration = ARFaceTrackingConfiguration()
+                sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+                confirmEmotionBtn.setTitle("確認", for: .normal)
+            }
+        }
 }
 
 // extension: AVCaptureVideoDataOutputSampleBufferDelegate
@@ -88,6 +121,7 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     // Update the label with the detected emotion
     func updateEmotionLabel(withEmotion emotion: String) {
+        currentEmotion = emotion
         DispatchQueue.main.async {
             self.emotionLabel.text = emotion
         }
