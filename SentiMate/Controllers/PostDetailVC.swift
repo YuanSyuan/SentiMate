@@ -15,6 +15,8 @@ class PostDetailVC: UIViewController {
     var selectedDate: Date?
     var selectedCategoryIndex: Int?
     var userInput: String?
+    let dateFormatter = DateFormatter()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,7 @@ class PostDetailVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        dateFormatter.dateFormat = "yyyy-MM-dd"
     }
 
 }
@@ -39,7 +42,9 @@ extension PostDetailVC: UITableViewDataSource {
                     fatalError("Could not dequeue DateCell")
                 }
                 
-                self.selectedDate = cell.datePicker.date
+                cell.onDateChanged = { [weak self] date in
+                        self?.selectedDate = date
+                    }
                         
                 return cell
             case 1:
@@ -67,10 +72,10 @@ extension PostDetailVC: UITableViewDataSource {
                     
                 let newEntry: [String: Any] = [
                     "userID": "kellyli",
-                    "customTime": self?.selectedDate,
-                    "emotion": self?.emotion, // This should come from user input
-                    "category": self?.selectedCategoryIndex, // This should come from user input
-                    "content": self?.userInput // This should come from user input
+                    "customTime": self?.dateFormatter.string(from: self?.selectedDate ?? .now),
+                    "emotion": self?.emotion,
+                    "category": self?.selectedCategoryIndex,
+                    "content": self?.userInput
                 ]
                 
                 FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
