@@ -14,7 +14,6 @@
 		0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */; };
 		0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34B2BC67B4500B89FE5 /* Assets.xcassets */; };
 		0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */; };
-		056844472BC81462004604E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 056844462BC81462004604E6 /* GoogleService-Info.plist */; };
 		0568444A2BC81557004604E6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 056844492BC81557004604E6 /* FirebaseAnalytics */; };
 		0568444C2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444B2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0568444E2BC81557004604E6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444D2BC81557004604E6 /* FirebaseAnalyticsSwift */; };
@@ -52,6 +51,7 @@
 		059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E44692BC6A5DF00184989 /* AnalyticsVC.swift */; };
 		059E446C2BC6A7A900184989 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446B2BC6A7A900184989 /* PostVC.swift */; };
 		059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446D2BC6A7FE00184989 /* MusicVC.swift */; };
+		05A7243B2BC9075F00F40E2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,6 @@
 		0502F34B2BC67B4500B89FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0502F34E2BC67B4500B89FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0502F3502BC67B4500B89FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		056844462BC81462004604E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0568447F2BC81765004604E6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		059E44692BC6A5DF00184989 /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
 		059E446B2BC6A7A900184989 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		059E446D2BC6A7FE00184989 /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
+		05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.debug.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.debug.xcconfig"; sourceTree = "<group>"; };
 		52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentiMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC50F02A987BF42F8DC6D074 /* Pods-SentiMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.release.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,8 +158,8 @@
 				0502F3452BC67B4200B89FE5 /* Main.storyboard */,
 				0502F34B2BC67B4500B89FE5 /* Assets.xcassets */,
 				0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */,
+				05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */,
 				0502F3502BC67B4500B89FE5 /* Info.plist */,
-				056844462BC81462004604E6 /* GoogleService-Info.plist */,
 				0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */,
 				0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */,
 			);
@@ -307,7 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */,
-				056844472BC81462004604E6 /* GoogleService-Info.plist in Resources */,
+				05A7243B2BC9075F00F40E2F /* GoogleService-Info.plist in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
 			);
