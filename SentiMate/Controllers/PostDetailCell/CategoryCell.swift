@@ -12,7 +12,7 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var categoryLbl: UILabel!
     var onCategorySelected: ((Int) -> Void)?
     
-    let buttonTitles = ["工作", "學習", "感情", "社會", "家庭", "人際", "健康", "文化", "娛樂", "休閒", "生活", "個人目標"]
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
