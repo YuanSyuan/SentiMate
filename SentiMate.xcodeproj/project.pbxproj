@@ -13,6 +13,9 @@
 		0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */; };
 		0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34B2BC67B4500B89FE5 /* Assets.xcassets */; };
 		0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */; };
+		0509C1522BCAC731000FB482 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1512BCAC731000FB482 /* Playlist.swift */; };
+		0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1532BCAC91C000FB482 /* MusicManager.swift */; };
+		0509C1582BCACA95000FB482 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1572BCACA95000FB482 /* Emotions.swift */; };
 		0568444A2BC81557004604E6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 056844492BC81557004604E6 /* FirebaseAnalytics */; };
 		0568444C2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444B2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0568444E2BC81557004604E6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444D2BC81557004604E6 /* FirebaseAnalyticsSwift */; };
@@ -66,6 +69,9 @@
 		0502F34B2BC67B4500B89FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0502F34E2BC67B4500B89FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0502F3502BC67B4500B89FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0509C1512BCAC731000FB482 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		0509C1532BCAC91C000FB482 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		0509C1572BCACA95000FB482 /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
 		0568447F2BC81765004604E6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				0568447F2BC81765004604E6 /* FirebaseManager.swift */,
+				0509C1532BCAC91C000FB482 /* MusicManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -195,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				05CC58782BC93C3F003070EC /* Diary.swift */,
+				0509C1512BCAC731000FB482 /* Playlist.swift */,
+				0509C1572BCACA95000FB482 /* Emotions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,7 +395,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0571E2EA2BC790340049B73E /* CNNEmotions.mlmodel in Sources */,
+				0509C1522BCAC731000FB482 /* Playlist.swift in Sources */,
 				0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */,
+				0509C1582BCACA95000FB482 /* Emotions.swift in Sources */,
 				0574CA132BC7D54A0075A296 /* DateCell.swift in Sources */,
 				056844802BC81765004604E6 /* FirebaseManager.swift in Sources */,
 				0571E2F32BC7BD1A0049B73E /* PostDetailVC.swift in Sources */,
@@ -395,6 +406,7 @@
 				0574CA162BC7D5BD0075A296 /* EmotionCell.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
 				05CC58772BC9321B003070EC /* HomeDiaryCell.swift in Sources */,
+				0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */,
 				0574CA1A2BC7DB360075A296 /* TextFieldCell.swift in Sources */,
 				059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */,
 				0502F3402BC67B4200B89FE5 /* AppDelegate.swift in Sources */,

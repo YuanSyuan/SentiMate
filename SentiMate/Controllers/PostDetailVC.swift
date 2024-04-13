@@ -17,6 +17,8 @@ class PostDetailVC: UIViewController {
     var userInput: String?
     let dateFormatter = DateFormatter()
     
+    let musicManager = MusicManager()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
