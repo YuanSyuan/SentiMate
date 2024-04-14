@@ -10,7 +10,7 @@ class PostDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var emotion: String? 
+    var emotion: String?
     
     var selectedDate: Date?
     var selectedCategoryIndex: Int?
@@ -18,7 +18,7 @@ class PostDetailVC: UIViewController {
     let dateFormatter = DateFormatter()
     
     let musicManager = MusicManager()
-
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class PostDetailVC: UIViewController {
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
     }
-
+    
 }
 
 extension PostDetailVC: UITableViewDataSource {
@@ -37,41 +37,41 @@ extension PostDetailVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "date", for: indexPath) as? DateCell else {
+                fatalError("Could not dequeue DateCell")
+            }
             
-            switch indexPath.row {
-            case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "date", for: indexPath) as? DateCell else {
-                    fatalError("Could not dequeue DateCell")
-                }
+            cell.onDateChanged = { [weak self] date in
+                self?.selectedDate = date
+            }
+            
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "emotion", for: indexPath) as? EmotionCell else {
+                fatalError("Could not dequeue EmotionCell")
+            }
+            cell.configure(withEmotion: emotion ?? "")
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as? CategoryCell else {
+                fatalError("Could not dequeue CategoryCell")
+            }
+            
+            cell.onCategorySelected = { [weak self] index in
+                self?.selectedCategoryIndex = index
+            }
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "textfield", for: indexPath) as? TextFieldCell else {
+                fatalError("Could not dequeue TextFieldCell")
+            }
+            
+            cell.onSave = { [weak self] in
+                self?.userInput = cell.textField.text
                 
-                cell.onDateChanged = { [weak self] date in
-                        self?.selectedDate = date
-                    }
-                        
-                return cell
-            case 1:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "emotion", for: indexPath) as? EmotionCell else {
-                    fatalError("Could not dequeue EmotionCell")
-                }
-                cell.configure(withEmotion: emotion ?? "")
-                return cell
-            case 2:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as? CategoryCell else {
-                    fatalError("Could not dequeue CategoryCell")
-                }
-                
-                cell.onCategorySelected = { [weak self] index in
-                            self?.selectedCategoryIndex = index
-                        }
-                return cell
-            default:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "textfield", for: indexPath) as? TextFieldCell else {
-                    fatalError("Could not dequeue TextFieldCell")
-                }
-                
-                cell.onSave = { [weak self] in
-                    self?.userInput = cell.textField.text
-                    
                 let newEntry: [String: Any] = [
                     "userID": "kellyli",
                     "customTime": self?.dateFormatter.string(from: self?.selectedDate ?? .now),
@@ -81,20 +81,35 @@ extension PostDetailVC: UITableViewDataSource {
                 ]
                 
                 FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
-                                switch result {
-                                case .success():
-                                    print("Data saved successfully")
-                                    // Handle success, such as showing an alert or updating the UI
+                    switch result {
+                    case .success():
+                        print("Data saved successfully")
+                        
+                        guard let emotion = self?.emotion, !emotion.isEmpty else { return }
+                        
+                        self?.musicManager.getAPIData(for: emotion) { apiResult in
+                            DispatchQueue.main.async {
+                                switch apiResult {
+                                case .success(let fetchedSongs):
+                                    if let musicVC = self?.storyboard?.instantiateViewController(withIdentifier: "MusicVC") as? MusicVC {
+                                        musicVC.songs = fetchedSongs
+                                        musicVC.navigationItem.hidesBackButton = true
+                                        self?.navigationController?.pushViewController(musicVC, animated: true)
+                                    }
                                 case .failure(let error):
-                                    print("Error saving data: \(error)")
-                                    // Handle failure, such as showing an error message to the user
+                                    print("Error fetching songs: \(error)")
                                 }
                             }
                         }
-                
-                return cell
+                    case .failure(let error):
+                        print("Error saving data: \(error)")
+                    }
+                }
             }
+            
+            return cell
         }
+    }
 }
 
 extension PostDetailVC: UITableViewDelegate {

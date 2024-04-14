@@ -23,7 +23,7 @@ class EmotionCell: UITableViewCell {
     }
     
     func configure(withEmotion emotion: String) {
-            self.emotionLbl.text = emotion
+        self.emotionLbl.text = emotion
         }
 
 }

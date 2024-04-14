@@ -9,10 +9,18 @@ import UIKit
 
 class MusicVC: UIViewController {
 
+    let musicManager = MusicManager()
+    var songs: [StoreItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("========== Songs passed to MusicVC: \(songs)")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
     }
 
 

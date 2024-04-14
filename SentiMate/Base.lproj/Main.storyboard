@@ -355,18 +355,27 @@
         <!--MusicVC-->
         <scene sceneID="Qw5-yP-Ilb">
             <objects>
-                <viewController id="MLr-BN-X6A" customClass="MusicVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicVC" id="MLr-BN-X6A" customClass="MusicVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oY1-AX-PU9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-aA-OwE">
+                                <rect key="frame" x="175" y="204" width="16" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="JZW-Nk-4Hp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="music.note.list" catalog="system" id="uxs-pk-0An"/>
+                    <navigationItem key="navigationItem" id="22Y-RR-7FA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WL-Vn-vrB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="763" y="2067"/>
+            <point key="canvasLocation" x="29.770992366412212" y="2845.7746478873241"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Et-kb-r1e">
@@ -382,7 +391,7 @@
                         <segue destination="3zS-TJ-5An" kind="relationship" relationship="viewControllers" id="t1Y-bo-Fty"/>
                         <segue destination="rlI-CG-0uM" kind="relationship" relationship="viewControllers" id="fyi-4K-3Ua"/>
                         <segue destination="TyX-Zf-6vm" kind="relationship" relationship="viewControllers" id="Tgw-Af-7JM"/>
-                        <segue destination="MLr-BN-X6A" kind="relationship" relationship="viewControllers" id="cYJ-wY-fFC"/>
+                        <segue destination="bBC-r1-PBv" kind="relationship" relationship="viewControllers" id="cYJ-wY-fFC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xm-Zl-jnZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -426,6 +435,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ioh-gu-Sri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="771.75572519083971" y="1421.8309859154931"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xew-gr-sin">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bBC-r1-PBv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="music.note.list" catalog="system" id="uxs-pk-0An"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bn4-f0-Rmj">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MLr-BN-X6A" kind="relationship" relationship="rootViewController" id="GfT-P6-4N7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4F-G6-Uzd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="2067"/>
         </scene>
     </scenes>
     <resources>
