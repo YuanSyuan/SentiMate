@@ -15,17 +15,17 @@ class MusicManager {
 
         let artist: String
             switch emotion {
-            case "fear":
+            case "Fear":
                 artist = fearSinger.randomElement() ?? ""
-            case "sad":
+            case "Sad":
                 artist = sadSinger.randomElement() ?? ""
-            case "neutral":
+            case "Neutral":
                 artist = neutralSinger.randomElement() ?? ""
-            case "happy":
+            case "Happy":
                 artist = happySinger.randomElement() ?? ""
-            case "surprise":
+            case "Surprise":
                 artist = surpriseSinger.randomElement() ?? ""
-            case "angry":
+            case "Angry":
                 artist = angrySinger.randomElement() ?? ""
                 // ... handle other cases for 'sad', 'neutral', 'happy', 'surprise'
             default:

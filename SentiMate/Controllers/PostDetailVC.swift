@@ -84,23 +84,7 @@ extension PostDetailVC: UITableViewDataSource {
                     switch result {
                     case .success():
                         print("Data saved successfully")
-                        
-                        guard let emotion = self?.emotion, !emotion.isEmpty else { return }
-                        
-                        self?.musicManager.getAPIData(for: emotion) { apiResult in
-                            DispatchQueue.main.async {
-                                switch apiResult {
-                                case .success(let fetchedSongs):
-                                    if let musicVC = self?.storyboard?.instantiateViewController(withIdentifier: "MusicVC") as? MusicVC {
-                                        musicVC.songs = fetchedSongs
-                                        musicVC.navigationItem.hidesBackButton = true
-                                        self?.navigationController?.pushViewController(musicVC, animated: true)
-                                    }
-                                case .failure(let error):
-                                    print("Error fetching songs: \(error)")
-                                }
-                            }
-                        }
+                        self?.dismiss(animated: true, completion: nil)
                     case .failure(let error):
                         print("Error saving data: \(error)")
                     }

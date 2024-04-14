@@ -71,6 +71,7 @@ let neutralSinger: [String] = [
     "JasonMraz",
     "VanceJoy",
     "RayLaMontagne"
+//    "李芫萱"
 ]
 
 let happySinger: [String] = [

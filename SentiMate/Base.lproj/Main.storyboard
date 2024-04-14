@@ -360,18 +360,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-aA-OwE">
-                                <rect key="frame" x="175" y="204" width="16" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cgb-8l-ZHH">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="song" rowHeight="124" id="1EH-RJ-Ieb" customClass="SongCell" customModule="SentiMate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="124"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1EH-RJ-Ieb" id="Vw1-o0-e8E">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="124"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ubJ-X2-M71">
+                                                    <rect key="frame" x="16" y="13" width="98" height="98"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="98" id="HOi-Ff-LF5"/>
+                                                        <constraint firstAttribute="width" constant="98" id="r4u-55-Ytg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
+                                                    <rect key="frame" x="126" y="38" width="255" height="22.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
+                                                    <rect key="frame" x="126" y="68" width="255" height="19.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kSu-rj-biy" firstAttribute="top" secondItem="Vw1-o0-e8E" secondAttribute="top" constant="38" id="5wY-QV-x1m"/>
+                                                <constraint firstAttribute="trailing" secondItem="kSu-rj-biy" secondAttribute="trailing" constant="12" id="EeX-9m-PlX"/>
+                                                <constraint firstItem="ubJ-X2-M71" firstAttribute="leading" secondItem="Vw1-o0-e8E" secondAttribute="leading" constant="16" id="KaV-z4-uJd"/>
+                                                <constraint firstItem="ubJ-X2-M71" firstAttribute="centerY" secondItem="Vw1-o0-e8E" secondAttribute="centerY" id="MuN-6l-Ko6"/>
+                                                <constraint firstItem="kSu-rj-biy" firstAttribute="leading" secondItem="ubJ-X2-M71" secondAttribute="trailing" constant="12" id="OVp-Cc-RYc"/>
+                                                <constraint firstAttribute="trailing" secondItem="W35-7U-8IT" secondAttribute="trailing" constant="12" id="UFU-kG-XHE"/>
+                                                <constraint firstItem="W35-7U-8IT" firstAttribute="leading" secondItem="ubJ-X2-M71" secondAttribute="trailing" constant="12" id="eT1-cS-GRz"/>
+                                                <constraint firstItem="W35-7U-8IT" firstAttribute="top" secondItem="kSu-rj-biy" secondAttribute="bottom" constant="7.3300000000000001" id="smy-Pe-nif"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="singerLbl" destination="W35-7U-8IT" id="72E-M9-vVh"/>
+                                            <outlet property="songImg" destination="ubJ-X2-M71" id="8lT-Kq-ukw"/>
+                                            <outlet property="songLbl" destination="kSu-rj-biy" id="b6K-7Q-07b"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JZW-Nk-4Hp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cgb-8l-ZHH" firstAttribute="leading" secondItem="JZW-Nk-4Hp" secondAttribute="leading" id="X8E-4l-SpP"/>
+                            <constraint firstItem="cgb-8l-ZHH" firstAttribute="trailing" secondItem="JZW-Nk-4Hp" secondAttribute="trailing" id="YPl-u4-ONk"/>
+                            <constraint firstAttribute="bottom" secondItem="cgb-8l-ZHH" secondAttribute="bottom" id="xt0-ar-ufp"/>
+                            <constraint firstItem="cgb-8l-ZHH" firstAttribute="top" secondItem="oY1-AX-PU9" secondAttribute="top" id="zcm-Jq-Ztc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="22Y-RR-7FA"/>
+                    <connections>
+                        <outlet property="tableView" destination="cgb-8l-ZHH" id="VEz-8q-jWZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WL-Vn-vrB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

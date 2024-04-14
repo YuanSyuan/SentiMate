@@ -16,6 +16,7 @@
 		0509C1522BCAC731000FB482 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1512BCAC731000FB482 /* Playlist.swift */; };
 		0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1532BCAC91C000FB482 /* MusicManager.swift */; };
 		0509C1582BCACA95000FB482 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1572BCACA95000FB482 /* Emotions.swift */; };
+		0509C15A2BCBB169000FB482 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1592BCBB169000FB482 /* SongCell.swift */; };
 		0568444A2BC81557004604E6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 056844492BC81557004604E6 /* FirebaseAnalytics */; };
 		0568444C2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444B2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0568444E2BC81557004604E6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444D2BC81557004604E6 /* FirebaseAnalyticsSwift */; };
@@ -72,6 +73,7 @@
 		0509C1512BCAC731000FB482 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		0509C1532BCAC91C000FB482 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		0509C1572BCACA95000FB482 /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
+		0509C1592BCBB169000FB482 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		0568447F2BC81765004604E6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		0571E2EB2BC7979E0049B73E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0509C1592BCBB169000FB482 /* SongCell.swift */,
 				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
 				0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */,
 				0574CA142BC7D54F0075A296 /* PostDetailCell */,
@@ -402,6 +405,7 @@
 				056844802BC81765004604E6 /* FirebaseManager.swift in Sources */,
 				0571E2F32BC7BD1A0049B73E /* PostDetailVC.swift in Sources */,
 				059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */,
+				0509C15A2BCBB169000FB482 /* SongCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				0574CA162BC7D5BD0075A296 /* EmotionCell.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
