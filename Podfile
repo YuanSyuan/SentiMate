@@ -8,5 +8,6 @@ target 'SentiMate' do
   # Pods for SentiMate
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftLint'
+  pod 'Kingfisher', '~> 7.6.0'
 
 end

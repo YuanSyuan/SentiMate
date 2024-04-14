@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import FirebaseFirestore
+import Kingfisher
 
 class MusicVC: UIViewController {
 
@@ -89,7 +90,7 @@ extension MusicVC: UITableViewDataSource {
         
         cell.songLbl.text = song.trackName
         cell.singerLbl.text = song.artistName
-        
+        cell.songImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
         return cell
     }
     
