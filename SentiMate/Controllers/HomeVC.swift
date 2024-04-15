@@ -17,7 +17,7 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     
-    var diaries: [Diary] = []
+//    var diaries: [Diary] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,31 +25,33 @@ class HomeVC: UIViewController {
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         
-        firebaseManager.onNewData = { [weak self] newDiaries in
-           
-            DispatchQueue.main.async {
-                    self?.diaries = newDiaries
-                    self?.diaryCollectionView.reloadData() 
+        NotificationCenter.default.addObserver(self, selector: #selector(diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
+
+                firebaseManager.onNewData = { newDiaries in
+                    DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
                 }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         firebaseManager.listenForUpdate()
     }
+    
+    @objc private func diariesDidUpdate() {
+           diaryCollectionView.reloadData()
+       }
 }
 
 extension HomeVC: UICollectionViewDataSource {
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return diaries.count
+    return DiaryManager.shared.diaries.count
 }
 
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "diary", for: indexPath) as? HomeDiaryCell else {
         fatalError("Could not dequeue HomeDiaryCell")
     }
-    let diary = diaries[indexPath.row]
+    let diary = DiaryManager.shared.diaries[indexPath.row]
     cell.dateLbl.text = "\(diary.customTime)"
     cell.categoryLbl.text = buttonTitles[diary.category]
     cell.emotionLbl.text = diary.emotion

@@ -16,7 +16,10 @@ class AnalyticsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantiate your SwiftUI view
-        let swiftUIView = DonutChartView(wineTypes: WineType.all)
+        let emotionTypes = DiaryManager.shared.getEmotionTypes()
+
+               // Instantiate your SwiftUI view with emotion types
+        let swiftUIView = DonutChartView(emotionTypes: emotionTypes)
         
         // Create a hosting controller with swiftUIView as the root view
         let hostingController = UIHostingController(rootView: swiftUIView)

@@ -8,59 +8,38 @@
 import SwiftUI
 import Charts
 
-struct WineType: Identifiable {
-    let name: String
-    let inStock: Int
-    let color: Color
-    let text: String
-    var id: String {
-        name
-    }
-    
-    static var all: [WineType] {
-        [
-            .init(name: "Fortified", inStock: 7, color: .gray, text: "a wine to which a distilled spirit, usually brandy, has been added."),
-            .init(name: "Red", inStock: 40, color: .red, text: "a type of wine made from dark-colored grape varieties. The color of the wine can range from intense violet, typical of young wines, through to brick red for mature wines and brown for older red wines."),
-            .init(name: "Sparkling", inStock: 8, color: .green, text: "wine with significant levels of carbon dioxide in it, making it fizzy."),
-            .init(name: "Rosé", inStock: 5, color: .pink, text: "a type of wine that incorporates some of the color from the grape skins, but not enough to qualify it as a red wine."),
-            .init(name: "White", inStock: 82, color: .purple, text: "a wine that is fermented without skin contact. The colour can be straw-yellow, yellow-green, or yellow-gold.")
-            
-        ]
-    }
-}
-
-
 struct DonutChartView: View {
-    var wineTypes = WineType.all
+    var emotionTypes: [EmotionType]
     @State private var selectedCount: Int?
-    @State private var selectedWineType: WineType?
+    @State private var selectedEmotionType: EmotionType?
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Chart(wineTypes) { wineType in
+                Chart(emotionTypes) { emotionType in
                     SectorMark(
-                        angle: .value("In Stock", wineType.inStock),
+                        angle: .value("Count", emotionType.count),
                         innerRadius: .ratio(0.65),
-                        outerRadius: selectedWineType?.name == wineType.name ? 175 : 150,
+                        outerRadius: selectedEmotionType?.name == emotionType.name ? 175 : 150,
                         angularInset: 1
                     )
-                    .foregroundStyle(wineType.color)
+                    .foregroundStyle(Color(emotionType.color))
                     .cornerRadius(10)
                 }
                 .chartAngleSelection(value: $selectedCount)
                 .chartBackground { _ in
-                    if let selectedWineType {
+                    if let selectedEmotionType {
                         VStack {
-                            Image(systemName: "wineglass.fill")
+                            Image(systemName: "heart.fill")
                                 .font(.largeTitle)
-                                .foregroundStyle(Color(selectedWineType.color))
-                            Text(selectedWineType.name)
+                                .foregroundStyle(Color(selectedEmotionType.color))
+                            Text(selectedEmotionType.name)
                                 .font(.largeTitle)
-                            Text("In Stock: \(selectedWineType.inStock)")
+                            Text("Count: \(selectedEmotionType.count)")
                         }
                     } else {
                         VStack {
-                            Image(systemName: "wineglass.fill")
+                            Image(systemName: "heart.fill")
                                 .font(.largeTitle)
                                 .foregroundColor(.red)
                             Text("Select a segment")
@@ -68,15 +47,15 @@ struct DonutChartView: View {
                     }
                 }
                 .frame(height: 350)
-                if let selectedWineType {
-                    Text(selectedWineType.text)
+                if let selectedEmotionType {
+                    Text(selectedEmotionType.name)
                 }
                 Spacer()
             }
             .onChange(of: selectedCount) { oldValue, newValue in
                 if let newValue {
                     withAnimation {
-                        getSelectedWineType(value: newValue)
+                        getSelectedEmotionType(value: newValue)
                     }
                 }
             }
@@ -84,12 +63,12 @@ struct DonutChartView: View {
             .navigationTitle("心情圖")
         }
     }
-    private func getSelectedWineType(value: Int) {
+    private func getSelectedEmotionType(value: Int) {
         var cumulativeTotal = 0
-        let wineType = wineTypes.first { wineType in
-            cumulativeTotal += wineType.inStock
+        let emotionType = emotionTypes.first { emotionType in
+            cumulativeTotal += emotionType.count
             if value <= cumulativeTotal {
-                selectedWineType = wineType
+                selectedEmotionType = emotionType
                 return true
             }
             return false
