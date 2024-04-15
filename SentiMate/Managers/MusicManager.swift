@@ -27,7 +27,6 @@ class MusicManager {
                 artist = surpriseSinger.randomElement() ?? ""
             case "Angry":
                 artist = angrySinger.randomElement() ?? ""
-                // ... handle other cases for 'sad', 'neutral', 'happy', 'surprise'
             default:
                 artist = disgustSinger.randomElement() ?? ""
             }
@@ -49,23 +48,19 @@ class MusicManager {
                 decoder.dateDecodingStrategy = .iso8601
                 
                         if let error = error {
-                            // Pass the error to the completion handler
                             completion(.failure(error))
                             return
                         }
                         
                         guard let data = data else {
-                            // No data error
                             completion(.failure(URLError(.badServerResponse)))
                             return
                         }
                         
                         do {
                             let searchResponse = try decoder.decode(SearchResponse.self, from: data)
-                            // Pass the fetched songs back using the completion handler
                             completion(.success(searchResponse.results))
                         } catch {
-                            // Pass the error to the completion handler
                             completion(.failure(error))
                         }
                     }.resume()

@@ -1,5 +1,5 @@
 //
-//  SongCell.swift
+//  MusicCell.swift
 //  SentiMate
 //
 //  Created by 李芫萱 on 2024/4/14.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SongCell: UITableViewCell {
+class MusicCell: UITableViewCell {
 
     @IBOutlet weak var songImg: UIImageView!
     @IBOutlet weak var songLbl: UILabel!

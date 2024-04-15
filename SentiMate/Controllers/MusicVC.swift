@@ -82,7 +82,7 @@ extension MusicVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "song", for: indexPath) as? SongCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "song", for: indexPath) as? MusicCell else {
             fatalError("Could not dequeue DateCell")
         }
         
