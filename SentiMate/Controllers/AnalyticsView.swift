@@ -12,13 +12,14 @@ struct DonutChartView: View {
     var emotionTypes: [EmotionType]
     @State private var selectedCount: Int?
     @State private var selectedEmotionType: EmotionType?
+    @State private var topCategories: [CategoryData] = []
     
     var body: some View {
         NavigationStack {
             VStack {
                 Chart(emotionTypes) { emotionType in
                     SectorMark(
-                        angle: .value("Count", emotionType.count),
+                        angle: .value("Percentage", emotionType.percentage),
                         innerRadius: .ratio(0.65),
                         outerRadius: selectedEmotionType?.name == emotionType.name ? 175 : 150,
                         angularInset: 1
@@ -35,7 +36,7 @@ struct DonutChartView: View {
                                 .foregroundStyle(Color(selectedEmotionType.color))
                             Text(selectedEmotionType.name)
                                 .font(.largeTitle)
-                            Text("Count: \(selectedEmotionType.count)")
+                            Text("\(selectedEmotionType.percentage) %")
                         }
                     } else {
                         VStack {
@@ -48,8 +49,18 @@ struct DonutChartView: View {
                 }
                 .frame(height: 350)
                 if let selectedEmotionType {
-                    Text(selectedEmotionType.name)
+                    Text("讓我感到\(selectedEmotionType.name)的是")
                 }
+                
+                
+                let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
+                
+                HStack(spacing: 20) {
+                                ForEach(topCategories, id: \.name) { categoryData in
+                                    CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
+                                }
+                            }
+                
                 Spacer()
             }
             .onChange(of: selectedCount) { oldValue, newValue in
@@ -59,6 +70,12 @@ struct DonutChartView: View {
                     }
                 }
             }
+            .onChange(of: selectedEmotionType) { oldValue, newValue in
+                if let emotionType = newValue {
+                        topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
+                }
+            }
+            
             .padding()
             .navigationTitle("心情圖")
         }
@@ -66,12 +83,31 @@ struct DonutChartView: View {
     private func getSelectedEmotionType(value: Int) {
         var cumulativeTotal = 0
         let emotionType = emotionTypes.first { emotionType in
-            cumulativeTotal += emotionType.count
+            cumulativeTotal += emotionType.percentage
             if value <= cumulativeTotal {
                 selectedEmotionType = emotionType
                 return true
             }
             return false
+        }
+    }
+}
+
+struct CategoryCircleView: View {
+    var categoryData: CategoryData
+    var maxCount: Int
+    
+    var body: some View {
+        let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
+               // Then, apply a multiplier to get a usable size
+               let diameter = scaledCount * 100
+        
+        ZStack {
+            Circle()
+                .frame(width: diameter, height: diameter)
+                .foregroundColor(.gray)  // Use your desired color
+            Text(categoryData.name)
+                .foregroundColor(.white)
         }
     }
 }
