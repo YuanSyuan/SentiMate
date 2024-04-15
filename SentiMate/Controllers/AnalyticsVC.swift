@@ -11,8 +11,6 @@ import Charts
 
 class AnalyticsVC: UIViewController {
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantiate your SwiftUI view
@@ -37,9 +35,9 @@ class AnalyticsVC: UIViewController {
         // Activate constraints
         NSLayoutConstraint.activate([
             hostingController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-               hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-               hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-               hostingController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         // Notify the hosting controller that it has been moved to the current view controller

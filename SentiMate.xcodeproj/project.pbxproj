@@ -19,6 +19,7 @@
 		0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1592BCBB169000FB482 /* MusicCell.swift */; };
 		053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */; };
 		053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */; };
+		053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */; };
 		0568444A2BC81557004604E6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 056844492BC81557004604E6 /* FirebaseAnalytics */; };
 		0568444C2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444B2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0568444E2BC81557004604E6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444D2BC81557004604E6 /* FirebaseAnalyticsSwift */; };
@@ -78,6 +79,7 @@
 		0509C1592BCBB169000FB482 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryManager.swift; sourceTree = "<group>"; };
+		053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
 		0568447F2BC81765004604E6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
@@ -202,6 +204,8 @@
 				059E446B2BC6A7A900184989 /* PostVC.swift */,
 				053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */,
 				059E44692BC6A5DF00184989 /* AnalyticsVC.swift */,
+				053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */,
+				05CC58762BC9321B003070EC /* HomeDiaryCell.swift */,
 				058143692BC9291400C6D111 /* HomeVC.swift */,
 			);
 			path = Controllers;
@@ -224,7 +228,6 @@
 				0574CA152BC7D5BD0075A296 /* EmotionCell.swift */,
 				0574CA172BC7D5D80075A296 /* CategoryCell.swift */,
 				0574CA192BC7DB360075A296 /* TextFieldCell.swift */,
-				05CC58762BC9321B003070EC /* HomeDiaryCell.swift */,
 			);
 			path = PostDetailCell;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				056844802BC81765004604E6 /* FirebaseManager.swift in Sources */,
 				0571E2F32BC7BD1A0049B73E /* PostDetailVC.swift in Sources */,
 				059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */,
+				053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */,
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				0574CA162BC7D5BD0075A296 /* EmotionCell.swift in Sources */,

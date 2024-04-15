@@ -10,6 +10,7 @@ import Charts
 
 struct DonutChartView: View {
     var emotionTypes: [EmotionType]
+    
     @State private var selectedCount: Int?
     @State private var selectedEmotionType: EmotionType?
     @State private var topCategories: [CategoryData] = []
@@ -105,7 +106,7 @@ struct CategoryCircleView: View {
         ZStack {
             Circle()
                 .frame(width: diameter, height: diameter)
-                .foregroundColor(.gray)  // Use your desired color
+                .foregroundColor(.gray)  
             Text(categoryData.name)
                 .foregroundColor(.white)
         }
