@@ -24,35 +24,51 @@ class DiaryManager {
 }
 
 // MARK: - For AnalyticsVC, pie chart
-struct EmotionType: Identifiable, Equatable {
-    let name: String
-    let percentage: Int
-    let color: UIColor
-    var id: String {
-        name
-    }
-}
-
 extension DiaryManager {
     
-    func getEmotionTypes() -> [EmotionType] {
-        let frequencies = emotionFrequencies()
-        let totalDiaries = diaries.count
-        guard totalDiaries > 0 else { return [] }
-        
-            return frequencies.map { (emotion, count) -> EmotionType in
-                let percentage = Int((Double(count) / Double(totalDiaries)) * 100.0.rounded())
-                return EmotionType(name: emotion, percentage: percentage, color: colorForEmotion(emotion))
-            }.sorted { $0.percentage > $1.percentage }
-        }
+    func getEmotionTypes(forPeriod period: TimePeriod) -> [EmotionType] {
+           // Use the emotionFrequencies(forPeriod:) method to get the frequencies
+           let frequencies = emotionFrequencies(forPeriod: period)
+           let totalDiaries = diaries.count // This might need to reflect the filtered diaries count instead
+           guard totalDiaries > 0 else { return [] }
+           return frequencies.map { (emotion, count) -> EmotionType in
+               let percentage = Int((Double(count) / Double(totalDiaries)) * 100.0.rounded())
+               return EmotionType(name: emotion, percentage: percentage, color: colorForEmotion(emotion))
+           }.sorted { $0.percentage > $1.percentage }
+       }
     
-    func emotionFrequencies() -> [String: Int] {
-        var frequencies = [String: Int]()
-        for diary in diaries {
-            frequencies[diary.emotion, default: 0] += 1
+    func emotionFrequencies(forPeriod period: TimePeriod) -> [String: Int] {
+            var filteredDiaries = [Diary]()
+
+            let now = Date()
+            let calendar = Calendar.current
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+
+            switch period {
+            case .last7Days:
+                let dateBoundary = calendar.date(byAdding: .day, value: -7, to: now)!
+                filteredDiaries = diaries.filter {
+                        if let diaryDate = dateFormatter.date(from: $0.customTime) {
+                            return diaryDate >= dateBoundary
+                        }
+                        return false
+                    }
+            case .last30Days:
+                let dateBoundary = calendar.date(byAdding: .day, value: -30, to: now)!
+                filteredDiaries = diaries.filter {
+                        if let diaryDate = dateFormatter.date(from: $0.customTime) {
+                            return diaryDate >= dateBoundary
+                        }
+                        return false
+                    }
+            case .allTime:
+                filteredDiaries = diaries
+            }
+
+            return Dictionary(grouping: filteredDiaries, by: { $0.emotion })
+                .mapValues { $0.count }
         }
-        return frequencies
-    }
     
     private func colorForEmotion(_ emotion: String) -> UIColor {
             switch emotion {
@@ -69,11 +85,6 @@ extension DiaryManager {
 }
 
 // MARK: - For AnalyticsVC, circles
-struct CategoryData {
-    let name: String
-    let count: Int  // Number of entries in this category for the selected emotion
-}
-
 extension DiaryManager {
     
     func topCategories(forEmotion emotion: String) -> [CategoryData] {
@@ -83,9 +94,28 @@ extension DiaryManager {
         let topCategories = grouped.mapValues { $0.count }
             .sorted { $0.value > $1.value }
             .prefix(3)  // Take the top 3 categories
-            .map { CategoryData(name: buttonTitles[$0.key] ?? "Unknown", count: $0.value) }
+            .map { CategoryData(name: buttonTitles[$0.key] , count: $0.value) }
 
         return Array(topCategories)
     }
 }
 
+struct CategoryData {
+    let name: String
+    let count: Int
+}
+
+struct EmotionType: Identifiable, Equatable {
+    let name: String
+    let percentage: Int
+    let color: UIColor
+    var id: String {
+        name
+    }
+}
+
+enum TimePeriod: String, CaseIterable {
+    case last7Days = "7天"
+    case last30Days = "1個月"
+    case allTime = "全部"
+}

@@ -61,7 +61,7 @@ class FirebaseManager {
                         }
                         
                         let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd" // Replace with your date format
+                        dateFormatter.dateFormat = "yyyy-MM-dd" 
 
                         diaries.sort { firstDiary, secondDiary in
                             // Convert customTime strings to Date objects

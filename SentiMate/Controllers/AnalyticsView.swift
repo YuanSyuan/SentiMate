@@ -9,20 +9,28 @@ import SwiftUI
 import Charts
 
 struct DonutChartView: View {
-    var emotionTypes: [EmotionType]
-    
+    @State var emotionTypes: [EmotionType]
     @State private var selectedCount: Int?
     @State private var selectedEmotionType: EmotionType?
     @State private var topCategories: [CategoryData] = []
+    @State private var selectedTimePeriod: TimePeriod = .allTime
+
     
     var body: some View {
         NavigationStack {
             VStack {
+                Picker("Time Period", selection: $selectedTimePeriod) {
+                                    ForEach(TimePeriod.allCases, id: \.self) { period in
+                                        Text(period.rawValue).tag(period)
+                                    }
+                                }
+                                .pickerStyle(SegmentedPickerStyle())
+                
                 Chart(emotionTypes) { emotionType in
                     SectorMark(
                         angle: .value("Percentage", emotionType.percentage),
                         innerRadius: .ratio(0.65),
-                        outerRadius: selectedEmotionType?.name == emotionType.name ? 175 : 150,
+                        outerRadius: selectedEmotionType?.name == emotionType.name ? 150 : 125,
                         angularInset: 1
                     )
                     .foregroundStyle(Color(emotionType.color))
@@ -48,7 +56,7 @@ struct DonutChartView: View {
                         }
                     }
                 }
-                .frame(height: 350)
+                .frame(height: 300)
                 if let selectedEmotionType {
                     Text("讓我感到\(selectedEmotionType.name)的是")
                 }
@@ -63,6 +71,9 @@ struct DonutChartView: View {
                             }
                 
                 Spacer()
+            }
+            .onChange(of: selectedTimePeriod) { newPeriod in
+                emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: newPeriod)
             }
             .onChange(of: selectedCount) { oldValue, newValue in
                 if let newValue {
