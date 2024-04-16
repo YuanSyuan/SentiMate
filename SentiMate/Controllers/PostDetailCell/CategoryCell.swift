@@ -11,12 +11,11 @@ class CategoryCell: UITableViewCell {
     
     @IBOutlet weak var categoryLbl: UILabel!
     var onCategorySelected: ((Int) -> Void)?
-    
-   
+    private var selectedButton: UIButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupButtons()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,11 +23,16 @@ class CategoryCell: UITableViewCell {
         
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupButtons()
+    }
+    
     func setupButtons() {
         let numberOfRows = 3
         let numberOfColumns = 4
         let buttonHeight: CGFloat = 30
-        let buttonWidth: CGFloat = (self.bounds.width - (CGFloat(numberOfColumns + 1) * 10)) / CGFloat(numberOfColumns) // Assuming 10 points space between buttons
+        let buttonWidth: CGFloat = (self.contentView.frame.width - (CGFloat(numberOfColumns + 1) * 10)) / CGFloat(numberOfColumns)
         
         for rowIndex in 0..<numberOfRows {
             for columnIndex in 0..<numberOfColumns {
@@ -37,10 +41,11 @@ class CategoryCell: UITableViewCell {
                 
                 let button = UIButton(type: .system)
                 button.setTitle(buttonTitle, for: .normal)
-                button.backgroundColor = .darkGray
+                button.backgroundColor = .orange
                 button.setTitleColor(.white, for: .normal)
+                button.alpha = 0.5
+                button.layer.cornerRadius = 5
                 
-                // Set frame or constraints
                 button.translatesAutoresizingMaskIntoConstraints = false
                 self.contentView.addSubview(button)
                 
@@ -59,6 +64,13 @@ class CategoryCell: UITableViewCell {
     }
     
     @objc func categoryButtonTapped(sender: UIButton) {
+        contentView.subviews.compactMap { $0 as? UIButton }.forEach {
+                    $0.alpha = 0.5
+                }
+        
+        selectedButton = sender
+        selectedButton?.alpha = 1.0
+        
         guard let buttonTitle = sender.titleLabel?.text,
                       let index = buttonTitles.firstIndex(of: buttonTitle) else {
                     return

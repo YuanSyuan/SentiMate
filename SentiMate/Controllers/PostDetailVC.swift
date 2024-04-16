@@ -84,7 +84,7 @@ extension PostDetailVC: UITableViewDataSource {
                     switch result {
                     case .success():
                         print("Data saved successfully")
-                        self?.dismiss(animated: true, completion: nil)
+                        self?.navigationController?.popToRootViewController(animated: true)
                     case .failure(let error):
                         print("Error saving data: \(error)")
                     }

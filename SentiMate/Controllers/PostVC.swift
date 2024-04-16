@@ -38,7 +38,7 @@ class PostVC: UIViewController {
     }
     
     func setupUI() {
-        // Set up the label for emotion display
+    
         emotionLabel.translatesAutoresizingMaskIntoConstraints = false
         emotionLabel.textColor = .white
         emotionLabel.textAlignment = .center
@@ -49,16 +49,16 @@ class PostVC: UIViewController {
         // Set up the button for checking emotion
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         saveEmotionBtn.setTitle("儲存", for: .normal)
-        saveEmotionBtn.backgroundColor = .blue
+        saveEmotionBtn.backgroundColor = .white
+        saveEmotionBtn.setTitleColor(.darkGray, for: .normal)
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
         
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
                 confirmEmotionBtn.setTitle("確認", for: .normal)
-                confirmEmotionBtn.backgroundColor = .green
+                confirmEmotionBtn.backgroundColor = .gray
                 confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
                 view.addSubview(confirmEmotionBtn)
-                
         
             sceneView.translatesAutoresizingMaskIntoConstraints = false
             view.insertSubview(sceneView, at: 0) // Make sure the sceneView is behind all other views

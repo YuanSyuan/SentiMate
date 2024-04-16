@@ -51,16 +51,7 @@ class HomeVC: UIViewController {
             destinationVC.diary = diary
         }
     }
-//    
-//    func configureCellSize() {
-//            let layout = diaryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-//            layout?.estimatedItemSize = .zero
-//            layout?.minimumInteritemSpacing = 0
-//            let width = floor((diaryCollectionView.bounds.width - 16) / 2)
-//            let height = width * 1.3
-//            layout?.itemSize = CGSize(width: width, height: height)
-//        }
-    
+
     
 }
 
@@ -80,7 +71,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
  
     return cell
     }
-    
 }
  
 
