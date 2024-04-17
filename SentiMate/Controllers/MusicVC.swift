@@ -11,12 +11,12 @@ import FirebaseFirestore
 import Kingfisher
 
 class MusicVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
-   
+    
     
     @IBOutlet weak var albumImg: UIImageView!
     @IBOutlet weak var songLbl: UILabel!
@@ -33,6 +33,8 @@ class MusicVC: UIViewController {
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
     var songIndex = 0
+    var playerTimeObserver: Any?
+    var songDuration: CMTime?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +43,23 @@ class MusicVC: UIViewController {
         tableView.delegate = self
         
         do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print("Failed to set audio session category. Error: \(error)")
-            }
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set audio session category. Error: \(error)")
+        }
         
         fetchLatestDiaryEntry()
+        
+        timeSlider.maximumValue = 30
+        timeSlider.minimumValue = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         fetchLatestDiaryEntry()
-        
+        checkMusicIsEnd()
     }
     
     func fetchLatestDiaryEntry() {
@@ -72,7 +77,7 @@ class MusicVC: UIViewController {
                 }
             }
     }
-
+    
     func callAppleMusicAPI(with emotion: String) {
         musicManager.getAPIData(for: emotion) { [weak self] result in
             DispatchQueue.main.async {
@@ -81,6 +86,7 @@ class MusicVC: UIViewController {
                     // Handle the fetched songs
                     self?.songs = fetchedSongs
                     self?.tableView.reloadData()
+                    self?.configurePlayerView()
                 case .failure(let error):
                     print("Error fetching songs: \(error)")
                     // Handle any errors from the API call
@@ -88,53 +94,89 @@ class MusicVC: UIViewController {
             }
         }
     }
-
+    
+    func configurePlayerView() {
+        let song = songs[0]
+        songLbl.text = song.trackName
+        singerLbl.text = song.artistName
+        albumImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
+        player = AVPlayer(url: song.previewUrl)
+        self.setupPlayerTimeObserver()
+    }
+    
+    func setupPlayerTimeObserver() {
+        let interval = CMTime(seconds: 1, preferredTimescale: 1)
+        playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
+            guard let self = self, let currentTime = self.player?.currentTime().seconds else { return }
+            timeSlider.value = Float(currentTime)
+            timeLbl.text = formatTime(fromSeconds: currentTime)
+            remainTimeLbl.text = "-\(formatTime(fromSeconds: 30 - currentTime))"
+        }
+    }
+    
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let time = CMTime(value: CMTimeValue(sender.value), timescale: 1)
         player?.seek(to: time)
     }
     
     @IBAction func playBtn(_ sender: Any) {
+        updateBtn()
+    }
+    
+    func updateBtn() {
         if player?.timeControlStatus == .paused {
-            playBtn.imageView?.image = UIImage(named: "play.fill")
-                    player?.play()
-                } else {
-                    playBtn.imageView?.image = UIImage(named: "pause.fill")
-                    player?.pause()
-                }
+            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+            player?.play()
+        } else {
+            playBtn.setImage( UIImage(systemName: "play.fill"), for: .normal)
+            player?.pause()
+        }
     }
     
     @IBAction func backBtn(_ sender: Any) {
         if songIndex == 0 {
-                    songIndex = songs.count - 1
+            songIndex = songs.count - 1
             playSong(index: songIndex)
         } else {
-                    songIndex -= 1
+            songIndex -= 1
             playSong(index: songIndex)
-              
-                }
+            
+        }
+        updateBtn()
     }
     
     @IBAction func nextBtn(_ sender: Any) {
-        if songIndex == songs.count - 1 {
-                    songIndex = 0
-            playSong(index: songIndex)
-        } else {
-                    songIndex += 1
-            playSong(index: songIndex)
-              
-                }
+        playNextMusic()
+        updateBtn()
     }
     
     func playSong(index: Int) {
-            playerItem = AVPlayerItem(url: songs[songIndex].previewUrl)
-            player?.replaceCurrentItem(with: playerItem)
-            player?.play()
-            playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
-            songLbl.text = songs[songIndex].trackName
-            singerLbl.text = songs[songIndex].artistName
-            albumImg.kf.setImage(with: URL(string: "\(songs[songIndex].artworkUrl500)"))
+        playerItem = AVPlayerItem(url: songs[songIndex].previewUrl)
+        player?.replaceCurrentItem(with: playerItem)
+        player?.play()
+        playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
+        songLbl.text = songs[songIndex].trackName
+        singerLbl.text = songs[songIndex].artistName
+        albumImg.kf.setImage(with: URL(string: "\(songs[songIndex].artworkUrl500)"))
+    }
+    
+    func checkMusicIsEnd() {
+            // 偵測是否播放到最後
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { (_) in
+                self.playNextMusic()
+            }
         }
+    
+    func playNextMusic() {
+        if songIndex == songs.count - 1 {
+            songIndex = 0
+            playSong(index: songIndex)
+        } else {
+            songIndex += 1
+            playSong(index: songIndex)
+            
+        }
+    }
 }
 
 extension MusicVC: UITableViewDataSource {
@@ -170,16 +212,18 @@ extension MusicVC: UITableViewDelegate {
         
         self.songIndex = indexPath.row
         player = AVPlayer(url: previewUrl)
-          
+        player?.play()
+        
         songLbl.text = song.trackName
         singerLbl.text = song.artistName
         albumImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
-        
+
     }
     
-    
-    
-    
-   
+    func formatTime(fromSeconds totalSeconds: Double) -> String {
+        let seconds: Int = Int(totalSeconds) % 60
+        let minutes: Int = Int(totalSeconds) / 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
 }
 
