@@ -104,6 +104,7 @@ class MusicVC: UIViewController {
         self.setupPlayerTimeObserver()
     }
     
+    // 還要再調整 call observer 的位置
     func setupPlayerTimeObserver() {
         let interval = CMTime(seconds: 1, preferredTimescale: 1)
         playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
@@ -120,10 +121,6 @@ class MusicVC: UIViewController {
     }
     
     @IBAction func playBtn(_ sender: Any) {
-        updateBtn()
-    }
-    
-    func updateBtn() {
         if player?.timeControlStatus == .paused {
             playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
             player?.play()
@@ -137,17 +134,17 @@ class MusicVC: UIViewController {
         if songIndex == 0 {
             songIndex = songs.count - 1
             playSong(index: songIndex)
+            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
         } else {
             songIndex -= 1
             playSong(index: songIndex)
+            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
             
         }
-        updateBtn()
     }
     
     @IBAction func nextBtn(_ sender: Any) {
         playNextMusic()
-        updateBtn()
     }
     
     func playSong(index: Int) {
@@ -171,9 +168,11 @@ class MusicVC: UIViewController {
         if songIndex == songs.count - 1 {
             songIndex = 0
             playSong(index: songIndex)
+            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
         } else {
             songIndex += 1
             playSong(index: songIndex)
+            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
             
         }
     }
