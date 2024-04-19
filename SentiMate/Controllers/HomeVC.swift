@@ -30,8 +30,6 @@ class HomeVC: UIViewController {
                 firebaseManager.onNewData = { newDiaries in
                     DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
                 }
-        
-//        configureCellSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {

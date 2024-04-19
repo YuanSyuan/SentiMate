@@ -10,11 +10,10 @@ import UIKit
 class DiaryManager {
     static let shared = DiaryManager()
     
-    private init() {}  // Private initializer to ensure singleton usage
+    private init() {}
 
     var diaries: [Diary] = []
 
-    // Function to update diaries, previously handled by FirebaseManager callback
     func updateDiaries(newDiaries: [Diary]) {
         DispatchQueue.main.async {
             self.diaries = newDiaries
@@ -27,9 +26,8 @@ class DiaryManager {
 extension DiaryManager {
     
     func getEmotionTypes(forPeriod period: TimePeriod) -> [EmotionType] {
-           // Use the emotionFrequencies(forPeriod:) method to get the frequencies
            let frequencies = emotionFrequencies(forPeriod: period)
-           let totalDiaries = diaries.count // This might need to reflect the filtered diaries count instead
+           let totalDiaries = diaries.count
            guard totalDiaries > 0 else { return [] }
            return frequencies.map { (emotion, count) -> EmotionType in
                let percentage = Int((Double(count) / Double(totalDiaries)) * 100.0.rounded())
@@ -72,7 +70,7 @@ extension DiaryManager {
     
     private func colorForEmotion(_ emotion: String) -> UIColor {
             switch emotion {
-            case "Surprise": return .orange
+            case "Surprise": return .green
             case "Happy": return .yellow
             case "Neutral": return .purple
             case "Fear": return .orange

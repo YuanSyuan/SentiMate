@@ -7,7 +7,7 @@
 import UIKit
 import FirebaseFirestore
 
-struct Diary {
+struct Diary: Codable {
     var emotion: String
     var content: String
     var customTime: String
