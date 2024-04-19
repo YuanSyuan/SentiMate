@@ -7,6 +7,13 @@
 
 import Foundation
 
+let playlist: [String] = ["情緒特調", "沈澱專區"]
+
+let playlistDescription: [String] = [
+    "專屬情緒歌單，陪你一起聆聽、理解和接受情緒",
+    "聽見自然、敞洋大海，適合睡前想好好放鬆的你。"
+]
+
 let angrySinger: [String] = [
     "Slipknot",
     "RageAgainsttheMachine",
@@ -105,7 +112,7 @@ struct SearchResponse: Codable {
     let results: [StoreItem]
 }
 //Json 小分類,名稱需要與Json一樣
-struct StoreItem: Codable {
+struct StoreItem: Codable, Equatable {
     let artistName: String
     let trackName: String
     let collectionName: String?

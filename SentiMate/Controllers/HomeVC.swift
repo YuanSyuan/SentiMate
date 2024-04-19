@@ -44,7 +44,7 @@ class HomeVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryVC",
            let destinationVC = segue.destination as? DiaryVC,
-            let indexPath = diaryCollectionView.indexPathsForSelectedItems?.first{
+            let indexPath = diaryCollectionView.indexPathsForSelectedItems?.first {
             let diary = DiaryManager.shared.diaries[indexPath.row]
             destinationVC.diary = diary
         }

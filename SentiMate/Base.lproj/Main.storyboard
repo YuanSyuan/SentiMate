@@ -648,7 +648,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WL-Vn-vrB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.770992366412212" y="2845.7746478873241"/>
+            <point key="canvasLocation" x="1698" y="2377"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Et-kb-r1e">
@@ -724,12 +724,95 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="MLr-BN-X6A" kind="relationship" relationship="rootViewController" id="GfT-P6-4N7"/>
+                        <segue destination="DpC-3E-L48" kind="relationship" relationship="rootViewController" id="xd6-5o-Sap"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4F-G6-Uzd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="30" y="2067"/>
+        </scene>
+        <!--Music EntryVC-->
+        <scene sceneID="pKD-WI-BzG">
+            <objects>
+                <viewController id="DpC-3E-L48" customClass="MusicEntryVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t8S-gm-4Nl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tuR-xS-LMi">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9D7-IK-Lra">
+                                    <size key="itemSize" width="231" height="648"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalmMusic" id="WIa-ZG-UuQ" customClass="CalmMusicEntryCell" customModule="SentiMate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="85" width="234" height="496"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P8Z-si-4Ah">
+                                            <rect key="frame" x="0.0" y="0.0" width="234" height="496"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="沈澱專區" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgz-2m-ASc">
+                                                    <rect key="frame" x="12" y="12.000000000000002" width="210" height="28.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聽見自然、敞洋大海，適合睡前想好好放鬆的你。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1G-BQ-6pl">
+                                                    <rect key="frame" x="12" y="52.666666666666657" width="210" height="38.333333333333343"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="Bzu-K8-5nC">
+                                                    <rect key="frame" x="12" y="111" width="210" height="385"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Bzu-K8-5nC" secondAttribute="bottom" id="29e-hK-ZBE"/>
+                                                <constraint firstItem="S1G-BQ-6pl" firstAttribute="leading" secondItem="P8Z-si-4Ah" secondAttribute="leading" constant="12" id="3JA-tJ-OYb"/>
+                                                <constraint firstAttribute="trailing" secondItem="wgz-2m-ASc" secondAttribute="trailing" constant="12" id="KaZ-du-FIW"/>
+                                                <constraint firstAttribute="trailing" secondItem="S1G-BQ-6pl" secondAttribute="trailing" constant="12" id="MMd-Yn-KY8"/>
+                                                <constraint firstItem="wgz-2m-ASc" firstAttribute="leading" secondItem="P8Z-si-4Ah" secondAttribute="leading" constant="12" id="Olw-W0-CWM"/>
+                                                <constraint firstItem="wgz-2m-ASc" firstAttribute="top" secondItem="P8Z-si-4Ah" secondAttribute="top" constant="12" id="SQf-qs-pNG"/>
+                                                <constraint firstItem="Bzu-K8-5nC" firstAttribute="leading" secondItem="P8Z-si-4Ah" secondAttribute="leading" constant="12" id="hAM-hZ-Q6B"/>
+                                                <constraint firstItem="Bzu-K8-5nC" firstAttribute="top" secondItem="S1G-BQ-6pl" secondAttribute="bottom" constant="20" id="hj2-Xc-mYS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bzu-K8-5nC" secondAttribute="trailing" constant="12" id="pQ5-2y-xol"/>
+                                                <constraint firstItem="S1G-BQ-6pl" firstAttribute="top" secondItem="wgz-2m-ASc" secondAttribute="bottom" constant="12" id="vKN-UQ-vqu"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="234" height="496"/>
+                                        <connections>
+                                            <outlet property="descriptionLbl" destination="S1G-BQ-6pl" id="MqE-hM-tSO"/>
+                                            <outlet property="playlistImg" destination="Bzu-K8-5nC" id="2By-Hl-Q2b"/>
+                                            <outlet property="playlistLbl" destination="wgz-2m-ASc" id="4Ol-0C-fAl"/>
+                                            <segue destination="MLr-BN-X6A" kind="show" identifier="showPlayer" id="sph-UT-zvA"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hWW-mM-hhd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tuR-xS-LMi" firstAttribute="trailing" secondItem="hWW-mM-hhd" secondAttribute="trailing" id="33Q-6E-dcq"/>
+                            <constraint firstItem="tuR-xS-LMi" firstAttribute="top" secondItem="t8S-gm-4Nl" secondAttribute="top" id="L02-18-yVE"/>
+                            <constraint firstAttribute="bottom" secondItem="tuR-xS-LMi" secondAttribute="bottom" id="aza-jh-u49"/>
+                            <constraint firstItem="tuR-xS-LMi" firstAttribute="leading" secondItem="hWW-mM-hhd" secondAttribute="leading" id="sBY-TQ-PcH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nJi-iN-tf7"/>
+                    <connections>
+                        <outlet property="collectionView" destination="tuR-xS-LMi" id="K7o-D9-sn0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xrr-Ky-eIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823.66412213740455" y="2377.4647887323945"/>
         </scene>
     </scenes>
     <resources>
@@ -741,6 +824,7 @@
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="smiley.fill" catalog="system" width="128" height="123"/>
+        <image name="testImage" width="464" height="466"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -748,7 +832,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
