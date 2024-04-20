@@ -39,6 +39,11 @@ class MusicEntryVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchLatestDiaryEntry()
+    }
+    
     func configureCellSize() {
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.estimatedItemSize = .zero

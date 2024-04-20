@@ -10,8 +10,23 @@ import Foundation
 let playlist: [String] = ["情緒特調", "沈澱專區"]
 
 let playlistDescription: [String] = [
-    "專屬情緒歌單，陪你一起聆聽、理解和接受情緒",
+    "專屬情緒歌單，陪你一起聆聽、理解和接受情緒。",
     "聽見自然、敞洋大海，適合睡前想好好放鬆的你。"
+]
+
+let musicImage: [String] = [
+    "musicImg0",
+    "musicImg1",
+    "musicImg2",
+    "musicImg3",
+    "musicImg4",
+    "musicImg5",
+    "musicImg6",
+    "musicImg7",
+    "musicImg8",
+    "musicImg9",
+    "musicImg10",
+    "musicImg11"
 ]
 
 let angrySinger: [String] = [
