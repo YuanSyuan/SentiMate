@@ -271,6 +271,57 @@
             </objects>
             <point key="canvasLocation" x="773" y="706"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Ofc-fN-dVD">
+            <objects>
+                <viewController storyboardIdentifier="PostEnrtyVC" id="kj1-Sm-nA4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oDA-7N-FaS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="嗨！今天過得如何呢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gox-Ze-xad">
+                                <rect key="frame" x="88.666666666666686" y="345" width="216" height="34"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="來填寫今天情緒日記吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2W-rN-DtP">
+                                <rect key="frame" x="76.666666666666686" y="409" width="240" height="34"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8j-TO-Rq5">
+                                <rect key="frame" x="132.66666666666666" y="684.66666666666663" width="127.99999999999997" height="34.333333333333371"/>
+                                <color key="tintColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="開始情緒識別" cornerStyle="fixed" buttonSize="medium">
+                                    <backgroundConfiguration key="background" cornerRadius="12">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="JQ2-kv-bCZ" kind="show" id="hEO-KL-QQH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9U2-KR-XeX"/>
+                        <color key="backgroundColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="P8j-TO-Rq5" firstAttribute="bottom" secondItem="9U2-KR-XeX" secondAttribute="bottom" constant="-50" id="5M1-8g-ya6"/>
+                            <constraint firstItem="v2W-rN-DtP" firstAttribute="centerX" secondItem="oDA-7N-FaS" secondAttribute="centerX" id="Csk-gQ-FVM"/>
+                            <constraint firstItem="v2W-rN-DtP" firstAttribute="top" secondItem="gox-Ze-xad" secondAttribute="bottom" constant="30" id="OAN-XD-VcU"/>
+                            <constraint firstItem="P8j-TO-Rq5" firstAttribute="centerX" secondItem="oDA-7N-FaS" secondAttribute="centerX" id="XPU-yt-Epg"/>
+                            <constraint firstItem="gox-Ze-xad" firstAttribute="centerX" secondItem="oDA-7N-FaS" secondAttribute="centerX" id="fPE-Xx-rrl"/>
+                            <constraint firstItem="v2W-rN-DtP" firstAttribute="centerY" secondItem="oDA-7N-FaS" secondAttribute="centerY" id="zvo-27-kcJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fen-LJ-eR7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vzx-SX-sng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="1422"/>
+        </scene>
         <!--PostVC-->
         <scene sceneID="oN2-PA-qTb">
             <objects>
@@ -285,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hB7-Km-7DU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1698.4732824427481" y="1421.8309859154931"/>
+            <point key="canvasLocation" x="2315" y="1422"/>
         </scene>
         <!--Post DetailVC-->
         <scene sceneID="KVb-Ah-y28">
@@ -458,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEL-N6-yZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2368.7022900763359" y="1421.8309859154931"/>
+            <point key="canvasLocation" x="2985" y="1422"/>
         </scene>
         <!--MusicVC-->
         <scene sceneID="Qw5-yP-Ilb">
@@ -706,7 +757,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JQ2-kv-bCZ" kind="relationship" relationship="rootViewController" id="deI-qZ-Fxz"/>
+                        <segue destination="kj1-Sm-nA4" kind="relationship" relationship="rootViewController" id="mwU-mH-e5F"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ioh-gu-Sri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
