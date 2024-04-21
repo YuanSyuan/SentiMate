@@ -135,6 +135,8 @@ extension PostVC: ARSCNViewDelegate {
         guard let device = sceneView.device else { return nil }
         let node = SCNNode(geometry: ARSCNFaceGeometry(device: device))
         node.geometry?.firstMaterial?.fillMode = .lines
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0.0,
+                                                                alpha: 0)
         return node
     }
     
