@@ -19,6 +19,6 @@ class HomeDiaryCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        containerView.layer.cornerRadius = 20
+        containerView.layer.cornerRadius = 40
     }
 }

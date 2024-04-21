@@ -28,7 +28,7 @@ class DiaryVC: UIViewController {
         categoryLbl.text = buttonTitles[diary?.category ?? 0]
         emotionLbl.text = diary?.emotion
         contentLbl.text = diary?.content
-        contentBorderView.layer.borderColor = UIColor.gray.cgColor
-        contentBorderView.layer.borderWidth = 2
+        contentBorderView.layer.borderColor = UIColor(hex: "F6B17A").cgColor
+        contentBorderView.layer.borderWidth = 1
     }
 }

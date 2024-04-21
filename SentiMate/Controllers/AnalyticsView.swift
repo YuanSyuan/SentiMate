@@ -17,14 +17,19 @@ struct DonutChartView: View {
 
     
     var body: some View {
+        let textColor = UIColor(hex: "EEE2DE")
+        let backgroundColor = UIColor(hex: "2D3250")
+
         NavigationStack {
             VStack {
                 Picker("Time Period", selection: $selectedTimePeriod) {
-                                    ForEach(TimePeriod.allCases, id: \.self) { period in
-                                        Text(period.rawValue).tag(period)
-                                    }
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
+                    ForEach(TimePeriod.allCases, id: \.self) { period in
+                        Text(period.rawValue).tag(period)
+            
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .background(Color.gray.opacity(0.7))
                 
                 Chart(emotionTypes) { emotionType in
                     SectorMark(
@@ -45,30 +50,34 @@ struct DonutChartView: View {
                                 .foregroundStyle(Color(selectedEmotionType.color))
                             Text(selectedEmotionType.name)
                                 .font(.largeTitle)
+                                .foregroundColor(Color(textColor))
                             Text("\(selectedEmotionType.percentage) %")
+                                .foregroundColor(Color(textColor))
                         }
                     } else {
                         VStack {
                             Image(systemName: "heart.fill")
                                 .font(.largeTitle)
-                                .foregroundColor(.red)
+                                .foregroundColor(.white)
                             Text("Select a segment")
+                                .foregroundColor(Color(textColor))
                         }
                     }
                 }
                 .frame(height: 300)
                 if let selectedEmotionType {
                     Text("讓我感到\(selectedEmotionType.name)的是")
+                        .foregroundColor(Color(textColor))
                 }
                 
                 
                 let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
                 
                 HStack(spacing: 20) {
-                                ForEach(topCategories, id: \.name) { categoryData in
-                                    CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
-                                }
-                            }
+                    ForEach(topCategories, id: \.name) { categoryData in
+                        CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
+                    }
+                }
                 
                 Spacer()
             }
@@ -84,12 +93,13 @@ struct DonutChartView: View {
             }
             .onChange(of: selectedEmotionType) { oldValue, newValue in
                 if let emotionType = newValue {
-                        topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
+                    topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
                 }
             }
             
             .padding()
             .navigationTitle("心情圖")
+            .background(Color(backgroundColor))
         }
     }
     private func getSelectedEmotionType(value: Int) {
@@ -117,9 +127,9 @@ struct CategoryCircleView: View {
         ZStack {
             Circle()
                 .frame(width: diameter, height: diameter)
-                .foregroundColor(.gray)  
+                .foregroundColor(Color(UIColor(hex: "EEE2DE")))
             Text(categoryData.name)
-                .foregroundColor(.white)
+                .foregroundColor(Color(UIColor(hex: "2D3250")))
         }
     }
 }

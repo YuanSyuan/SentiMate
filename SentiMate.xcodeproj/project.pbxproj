@@ -55,6 +55,7 @@
 		0574CA182BC7D5D80075A296 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574CA172BC7D5D80075A296 /* CategoryCell.swift */; };
 		0574CA1A2BC7DB360075A296 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574CA192BC7DB360075A296 /* TextFieldCell.swift */; };
 		0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058143692BC9291400C6D111 /* HomeVC.swift */; };
+		059C5AB32BD559E7004E5331 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */; };
 		059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E44692BC6A5DF00184989 /* AnalyticsVC.swift */; };
 		059E446C2BC6A7A900184989 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446B2BC6A7A900184989 /* PostVC.swift */; };
 		059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446D2BC6A7FE00184989 /* MusicVC.swift */; };
@@ -97,6 +98,7 @@
 		0574CA172BC7D5D80075A296 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0574CA192BC7DB360075A296 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		058143692BC9291400C6D111 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		059E44692BC6A5DF00184989 /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
 		059E446B2BC6A7A900184989 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		059E446D2BC6A7FE00184989 /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				056844812BC8177E004604E6 /* Managers */,
+				059C5AB42BD559FB004E5331 /* Extensions */,
 				0571E2F12BC799000049B73E /* Models */,
 				0571E2EB2BC7979E0049B73E /* Controllers */,
 				0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */,
@@ -256,6 +259,14 @@
 				0574CA192BC7DB360075A296 /* TextFieldCell.swift */,
 			);
 			path = PostDetailCell;
+			sourceTree = "<group>";
+		};
+		059C5AB42BD559FB004E5331 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		05B44C1F2BD263D600798934 /* MusicEntryCell */ = {
@@ -467,6 +478,7 @@
 				059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */,
 				05A481272BD0F4330073F305 /* AICell.swift in Sources */,
 				0502F3402BC67B4200B89FE5 /* AppDelegate.swift in Sources */,
+				059C5AB32BD559E7004E5331 /* UIColor+Hex.swift in Sources */,
 				0502F3422BC67B4200B89FE5 /* SceneDelegate.swift in Sources */,
 				053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */,
 				0574CA182BC7D5D80075A296 /* CategoryCell.swift in Sources */,
