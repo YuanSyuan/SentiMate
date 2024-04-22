@@ -7,32 +7,32 @@
 
 //import Foundation
 //
-//enum Emotion: String, CaseIterable {
-//    case fear
-//    case sad
-//    case neutral
-//    case happy
-//    case surprise
-//    case angry
-//    case disgust
+//enum Emotions: String, CaseIterable {
+//    case Fear
+//    case Sad
+//    case Neutral
+//    case Happy
+//    case Surprise
+//    case Angry
+//    case Disgust
 //    
 //    
-//    var artist: String {
+//    var emoji: String {
 //        switch self {
-//        case .fear:
-//            return fearSinger.randomElement() ?? ""
-//        case .sad:
-//            return sadSinger.randomElement() ?? ""
-//        case .neutral:
-//            return neutralSinger.randomElement() ?? ""
-//        case .happy:
-//            return happySinger.randomElement() ?? ""
-//        case .surprise:
-//            return surpriseSinger.randomElement() ?? ""
-//        case .angry:
-//            return angrySinger.randomElement() ?? ""
-//        case .disgust:
-//            return disgustSinger.randomElement() ?? ""
+//        case .Fear:
+//            return "fear"
+//        case .Sad:
+//            return "sad"
+//        case .Neutral:
+//            return "neutral"
+//        case .Happy:
+//            return "happy"
+//        case .Surprise:
+//            return "surprise"
+//        case .Angry:
+//            return "angry"
+//        case .Disgust:
+//            return "disgust"
 //        }
 //    }
 //}

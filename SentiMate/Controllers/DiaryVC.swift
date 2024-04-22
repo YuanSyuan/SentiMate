@@ -24,11 +24,30 @@ class DiaryVC: UIViewController {
     }
     
     func configureUI() {
+        let emoji: String
+        switch diary?.emotion {
+            case "Fear":
+            emoji = "fear"
+            case "Sad":
+            emoji = "sad"
+            case "Neutral":
+            emoji = "neutral"
+            case "Happy":
+            emoji = "happy"
+            case "Surprise":
+            emoji = "surprise"
+            case "Angry":
+            emoji = "angry"
+            default:
+            emoji = disgustSinger.randomElement() ?? ""
+            }
+        
+        emotionImg.image = UIImage(named: emoji)
         dateLbl.text = diary?.customTime
         categoryLbl.text = buttonTitles[diary?.category ?? 0]
         emotionLbl.text = diary?.emotion
         contentLbl.text = diary?.content
-        contentBorderView.layer.borderColor = UIColor(hex: "F6B17A").cgColor
+        contentBorderView.layer.borderColor = defaultTextColor.cgColor
         contentBorderView.layer.borderWidth = 1
     }
 }

@@ -15,7 +15,7 @@ class AICell: UITableViewCell {
     var imageViews = [UIImageView]()
     let AIResponseLbl = UILabel()
     let containerView = UIView()
-        let callAIBtn = UIButton()
+    let callAIBtn = UIButton()
     
     weak var delegate: AICellDelegate?
     
@@ -30,6 +30,8 @@ class AICell: UITableViewCell {
     }
     
     private func setupViews() {
+        contentView.backgroundColor = defaultBackgroundColor
+        
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -37,15 +39,15 @@ class AICell: UITableViewCell {
         stackView.spacing = 5
         
         AIResponseLbl.numberOfLines = 0
-        AIResponseLbl.textColor = .black
+        AIResponseLbl.textColor = defaultTextColor
         AIResponseLbl.textAlignment = .center
         AIResponseLbl.font = UIFont.systemFont(ofSize: 16)
         containerView.backgroundColor = .clear
-        containerView.layer.borderColor = UIColor.darkGray.cgColor
+        containerView.layer.borderColor = defaultTextColor.cgColor
         containerView.layer.borderWidth = 2
         callAIBtn.setTitle("點擊", for: .normal)
         callAIBtn.setTitleColor(.black, for: .normal)
-        callAIBtn.backgroundColor = .gray
+        callAIBtn.backgroundColor = defaultTextColor
       
         for _ in 0..<7 {
             let imageView = UIImageView()

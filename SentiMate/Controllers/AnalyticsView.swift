@@ -17,91 +17,92 @@ struct DonutChartView: View {
 
     
     var body: some View {
-        let textColor = UIColor(hex: "EEE2DE")
-        let backgroundColor = UIColor(hex: "2D3250")
+           let textColor = defaultTextColor
+           let backgroundColor = defaultBackgroundColor
 
-        NavigationStack {
-            VStack {
-                Picker("Time Period", selection: $selectedTimePeriod) {
-                    ForEach(TimePeriod.allCases, id: \.self) { period in
-                        Text(period.rawValue).tag(period)
-            
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .background(Color.gray.opacity(0.7))
-                
-                Chart(emotionTypes) { emotionType in
-                    SectorMark(
-                        angle: .value("Percentage", emotionType.percentage),
-                        innerRadius: .ratio(0.65),
-                        outerRadius: selectedEmotionType?.name == emotionType.name ? 150 : 125,
-                        angularInset: 1
-                    )
-                    .foregroundStyle(Color(emotionType.color))
-                    .cornerRadius(10)
-                }
-                .chartAngleSelection(value: $selectedCount)
-                .chartBackground { _ in
-                    if let selectedEmotionType {
-                        VStack {
-                            Image(systemName: "heart.fill")
-                                .font(.largeTitle)
-                                .foregroundStyle(Color(selectedEmotionType.color))
-                            Text(selectedEmotionType.name)
-                                .font(.largeTitle)
-                                .foregroundColor(Color(textColor))
-                            Text("\(selectedEmotionType.percentage) %")
-                                .foregroundColor(Color(textColor))
-                        }
-                    } else {
-                        VStack {
-                            Image(systemName: "heart.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                            Text("Select a segment")
-                                .foregroundColor(Color(textColor))
-                        }
-                    }
-                }
-                .frame(height: 300)
-                if let selectedEmotionType {
-                    Text("讓我感到\(selectedEmotionType.name)的是")
-                        .foregroundColor(Color(textColor))
-                }
-                
-                
-                let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
-                
-                HStack(spacing: 20) {
-                    ForEach(topCategories, id: \.name) { categoryData in
-                        CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
-                    }
-                }
-                
-                Spacer()
-            }
-            .onChange(of: selectedTimePeriod) { newPeriod in
-                emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: newPeriod)
-            }
-            .onChange(of: selectedCount) { oldValue, newValue in
-                if let newValue {
-                    withAnimation {
-                        getSelectedEmotionType(value: newValue)
-                    }
-                }
-            }
-            .onChange(of: selectedEmotionType) { oldValue, newValue in
-                if let emotionType = newValue {
-                    topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
-                }
-            }
-            
-            .padding()
-            .navigationTitle("心情圖")
-            .background(Color(backgroundColor))
-        }
-    }
+           NavigationStack {
+               VStack {
+                   Picker("Time Period", selection: $selectedTimePeriod) {
+                       ForEach(TimePeriod.allCases, id: \.self) { period in
+                           Text(period.rawValue).tag(period)
+               
+                       }
+                   }
+                   .pickerStyle(SegmentedPickerStyle())
+                   .background(Color.gray.opacity(0.7))
+                   
+                   Chart(emotionTypes) { emotionType in
+                       SectorMark(
+                           angle: .value("Percentage", emotionType.percentage),
+                           innerRadius: .ratio(0.65),
+                           outerRadius: selectedEmotionType?.name == emotionType.name ? 150 : 125,
+                           angularInset: 1
+                       )
+                       .foregroundStyle(Color(emotionType.color))
+                       .cornerRadius(10)
+                   }
+                   .chartAngleSelection(value: $selectedCount)
+                   .chartBackground { _ in
+                       if let selectedEmotionType {
+                           VStack {
+                               Image(systemName: "heart.fill")
+                                   .font(.largeTitle)
+                                   .foregroundStyle(Color(selectedEmotionType.color))
+                               Text(selectedEmotionType.name)
+                                   .font(.largeTitle)
+                                   .foregroundColor(Color(textColor))
+                               Text("\(selectedEmotionType.percentage) %")
+                                   .foregroundColor(Color(textColor))
+                           }
+                       } else {
+                           VStack {
+                               Image(systemName: "heart.fill")
+                                   .font(.largeTitle)
+                                   .foregroundColor(Color(textColor))
+                               Text("Select a segment")
+                                   .foregroundColor(Color(textColor))
+                           }
+                       }
+                   }
+                   .frame(height: 300)
+                   if let selectedEmotionType {
+                       Text("讓我感到\(selectedEmotionType.name)的是")
+                           .foregroundColor(Color(textColor))
+                   }
+                   
+                   
+                   let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
+                   
+                   HStack(spacing: 20) {
+                       ForEach(topCategories, id: \.name) { categoryData in
+                           CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
+                       }
+                   }
+                   
+                   Spacer()
+               }
+               .onChange(of: selectedTimePeriod) { newPeriod in
+                   emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: newPeriod)
+               }
+               .onChange(of: selectedCount) { oldValue, newValue in
+                   if let newValue {
+                       withAnimation {
+                           getSelectedEmotionType(value: newValue)
+                       }
+                   }
+               }
+               .onChange(of: selectedEmotionType) { oldValue, newValue in
+                   if let emotionType = newValue {
+                       topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
+                   }
+               }
+               
+               .padding()
+               .navigationTitle("心情圖")
+               .background(Color(backgroundColor))
+           }
+       }
+    
     private func getSelectedEmotionType(value: Int) {
         var cumulativeTotal = 0
         let emotionType = emotionTypes.first { emotionType in
@@ -121,15 +122,14 @@ struct CategoryCircleView: View {
     
     var body: some View {
         let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
-               // Then, apply a multiplier to get a usable size
                let diameter = scaledCount * 100
         
         ZStack {
             Circle()
                 .frame(width: diameter, height: diameter)
-                .foregroundColor(Color(UIColor(hex: "EEE2DE")))
+                .foregroundColor(Color(defaultTextColor))
             Text(categoryData.name)
-                .foregroundColor(Color(UIColor(hex: "2D3250")))
+                .foregroundColor(Color(defaultBackgroundColor))
         }
     }
 }

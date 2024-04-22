@@ -70,14 +70,14 @@ extension DiaryManager {
     
     private func colorForEmotion(_ emotion: String) -> UIColor {
             switch emotion {
-            case "Surprise": return UIColor(hex: "F2613F") ?? .gray
-            case "Happy": return UIColor(hex: "7077A1") ?? .gray
-            case "Neutral": return UIColor(hex: "F6B17A") ?? .gray
-            case "Fear": return UIColor(hex: "481E14") ?? .gray
-            case "Sad": return UIColor(hex: "424769") ?? .gray
-            case "Angry": return UIColor(hex: "9B3922") ?? .gray
-            case "Disgust": return UIColor(hex: "481E14") ?? .gray
-            default: return UIColor(hex: "cccccc") ?? .gray
+            case "Surprise": return lightRed
+            case "Happy": return lightBlue
+            case "Neutral": return midOrange
+            case "Fear": return lightRed
+            case "Sad": return midBlue
+            case "Angry": return brick
+            case "Disgust": return newBrown
+            default: return UIColor(hex: "cccccc")
             }
         }
 }

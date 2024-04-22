@@ -24,3 +24,12 @@ extension UIColor {
     }
 }
 
+let defaultBackgroundColor = UIColor(hex: "2D3250")
+let defaultTextColor = UIColor(hex: "EEE2DE")
+
+let midBlue = UIColor(hex: "424769")
+let lightBlue = UIColor(hex: "7077A1")
+let midOrange = UIColor(hex: "F6B17A")
+let newBrown = UIColor(hex: "481E14")
+let brick = UIColor(hex: "9B3922")
+let lightRed = UIColor(hex: "F2613F")

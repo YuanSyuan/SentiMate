@@ -17,8 +17,6 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     
-//    var diaries: [Diary] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,11 +60,31 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "diary", for: indexPath) as? HomeDiaryCell else {
         fatalError("Could not dequeue HomeDiaryCell")
     }
-    let diary = DiaryManager.shared.diaries[indexPath.row]
+    var diary = DiaryManager.shared.diaries[indexPath.row]
+    
+    let emoji: String
+    switch diary.emotion {
+        case "Fear":
+        emoji = "fear"
+        case "Sad":
+        emoji = "sad"
+        case "Neutral":
+        emoji = "neutral"
+        case "Happy":
+        emoji = "happy"
+        case "Surprise":
+        emoji = "surprise"
+        case "Angry":
+        emoji = "angry"
+        default:
+        emoji = disgustSinger.randomElement() ?? ""
+        }
+    
     cell.dateLbl.text = "\(diary.customTime)"
     cell.categoryLbl.text = buttonTitles[diary.category]
     cell.emotionLbl.text = diary.emotion
- 
+    cell.emotionImg.image = UIImage(named: emoji)
+    
     return cell
     }
 }
