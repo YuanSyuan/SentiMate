@@ -28,6 +28,8 @@ class HomeVC: UIViewController {
                 firebaseManager.onNewData = { newDiaries in
                     DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
                 }
+        
+        configureCellSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +48,14 @@ class HomeVC: UIViewController {
             let diary = DiaryManager.shared.diaries[indexPath.row]
             destinationVC.diary = diary
         }
+    }
+    
+    func configureCellSize() {
+        let layout = diaryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.estimatedItemSize = .zero
+        layout?.minimumInteritemSpacing = 0
+        let width = floor((diaryCollectionView.bounds.width - 20) / 2)
+        layout?.itemSize = CGSize(width: width, height: width)
     }
 
     
@@ -91,13 +101,13 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
  
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 24) / 2
-        let height = width * 1.2
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = (collectionView.frame.width - 24) / 2
+//        let height = width * 1.2
+//        return CGSize(width: width, height: height)
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+//    }
 }

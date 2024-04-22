@@ -64,6 +64,7 @@
 		05A4812B2BD119660073F305 /* AIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4812A2BD119660073F305 /* AIResponse.swift */; };
 		05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4812C2BD119C40073F305 /* OpenAIManager.swift */; };
 		05A7243B2BC9075F00F40E2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */; };
+		05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */; };
 		05B44C182BD2467100798934 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B44C172BD2467100798934 /* APIKey.plist */; };
 		05B44C1A2BD2632000798934 /* MusicEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B44C192BD2632000798934 /* MusicEntryVC.swift */; };
 		05B44C1C2BD263AE00798934 /* EmtionMusicEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B44C1B2BD263AE00798934 /* EmtionMusicEntryCell.swift */; };
@@ -107,6 +108,7 @@
 		05A4812A2BD119660073F305 /* AIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIResponse.swift; sourceTree = "<group>"; };
 		05A4812C2BD119C40073F305 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		05B44C172BD2467100798934 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 		05B44C192BD2632000798934 /* MusicEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicEntryVC.swift; path = SentiMate/MusicEntryVC.swift; sourceTree = SOURCE_ROOT; };
 		05B44C1B2BD263AE00798934 /* EmtionMusicEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmtionMusicEntryCell.swift; path = SentiMate/Controllers/MusicEntryCell/EmtionMusicEntryCell.swift; sourceTree = SOURCE_ROOT; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */,
+				05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				05B44C1E2BD263C900798934 /* CalmMusicEntryCell.swift in Sources */,
 				0509C1522BCAC731000FB482 /* Music.swift in Sources */,
 				0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */,
+				05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */,
 				0509C1582BCACA95000FB482 /* Emotions.swift in Sources */,
 				05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */,
 				05B44C1C2BD263AE00798934 /* EmtionMusicEntryCell.swift in Sources */,
