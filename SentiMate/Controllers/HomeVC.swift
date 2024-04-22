@@ -87,12 +87,30 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         case "Angry":
         emoji = "angry"
         default:
-        emoji = disgustSinger.randomElement() ?? ""
+        emoji = "disgust"
+        }
+    
+    let emojiText: String
+    switch diary.emotion {
+        case "Fear":
+        emojiText = "緊張"
+        case "Sad":
+        emojiText = "難過"
+        case "Neutral":
+        emojiText = "普通"
+        case "Happy":
+        emojiText = "開心"
+        case "Surprise":
+        emojiText = "驚喜"
+        case "Angry":
+        emojiText = "生氣"
+        default:
+        emojiText = "厭惡"
         }
     
     cell.dateLbl.text = "\(diary.customTime)"
     cell.categoryLbl.text = buttonTitles[diary.category]
-    cell.emotionLbl.text = diary.emotion
+    cell.emotionLbl.text = emojiText
     cell.emotionImg.image = UIImage(named: emoji)
     
     return cell

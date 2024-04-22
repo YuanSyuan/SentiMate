@@ -45,10 +45,11 @@ struct DonutChartView: View {
                    .chartBackground { _ in
                        if let selectedEmotionType {
                            VStack {
-                               Image(systemName: "heart.fill")
-                                   .font(.largeTitle)
-                                   .foregroundStyle(Color(selectedEmotionType.color))
-                               Text(selectedEmotionType.name)
+                               Image(selectedEmotionType.emojiImageName)
+                                           .resizable()
+                                           .scaledToFit()
+                                           .frame(width: 50, height: 50)
+                               Text(selectedEmotionType.mandarinName)
                                    .font(.largeTitle)
                                    .foregroundColor(Color(textColor))
                                Text("\(selectedEmotionType.percentage) %")
@@ -56,17 +57,18 @@ struct DonutChartView: View {
                            }
                        } else {
                            VStack {
-                               Image(systemName: "heart.fill")
-                                   .font(.largeTitle)
-                                   .foregroundColor(Color(textColor))
-                               Text("Select a segment")
+                               Image("neutral")
+                                           .resizable()
+                                           .scaledToFit()
+                                           .frame(width: 50, height: 50)
+                               Text("請點擊圖表")
                                    .foregroundColor(Color(textColor))
                            }
                        }
                    }
                    .frame(height: 300)
                    if let selectedEmotionType {
-                       Text("讓我感到\(selectedEmotionType.name)的是")
+                       Text("讓我感到\(selectedEmotionType.mandarinName)的是")
                            .foregroundColor(Color(textColor))
                    }
                    

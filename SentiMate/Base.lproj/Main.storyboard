@@ -243,7 +243,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B47-fg-HzD">
                                         <rect key="frame" x="52" y="0.0" width="52" height="36.666666666666664"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="26"/>
-                                        <color key="textColor" red="0.41176470590000003" green="0.55294117649999996" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="感到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-YF-h3N">
@@ -255,7 +255,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="沮喪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnJ-hL-0Cm">
                                         <rect key="frame" x="156" y="0.0" width="52" height="36.666666666666664"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="26"/>
-                                        <color key="textColor" red="0.41176470590000003" green="0.55294117649999996" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -270,10 +270,10 @@
                             <constraint firstItem="8sV-HC-Kl5" firstAttribute="bottom" secondItem="xcj-jI-g57" secondAttribute="bottom" constant="40" id="RQx-Dy-cCI"/>
                             <constraint firstItem="OXA-T3-krg" firstAttribute="leading" secondItem="8sV-HC-Kl5" secondAttribute="leading" constant="35" id="Tj2-Gj-s2Z"/>
                             <constraint firstItem="uX7-53-sKc" firstAttribute="leading" secondItem="8sV-HC-Kl5" secondAttribute="leading" constant="35" id="Vjm-Jp-Ye2"/>
+                            <constraint firstItem="8sV-HC-Kl5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="uX7-53-sKc" secondAttribute="trailing" constant="150" id="cEl-C6-arc"/>
                             <constraint firstItem="uX7-53-sKc" firstAttribute="top" secondItem="OXA-T3-krg" secondAttribute="bottom" constant="12" id="okw-RT-PXK"/>
                             <constraint firstItem="xcj-jI-g57" firstAttribute="top" secondItem="uX7-53-sKc" secondAttribute="bottom" constant="50" id="sSn-YT-mJh"/>
                             <constraint firstItem="8sV-HC-Kl5" firstAttribute="trailing" secondItem="xcj-jI-g57" secondAttribute="trailing" constant="35" id="sXp-Qg-gq4"/>
-                            <constraint firstItem="8sV-HC-Kl5" firstAttribute="trailing" secondItem="uX7-53-sKc" secondAttribute="trailing" constant="150" id="w7f-EI-cq6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fe5-nz-QIv"/>

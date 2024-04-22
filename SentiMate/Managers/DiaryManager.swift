@@ -70,7 +70,7 @@ extension DiaryManager {
     
     private func colorForEmotion(_ emotion: String) -> UIColor {
             switch emotion {
-            case "Surprise": return lightRed
+            case "Surprise": return defaultTextColor
             case "Happy": return lightBlue
             case "Neutral": return midOrange
             case "Fear": return lightRed
@@ -103,6 +103,13 @@ struct CategoryData {
     let count: Int
 }
 
+
+enum TimePeriod: String, CaseIterable {
+    case last7Days = "7天"
+    case last30Days = "1個月"
+    case allTime = "全部"
+}
+
 struct EmotionType: Identifiable, Equatable {
     let name: String
     let percentage: Int
@@ -112,8 +119,47 @@ struct EmotionType: Identifiable, Equatable {
     }
 }
 
-enum TimePeriod: String, CaseIterable {
-    case last7Days = "7天"
-    case last30Days = "1個月"
-    case allTime = "全部"
+extension EmotionType {
+    var mandarinName: String {
+        switch self.name {
+        case "Happy":
+            return "開心"
+        case "Sad":
+            return "難過"
+        case "Angry":
+            return "生氣"
+        case "Fear":
+            return "緊張"
+        case "Surprise":
+            return "驚喜"
+        case "Disgust":
+            return "厭惡"
+        case "Neutral":
+            return "普通"
+        default:
+            return self.name
+        }
+    }
 }
+
+extension EmotionType {
+    var emojiImageName: String {
+        switch self.name {
+        case "Fear":
+            return "fear"
+        case "Sad":
+            return "sad"
+        case "Neutral":
+            return "neutral"
+        case "Happy":
+            return "happy"
+        case "Surprise":
+            return "surprise"
+        case "Angry":
+            return "angry"
+        default:
+            return "disgust"
+        }
+    }
+}
+
