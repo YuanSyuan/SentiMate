@@ -15,7 +15,7 @@ class DiaryVC: UIViewController {
     @IBOutlet weak var categoryLbl: UILabel!
     @IBOutlet weak var emotionLbl: UILabel!
     @IBOutlet weak var contentLbl: UILabel!
-    @IBOutlet weak var contentBorderView: UIView!
+//    @IBOutlet weak var contentBorderView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class DiaryVC: UIViewController {
         categoryLbl.text = buttonTitles[diary?.category ?? 0]
         emotionLbl.text = diary?.emotion
         contentLbl.text = diary?.content
-        contentBorderView.layer.borderColor = defaultTextColor.cgColor
-        contentBorderView.layer.borderWidth = 1
+//        contentBorderView.layer.borderColor = defaultTextColor.cgColor
+//        contentBorderView.layer.borderWidth = 1
     }
 }
