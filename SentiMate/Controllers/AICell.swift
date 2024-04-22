@@ -32,12 +32,12 @@ class AICell: UITableViewCell {
     private func setupViews() {
         contentView.backgroundColor = defaultBackgroundColor
         
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.alignment = .center
-        stackView.spacing = 5
-        
+//        let stackView = UIStackView()
+//        stackView.axis = .horizontal
+//        stackView.distribution = .fillEqually
+//        stackView.alignment = .center
+//        stackView.spacing = 5
+//        
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultTextColor
         AIResponseLbl.textAlignment = .center
@@ -49,34 +49,34 @@ class AICell: UITableViewCell {
         callAIBtn.setTitleColor(.black, for: .normal)
         callAIBtn.backgroundColor = defaultTextColor
       
-        for _ in 0..<7 {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
-            imageView.clipsToBounds = true
-            imageView.image = UIImage(systemName: "smiley.fill")
-            imageViews.append(imageView)
-            stackView.addArrangedSubview(imageView)
-        }
+//        for _ in 0..<7 {
+//            let imageView = UIImageView()
+//            imageView.contentMode = .scaleAspectFit
+//            imageView.clipsToBounds = true
+//            imageView.image = UIImage(systemName: "smiley.fill")
+//            imageViews.append(imageView)
+//            stackView.addArrangedSubview(imageView)
+//        }
         
-        contentView.addSubview(stackView)
+//        contentView.addSubview(stackView)
         contentView.addSubview(containerView)
         contentView.addSubview(AIResponseLbl)
         contentView.addSubview(callAIBtn)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
         AIResponseLbl.translatesAutoresizingMaskIntoConstraints = false
         callAIBtn.translatesAutoresizingMaskIntoConstraints = false
         
         // Constraints for stack view
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
-        ])
+//        NSLayoutConstraint.activate([
+//            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+//            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+//            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
+//        ])
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+//            containerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             containerView.heightAnchor.constraint(equalToConstant: 180)
@@ -93,10 +93,42 @@ class AICell: UITableViewCell {
             callAIBtn.topAnchor.constraint(equalTo: AIResponseLbl.bottomAnchor, constant: 20),
             callAIBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             callAIBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            callAIBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
         
         callAIBtn.addTarget(self, action: #selector(callAIBtnTapped), for: .touchUpInside)
     }
+    
+    func configure(with emojiNames: [String]) {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        stackView.spacing = 5
+        
+        contentView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            stackView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: -10)
+        ])
+        
+        
+        imageViews.forEach { $0.removeFromSuperview() }
+                imageViews.removeAll()
+        
+                    for emojiName in emojiNames {
+                    let imageView = UIImageView()
+                    imageView.contentMode = .scaleAspectFit
+                    imageView.clipsToBounds = true
+                    imageView.image = UIImage(named: emojiName)
+                    imageViews.append(imageView)
+                    stackView.addArrangedSubview(imageView)
+                }
+        }
     
     @objc func callAIBtnTapped(_ sender: UIButton) {
         delegate?.aiButtonTapped()

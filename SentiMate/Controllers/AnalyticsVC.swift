@@ -70,6 +70,9 @@ extension AnalyticsVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AICell", for: indexPath) as? AICell else {
                 fatalError("Could not dequeue AICell") }
             
+            let emojis = latestDiaries.map { emojiForEmotion($0.emotion) }
+                       cell.configure(with: emojis)
+            
             cell.delegate = self
             
             if AIResponse != nil {
@@ -108,6 +111,25 @@ extension AnalyticsVC: UITableViewDataSource {
         }
     }
     
+    func emojiForEmotion(_ emotion: String) -> String {
+        switch emotion {
+        case "Fear":
+            return "fear"
+        case "Sad":
+            return "sad"
+        case "Neutral":
+            return "neutral"
+        case "Happy":
+            return "happy"
+        case "Surprise":
+            return "surprise"
+        case "Angry":
+            return "angry"
+        default:
+            return "disgust"
+        }
+    }
+    
     
 }
 
@@ -115,7 +137,7 @@ extension AnalyticsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 1 {
-            return 300
+            return 370
         } else {
             return view.bounds.height
         }

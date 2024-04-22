@@ -391,9 +391,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="HM8-OV-Ncq">
-                                                    <rect key="frame" x="253" y="19.333333333333332" width="124" height="34.333333333333343"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="今天是" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abz-dJ-VAn">
+                                                    <rect key="frame" x="16" y="19.666666666666671" width="72" height="34"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
+                                                    <color key="textColor" systemColor="systemGray4Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="HM8-OV-Ncq">
+                                                    <rect key="frame" x="230" y="19.333333333333332" width="147" height="34.333333333333343"/>
+                                                    <color key="backgroundColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
                                                         <!--1970-01-01 11:00:00 +0000-->
                                                     </date>
@@ -401,19 +407,13 @@
                                                         <!--2037-12-31 11:00:00 +0000-->
                                                     </date>
                                                 </datePicker>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="今天是" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abz-dJ-VAn">
-                                                    <rect key="frame" x="16" y="19.666666666666671" width="72" height="34"/>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="HM8-OV-Ncq" secondAttribute="trailing" constant="16" id="0e9-re-rHW"/>
-                                                <constraint firstItem="HM8-OV-Ncq" firstAttribute="leading" secondItem="abz-dJ-VAn" secondAttribute="trailing" constant="165" id="2JX-D5-TVd"/>
+                                                <constraint firstItem="HM8-OV-Ncq" firstAttribute="leading" secondItem="abz-dJ-VAn" secondAttribute="trailing" constant="142" id="DuX-c3-gJm"/>
+                                                <constraint firstAttribute="trailing" secondItem="HM8-OV-Ncq" secondAttribute="trailing" constant="16" id="LD3-6H-WsK"/>
                                                 <constraint firstItem="abz-dJ-VAn" firstAttribute="centerY" secondItem="Kc9-12-gza" secondAttribute="centerY" id="OaJ-Ov-bOc"/>
-                                                <constraint firstItem="HM8-OV-Ncq" firstAttribute="centerY" secondItem="Kc9-12-gza" secondAttribute="centerY" id="mG7-f1-dgX"/>
+                                                <constraint firstItem="HM8-OV-Ncq" firstAttribute="centerY" secondItem="Kc9-12-gza" secondAttribute="centerY" id="Vc5-Lm-BlG"/>
                                                 <constraint firstItem="abz-dJ-VAn" firstAttribute="leading" secondItem="Kc9-12-gza" secondAttribute="leading" constant="16" id="wnE-e6-hiM"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -429,14 +429,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我現在覺得..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ4-Fb-Yg6">
-                                                    <rect key="frame" x="16" y="16" width="377" height="48"/>
+                                                    <rect key="frame" x="16" y="16" width="377" height="45"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="systemGray4Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="沮喪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-0o-I0b">
-                                                    <rect key="frame" x="16" y="68" width="377" height="42"/>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
+                                                    <rect key="frame" x="16" y="65" width="377" height="45"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="32"/>
                                                     <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -466,7 +466,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我想是因為" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmL-69-JnS">
                                                     <rect key="frame" x="16" y="16" width="361" height="34"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="systemGray4Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -543,7 +543,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEL-N6-yZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2985" y="1422"/>
+            <point key="canvasLocation" x="2983.969465648855" y="1421.8309859154931"/>
         </scene>
         <!--MusicVC-->
         <scene sceneID="Qw5-yP-Ilb">

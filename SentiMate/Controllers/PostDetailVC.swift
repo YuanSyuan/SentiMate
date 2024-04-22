@@ -104,7 +104,7 @@ extension PostDetailVC: UITableViewDelegate {
         case 1:
             return 126
         case 2:
-            return 250
+            return 200
         default:
             return 291
         }

@@ -14,6 +14,7 @@ import ARKit
 class PostVC: UIViewController {
     
     private let sceneView = ARSCNView()
+    
    
     private let model = try? VNCoreMLModel(for: CNNEmotions().model)
     
@@ -42,22 +43,22 @@ class PostVC: UIViewController {
     func setupUI() {
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
         titleLbl.text = "今天的心情："
-        titleLbl.textColor = .white
+        titleLbl.textColor = defaultTextColor
         titleLbl.textAlignment = .center
-        titleLbl.font = UIFont.systemFont(ofSize: 20)
+        titleLbl.font = UIFont(name: "PingFangTC-Medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
         view.addSubview(titleLbl)
     
         emotionLabel.translatesAutoresizingMaskIntoConstraints = false
-        emotionLabel.textColor = .white
+        emotionLabel.textColor = defaultTextColor
         emotionLabel.textAlignment = .center
-        emotionLabel.font = UIFont.systemFont(ofSize: 36)
+        emotionLabel.font = UIFont(name: "PingFangTC-Medium", size: 36) ?? UIFont.systemFont(ofSize: 36)
         emotionLabel.backgroundColor = .black.withAlphaComponent(0.5)
         view.addSubview(emotionLabel)
         
         // Set up the button for checking emotion
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         saveEmotionBtn.setTitle("儲存", for: .normal)
-        saveEmotionBtn.backgroundColor = .white
+        saveEmotionBtn.backgroundColor = midOrange
         saveEmotionBtn.setTitleColor(.darkGray, for: .normal)
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
@@ -65,6 +66,7 @@ class PostVC: UIViewController {
         
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
                 confirmEmotionBtn.setTitle("確認", for: .normal)
+                confirmEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
                 confirmEmotionBtn.backgroundColor = .gray
                 confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
                 view.addSubview(confirmEmotionBtn)
@@ -138,8 +140,25 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     // Update the label with the detected emotion
     func updateEmotionLabel(withEmotion emotion: String) {
         currentEmotion = emotion
+        let emojiText: String
+        switch emotion {
+            case "Fear":
+            emojiText = "緊張"
+            case "Sad":
+            emojiText = "難過"
+            case "Neutral":
+            emojiText = "普通"
+            case "Happy":
+            emojiText = "開心"
+            case "Surprise":
+            emojiText = "驚喜"
+            case "Angry":
+            emojiText = "生氣"
+            default:
+            emojiText = "厭惡"
+            }
         DispatchQueue.main.async {
-            self.emotionLabel.text = emotion
+            self.emotionLabel.text = emojiText
         }
     }
 }

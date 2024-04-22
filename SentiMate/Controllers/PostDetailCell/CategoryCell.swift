@@ -41,8 +41,8 @@ class CategoryCell: UITableViewCell {
                 
                 let button = UIButton(type: .system)
                 button.setTitle(buttonTitle, for: .normal)
-                button.backgroundColor = .orange
-                button.setTitleColor(.white, for: .normal)
+                button.backgroundColor = midOrange
+                button.setTitleColor(defaultTextColor, for: .normal)
                 button.alpha = 0.5
                 button.layer.cornerRadius = 5
                 
@@ -66,10 +66,12 @@ class CategoryCell: UITableViewCell {
     @objc func categoryButtonTapped(sender: UIButton) {
         contentView.subviews.compactMap { $0 as? UIButton }.forEach {
                     $0.alpha = 0.5
+                    $0.setTitleColor(defaultTextColor, for: .normal)
                 }
         
         selectedButton = sender
         selectedButton?.alpha = 1.0
+        selectedButton?.setTitleColor(defaultBackgroundColor, for: .normal)
         
         guard let buttonTitle = sender.titleLabel?.text,
                       let index = buttonTitles.firstIndex(of: buttonTitle) else {

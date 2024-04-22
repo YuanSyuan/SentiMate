@@ -23,7 +23,26 @@ class EmotionCell: UITableViewCell {
     }
     
     func configure(withEmotion emotion: String) {
-        self.emotionLbl.text = emotion
+        
+        let emojiText: String
+        switch emotion {
+            case "Fear":
+            emojiText = "緊張"
+            case "Sad":
+            emojiText = "難過"
+            case "Neutral":
+            emojiText = "普通"
+            case "Happy":
+            emojiText = "開心"
+            case "Surprise":
+            emojiText = "驚喜"
+            case "Angry":
+            emojiText = "生氣"
+            default:
+            emojiText = "厭惡"
+            }
+        
+        self.emotionLbl.text = emojiText
         }
 
 }
