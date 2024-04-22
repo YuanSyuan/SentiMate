@@ -16,7 +16,8 @@ class PostVC: UIViewController {
     private let sceneView = ARSCNView()
     
    
-    private let model = try? VNCoreMLModel(for: CNNEmotions().model)
+    private var model: VNCoreMLModel?
+
     
     let captureSession = AVCaptureSession()
     let titleLbl = UILabel()
@@ -38,6 +39,8 @@ class PostVC: UIViewController {
             sceneView.delegate = self
             sceneView.showsStatistics = true
             sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
+        
+        model = ModelManager.shared.model
     }
     
     func setupUI() {

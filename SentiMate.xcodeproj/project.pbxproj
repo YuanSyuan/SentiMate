@@ -65,6 +65,7 @@
 		05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4812C2BD119C40073F305 /* OpenAIManager.swift */; };
 		05A7243B2BC9075F00F40E2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */; };
 		05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */; };
+		05B250812BD69BE50073D4AD /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B250802BD69BE40073D4AD /* ModelManager.swift */; };
 		05B44C182BD2467100798934 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B44C172BD2467100798934 /* APIKey.plist */; };
 		05B44C1A2BD2632000798934 /* MusicEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B44C192BD2632000798934 /* MusicEntryVC.swift */; };
 		05B44C1C2BD263AE00798934 /* EmtionMusicEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B44C1B2BD263AE00798934 /* EmtionMusicEntryCell.swift */; };
@@ -109,6 +110,7 @@
 		05A4812C2BD119C40073F305 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		05B250802BD69BE40073D4AD /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		05B44C172BD2467100798934 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 		05B44C192BD2632000798934 /* MusicEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicEntryVC.swift; path = SentiMate/MusicEntryVC.swift; sourceTree = SOURCE_ROOT; };
 		05B44C1B2BD263AE00798934 /* EmtionMusicEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmtionMusicEntryCell.swift; path = SentiMate/Controllers/MusicEntryCell/EmtionMusicEntryCell.swift; sourceTree = SOURCE_ROOT; };
@@ -215,6 +217,7 @@
 				0509C1532BCAC91C000FB482 /* MusicManager.swift */,
 				053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */,
 				05A4812C2BD119C40073F305 /* OpenAIManager.swift */,
+				05B250802BD69BE40073D4AD /* ModelManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				0574CA162BC7D5BD0075A296 /* EmotionCell.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
+				05B250812BD69BE50073D4AD /* ModelManager.swift in Sources */,
 				05CC58772BC9321B003070EC /* HomeDiaryCell.swift in Sources */,
 				0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */,
 				0574CA1A2BC7DB360075A296 /* TextFieldCell.swift in Sources */,
