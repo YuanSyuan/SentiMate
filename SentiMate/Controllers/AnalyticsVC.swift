@@ -70,15 +70,17 @@ extension AnalyticsVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AICell", for: indexPath) as? AICell else {
                 fatalError("Could not dequeue AICell") }
             
-            let emojis = latestDiaries.map { emojiForEmotion($0.emotion) }
+            let emojis = latestDiaries.reversed().map { emojiForEmotion($0.emotion) }
                        cell.configure(with: emojis)
             
             cell.delegate = self
             
             if AIResponse != nil {
+                cell.AIResponseLbl.textAlignment = .left
                 cell.AIResponseLbl.text = AIResponse
             } else {
-                cell.AIResponseLbl.text = "點擊按鈕查看AI分析！"
+                cell.AIResponseLbl.textAlignment = .center
+                cell.AIResponseLbl.text = "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！"
             }
             
             return cell
@@ -136,10 +138,11 @@ extension AnalyticsVC: UITableViewDataSource {
 extension AnalyticsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 1 {
-            return 370
-        } else {
+        switch indexPath.row {
+        case 0:
             return view.bounds.height
+        default:
+            return 450
         }
     }
 }

@@ -23,12 +23,12 @@ struct DonutChartView: View {
         NavigationStack {
             VStack {
                 HStack {
-                                    Text("心情圖")
-                                        .font(.largeTitle)
-                                        .fontWeight(.bold)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(Color(textColor))
-                                }
+                    Text("心情圖")
+                        .font(.custom("PingFangTC-Medium", size: 36))
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color(textColor))
+                }
                 Picker("Time Period", selection: $selectedTimePeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
                         Text(period.rawValue).tag(period)
@@ -57,9 +57,10 @@ struct DonutChartView: View {
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)
                             Text(selectedEmotionType.mandarinName)
-                                .font(.largeTitle)
+                                .font(.custom("PingFangTC-Medium", size: 24))
                                 .foregroundColor(Color(textColor))
                             Text("\(selectedEmotionType.percentage) %")
+                                .font(.custom("PingFangTC", size: 20))
                                 .foregroundColor(Color(textColor))
                         }
                     } else {
@@ -70,12 +71,14 @@ struct DonutChartView: View {
                                 .frame(width: 50, height: 50)
                             Text("請點擊圖表")
                                 .foregroundColor(Color(textColor))
+                                .font(.custom("PingFangTC", size: 16))
                         }
                     }
                 }
                 .frame(height: 300)
                 if let selectedEmotionType {
                     Text("讓我感到\(selectedEmotionType.mandarinName)的是")
+                        .font(.custom("PingFangTC-Medium", size: 18))
                         .foregroundColor(Color(textColor))
                 }
                 
@@ -107,7 +110,7 @@ struct DonutChartView: View {
             }
             
             .padding()
-//            .navigationTitle("心情圖")
+            //            .navigationTitle("心情圖")
             .background(Color(backgroundColor))
         }
     }
@@ -139,6 +142,8 @@ struct CategoryCircleView: View {
                 .foregroundColor(Color(defaultTextColor))
             Text(categoryData.name)
                 .foregroundColor(Color(defaultBackgroundColor))
+                .font(.custom("PingFangTC-Medium", size: 18))
+            
         }
     }
 }

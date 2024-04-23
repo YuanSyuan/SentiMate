@@ -321,7 +321,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature6" translatesAutoresizingMaskIntoConstraints="NO" id="ZY9-qy-Ed5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature14" translatesAutoresizingMaskIntoConstraints="NO" id="ZY9-qy-Ed5">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="嗨！今天過得如何呢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gox-Ze-xad">
@@ -987,6 +987,7 @@
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="icons8-apple-music-50(@1×)" width="50" height="50"/>
         <image name="memo5" width="878" height="171"/>
+        <image name="nature14" width="3770" height="6009"/>
         <image name="nature6" width="4000" height="6000"/>
         <image name="play" catalog="system" width="117" height="128"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
