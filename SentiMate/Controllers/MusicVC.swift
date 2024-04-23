@@ -79,6 +79,16 @@ class MusicVC: UIViewController {
         playerView.layer.shouldRasterize = true
         playerView.layer.rasterizationScale = UIScreen.main.scale
         
+        albumImg.layer.cornerRadius = 8
+        albumImg.clipsToBounds = false
+        albumImg.layer.shadowColor = UIColor.black.cgColor
+        albumImg.layer.shadowOpacity = 0.7
+        albumImg.layer.shadowRadius = 5
+        albumImg.layer.shadowOffset = CGSize(width: 2, height: 2)
+       
+        albumImg.layer.shouldRasterize = true
+        albumImg.layer.rasterizationScale = UIScreen.main.scale
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

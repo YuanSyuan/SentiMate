@@ -82,6 +82,19 @@ class MusicEntryVC: UIViewController {
                 }
             }
         }
+        
+        musicManager.getMySong(for: "李芫萱") {[weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedSongs):
+                    // Handle the fetched songs
+                    self?.songs.insert(fetchedSongs[1], at: 0)
+                case .failure(let error):
+                    print("Error fetching songs: \(error)")
+                    // Handle any errors from the API call
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -49,7 +49,9 @@ let angrySinger: [String] = [
     "Disturbed",
     "SystemofaDown",
     "FiveFingerDeathPunch",
-    "MarilynManson"
+    "MarilynManson",
+    "KanhoYakushiji",
+    "草東沒有派對"
 ]
 
 let disgustSinger: [String] = [
@@ -89,7 +91,10 @@ let sadSinger: [String] = [
     "TheNational",
     "BillieEilish",
     "AmyWinehouse",
-    "DamienRice"
+    "DamienRice",
+    "徐佳瑩",
+    "蔡健雅",
+    "魏如萱"
 ]
 
 let neutralSinger: [String] = [
@@ -103,7 +108,6 @@ let neutralSinger: [String] = [
     "JasonMraz",
     "VanceJoy",
     "RayLaMontagne"
-//    "李芫萱"
 ]
 
 let happySinger: [String] = [

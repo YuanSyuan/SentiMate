@@ -70,11 +70,11 @@ extension DiaryManager {
     
     private func colorForEmotion(_ emotion: String) -> UIColor {
             switch emotion {
-            case "Surprise": return defaultTextColor
-            case "Happy": return lightBlue
+            case "Surprise": return lightRed
+            case "Happy": return softCoral
             case "Neutral": return midOrange
-            case "Fear": return lightRed
-            case "Sad": return midBlue
+            case "Fear": return creamyWhite
+            case "Sad": return grayBlue
             case "Angry": return brick
             case "Disgust": return newBrown
             default: return UIColor(hex: "cccccc")
