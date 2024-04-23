@@ -63,6 +63,12 @@ class MusicVC: UIViewController {
             topTitle.text = playlist[1]
         }
         
+        if songs != [] {
+            topImage.image = UIImage(named: playlistImage[6])
+        } else {
+            topImage.image = UIImage(named: playlistImage[1])
+        }
+        
         playerView.layer.cornerRadius = 8
         playerView.clipsToBounds = false
         playerView.layer.shadowColor = UIColor.black.cgColor

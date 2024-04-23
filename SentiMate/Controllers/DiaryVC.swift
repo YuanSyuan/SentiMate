@@ -10,6 +10,8 @@ import UIKit
 class DiaryVC: UIViewController {
     var diary: Diary?
     
+   
+    @IBOutlet weak var emotionBackground: UIImageView!
     @IBOutlet weak var emotionImg: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var categoryLbl: UILabel!
@@ -23,49 +25,78 @@ class DiaryVC: UIViewController {
         
     }
     
-    func configureUI() {
-        let emoji: String
-        switch diary?.emotion {
+    private func emojiName(forEmotion emotion: String?) -> String {
+            switch emotion {
             case "Fear":
-            emoji = "fear"
+                return "fear"
             case "Sad":
-            emoji = "sad"
+                return "sad"
             case "Neutral":
-            emoji = "neutral"
+                return "neutral"
             case "Happy":
-            emoji = "happy"
+                return "happy"
             case "Surprise":
-            emoji = "surprise"
+                return "surprise"
             case "Angry":
-            emoji = "angry"
+                return "angry"
             default:
-            emoji = disgustSinger.randomElement() ?? ""
+                return disgustSinger.randomElement() ?? ""
             }
-        
-        let emojiText: String
-        switch diary?.emotion {
+        }
+
+        private func emojiText(forEmotion emotion: String?) -> String {
+            switch emotion {
             case "Fear":
-            emojiText = "緊張"
+                return "緊張"
             case "Sad":
-            emojiText = "難過"
+                return "難過"
             case "Neutral":
-            emojiText = "普通"
+                return "普通"
             case "Happy":
-            emojiText = "開心"
+                return "開心"
             case "Surprise":
-            emojiText = "驚喜"
+                return "驚喜"
             case "Angry":
-            emojiText = "生氣"
+                return "生氣"
             default:
-            emojiText = "厭惡"
+                return "厭惡"
             }
-        
-        emotionImg.image = UIImage(named: emoji)
-        dateLbl.text = diary?.customTime
-        categoryLbl.text = buttonTitles[diary?.category ?? 0]
-        emotionLbl.text = emojiText
-        contentLbl.text = diary?.content
-//        contentBorderView.layer.borderColor = defaultTextColor.cgColor
-//        contentBorderView.layer.borderWidth = 1
+        }
+
+        private func backgroundImg(forEmotion emotion: String?) -> String {
+            switch emotion {
+            case "Fear":
+                return "nature14"
+            case "Sad":
+                return "nature6"
+            case "Neutral":
+                return "nature16"
+            case "Happy":
+                return "nature5"
+            case "Surprise":
+                return "nature12"
+            case "Angry":
+                return "nature17"
+            default:
+                return "nature2"
+            }
+        }
+
+        func configureUI() {
+            if let emotion = diary?.emotion {
+                let emoji = emojiName(forEmotion: emotion)
+                let emojiText = emojiText(forEmotion: emotion)
+                let backgroundImg = backgroundImg(forEmotion: emotion)
+                
+                emotionImg.image = UIImage(named: emoji)
+                emotionLbl.text = emojiText
+                emotionBackground.image = UIImage(named: backgroundImg)
+            }
+            
+            dateLbl.text = diary?.customTime
+            categoryLbl.text = buttonTitles[diary?.category ?? 0]
+            contentLbl.text = diary?.content
+            // contentBorderView.layer.borderColor = defaultTextColor.cgColor
+            // contentBorderView.layer.borderWidth = 1
+        }
     }
-}

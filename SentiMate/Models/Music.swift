@@ -14,6 +14,16 @@ let playlistDescription: [String] = [
     "聽見自然、敞洋大海，適合睡前想好好放鬆的你。"
 ]
 
+let playlistImage: [String] = [
+"nature0",
+"nature1",
+"nature2",
+"nature3",
+"nature4",
+"nature5",
+"nature6"
+]
+
 let musicImage: [String] = [
     "musicImg0",
     "musicImg1",
