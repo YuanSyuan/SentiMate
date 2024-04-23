@@ -14,6 +14,9 @@ class MusicVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var topImage: UIImageView!
+    @IBOutlet weak var topTitle: UILabel!
+    
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
     var calmSongs: [AudioFile] = []
@@ -22,6 +25,7 @@ class MusicVC: UIViewController {
     @IBOutlet weak var songLbl: UILabel!
     @IBOutlet weak var singerLbl: UILabel!
     
+    @IBOutlet weak var playerView: UIView!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
@@ -36,6 +40,7 @@ class MusicVC: UIViewController {
     var playerTimeObserver: Any?
     var songDuration: CMTime?
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +56,23 @@ class MusicVC: UIViewController {
         } catch {
             print("Failed to set audio session category. Error: \(error)")
         }
+        
+        if songs != [] {
+            topTitle.text = playlist[0]
+        } else {
+            topTitle.text = playlist[1]
+        }
+        
+        playerView.layer.cornerRadius = 8
+        playerView.clipsToBounds = false
+        playerView.layer.shadowColor = UIColor.black.cgColor
+        playerView.layer.shadowOpacity = 0.7
+        playerView.layer.shadowRadius = 5
+        playerView.layer.shadowOffset = CGSize(width: 2, height: 2)
+       
+        playerView.layer.shouldRasterize = true
+        playerView.layer.rasterizationScale = UIScreen.main.scale
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,12 +81,21 @@ class MusicVC: UIViewController {
         configurePlayerView()
         setupPlayerTimeObserver()
         checkMusicIsEnd()
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         player?.pause()
+    }
+    
+    @IBAction func handleBack(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func configurePlayerView() {
@@ -242,7 +273,7 @@ extension MusicVC: UITableViewDataSource {
 extension MusicVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        110
+        70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

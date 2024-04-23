@@ -27,16 +27,16 @@ class MusicEntryVC: UIViewController {
         configureCellSize()
         fetchLatestDiaryEntry()
         
-        firebaseManager.loadAudioFiles { success, error in
-            if success {
-                DispatchQueue.main.async {
-                    self.calmSongs = self.firebaseManager.audioFiles
-                    print(self.calmSongs)
-                }
-            } else if let error = error {
-                print("Error loading audio files: \(error)")
-            }
-        }
+//        firebaseManager.loadAudioFiles { success, error in
+//            if success {
+//                DispatchQueue.main.async {
+//                    self.calmSongs = self.firebaseManager.audioFiles
+//                    print(self.calmSongs)
+//                }
+//            } else if let error = error {
+//                print("Error loading audio files: \(error)")
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
