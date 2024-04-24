@@ -142,7 +142,7 @@ extension AnalyticsVC: UITableViewDelegate {
         case 0:
             return view.bounds.height
         default:
-            return 450
+            return 490
         }
     }
 }

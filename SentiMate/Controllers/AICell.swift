@@ -70,21 +70,21 @@ class AICell: UITableViewCell {
 //            containerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            containerView.heightAnchor.constraint(equalToConstant: 200)
+            containerView.heightAnchor.constraint(equalToConstant: 280)
         ])
         
         NSLayoutConstraint.activate([
             AIResponseLbl.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             AIResponseLbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
             AIResponseLbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
-            AIResponseLbl.heightAnchor.constraint(equalToConstant: 160)
+            AIResponseLbl.heightAnchor.constraint(equalToConstant: 240)
         ])
         
         NSLayoutConstraint.activate([
-            callAIBtn.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 40),
+            callAIBtn.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
             callAIBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             callAIBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
-            callAIBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40)
+            callAIBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
         
         callAIBtn.addTarget(self, action: #selector(callAIBtnTapped), for: .touchUpInside)

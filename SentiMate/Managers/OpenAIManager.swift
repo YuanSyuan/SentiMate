@@ -32,10 +32,10 @@ class OpenAIManager {
         let parameters: [String: Any] = [
             "model": "gpt-4-turbo",
             "messages": [
-                       ["role": "system", "content": "The following prompt is an array of the person's emotion diary. You are a gentle psychological counselor speaking directly to the person. Provide a brief analysis, followed by concise suggestions for improvement. Respond in Traditional Chinese, structure your response in a paragraph, conclude your message within 200 characters total, and end the paragraph in a period punctuation. The value of category refers to the index of \(buttonTitles)"],
+                       ["role": "system", "content": "The following prompt is an array of the person's emotion diary. You are a gentle psychological counselor speaking directly to the person. Provide concise suggestions for improvement. Respond in Traditional Chinese, structure your response in paragraphs if needed, conclude your message no more than 200 characters, and must end the whole prompt content in a Chinese period punctuation. The value of category refers to the index of \(buttonTitles)"],
                        ["role": "user", "content": prompt]
                    ],
-            "max_tokens": 200
+            "max_tokens": 500
         ]
 
         AF.request(apiURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
