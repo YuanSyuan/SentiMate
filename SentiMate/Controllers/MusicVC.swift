@@ -19,7 +19,7 @@ class MusicVC: UIViewController {
     
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
-    var calmSongs: [AudioFile] = []
+    var calmSongs = softMusicPlaylist
     
     @IBOutlet weak var albumImg: UIImageView!
     @IBOutlet weak var songLbl: UILabel!
@@ -40,7 +40,6 @@ class MusicVC: UIViewController {
     var playerTimeObserver: Any?
     var songDuration: CMTime?
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,7 +74,6 @@ class MusicVC: UIViewController {
         playerView.layer.shadowOpacity = 0.7
         playerView.layer.shadowRadius = 5
         playerView.layer.shadowOffset = CGSize(width: 2, height: 2)
-       
         playerView.layer.shouldRasterize = true
         playerView.layer.rasterizationScale = UIScreen.main.scale
         
@@ -85,7 +83,6 @@ class MusicVC: UIViewController {
         albumImg.layer.shadowOpacity = 0.7
         albumImg.layer.shadowRadius = 5
         albumImg.layer.shadowOffset = CGSize(width: 2, height: 2)
-       
         albumImg.layer.shouldRasterize = true
         albumImg.layer.rasterizationScale = UIScreen.main.scale
         
@@ -125,8 +122,10 @@ class MusicVC: UIViewController {
             let calmSong = calmSongs[0]
             songLbl.text = calmSong.name
             singerLbl.text = "YuanSyuan Li"
-            albumImg.image = UIImage(named: musicImage[0])
-            player = AVPlayer(url: calmSong.localURL)
+            albumImg.image = UIImage(named: calmSong.image)
+            
+            guard let url = URL(string: calmSong.url) else { return }
+            player = AVPlayer(url: url)
         }
     }
     
@@ -212,14 +211,13 @@ class MusicVC: UIViewController {
     }
     
     func playCalmSong(index: Int) {
-        playerItem = AVPlayerItem(url: calmSongs[songIndex].localURL)
+        guard let url = URL(string: calmSongs[index].url) else { return }
+        playerItem = AVPlayerItem(url: url)
         player?.replaceCurrentItem(with: playerItem)
         player?.play()
         playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
         songLbl.text = calmSongs[songIndex].name
-        albumImg.image = UIImage(named: musicImage[songIndex])
-        //        singerLbl.text = songs[songIndex].artistName
-        //        albumImg.kf.setImage(with: URL(string: "\(songs[songIndex].artworkUrl500)"))
+        albumImg.image = UIImage(named: calmSongs[songIndex].image)
     }
     
     func checkMusicIsEnd() {
@@ -276,14 +274,11 @@ extension MusicVC: UITableViewDataSource {
         } else {
             let song = calmSongs[indexPath.row]
             cell.songLbl.text = song.name
-            cell.songImg.image = UIImage(named: musicImage[indexPath.row])
+            cell.songImg.image = UIImage(named: song.image)
             cell.singerLbl.text = "YuanSyuan Li"
         }
-        
         return cell
     }
-    
-    
 }
 
 extension MusicVC: UITableViewDelegate {
@@ -307,20 +302,17 @@ extension MusicVC: UITableViewDelegate {
             
         } else {
             let song = calmSongs[indexPath.row]
-            let previewUrl = song.localURL
+            guard let url = URL(string: song.url) else { return }
             
             self.songIndex = indexPath.row
-            player = AVPlayer(url: previewUrl)
+            player = AVPlayer(url: url)
             songLbl.text = song.name
-            albumImg.image = UIImage(named: musicImage[songIndex])
-//            singerLbl.text = song.artistName
-//            albumImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
+            albumImg.image = UIImage(named: song.image)
         }
         
         player?.play()
         playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
         setupPlayerTimeObserver()
-        
     }
     
     func formatTime(fromSeconds totalSeconds: Double) -> String {

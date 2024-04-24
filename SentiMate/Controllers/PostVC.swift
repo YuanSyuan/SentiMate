@@ -18,8 +18,6 @@ class PostVC: UIViewController {
    
     private var model: VNCoreMLModel?
 
-    
-    let captureSession = AVCaptureSession()
     let titleLbl = UILabel()
     var emotionLabel = UILabel()
     let confirmEmotionBtn = UIButton()
@@ -37,7 +35,7 @@ class PostVC: UIViewController {
          
             view.addSubview(sceneView)
             sceneView.delegate = self
-            sceneView.showsStatistics = true
+            sceneView.showsStatistics = false
             sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
         
         model = ModelManager.shared.model
