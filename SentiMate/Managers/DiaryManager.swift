@@ -22,6 +22,16 @@ class DiaryManager {
     }
 }
 
+// MARK: - For PostDetailVC, same emotion alert
+extension DiaryManager {
+    func lastDiaryWithEmotion(_ emotion: String) -> Diary? {
+        return diaries
+            .filter { $0.emotion == emotion }
+            .sorted { $0.customTime > $1.customTime }
+            .first
+    }
+}
+
 // MARK: - For AnalyticsVC, pie chart
 extension DiaryManager {
     

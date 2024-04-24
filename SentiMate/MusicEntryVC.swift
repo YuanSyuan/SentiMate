@@ -106,7 +106,6 @@ class MusicEntryVC: UIViewController {
             }
         }
     }
-    
 }
 
 extension MusicEntryVC: UICollectionViewDataSource {
