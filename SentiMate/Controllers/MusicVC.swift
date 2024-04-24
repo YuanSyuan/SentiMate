@@ -201,6 +201,7 @@ class MusicVC: UIViewController {
     }
     
     func playSong(index: Int) {
+        player?.pause()
         playerItem = AVPlayerItem(url: songs[songIndex].previewUrl)
         player?.replaceCurrentItem(with: playerItem)
         player?.play()
@@ -211,6 +212,7 @@ class MusicVC: UIViewController {
     }
     
     func playCalmSong(index: Int) {
+        player?.pause()
         guard let url = URL(string: calmSongs[index].url) else { return }
         playerItem = AVPlayerItem(url: url)
         player?.replaceCurrentItem(with: playerItem)

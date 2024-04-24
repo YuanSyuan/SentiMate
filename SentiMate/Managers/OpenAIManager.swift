@@ -41,12 +41,9 @@ class OpenAIManager {
         AF.request(apiURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
             switch response.result {
             case .success(let data):
-                // Print the raw data as a string for inspection
                 if let jsonString = String(data: data, encoding: .utf8) {
                     print("Raw JSON response: \(jsonString)")
                 }
-
-                // Attempt to decode the data into the OpenAIResponse struct
                 do {
                     let result = try JSONDecoder().decode(OpenAIResponse.self, from: data)
                     if let text = result.choices.first?.message.content {
@@ -55,11 +52,9 @@ class OpenAIManager {
             
                                 }
                 } catch {
-                    // If decoding fails, print the error
                     print("Error decoding response: \(error)")
                 }
             case .failure(let error):
-                // Handle networking error
                 print("Networking error: \(error.localizedDescription)")
             }
         }

@@ -74,11 +74,9 @@ class MusicEntryVC: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let fetchedSongs):
-                    // Handle the fetched songs
                     self?.songs = fetchedSongs
                 case .failure(let error):
                     print("Error fetching songs: \(error)")
-                    // Handle any errors from the API call
                 }
             }
         }
@@ -87,11 +85,9 @@ class MusicEntryVC: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let fetchedSongs):
-                    // Handle the fetched songs
                     self?.songs.insert(fetchedSongs[1], at: 0)
                 case .failure(let error):
                     print("Error fetching songs: \(error)")
-                    // Handle any errors from the API call
                 }
             }
         }
