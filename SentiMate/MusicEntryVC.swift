@@ -16,7 +16,7 @@ class MusicEntryVC: UIViewController {
     
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
-    var calmSongs: [AudioFile] = []
+    var calmSongs: [SoftMusic] = softMusicPlaylist
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class MusicEntryVC: UIViewController {
         collectionView.delegate = self
         
         configureCellSize()
-        fetchLatestDiaryEntry()
+//        fetchLatestDiaryEntry()
         
 //        firebaseManager.loadAudioFiles { success, error in
 //            if success {
@@ -97,10 +97,12 @@ class MusicEntryVC: UIViewController {
         if segue.identifier == "showPlayer",
            let destinationVC = segue.destination as? MusicVC,
            let indexPath = collectionView.indexPathsForSelectedItems?.first {
+            destinationVC.songs = []
+            destinationVC.calmSongs = []
             if indexPath.row == 0 {
                 destinationVC.songs = self.songs
             } else {
-//                destinationVC.calmSongs = self.calmSongs
+                destinationVC.calmSongs = self.calmSongs
             }
         }
     }

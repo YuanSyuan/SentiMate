@@ -19,7 +19,7 @@ class MusicVC: UIViewController {
     
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
-    var calmSongs = softMusicPlaylist
+    var calmSongs: [SoftMusic] = []
     
     @IBOutlet weak var albumImg: UIImageView!
     @IBOutlet weak var songLbl: UILabel!
@@ -105,6 +105,7 @@ class MusicVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         player?.pause()
+//        calmSongs = []
     }
     
     @IBAction func handleBack(_ sender: Any) {
