@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="715-6n-JpH">
-                            <rect key="frame" x="40" y="184" width="295" height="250"/>
+                            <rect key="frame" x="40" y="159" width="295" height="300"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Success" translatesAutoresizingMaskIntoConstraints="NO" id="tvQ-Tg-ECi">
                                     <rect key="frame" x="117.5" y="-30" width="60" height="60"/>
@@ -37,7 +37,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTG-r8-od5">
-                                    <rect key="frame" x="20" y="190" width="255" height="40"/>
+                                    <rect key="frame" x="20" y="240" width="255" height="40"/>
                                     <color key="backgroundColor" red="0.083722442957390592" green="0.73233264593908631" blue="0.083488200497050663" alpha="0.79989833047945202" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="ow7-z2-zNV"/>
@@ -50,23 +50,23 @@
                                         <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="9h9-Ow-7pH"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-ZA-pHb">
-                                    <rect key="frame" x="20" y="55" width="255" height="26.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-ZA-pHb">
+                                    <rect key="frame" x="20" y="55" width="255" height="25.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSF-1V-CHJ">
-                                    <rect key="frame" x="20" y="101.5" width="255" height="61"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSF-1V-CHJ">
+                                    <rect key="frame" x="20" y="100.5" width="255" height="98"/>
                                     <string key="text">messagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessage</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="250" id="1zy-sR-DVa"/>
+                                <constraint firstAttribute="height" constant="300" id="1zy-sR-DVa"/>
                                 <constraint firstItem="qQn-ZA-pHb" firstAttribute="leading" secondItem="715-6n-JpH" secondAttribute="leading" constant="20" id="3XN-Gl-KcH"/>
                                 <constraint firstItem="tvQ-Tg-ECi" firstAttribute="centerY" secondItem="715-6n-JpH" secondAttribute="top" id="5eo-qS-Gt0"/>
                                 <constraint firstItem="qQn-ZA-pHb" firstAttribute="top" secondItem="tvQ-Tg-ECi" secondAttribute="bottom" constant="25" id="6Fq-OU-QWZ"/>

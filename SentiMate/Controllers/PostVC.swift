@@ -30,6 +30,7 @@ class PostVC: UIViewController {
         
         setupUI()
         saveEmotionBtn.isEnabled = false
+        confirmEmotionBtn.isEnabled = false
         
         guard ARWorldTrackingConfiguration.isSupported else { return }
          
@@ -158,8 +159,10 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
             default:
             emojiText = "厭惡"
             }
+        
         DispatchQueue.main.async {
             self.emotionLabel.text = emojiText
+            self.confirmEmotionBtn.isEnabled = true
         }
     }
 }

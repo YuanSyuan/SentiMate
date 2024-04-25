@@ -11,6 +11,8 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textField: UITextView!
 
+    @IBOutlet weak var saveBtn: UIButton!
+    
     var onSave: (() -> Void)?
     
     override func awakeFromNib() {
@@ -23,6 +25,8 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
         
         textViewDidBeginEditing(textField)
         textViewDidEndEditing(textField)
+        
+        saveBtn.isEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

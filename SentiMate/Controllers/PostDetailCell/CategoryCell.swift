@@ -16,6 +16,16 @@ class CategoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let attributedString = NSMutableAttributedString(string: "我想是因為 *")
+                
+          // 從第1個字開始，5個字都設置為藍色
+          attributedString.addAttribute(.foregroundColor, value: defaultTextColor, range: NSMakeRange(0, 5))
+                
+          // 從第7個字開始，後面7個字都設置為紅色
+          attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: NSMakeRange(6, 1))
+        
+        categoryLbl.attributedText = attributedString
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,6 +37,7 @@ class CategoryCell: UITableViewCell {
         super.layoutSubviews()
         setupButtons()
     }
+
     
     func setupButtons() {
         let numberOfRows = 3

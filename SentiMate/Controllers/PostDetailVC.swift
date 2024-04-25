@@ -71,6 +71,10 @@ extension PostDetailVC: UITableViewDataSource {
             
             cell.onCategorySelected = { [weak self] index in
                 self?.selectedCategoryIndex = index
+                
+                if let textFieldCell = tableView.cellForRow(at: IndexPath(row: 3, section: indexPath.section)) as? TextFieldCell {
+                                textFieldCell.saveBtn.isEnabled = true
+                            }
             }
             return cell
         default:
@@ -91,8 +95,9 @@ extension PostDetailVC: UITableViewDataSource {
                 
                 if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
                         // Show an alert with the last diary's details
+                    guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
                         DispatchQueue.main.async {
-                            AlertView.instance.showAlert(image: lastDiary.emotion, title: "上一次感到\(lastDiary.emotion)是因為\(lastDiary.category)", message: "\(lastDiary.content)", alertType: .reminder)
+                            AlertView.instance.showAlert(image: lastDiary.emotion, title: "上一次感到\(mandarinEmotion)是因為\(buttonTitles[lastDiary.category])", message: "\(lastDiary.content)", alertType: .reminder)
                                 self?.saveDiaryEntry(newEntry: newEntry)
                         }
                     } else {
@@ -136,16 +141,16 @@ extension PostDetailVC: UITableViewDelegate {
     
 }
 
-//extension PostDetailVC {
-//    func TextForEmotion(_ emotion: String) -> String {
-//            switch emotion {
-//            case "Surprise": return "驚喜"
-//            case "Happy": return "開心"
-//            case "Neutral": return "普通"
-//            case "Fear": return "緊張"
-//            case "Sad": return "難過"
-//            case "Angry": return "生氣"
-//            default: return "厭惡"
-//            }
-//        }
-//}
+extension PostDetailVC {
+    func textForEmotion(_ emotion: String) -> String {
+            switch emotion {
+            case "Surprise": return "驚喜"
+            case "Happy": return "開心"
+            case "Neutral": return "普通"
+            case "Fear": return "緊張"
+            case "Sad": return "難過"
+            case "Angry": return "生氣"
+            default: return "厭惡"
+            }
+        }
+}
