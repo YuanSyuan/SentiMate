@@ -22,7 +22,7 @@ class CategoryCell: UITableViewCell {
           attributedString.addAttribute(.foregroundColor, value: defaultTextColor, range: NSMakeRange(0, 5))
                 
           // 從第7個字開始，後面7個字都設置為紅色
-          attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: NSMakeRange(6, 1))
+          attributedString.addAttribute(.foregroundColor, value: midOrange, range: NSMakeRange(6, 1))
         
         categoryLbl.attributedText = attributedString
         

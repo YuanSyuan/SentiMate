@@ -61,7 +61,8 @@ class PostVC: UIViewController {
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         saveEmotionBtn.setTitle("儲存", for: .normal)
         saveEmotionBtn.backgroundColor = midOrange
-        saveEmotionBtn.setTitleColor(.darkGray, for: .normal)
+        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
+        saveEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
         saveEmotionBtn.layer.cornerRadius = 20
@@ -69,6 +70,7 @@ class PostVC: UIViewController {
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
                 confirmEmotionBtn.setTitle("確認", for: .normal)
                 confirmEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
+                confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
                 confirmEmotionBtn.backgroundColor = .gray
                 confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
                 view.addSubview(confirmEmotionBtn)
