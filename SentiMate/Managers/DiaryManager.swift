@@ -151,25 +151,25 @@ extension EmotionType {
         }
     }
 }
-
-extension EmotionType {
-    var emojiImageName: String {
-        switch self.name {
-        case "Fear":
-            return "fear"
-        case "Sad":
-            return "sad"
-        case "Neutral":
-            return "neutral"
-        case "Happy":
-            return "happy"
-        case "Surprise":
-            return "surprise"
-        case "Angry":
-            return "angry"
-        default:
-            return "disgust"
-        }
-    }
-}
+//
+//extension EmotionType {
+//    var emojiImageName: String {
+//        switch self.name {
+//        case "Fear":
+//            return "fear"
+//        case "Sad":
+//            return "sad"
+//        case "Neutral":
+//            return "neutral"
+//        case "Happy":
+//            return "happy"
+//        case "Surprise":
+//            return "surprise"
+//        case "Angry":
+//            return "angry"
+//        default:
+//            return "disgust"
+//        }
+//    }
+//}
 

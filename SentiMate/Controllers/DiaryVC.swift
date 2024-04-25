@@ -25,25 +25,6 @@ class DiaryVC: UIViewController {
         
     }
     
-    private func emojiName(forEmotion emotion: String?) -> String {
-            switch emotion {
-            case "Fear":
-                return "fear"
-            case "Sad":
-                return "sad"
-            case "Neutral":
-                return "neutral"
-            case "Happy":
-                return "happy"
-            case "Surprise":
-                return "surprise"
-            case "Angry":
-                return "angry"
-            default:
-                return disgustSinger.randomElement() ?? ""
-            }
-        }
-
         private func emojiText(forEmotion emotion: String?) -> String {
             switch emotion {
             case "Fear":
@@ -84,11 +65,10 @@ class DiaryVC: UIViewController {
 
         func configureUI() {
             if let emotion = diary?.emotion {
-                let emoji = emojiName(forEmotion: emotion)
                 let emojiText = emojiText(forEmotion: emotion)
                 let backgroundImg = backgroundImg(forEmotion: emotion)
                 
-                emotionImg.image = UIImage(named: emoji)
+                emotionImg.image = UIImage(named: emotion)
                 emotionLbl.text = emojiText
                 emotionBackground.image = UIImage(named: backgroundImg)
             }

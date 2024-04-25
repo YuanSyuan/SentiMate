@@ -52,7 +52,7 @@ struct DonutChartView: View {
                 .chartBackground { _ in
                     if let selectedEmotionType {
                         VStack {
-                            Image(selectedEmotionType.emojiImageName)
+                            Image(selectedEmotionType.name)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)
@@ -65,7 +65,7 @@ struct DonutChartView: View {
                         }
                     } else {
                         VStack {
-                            Image("neutral")
+                            Image("Neutral")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)

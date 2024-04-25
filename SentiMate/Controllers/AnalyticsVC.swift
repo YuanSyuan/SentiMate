@@ -70,7 +70,7 @@ extension AnalyticsVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AICell", for: indexPath) as? AICell else {
                 fatalError("Could not dequeue AICell") }
             
-            let emojis = latestDiaries.reversed().map { emojiForEmotion($0.emotion) }
+            let emojis = latestDiaries.reversed().map { $0.emotion }
                        cell.configure(with: emojis)
             
             cell.delegate = self
@@ -112,25 +112,25 @@ extension AnalyticsVC: UITableViewDataSource {
             return cell
         }
     }
-    
-    func emojiForEmotion(_ emotion: String) -> String {
-        switch emotion {
-        case "Fear":
-            return "fear"
-        case "Sad":
-            return "sad"
-        case "Neutral":
-            return "neutral"
-        case "Happy":
-            return "happy"
-        case "Surprise":
-            return "surprise"
-        case "Angry":
-            return "angry"
-        default:
-            return "disgust"
-        }
-    }
+//    
+//    func emojiForEmotion(_ emotion: String) -> String {
+//        switch emotion {
+//        case "Fear":
+//            return "fear"
+//        case "Sad":
+//            return "sad"
+//        case "Neutral":
+//            return "neutral"
+//        case "Happy":
+//            return "happy"
+//        case "Surprise":
+//            return "surprise"
+//        case "Angry":
+//            return "angry"
+//        default:
+//            return "disgust"
+//        }
+//    }
     
     
 }
