@@ -86,7 +86,9 @@ let angrySinger: [String] = [
     "FiveFingerDeathPunch",
     "MarilynManson",
     "KanhoYakushiji",
-    "草東沒有派對"
+    "草東沒有派對",
+    "潤荷",
+    "陳粒"
 ]
 
 let disgustSinger: [String] = [
@@ -99,7 +101,8 @@ let disgustSinger: [String] = [
     "AnaalNathrakh",
     "DyingFetus",
     "PigDestroyer",
-    "CarachAngren"
+    "CarachAngren",
+    "BillieEilish"
 ]
 
 
@@ -113,7 +116,12 @@ let fearSinger: [String] = [
     "MassiveAttack",
     "AliceCooper",
     "TheCure",
-    "Bauhaus"
+    "Bauhaus",
+    // 韓文
+    "Rothy",
+    "JimmyBrown",
+    // 日文
+    "Aimer"
 ]
 
 let sadSinger: [String] = [
@@ -129,7 +137,9 @@ let sadSinger: [String] = [
     "DamienRice",
     "徐佳瑩",
     "蔡健雅",
-    "魏如萱"
+    "魏如萱",
+    // 韓文
+    "PaulKim"
 ]
 
 let neutralSinger: [String] = [
@@ -142,7 +152,9 @@ let neutralSinger: [String] = [
     "TheMachine",
     "JasonMraz",
     "VanceJoy",
-    "RayLaMontagne"
+    "RayLaMontagne",
+    // 韓文
+    "AKMU"
 ]
 
 let happySinger: [String] = [
@@ -154,7 +166,9 @@ let happySinger: [String] = [
     "KatyPerry",
     "Beyoncé",
     "Maroon5",
-    "HarryStyles"
+    "HarryStyles",
+    // 韓文
+    "NewJeans"
 ]
 
 let surpriseSinger: [String] = [

@@ -78,23 +78,23 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     }
     var diary = DiaryManager.shared.diaries[indexPath.row]
     
-    let emoji: String
-    switch diary.emotion {
-        case "Fear":
-        emoji = "fear"
-        case "Sad":
-        emoji = "sad"
-        case "Neutral":
-        emoji = "neutral"
-        case "Happy":
-        emoji = "happy"
-        case "Surprise":
-        emoji = "surprise"
-        case "Angry":
-        emoji = "angry"
-        default:
-        emoji = "disgust"
-        }
+//    let emoji: String
+//    switch diary.emotion {
+//        case "Fear":
+//        emoji = "fear"
+//        case "Sad":
+//        emoji = "sad"
+//        case "Neutral":
+//        emoji = "neutral"
+//        case "Happy":
+//        emoji = "happy"
+//        case "Surprise":
+//        emoji = "surprise"
+//        case "Angry":
+//        emoji = "angry"
+//        default:
+//        emoji = "disgust"
+//        }
     
     let emojiText: String
     switch diary.emotion {
@@ -117,7 +117,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     cell.dateLbl.text = "\(diary.customTime)"
     cell.categoryLbl.text = buttonTitles[diary.category]
     cell.emotionLbl.text = emojiText
-    cell.emotionImg.image = UIImage(named: emoji)
+    cell.emotionImg.image = UIImage(named: diary.emotion)
     
     return cell
     }

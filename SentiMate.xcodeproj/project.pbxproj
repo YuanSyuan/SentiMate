@@ -13,6 +13,8 @@
 		0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */; };
 		0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34B2BC67B4500B89FE5 /* Assets.xcassets */; };
 		0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */; };
+		0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0506D6102BDA0BA90045A8C1 /* AlertView.xib */; };
+		0506D6162BDA0CF70045A8C1 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0506D6152BDA0CF70045A8C1 /* AlertView.swift */; };
 		0509C1522BCAC731000FB482 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1512BCAC731000FB482 /* Music.swift */; };
 		0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1532BCAC91C000FB482 /* MusicManager.swift */; };
 		0509C1582BCACA95000FB482 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1572BCACA95000FB482 /* Emotions.swift */; };
@@ -85,6 +87,8 @@
 		0502F34B2BC67B4500B89FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0502F34E2BC67B4500B89FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0502F3502BC67B4500B89FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0506D6102BDA0BA90045A8C1 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		0506D6152BDA0CF70045A8C1 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		0509C1512BCAC731000FB482 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		0509C1532BCAC91C000FB482 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		0509C1572BCACA95000FB482 /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
@@ -210,6 +214,15 @@
 			path = SentiMate;
 			sourceTree = "<group>";
 		};
+		0506D6172BDA106F0045A8C1 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				0506D6102BDA0BA90045A8C1 /* AlertView.xib */,
+				0506D6152BDA0CF70045A8C1 /* AlertView.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		056844812BC8177E004604E6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +246,7 @@
 				0574CA142BC7D54F0075A296 /* PostDetailCell */,
 				059E446B2BC6A7A900184989 /* PostVC.swift */,
 				05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */,
+				0506D6172BDA106F0045A8C1 /* AlertView */,
 				053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */,
 				05A481282BD0F43F0073F305 /* ChartCell.swift */,
 				05A481262BD0F4330073F305 /* AICell.swift */,
@@ -388,6 +402,7 @@
 				05B44C182BD2467100798934 /* APIKey.plist in Resources */,
 				0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */,
 				05A7243B2BC9075F00F40E2F /* GoogleService-Info.plist in Resources */,
+				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
 			);
@@ -489,6 +504,7 @@
 				059C5AB32BD559E7004E5331 /* UIColor+Hex.swift in Sources */,
 				0502F3422BC67B4200B89FE5 /* SceneDelegate.swift in Sources */,
 				053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */,
+				0506D6162BDA0CF70045A8C1 /* AlertView.swift in Sources */,
 				0574CA182BC7D5D80075A296 /* CategoryCell.swift in Sources */,
 				05CC58792BC93C3F003070EC /* Diary.swift in Sources */,
 				05CD0F7D2BD3B1C400242DA8 /* PostEntryVC.swift in Sources */,

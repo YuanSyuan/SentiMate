@@ -89,18 +89,33 @@ extension PostDetailVC: UITableViewDataSource {
                     "content": self?.userInput
                 ]
                 
-                FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
-                    switch result {
-                    case .success():
-                        print("Data saved successfully")
-                        self?.navigationController?.popToRootViewController(animated: true)
-                    case .failure(let error):
-                        print("Error saving data: \(error)")
+                if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
+                        // Show an alert with the last diary's details
+                        DispatchQueue.main.async {
+                            AlertView.instance.showAlert(image: lastDiary.emotion, title: "上一次感到\(lastDiary.emotion)是因為\(lastDiary.category)", message: "\(lastDiary.content)", alertType: .reminder)
+                                self?.saveDiaryEntry(newEntry: newEntry)
+                        }
+                    } else {
+                        // If no previous entry, save directly
+                        self?.saveDiaryEntry(newEntry: newEntry)
                     }
                 }
-            }
-            
             return cell
+        }
+    }
+}
+
+extension PostDetailVC {
+    func saveDiaryEntry(newEntry: [String: Any]) {
+        FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
+            switch result {
+            case .success():
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            case .failure(let error):
+                print("Error saving data: \(error)")
+            }
         }
     }
 }
@@ -121,3 +136,16 @@ extension PostDetailVC: UITableViewDelegate {
     
 }
 
+//extension PostDetailVC {
+//    func TextForEmotion(_ emotion: String) -> String {
+//            switch emotion {
+//            case "Surprise": return "驚喜"
+//            case "Happy": return "開心"
+//            case "Neutral": return "普通"
+//            case "Fear": return "緊張"
+//            case "Sad": return "難過"
+//            case "Angry": return "生氣"
+//            default: return "厭惡"
+//            }
+//        }
+//}
