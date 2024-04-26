@@ -63,8 +63,6 @@ class HomeVC: UIViewController {
         let width = floor((diaryCollectionView.bounds.width - 20) / 2)
         layout?.itemSize = CGSize(width: width, height: width)
     }
-
-    
 }
 
 extension HomeVC: UICollectionViewDataSource {
@@ -77,24 +75,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         fatalError("Could not dequeue HomeDiaryCell")
     }
     var diary = DiaryManager.shared.diaries[indexPath.row]
-    
-//    let emoji: String
-//    switch diary.emotion {
-//        case "Fear":
-//        emoji = "fear"
-//        case "Sad":
-//        emoji = "sad"
-//        case "Neutral":
-//        emoji = "neutral"
-//        case "Happy":
-//        emoji = "happy"
-//        case "Surprise":
-//        emoji = "surprise"
-//        case "Angry":
-//        emoji = "angry"
-//        default:
-//        emoji = "disgust"
-//        }
     
     let emojiText: String
     switch diary.emotion {
@@ -124,14 +104,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
 }
  
 
-extension HomeVC: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = (collectionView.frame.width - 24) / 2
-//        let height = width * 1.2
-//        return CGSize(width: width, height: height)
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-//    }
+extension HomeVC: UICollectionViewDelegate {
+   
 }

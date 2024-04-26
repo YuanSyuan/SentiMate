@@ -45,6 +45,7 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "說說今天發生什麼事吧！"
+            textView.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
             textView.textColor = UIColor.lightGray
         }
     }

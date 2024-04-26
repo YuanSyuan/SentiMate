@@ -44,33 +44,33 @@ class DiaryVC: UIViewController {
             }
         }
 
-        private func backgroundImg(forEmotion emotion: String?) -> String {
-            switch emotion {
-            case "Fear":
-                return "nature14"
-            case "Sad":
-                return "nature6"
-            case "Neutral":
-                return "nature16"
-            case "Happy":
-                return "nature5"
-            case "Surprise":
-                return "nature12"
-            case "Angry":
-                return "nature17"
-            default:
-                return "nature2"
-            }
-        }
+//        private func backgroundImg(forEmotion emotion: String?) -> String {
+//            switch emotion {
+//            case "Fear":
+//                return "nature14"
+//            case "Sad":
+//                return "nature6"
+//            case "Neutral":
+//                return "nature16"
+//            case "Happy":
+//                return "nature5"
+//            case "Surprise":
+//                return "nature12"
+//            case "Angry":
+//                return "nature17"
+//            default:
+//                return "nature2"
+//            }
+//        }
 
         func configureUI() {
             if let emotion = diary?.emotion {
                 let emojiText = emojiText(forEmotion: emotion)
-                let backgroundImg = backgroundImg(forEmotion: emotion)
+//                let backgroundImg = backgroundImg(forEmotion: emotion)
                 
                 emotionImg.image = UIImage(named: emotion)
                 emotionLbl.text = emojiText
-                emotionBackground.image = UIImage(named: backgroundImg)
+                emotionBackground.image = UIImage(named: "background\(emotion)")
             }
             
             dateLbl.text = diary?.customTime

@@ -63,7 +63,7 @@ class MusicVC: UIViewController {
         }
         
         if songs != [] {
-            topImage.image = UIImage(named: playlistImage[6])
+            topImage.image = UIImage(named: playlistImage[0])
         } else {
             topImage.image = UIImage(named: playlistImage[1])
         }

@@ -118,11 +118,10 @@ extension MusicEntryVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalmMusic", for: indexPath) as? CalmMusicEntryCell else {
             fatalError("Could not dequeue HomeDiaryCell")
         }
-        let pickPlaylistImage = [playlistImage[6], playlistImage[0]]
         
         cell.playlistLbl.text = playlist[indexPath.row]
         cell.descriptionLbl.text = playlistDescription[indexPath.row]
-        cell.playlistImg.image = UIImage(named: pickPlaylistImage[indexPath.row])
+        cell.playlistImg.image = UIImage(named: playlistImage[indexPath.row])
         return cell
         
     }

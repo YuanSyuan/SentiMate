@@ -15,13 +15,8 @@ let playlistDescription: [String] = [
 ]
 
 let playlistImage: [String] = [
-"nature0",
-"nature1",
-"nature2",
-"nature3",
-"nature4",
-"nature5",
-"nature6"
+"backgroundAngry",
+"backgroundSad",
 ]
 
 struct SoftMusic {

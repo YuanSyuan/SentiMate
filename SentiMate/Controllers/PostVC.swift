@@ -47,13 +47,13 @@ class PostVC: UIViewController {
         titleLbl.text = "今天的心情："
         titleLbl.textColor = defaultTextColor
         titleLbl.textAlignment = .center
-        titleLbl.font = UIFont(name: "PingFangTC-Medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+        titleLbl.font = UIFont(name: "ChenYuluoyan-Thin", size: 28) ?? UIFont.systemFont(ofSize: 20)
         view.addSubview(titleLbl)
     
         emotionLabel.translatesAutoresizingMaskIntoConstraints = false
         emotionLabel.textColor = defaultTextColor
         emotionLabel.textAlignment = .center
-        emotionLabel.font = UIFont(name: "PingFangTC-Medium", size: 36) ?? UIFont.systemFont(ofSize: 36)
+        emotionLabel.font = UIFont(name: "ChenYuluoyan-Thin", size: 36) ?? UIFont.systemFont(ofSize: 36)
         emotionLabel.backgroundColor = .black.withAlphaComponent(0.5)
         view.addSubview(emotionLabel)
         

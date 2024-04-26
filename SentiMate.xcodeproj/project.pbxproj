@@ -75,6 +75,7 @@
 		05CC58772BC9321B003070EC /* HomeDiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC58762BC9321B003070EC /* HomeDiaryCell.swift */; };
 		05CC58792BC93C3F003070EC /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC58782BC93C3F003070EC /* Diary.swift */; };
 		05CD0F7D2BD3B1C400242DA8 /* PostEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */; };
+		05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,7 @@
 		05CC58762BC9321B003070EC /* HomeDiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDiaryCell.swift; sourceTree = "<group>"; };
 		05CC58782BC93C3F003070EC /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEntryVC.swift; sourceTree = "<group>"; };
+		05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChenYuluoyan-Thin.ttf"; sourceTree = "<group>"; };
 		1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.debug.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.debug.xcconfig"; sourceTree = "<group>"; };
 		52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentiMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC50F02A987BF42F8DC6D074 /* Pods-SentiMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.release.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -203,8 +205,9 @@
 				0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */,
 				0502F3412BC67B4200B89FE5 /* SceneDelegate.swift */,
 				0502F3452BC67B4200B89FE5 /* Main.storyboard */,
-				0502F34B2BC67B4500B89FE5 /* Assets.xcassets */,
 				0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */,
+				05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */,
+				0502F34B2BC67B4500B89FE5 /* Assets.xcassets */,
 				05B44C172BD2467100798934 /* APIKey.plist */,
 				05A7243A2BC9075F00F40E2F /* GoogleService-Info.plist */,
 				0502F3502BC67B4500B89FE5 /* Info.plist */,
@@ -402,6 +405,7 @@
 				05B44C182BD2467100798934 /* APIKey.plist in Resources */,
 				0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */,
 				05A7243B2BC9075F00F40E2F /* GoogleService-Info.plist in Resources */,
+				05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */,
 				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
@@ -664,6 +668,7 @@
 				DEVELOPMENT_TEAM = DMLVNU9R64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentiMate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "開啟相機以開始情緒識別";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -693,6 +698,7 @@
 				DEVELOPMENT_TEAM = DMLVNU9R64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentiMate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "開啟相機以開始情緒識別";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

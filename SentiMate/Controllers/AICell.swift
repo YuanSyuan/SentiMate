@@ -43,7 +43,7 @@ class AICell: UITableViewCell {
         
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultBackgroundColor
-        AIResponseLbl.font = UIFont(name: "PingFangTC-Medium", size: 16)
+        AIResponseLbl.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
         containerView.backgroundColor = defaultTextColor
 //        containerView.layer.borderColor = defaultTextColor.cgColor
 //        containerView.layer.borderWidth = 2
