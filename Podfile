@@ -10,5 +10,5 @@ target 'SentiMate' do
   pod 'SwiftLint'
   pod 'Kingfisher', '~> 7.6.0'
   pod 'Alamofire', '~> 5.6'
-
+  pod 'ViewAnimator'
 end

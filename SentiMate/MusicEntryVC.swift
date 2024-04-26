@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import ViewAnimator
 
 class MusicEntryVC: UIViewController {
     
@@ -42,6 +43,12 @@ class MusicEntryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchLatestDiaryEntry()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let animation = AnimationType.from(direction: .left, offset: 300)
+        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
     }
     
     func configureCellSize() {
@@ -142,3 +149,5 @@ extension MusicEntryVC: UICollectionViewDelegateFlowLayout {
     
     
 }
+
+

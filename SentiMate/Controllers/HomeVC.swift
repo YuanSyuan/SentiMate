@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import ViewAnimator
 
 class HomeVC: UIViewController {
     
@@ -17,19 +18,29 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     
+    var initiallyAnimates = false
+    
+    private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
+    
+    private let activityIndicator = UIActivityIndicatorView(style: .gray)
+    
+    private var items = [Any?]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
-
-                firebaseManager.onNewData = { newDiaries in
+        NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
+        
+        self.firebaseManager.onNewData = { newDiaries in
                     DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
                 }
         
         configureCellSize()
+        
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +52,11 @@ class HomeVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated);
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     @objc private func diariesDidUpdate() {
@@ -105,5 +121,28 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
  
 
 extension HomeVC: UICollectionViewDelegate {
-   
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        diaryCollectionView.performBatchUpdates({
+            UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
+                animations: animations, options: [.curveEaseInOut], completion: {
+                })
+        }, completion: nil)
+    }
+//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+//        UIView.animate(withDuration: 0.5) {
+//            if let cell = collectionView.cellForItem(at: indexPath) as? HomeDiaryCell {
+//                cell.contentView.transform = .init(scaleX: 0.95, y: 0.95)
+//                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+//            }
+//        }
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+//        UIView.animate(withDuration: 0.5) {
+//            if let cell = collectionView.cellForItem(at: indexPath) as? HomeDiaryCell {
+//                cell.contentView.transform = .identity
+//                cell.contentView.backgroundColor = .clear
+//            }
+//        }
+//    }
 }

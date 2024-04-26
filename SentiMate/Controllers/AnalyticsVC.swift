@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import Charts
 import FirebaseStorage
+import ViewAnimator
 
 class AnalyticsVC: UIViewController {
     var firebaseManager = FirebaseManager.shared

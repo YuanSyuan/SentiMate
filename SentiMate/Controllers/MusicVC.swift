@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 import FirebaseFirestore
 import Kingfisher
+import ViewAnimator
 
 class MusicVC: UIViewController {
     
@@ -86,6 +87,8 @@ class MusicVC: UIViewController {
         albumImg.layer.shouldRasterize = true
         albumImg.layer.rasterizationScale = UIScreen.main.scale
         
+        let animation = AnimationType.from(direction: .top, offset: 300)
+        tableView.animate(animations: [animation], duration: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -291,6 +294,11 @@ extension MusicVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let animation = AnimationType.zoom(scale: 0.95)
+        if let cell = tableView.cellForRow(at: indexPath) as? MusicCell {
+            cell.contentView.animate(animations: [animation], duration: 0.5)
+        }
+        
         player?.pause()
         
         if songs != [] {

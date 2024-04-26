@@ -120,6 +120,12 @@ class AICell: UITableViewCell {
                     imageViews.append(imageView)
                     stackView.addArrangedSubview(imageView)
                 }
+        
+        for (index, imageView) in imageViews.enumerated() {
+                UIView.animate(withDuration: 0.5, delay: Double(index) * 0.3, options: [], animations: {
+                    imageView.alpha = 1
+                }, completion: nil)
+            }
         }
     
     @objc func callAIBtnTapped(_ sender: UIButton) {

@@ -94,11 +94,13 @@ struct DonutChartView: View {
                 Spacer()
             }
             .onChange(of: selectedTimePeriod) { newPeriod in
-                emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: newPeriod)
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: newPeriod)
+                }
             }
             .onChange(of: selectedCount) { oldValue, newValue in
                 if let newValue {
-                    withAnimation {
+                    withAnimation(.spring()) {
                         getSelectedEmotionType(value: newValue)
                     }
                 }
@@ -140,6 +142,7 @@ struct CategoryCircleView: View {
             Circle()
                 .frame(width: diameter, height: diameter)
                 .foregroundColor(Color(defaultTextColor))
+                .animation(.easeOut(duration: 0.5), value: diameter)
             Text(categoryData.name)
                 .foregroundColor(Color(defaultBackgroundColor))
                 .font(.custom("PingFangTC-Medium", size: 18))
