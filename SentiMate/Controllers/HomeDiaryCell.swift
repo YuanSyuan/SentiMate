@@ -19,7 +19,8 @@ class HomeDiaryCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        containerView.layer.cornerRadius = 40
+        containerView.layer.cornerRadius = 10
+        
         containerView.clipsToBounds = false
         containerView.layer.shadowColor = UIColor.black.cgColor
             containerView.layer.shadowOpacity = 0.7 // Adjust the opacity as needed

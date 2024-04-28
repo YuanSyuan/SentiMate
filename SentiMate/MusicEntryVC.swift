@@ -26,18 +26,9 @@ class MusicEntryVC: UIViewController {
         collectionView.delegate = self
         
         configureCellSize()
-//        fetchLatestDiaryEntry()
         
-//        firebaseManager.loadAudioFiles { success, error in
-//            if success {
-//                DispatchQueue.main.async {
-//                    self.calmSongs = self.firebaseManager.audioFiles
-//                    print(self.calmSongs)
-//                }
-//            } else if let error = error {
-//                print("Error loading audio files: \(error)")
-//            }
-//        }
+        let animation = AnimationType.from(direction: .left, offset: 300)
+        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +38,7 @@ class MusicEntryVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let animation = AnimationType.from(direction: .left, offset: 300)
-        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
+       
     }
     
     func configureCellSize() {

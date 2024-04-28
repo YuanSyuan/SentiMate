@@ -19,6 +19,13 @@
 		0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1532BCAC91C000FB482 /* MusicManager.swift */; };
 		0509C1582BCACA95000FB482 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1572BCACA95000FB482 /* Emotions.swift */; };
 		0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1592BCBB169000FB482 /* MusicCell.swift */; };
+		0515647D2BDCECF00059FD82 /* CSCardTransitionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564752BDCECF00059FD82 /* CSCardTransitionProperties.swift */; };
+		0515647E2BDCECF00059FD82 /* CSCardTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564762BDCECF00059FD82 /* CSCardTransition.swift */; };
+		0515647F2BDCECF00059FD82 /* CSCardTransitionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564772BDCECF00059FD82 /* CSCardTransitionInteractor.swift */; };
+		051564802BDCECF00059FD82 /* CSCardTransitionableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564782BDCECF00059FD82 /* CSCardTransitionableView.swift */; };
+		051564812BDCECF00059FD82 /* CSCardTransitionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564792BDCECF00059FD82 /* CSCardTransitionHelpers.swift */; };
+		051564822BDCECF00059FD82 /* CSCardTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */; };
+		051564852BDCED400059FD82 /* MyCustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564842BDCED400059FD82 /* MyCustomNavigationController.swift */; };
 		053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */; };
 		053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */; };
 		053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */; };
@@ -94,6 +101,14 @@
 		0509C1532BCAC91C000FB482 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		0509C1572BCACA95000FB482 /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
 		0509C1592BCBB169000FB482 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		051564752BDCECF00059FD82 /* CSCardTransitionProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionProperties.swift; sourceTree = "<group>"; };
+		051564762BDCECF00059FD82 /* CSCardTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransition.swift; sourceTree = "<group>"; };
+		051564772BDCECF00059FD82 /* CSCardTransitionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionInteractor.swift; sourceTree = "<group>"; };
+		051564782BDCECF00059FD82 /* CSCardTransitionableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionableView.swift; sourceTree = "<group>"; };
+		051564792BDCECF00059FD82 /* CSCardTransitionHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionHelpers.swift; sourceTree = "<group>"; };
+		0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionAnimation.swift; sourceTree = "<group>"; };
+		0515647B2BDCECF00059FD82 /* CSCardTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCardTransition.h; sourceTree = "<group>"; };
+		051564842BDCED400059FD82 /* MyCustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomNavigationController.swift; sourceTree = "<group>"; };
 		053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryManager.swift; sourceTree = "<group>"; };
 		053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
@@ -198,6 +213,7 @@
 		0502F33E2BC67B4200B89FE5 /* SentiMate */ = {
 			isa = PBXGroup;
 			children = (
+				051564742BDCECF00059FD82 /* CSCardTransition */,
 				056844812BC8177E004604E6 /* Managers */,
 				059C5AB42BD559FB004E5331 /* Extensions */,
 				0571E2F12BC799000049B73E /* Models */,
@@ -224,6 +240,20 @@
 				0506D6152BDA0CF70045A8C1 /* AlertView.swift */,
 			);
 			path = AlertView;
+			sourceTree = "<group>";
+		};
+		051564742BDCECF00059FD82 /* CSCardTransition */ = {
+			isa = PBXGroup;
+			children = (
+				051564752BDCECF00059FD82 /* CSCardTransitionProperties.swift */,
+				051564762BDCECF00059FD82 /* CSCardTransition.swift */,
+				051564772BDCECF00059FD82 /* CSCardTransitionInteractor.swift */,
+				051564782BDCECF00059FD82 /* CSCardTransitionableView.swift */,
+				051564792BDCECF00059FD82 /* CSCardTransitionHelpers.swift */,
+				0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */,
+				0515647B2BDCECF00059FD82 /* CSCardTransition.h */,
+			);
+			path = CSCardTransition;
 			sourceTree = "<group>";
 		};
 		056844812BC8177E004604E6 /* Managers */ = {
@@ -257,6 +287,7 @@
 				053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */,
 				05CC58762BC9321B003070EC /* HomeDiaryCell.swift */,
 				058143692BC9291400C6D111 /* HomeVC.swift */,
+				051564842BDCED400059FD82 /* MyCustomNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,9 +519,13 @@
 				05B44C1C2BD263AE00798934 /* EmtionMusicEntryCell.swift in Sources */,
 				05A4812B2BD119660073F305 /* AIResponse.swift in Sources */,
 				0574CA132BC7D54A0075A296 /* DateCell.swift in Sources */,
+				0515647D2BDCECF00059FD82 /* CSCardTransitionProperties.swift in Sources */,
 				056844802BC81765004604E6 /* FirebaseManager.swift in Sources */,
 				0571E2F32BC7BD1A0049B73E /* PostDetailVC.swift in Sources */,
+				0515647E2BDCECF00059FD82 /* CSCardTransition.swift in Sources */,
+				0515647F2BDCECF00059FD82 /* CSCardTransitionInteractor.swift in Sources */,
 				05B44C1A2BD2632000798934 /* MusicEntryVC.swift in Sources */,
+				051564852BDCED400059FD82 /* MyCustomNavigationController.swift in Sources */,
 				059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */,
 				053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */,
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
@@ -505,13 +540,16 @@
 				059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */,
 				05A481272BD0F4330073F305 /* AICell.swift in Sources */,
 				0502F3402BC67B4200B89FE5 /* AppDelegate.swift in Sources */,
+				051564812BDCECF00059FD82 /* CSCardTransitionHelpers.swift in Sources */,
 				059C5AB32BD559E7004E5331 /* UIColor+Hex.swift in Sources */,
 				0502F3422BC67B4200B89FE5 /* SceneDelegate.swift in Sources */,
 				053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */,
 				0506D6162BDA0CF70045A8C1 /* AlertView.swift in Sources */,
+				051564822BDCECF00059FD82 /* CSCardTransitionAnimation.swift in Sources */,
 				0574CA182BC7D5D80075A296 /* CategoryCell.swift in Sources */,
 				05CC58792BC93C3F003070EC /* Diary.swift in Sources */,
 				05CD0F7D2BD3B1C400242DA8 /* PostEntryVC.swift in Sources */,
+				051564802BDCECF00059FD82 /* CSCardTransitionableView.swift in Sources */,
 				053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

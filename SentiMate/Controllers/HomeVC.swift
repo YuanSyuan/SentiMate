@@ -5,7 +5,6 @@
 //  Created by 李芫萱 on 2024/4/12.
 //
 
-
 import UIKit
 import FirebaseStorage
 import ViewAnimator
@@ -46,18 +45,18 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         firebaseManager.listenForUpdate()
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated);
-        super.viewWillDisappear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+//        super.viewWillDisappear(animated)
+//    }
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//    }
     
     @objc private func diariesDidUpdate() {
            diaryCollectionView.reloadData()
@@ -122,11 +121,11 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
 
 extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        diaryCollectionView.performBatchUpdates({
-            UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
-                animations: animations, options: [.curveEaseInOut], completion: {
-                })
-        }, completion: nil)
+       guard let viewController = UIStoryboard(name: "Main", bundle: .main)
+        .instantiateViewController(identifier: "diary") as? DiaryVC else { fatalError("Could not find DiaryVC") }
+        let diary = DiaryManager.shared.diaries[indexPath.row]
+        viewController.diary = diary
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 //    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
 //        UIView.animate(withDuration: 0.5) {
@@ -145,4 +144,18 @@ extension HomeVC: UICollectionViewDelegate {
 //            }
 //        }
 //    }
+    
+}
+
+extension HomeVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0)
+    }
+}
+
+extension HomeVC: CSCardViewPresenter {
+    var cardViewPresenterCard: UIView? {
+        
+        return self.view // Return the view that represents the start of your transition
+    }
 }

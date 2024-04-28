@@ -7,6 +7,7 @@ disabled_rules:
   - control_statement
   - vertical_whitespace
   - trailing_newline
+  - function_body_length
 identifier_name:
   excluded: # excluded via string array
     - id
