@@ -26,9 +26,12 @@
 		051564812BDCECF00059FD82 /* CSCardTransitionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564792BDCECF00059FD82 /* CSCardTransitionHelpers.swift */; };
 		051564822BDCECF00059FD82 /* CSCardTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */; };
 		051564852BDCED400059FD82 /* MyCustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564842BDCED400059FD82 /* MyCustomNavigationController.swift */; };
-		0538A1762BDE455100796496 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* ContentView.swift */; };
+		0538A1762BDE455100796496 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* OnboardingView.swift */; };
 		0538A1782BDE456600796496 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1772BDE456600796496 /* PageView.swift */; };
 		0538A17A2BDE457D00796496 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1792BDE457D00796496 /* PageModel.swift */; };
+		0538A17D2BDE4D6200796496 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A17C2BDE4D6200796496 /* AppManager.swift */; };
+		0538A17F2BDE4E1000796496 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A17E2BDE4E1000796496 /* ContentView.swift */; };
+		0538A1812BDE4E9000796496 /* MainAppViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1802BDE4E9000796496 /* MainAppViewControllerRepresentable.swift */; };
 		053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */; };
 		053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */; };
 		053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */; };
@@ -112,9 +115,12 @@
 		0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionAnimation.swift; sourceTree = "<group>"; };
 		0515647B2BDCECF00059FD82 /* CSCardTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCardTransition.h; sourceTree = "<group>"; };
 		051564842BDCED400059FD82 /* MyCustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomNavigationController.swift; sourceTree = "<group>"; };
-		0538A1752BDE455100796496 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0538A1752BDE455100796496 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0538A1772BDE456600796496 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0538A1792BDE457D00796496 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
+		0538A17C2BDE4D6200796496 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		0538A17E2BDE4E1000796496 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0538A1802BDE4E9000796496 /* MainAppViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryManager.swift; sourceTree = "<group>"; };
 		053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
@@ -268,7 +274,10 @@
 			children = (
 				0538A1792BDE457D00796496 /* PageModel.swift */,
 				0538A1772BDE456600796496 /* PageView.swift */,
-				0538A1752BDE455100796496 /* ContentView.swift */,
+				0538A1752BDE455100796496 /* OnboardingView.swift */,
+				0538A1802BDE4E9000796496 /* MainAppViewControllerRepresentable.swift */,
+				0538A17E2BDE4E1000796496 /* ContentView.swift */,
+				0538A17C2BDE4D6200796496 /* AppManager.swift */,
 			);
 			path = WalkThrough;
 			sourceTree = "<group>";
@@ -530,6 +539,7 @@
 				05B44C1E2BD263C900798934 /* CalmMusicEntryCell.swift in Sources */,
 				0509C1522BCAC731000FB482 /* Music.swift in Sources */,
 				0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */,
+				0538A1812BDE4E9000796496 /* MainAppViewControllerRepresentable.swift in Sources */,
 				05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */,
 				0509C1582BCACA95000FB482 /* Emotions.swift in Sources */,
 				05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */,
@@ -551,12 +561,14 @@
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
 				05B250812BD69BE50073D4AD /* ModelManager.swift in Sources */,
 				05CC58772BC9321B003070EC /* HomeDiaryCell.swift in Sources */,
+				0538A17F2BDE4E1000796496 /* ContentView.swift in Sources */,
 				0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */,
 				0574CA1A2BC7DB360075A296 /* TextFieldCell.swift in Sources */,
-				0538A1762BDE455100796496 /* ContentView.swift in Sources */,
+				0538A1762BDE455100796496 /* OnboardingView.swift in Sources */,
 				05A481292BD0F43F0073F305 /* ChartCell.swift in Sources */,
 				059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */,
 				05A481272BD0F4330073F305 /* AICell.swift in Sources */,
+				0538A17D2BDE4D6200796496 /* AppManager.swift in Sources */,
 				0538A17A2BDE457D00796496 /* PageModel.swift in Sources */,
 				0502F3402BC67B4200B89FE5 /* AppDelegate.swift in Sources */,
 				051564812BDCECF00059FD82 /* CSCardTransitionHelpers.swift in Sources */,

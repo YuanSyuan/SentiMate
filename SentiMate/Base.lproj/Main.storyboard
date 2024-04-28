@@ -18,7 +18,7 @@
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="BYZ-38-t0r" customClass="HomeVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,34 +183,34 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2024/04/15" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXA-T3-krg">
-                                        <rect key="frame" x="35" y="60.000000000000007" width="323" height="22.333333333333336"/>
+                                        <rect key="frame" x="35" y="60" width="323" height="20"/>
                                         <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="17"/>
                                         <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uX7-53-sKc">
-                                        <rect key="frame" x="35.000000000000014" y="80" width="238.33333333333337" height="44.333333333333343"/>
+                                        <rect key="frame" x="35" y="80" width="300.66666666666669" height="39.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="因為" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vj-YJ-3j0">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="44.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="68" height="39.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="34"/>
                                                 <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B47-fg-HzD">
-                                                <rect key="frame" x="52" y="0.0" width="58.333333333333343" height="44.333333333333336"/>
+                                                <rect key="frame" x="68" y="0.0" width="68" height="39.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="34"/>
                                                 <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="   感到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-YF-h3N">
-                                                <rect key="frame" x="110.33333333333334" y="0.0" width="72" height="44.333333333333336"/>
+                                                <rect key="frame" x="136" y="0.0" width="96.666666666666686" height="39.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="34"/>
                                                 <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="沮喪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnJ-hL-0Cm">
-                                                <rect key="frame" x="182.33333333333334" y="0.0" width="56" height="44.333333333333336"/>
+                                                <rect key="frame" x="232.66666666666669" y="0.0" width="68" height="39.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="34"/>
                                                 <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -218,16 +218,16 @@
                                         </subviews>
                                     </stackView>
                                     <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcj-jI-g57">
-                                        <rect key="frame" x="35" y="154.33333333333331" width="323" height="603.66666666666674"/>
+                                        <rect key="frame" x="35" y="149.66666666666669" width="323" height="608.33333333333326"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事遇到職場鬼故事" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQk-x0-BBE">
-                                                <rect key="frame" x="30" y="100.00000000000003" width="263" height="473.66666666666674"/>
+                                                <rect key="frame" x="30" y="99.999999999999972" width="263" height="478.33333333333326"/>
                                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad" translatesAutoresizingMaskIntoConstraints="NO" id="9qh-aB-GeK">
-                                                <rect key="frame" x="136.66666666666663" y="30" width="50" height="50"/>
+                                                <rect key="frame" x="136.66666666666666" y="30" width="50" height="50"/>
                                                 <color key="tintColor" red="1" green="0.79215686269999996" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="gw0-hZ-uR4"/>
@@ -287,10 +287,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="rmF-6k-vdz"/>
-                                <exclude reference="nIK-Rc-bWS"/>
                                 <exclude reference="FQ2-gH-oBk"/>
                                 <exclude reference="iDL-4W-BVO"/>
+                                <exclude reference="rmF-6k-vdz"/>
+                                <exclude reference="nIK-Rc-bWS"/>
                             </mask>
                         </variation>
                     </view>
@@ -349,13 +349,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="嗨！今天過得如何呢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gox-Ze-xad">
-                                <rect key="frame" x="79.333333333333329" y="329.66666666666669" width="234.33333333333331" height="44.333333333333314"/>
+                                <rect key="frame" x="43.666666666666657" y="336.66666666666669" width="306" height="39.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="34"/>
                                 <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="來填寫今天情緒日記吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2W-rN-DtP">
-                                <rect key="frame" x="67.666666666666686" y="404" width="257.99999999999994" height="44.333333333333314"/>
+                                <rect key="frame" x="26.666666666666657" y="406.33333333333331" width="340" height="39.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="34"/>
                                 <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -468,13 +468,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我現在覺得..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ4-Fb-Yg6">
-                                                    <rect key="frame" x="16" y="15.999999999999996" width="377" height="40.666666666666657"/>
+                                                    <rect key="frame" x="16" y="15.999999999999996" width="377" height="45.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                                     <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="沮喪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-0o-I0b">
-                                                    <rect key="frame" x="16" y="60.666666666666657" width="377" height="49.333333333333343"/>
+                                                    <rect key="frame" x="16" y="65.666666666666671" width="377" height="44.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="38"/>
                                                     <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
