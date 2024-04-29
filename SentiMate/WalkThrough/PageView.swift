@@ -12,20 +12,28 @@ struct PageView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            Image("\(page.imageUrl)")
-                .resizable()
-                .scaledToFit()
-                .padding()
-                .cornerRadius(30)
-                .background(.gray.opacity(0.10))
-                .cornerRadius(10)
-                .padding()
-            
             Text(page.name)
-                .font(.title)
-            Text(page.description)
-                .font(.subheadline)
+                .font(.custom("PingFangTC-Medium", size: 24))
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .foregroundColor(Color(defaultTextColor))
+            Text(page.styledDescription())
+                .font(.custom("PingFangTC-Medium", size: 16))
                 .frame(width: 300)
+                .multilineTextAlignment(.center)
+            //                .padding()
+                .foregroundColor(Color(defaultTextColor))
+            if let imageUrl = page.imageUrl, !imageUrl.isEmpty {
+                Image(imageUrl)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 200)
+                    .padding()
+                //                                .cornerRadius(30)
+                //                                .background(Color.gray.opacity(0.10))
+                //                                .cornerRadius(10)
+            }
+            
         }
     }
 }

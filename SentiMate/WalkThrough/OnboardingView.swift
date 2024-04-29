@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
     @EnvironmentObject var appManager: AppManager
     @State private var pageIndex = 0
+    @State private var username: String = ""
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
     
@@ -19,15 +20,20 @@ struct OnboardingView: View {
                 VStack {
                     Spacer()
                     PageView(page: page)
-                    Spacer()
+//                    Spacer()
                     if page == pages.last {
-                        Button("Finish Onboarding") {
+                        TextField("怎麼稱呼您呢？", text: $username)
+                                                  .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                  .frame(width: 300, height: 30, alignment: .center)
+                                                  .padding()
+                        Button("開始使用") {
                                     appManager.didCompleteOnboarding = true
                                 }
-                            .buttonStyle(.bordered)
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color(midOrange))
                     } else {
-                        Button("next", action: incrementPage)
-                            .buttonStyle(.borderedProminent)
+//                        Button("next", action: incrementPage)
+//                            .buttonStyle(.borderedProminent)
                     }
                     Spacer()
                 }
@@ -41,6 +47,8 @@ struct OnboardingView: View {
             dotAppearance.currentPageIndicatorTintColor = .black
             dotAppearance.pageIndicatorTintColor = .gray
         }
+        .background(Color(defaultBackgroundColor)) // Apply your chosen background color here
+        .edgesIgnoringSafeArea(.all)
     }
     
     func incrementPage() {
