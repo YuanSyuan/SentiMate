@@ -43,7 +43,7 @@ class AICell: UITableViewCell {
         
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultBackgroundColor
-        AIResponseLbl.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
+        AIResponseLbl.font = UIFont(name: "ChenYuluoyan-Thin", size: 22)
         containerView.backgroundColor = defaultTextColor
 //        containerView.layer.borderColor = defaultTextColor.cgColor
 //        containerView.layer.borderWidth = 2
@@ -70,21 +70,21 @@ class AICell: UITableViewCell {
 //            containerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            containerView.heightAnchor.constraint(equalToConstant: 280)
+            containerView.heightAnchor.constraint(equalToConstant: 340)
         ])
         
         NSLayoutConstraint.activate([
             AIResponseLbl.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             AIResponseLbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
             AIResponseLbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
-            AIResponseLbl.heightAnchor.constraint(equalToConstant: 240)
+            AIResponseLbl.heightAnchor.constraint(equalToConstant: 300)
         ])
         
         NSLayoutConstraint.activate([
             callAIBtn.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
             callAIBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             callAIBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
-            callAIBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            callAIBtn.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         callAIBtn.addTarget(self, action: #selector(callAIBtnTapped), for: .touchUpInside)

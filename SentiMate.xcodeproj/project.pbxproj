@@ -26,6 +26,7 @@
 		051564812BDCECF00059FD82 /* CSCardTransitionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564792BDCECF00059FD82 /* CSCardTransitionHelpers.swift */; };
 		051564822BDCECF00059FD82 /* CSCardTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */; };
 		051564852BDCED400059FD82 /* MyCustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564842BDCED400059FD82 /* MyCustomNavigationController.swift */; };
+		05223DA22BDFABFE0066AD61 /* openAI.json in Resources */ = {isa = PBXBuildFile; fileRef = 05223DA12BDFABFD0066AD61 /* openAI.json */; };
 		0538A1762BDE455100796496 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* OnboardingView.swift */; };
 		0538A1782BDE456600796496 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1772BDE456600796496 /* PageView.swift */; };
 		0538A17A2BDE457D00796496 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1792BDE457D00796496 /* PageModel.swift */; };
@@ -115,6 +116,7 @@
 		0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionAnimation.swift; sourceTree = "<group>"; };
 		0515647B2BDCECF00059FD82 /* CSCardTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCardTransition.h; sourceTree = "<group>"; };
 		051564842BDCED400059FD82 /* MyCustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomNavigationController.swift; sourceTree = "<group>"; };
+		05223DA12BDFABFD0066AD61 /* openAI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openAI.json; sourceTree = "<group>"; };
 		0538A1752BDE455100796496 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0538A1772BDE456600796496 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0538A1792BDE457D00796496 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		0502F33E2BC67B4200B89FE5 /* SentiMate */ = {
 			isa = PBXGroup;
 			children = (
+				05223DA12BDFABFD0066AD61 /* openAI.json */,
 				051564742BDCECF00059FD82 /* CSCardTransition */,
 				056844812BC8177E004604E6 /* Managers */,
 				059C5AB42BD559FB004E5331 /* Extensions */,
@@ -466,6 +469,7 @@
 				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
+				05223DA22BDFABFE0066AD61 /* openAI.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

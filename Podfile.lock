@@ -2,6 +2,7 @@ PODS:
   - Alamofire (5.9.0)
   - IQKeyboardManagerSwift (7.0.1)
   - Kingfisher (7.6.2)
+  - lottie-ios (4.4.1)
   - SwiftLint (0.54.0)
   - ViewAnimator (3.1.0)
 
@@ -9,6 +10,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.6)
   - IQKeyboardManagerSwift
   - Kingfisher (~> 7.6.0)
+  - lottie-ios
   - SwiftLint
   - ViewAnimator
 
@@ -17,6 +19,7 @@ SPEC REPOS:
     - Alamofire
     - IQKeyboardManagerSwift
     - Kingfisher
+    - lottie-ios
     - SwiftLint
     - ViewAnimator
 
@@ -24,9 +27,10 @@ SPEC CHECKSUMS:
   Alamofire: 02b772c9910e8eba1a079227c32fbd9e46c90a24
   IQKeyboardManagerSwift: 7f6b1b1d1497855d2beea7f2f10ffcc6978525b1
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  lottie-ios: e047b1d2e6239b787cc5e9755b988869cf190494
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
 
-PODFILE CHECKSUM: 71d52c9eb3113fb13b866a5751ca53e258de62bd
+PODFILE CHECKSUM: 1f6b93ade25d744ce0f000d361e0913acea60935
 
 COCOAPODS: 1.15.2

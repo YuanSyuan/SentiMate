@@ -10,6 +10,7 @@ import SwiftUI
 import Charts
 import FirebaseStorage
 import ViewAnimator
+import Lottie
 
 class AnalyticsVC: UIViewController {
     var firebaseManager = FirebaseManager.shared
@@ -19,6 +20,7 @@ class AnalyticsVC: UIViewController {
         Array(DiaryManager.shared.diaries.prefix(7))
     }
     var AIResponse: String?
+    private var loadingAnimationView: LottieAnimationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +74,7 @@ extension AnalyticsVC: UITableViewDataSource {
                 fatalError("Could not dequeue AICell") }
             
             let emojis = latestDiaries.reversed().map { $0.emotion }
-                       cell.configure(with: emojis)
+            cell.configure(with: emojis)
             
             cell.delegate = self
             
@@ -122,44 +124,65 @@ extension AnalyticsVC: UITableViewDelegate {
         case 0:
             return view.bounds.height
         default:
-            return 490
+            return 560
         }
     }
 }
 
 extension AnalyticsVC: AICellDelegate {
+    
+    
     func aiButtonTapped() {
+        showLoadingAnimation()
         analyzeEntry()
     }
     
     func analyzeEntry() {
-            let combinedText = latestDiaries.map { entry -> String in
-                let content = entry.content
-                let category = entry.category
-                let emotion = entry.emotion
-                
-                return "Category: \(category), Emotion: \(emotion), Diary: \(content) "
-            }.joined(separator: " ")
+        let combinedText = latestDiaries.map { entry -> String in
+            let content = entry.content
+            let category = entry.category
+            let emotion = entry.emotion
             
-            analyzeDiaryEntries(combinedText)
-       }
-       
+            return "Category: \(category), Emotion: \(emotion), Diary: \(content) "
+        }.joined(separator: " ")
+        
+        analyzeDiaryEntries(combinedText)
+    }
+    
     func analyzeDiaryEntries(_ content: String) {
         OpenAIManager.shared.analyzeDiaryEntry(prompt: content) { [weak self] result in
-//            guard let self = self else { return }
+            //            guard let self = self else { return }
             
-            switch result {
-            case .success(let analyzedText):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self?.hideLoadingAnimation()
+                
+                switch result {
+                case .success(let analyzedText):
                     self?.AIResponse = analyzedText
                     self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error):
                     print("Error analyzing diary entries: \(error.localizedDescription)")
                 }
             }
         }
+    }
+    
+    private func showLoadingAnimation() {
+        loadingAnimationView = .init(name: "openAI")
+        loadingAnimationView?.frame = view.bounds
+        loadingAnimationView?.center.y += 15
+        loadingAnimationView?.center.x -= 10
+        loadingAnimationView?.contentMode = .scaleAspectFit
+        loadingAnimationView?.loopMode = .loop
+        loadingAnimationView?.animationSpeed = 0.5
+        
+        view.addSubview(loadingAnimationView!)
+        loadingAnimationView?.play()
+    }
+    
+    private func hideLoadingAnimation() {
+        loadingAnimationView?.stop()
+        loadingAnimationView?.removeFromSuperview()
     }
 }
 

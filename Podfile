@@ -11,4 +11,5 @@ target 'SentiMate' do
   pod 'Kingfisher', '~> 7.6.0'
   pod 'Alamofire', '~> 5.6'
   pod 'ViewAnimator'
+pod 'lottie-ios'
 end
