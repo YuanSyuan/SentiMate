@@ -39,6 +39,9 @@ class HomeVC: UIViewController {
         
         configureCellSize()
         
+        if let savedUsername = UserDefaults.standard.string(forKey: "username") {
+            nameLbl.text = savedUsername
+        }
      
     }
     

@@ -28,6 +28,8 @@ struct OnboardingView: View {
                                                   .padding()
                         Button("開始使用") {
                                     appManager.didCompleteOnboarding = true
+                            UserDefaults.standard.set(username, forKey: "username")
+                               UserDefaults.standard.synchronize() 
                                 }
                         .buttonStyle(.borderedProminent)
                         .tint(Color(midOrange))
