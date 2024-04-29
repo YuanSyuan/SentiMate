@@ -111,6 +111,7 @@ struct DonutChartView: View {
                 }
             }
             
+            
             .padding()
             //            .navigationTitle("心情圖")
             .background(Color(backgroundColor))
@@ -133,23 +134,35 @@ struct DonutChartView: View {
 struct CategoryCircleView: View {
     var categoryData: CategoryData
     var maxCount: Int
-    
+    @State private var scale: CGFloat = 0.1 // Start from a scaled down state
+
     var body: some View {
         let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
-        let diameter = scaledCount * 100
-        
+        let diameter = max(scaledCount * 100, 20) // Ensure a minimum size for visibility
+
         ZStack {
             Circle()
                 .frame(width: diameter, height: diameter)
                 .foregroundColor(Color(defaultTextColor))
-                .animation(.easeOut(duration: 0.5), value: diameter)
+                .scaleEffect(scale)
+                .onAppear {
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        scale = 1.0 // Animate to full size
+                    }
+                }
+                .onDisappear {
+                    scale = 0.1 // Reset when disappearing
+                }
             Text(categoryData.name)
                 .foregroundColor(Color(defaultBackgroundColor))
                 .font(.custom("PingFangTC-Medium", size: 18))
-                .transition(.opacity)
+                .scaleEffect(scale) // Apply the same scale effect to the text
+                .opacity(scale) // Fade the text in and out with the scale
+                .animation(.easeOut(duration: 0.5), value: scale)
         }
     }
 }
+
 
 
 

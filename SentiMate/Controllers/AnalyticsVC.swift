@@ -113,27 +113,6 @@ extension AnalyticsVC: UITableViewDataSource {
             return cell
         }
     }
-//    
-//    func emojiForEmotion(_ emotion: String) -> String {
-//        switch emotion {
-//        case "Fear":
-//            return "fear"
-//        case "Sad":
-//            return "sad"
-//        case "Neutral":
-//            return "neutral"
-//        case "Happy":
-//            return "happy"
-//        case "Surprise":
-//            return "surprise"
-//        case "Angry":
-//            return "angry"
-//        default:
-//            return "disgust"
-//        }
-//    }
-    
-    
 }
 
 extension AnalyticsVC: UITableViewDelegate {
