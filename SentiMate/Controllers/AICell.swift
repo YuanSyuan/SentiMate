@@ -23,6 +23,7 @@ class AICell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        callAIBtn.addTouchAnimation()
     }
     
     required init?(coder aDecoder: NSCoder) {

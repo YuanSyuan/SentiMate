@@ -29,6 +29,7 @@
 		05223DA22BDFABFE0066AD61 /* openAI.json in Resources */ = {isa = PBXBuildFile; fileRef = 05223DA12BDFABFD0066AD61 /* openAI.json */; };
 		05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */; };
 		05223DAA2BDFDBF20066AD61 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */; };
+		05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */; };
 		0538A1762BDE455100796496 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* OnboardingView.swift */; };
 		0538A1782BDE456600796496 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1772BDE456600796496 /* PageView.swift */; };
 		0538A17A2BDE457D00796496 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1792BDE457D00796496 /* PageModel.swift */; };
@@ -121,6 +122,7 @@
 		05223DA12BDFABFD0066AD61 /* openAI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openAI.json; sourceTree = "<group>"; };
 		05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		0538A1752BDE455100796496 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0538A1772BDE456600796496 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0538A1792BDE457D00796496 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */,
 				05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */,
 				05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */,
+				05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */,
 				05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */,
 			);
 			path = Extensions;
@@ -565,6 +568,7 @@
 				05B44C1A2BD2632000798934 /* MusicEntryVC.swift in Sources */,
 				051564852BDCED400059FD82 /* MyCustomNavigationController.swift in Sources */,
 				059E446E2BC6A7FE00184989 /* MusicVC.swift in Sources */,
+				05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */,
 				053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */,
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
