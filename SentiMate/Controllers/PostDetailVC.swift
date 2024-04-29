@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+
 class PostDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +29,8 @@ class PostDetailVC: UIViewController {
         tableView.delegate = self
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        hideKeyboardWhenTappedAround()
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {

@@ -21,10 +21,7 @@ class HomeVC: UIViewController {
     
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     
-    private let activityIndicator = UIActivityIndicatorView(style: .gray)
-    
-    private var items = [Any?]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +35,7 @@ class HomeVC: UIViewController {
                 }
         
         configureCellSize()
+//        animateInitialLoad()
         
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername
@@ -50,12 +48,28 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         firebaseManager.listenForUpdate()
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    private func animateInitialLoad() {
+            if initiallyAnimates {
+                diaryCollectionView.reloadData()
+                diaryCollectionView.performBatchUpdates({
+                    UIView.animate(views: self.diaryCollectionView.visibleCells,
+                                   animations: animations, completion: {
+                    })
+                }, completion: nil)
+            }
+        }
+
  
     
     @objc private func diariesDidUpdate() {
            diaryCollectionView.reloadData()
+        diaryCollectionView.performBatchUpdates({
+            UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
+                        animations: animations, options: [.curveEaseInOut], completion: nil)
+                }, completion: nil)
+        
        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

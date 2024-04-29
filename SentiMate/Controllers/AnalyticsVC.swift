@@ -20,6 +20,7 @@ class AnalyticsVC: UIViewController {
         Array(DiaryManager.shared.diaries.prefix(7))
     }
     var AIResponse: String?
+    var isLoading = false
     private var loadingAnimationView: LottieAnimationView?
     
     override func viewDidLoad() {
@@ -130,14 +131,18 @@ extension AnalyticsVC: UITableViewDelegate {
 }
 
 extension AnalyticsVC: AICellDelegate {
-    
-    
-    func aiButtonTapped() {
-        showLoadingAnimation()
-        analyzeEntry()
+    func aiButtonTapped(cell: AICell) {
+        if !isLoading {
+                isLoading = true
+            cell.callAIBtn.isEnabled = false
+                showLoadingAnimation()
+            analyzeEntry {
+                        cell.callAIBtn.isEnabled = true
+                    }
+            }
     }
     
-    func analyzeEntry() {
+    func analyzeEntry(completion: @escaping () -> Void)  {
         let combinedText = latestDiaries.map { entry -> String in
             let content = entry.content
             let category = entry.category
@@ -146,10 +151,10 @@ extension AnalyticsVC: AICellDelegate {
             return "Category: \(category), Emotion: \(emotion), Diary: \(content) "
         }.joined(separator: " ")
         
-        analyzeDiaryEntries(combinedText)
+        analyzeDiaryEntries(combinedText, completion: completion)
     }
     
-    func analyzeDiaryEntries(_ content: String) {
+    func analyzeDiaryEntries(_ content: String, completion: @escaping () -> Void) {
         OpenAIManager.shared.analyzeDiaryEntry(prompt: content) { [weak self] result in
             //            guard let self = self else { return }
             
@@ -163,6 +168,7 @@ extension AnalyticsVC: AICellDelegate {
                 case .failure(let error):
                     print("Error analyzing diary entries: \(error.localizedDescription)")
                 }
+                completion()
             }
         }
     }

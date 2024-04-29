@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OnboardingView: View {
     @EnvironmentObject var appManager: AppManager
+    @ObservedObject private var keyboard = KeyboardResponder()
+    
     @State private var pageIndex = 0
     @State private var username: String = ""
     private let pages: [Page] = Page.samplePages
@@ -20,26 +22,29 @@ struct OnboardingView: View {
                 VStack {
                     Spacer()
                     PageView(page: page)
-//                    Spacer()
                     if page == pages.last {
                         TextField("怎麼稱呼您呢？", text: $username)
-                                                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                                                  .frame(width: 300, height: 30, alignment: .center)
-                                                  .padding()
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 300, height: 30, alignment: .center)
+                            .padding()
                         Button("開始使用") {
-                                    appManager.didCompleteOnboarding = true
+                            appManager.didCompleteOnboarding = true
                             UserDefaults.standard.set(username, forKey: "username")
-                               UserDefaults.standard.synchronize() 
-                                }
+                            UserDefaults.standard.synchronize()
+                        }
                         .buttonStyle(.borderedProminent)
                         .tint(Color(midOrange))
+                        .disabled(username.isEmpty)
                     } else {
-//                        Button("next", action: incrementPage)
-//                            .buttonStyle(.borderedProminent)
                     }
                     Spacer()
                 }
                 .tag(page.tag)
+                .padding(.bottom, keyboard.currentHeight)  // Adjust padding based on keyboard height
+                .animation(.easeOut, value: 0.16)// Smooth transition
+                        .onTapGesture {
+                            self.hideKeyboard()  // Dismiss the keyboard when tapping outside the TextField
+                        }
             }
         }
         .animation(.easeInOut, value: pageIndex)// 2
@@ -49,7 +54,7 @@ struct OnboardingView: View {
             dotAppearance.currentPageIndicatorTintColor = .black
             dotAppearance.pageIndicatorTintColor = .gray
         }
-        .background(Color(defaultBackgroundColor)) // Apply your chosen background color here
+        .background(Color(defaultBackgroundColor))
         .edgesIgnoringSafeArea(.all)
     }
     
@@ -57,8 +62,8 @@ struct OnboardingView: View {
         pageIndex += 1
     }
     
-//    func goToZero() {
-//        pageIndex = 0
-//    }
+    private func hideKeyboard() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
 }
 

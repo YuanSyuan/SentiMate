@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AICellDelegate: AnyObject {
-    func aiButtonTapped()
+    func aiButtonTapped(cell: AICell)
 }
 
 class AICell: UITableViewCell {
@@ -129,7 +129,7 @@ class AICell: UITableViewCell {
         }
     
     @objc func callAIBtnTapped(_ sender: UIButton) {
-        delegate?.aiButtonTapped()
+        delegate?.aiButtonTapped(cell: self)
     }
 
 }
