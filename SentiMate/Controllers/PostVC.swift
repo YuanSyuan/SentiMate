@@ -32,6 +32,7 @@ class PostVC: UIViewController {
         saveEmotionBtn.isEnabled = false
         confirmEmotionBtn.isEnabled = false
         
+        
         guard ARWorldTrackingConfiguration.isSupported else { return }
          
             view.addSubview(sceneView)

@@ -146,7 +146,7 @@ struct CategoryCircleView: View {
             Text(categoryData.name)
                 .foregroundColor(Color(defaultBackgroundColor))
                 .font(.custom("PingFangTC-Medium", size: 18))
-            
+                .transition(.opacity)
         }
     }
 }
