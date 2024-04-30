@@ -27,7 +27,14 @@ class FirebaseManager {
 
     func saveData(to collection: String, data: [String: Any], completion: @escaping (Result<Void, Error>) -> Void) {
             let db = Firestore.firestore()
-            db.collection(collection).addDocument(data: data) { error in
+            var mutableData = data
+        
+        let documentReference = db.collection(collection).document() // Create a document reference with a new document ID
+            
+            // Step 2: Add the document ID to the data
+            mutableData["documentID"] = documentReference.documentID
+        
+        documentReference.setData(mutableData) { error in
                 if let error = error {
                     completion(.failure(error))
                 } else {

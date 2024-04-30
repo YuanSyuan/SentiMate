@@ -90,7 +90,6 @@ extension PostDetailVC: UITableViewDataSource {
             cell.onSave = { [weak self] in
                 self?.userInput = cell.textField.text
                 let userUID = Auth.auth().currentUser?.uid ?? "Unknown UID"
-                
                 let newEntry: [String: Any] = [
                     "userID": userUID,
                     "customTime": self?.dateFormatter.string(from: self?.selectedDate ?? .now),
