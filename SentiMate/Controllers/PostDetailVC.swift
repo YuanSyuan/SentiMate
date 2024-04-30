@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import FirebaseAuth
 
 class PostDetailVC: UIViewController {
     
@@ -88,9 +89,10 @@ extension PostDetailVC: UITableViewDataSource {
             
             cell.onSave = { [weak self] in
                 self?.userInput = cell.textField.text
+                let userUID = Auth.auth().currentUser?.uid ?? "Unknown UID"
                 
                 let newEntry: [String: Any] = [
-                    "userID": "kellyli",
+                    "userID": userUID,
                     "customTime": self?.dateFormatter.string(from: self?.selectedDate ?? .now),
                     "emotion": self?.emotion,
                     "category": self?.selectedCategoryIndex,
@@ -101,7 +103,12 @@ extension PostDetailVC: UITableViewDataSource {
                         // Show an alert with the last diary's details
                     guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
                         DispatchQueue.main.async {
-                            AlertView.instance.showAlert(image: lastDiary.emotion, title: "上一次感到\(mandarinEmotion)是因為\(buttonTitles[lastDiary.category])", message: "\(lastDiary.content)", alertType: .reminder)
+                            AlertView.instance.showAlert(
+                                image: lastDiary.emotion,
+                                title: "上一次感到\(mandarinEmotion)是因為\(buttonTitles[lastDiary.category])",
+                                message: "\(lastDiary.content)",
+                                alertType: .reminder)
+                            
                                 self?.saveDiaryEntry(newEntry: newEntry)
                         }
                     } else {

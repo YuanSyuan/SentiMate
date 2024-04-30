@@ -7,6 +7,7 @@
 
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 
 struct AudioFile: Equatable {
     let name: String
@@ -35,21 +36,12 @@ class FirebaseManager {
             }
         }
     
-    
-//    func fetchPosts() {
-//            let db = Firestore.firestore()
-//            db.collection("posts").order(by: "customTime", descending: true).getDocuments { [weak self] (querySnapshot, error) in
-//                guard let documents = querySnapshot?.documents else {
-//                    print("Error fetching posts: \(error?.localizedDescription ?? "Unknown error")")
-//                    return
-//                }
-//                self?.posts = documents.compactMap { Post(document: $0) }
-//            }
-//        }
-    
     func listenForUpdate() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        
         let db = Firestore.firestore()
         db.collection("diaries")
+            .whereField("userID", isEqualTo: userId)
             .addSnapshotListener { querySnapshot, error in
                 var diaries = [Diary]()
                 if let err = error {
