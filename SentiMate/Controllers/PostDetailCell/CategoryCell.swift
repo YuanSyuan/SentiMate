@@ -17,15 +17,13 @@ class CategoryCell: UITableViewCell {
         super.awakeFromNib()
         
         let attributedString = NSMutableAttributedString(string: "我想是因為 *")
-                
-          // 從第1個字開始，5個字都設置為藍色
-          attributedString.addAttribute(.foregroundColor, value: defaultTextColor, range: NSMakeRange(0, 5))
-                
-          // 從第7個字開始，後面7個字都設置為紅色
-          attributedString.addAttribute(.foregroundColor, value: midOrange, range: NSMakeRange(6, 1))
-        
+        // 從第1個字開始，5個字都設置為 defaultTextColor
+        attributedString.addAttribute(.foregroundColor, value: defaultTextColor, range: NSMakeRange(0, 5))
+        // 從第7個字開始，後面7個字都設置為 midOrange
+        attributedString.addAttribute(.foregroundColor, value: midOrange, range: NSMakeRange(6, 1))
         categoryLbl.attributedText = attributedString
         
+        selectedButton?.addTouchAnimation()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,7 +35,7 @@ class CategoryCell: UITableViewCell {
         super.layoutSubviews()
         setupButtons()
     }
-
+    
     
     func setupButtons() {
         let numberOfRows = 3
@@ -76,19 +74,19 @@ class CategoryCell: UITableViewCell {
     
     @objc func categoryButtonTapped(sender: UIButton) {
         contentView.subviews.compactMap { $0 as? UIButton }.forEach {
-                    $0.alpha = 0.5
-                    $0.setTitleColor(defaultTextColor, for: .normal)
-                }
+            $0.alpha = 0.5
+            $0.setTitleColor(defaultTextColor, for: .normal)
+        }
         
         selectedButton = sender
         selectedButton?.alpha = 1.0
         selectedButton?.setTitleColor(defaultBackgroundColor, for: .normal)
         
         guard let buttonTitle = sender.titleLabel?.text,
-                      let index = buttonTitles.firstIndex(of: buttonTitle) else {
-                    return
-                }
-                onCategorySelected?(index)
+              let index = buttonTitles.firstIndex(of: buttonTitle) else {
+            return
+        }
+        onCategorySelected?(index)
     }
     
 }

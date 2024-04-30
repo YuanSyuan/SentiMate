@@ -9,11 +9,14 @@ import UIKit
 
 class PostEntryVC: UIViewController {
     
+    @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var typingLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let attributedText = createAttributedText()
             typingAnimation(for: attributedText, in: typingLbl, typingSpeed: 0.2)
+        startBtn.addTouchAnimation()
     }
     
     func createAttributedText() -> NSAttributedString {

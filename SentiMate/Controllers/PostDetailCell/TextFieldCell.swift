@@ -27,6 +27,7 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
         textViewDidEndEditing(textField)
         
         saveBtn.isEnabled = false
+        saveBtn.addTouchAnimation()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

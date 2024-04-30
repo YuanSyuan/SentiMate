@@ -24,6 +24,7 @@ class AlertView: UIView {
         super.init(frame: frame)
         Bundle.main.loadNibNamed("AlertView", owner: self, options: nil)
         commonInit()
+        doneBtn.addTouchAnimation()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,8 +68,6 @@ class AlertView: UIView {
             window.addSubview(parentView)
         }
     }
-    
-    
     
     @IBAction func onClickDone(_ sender: Any) {
         parentView.removeFromSuperview()

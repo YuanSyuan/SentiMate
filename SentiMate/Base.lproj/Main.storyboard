@@ -230,7 +230,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F71-x6-H4O">
                                                 <rect key="frame" x="35" y="100" width="253" height="457"/>
-                                                <mutableString key="text">今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班</mutableString>
+                                                <string key="text">今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班今天去上班</string>
                                                 <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="22"/>
                                                 <color key="textColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -385,6 +385,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fen-LJ-eR7"/>
                     <connections>
+                        <outlet property="startBtn" destination="P8j-TO-Rq5" id="7gP-TE-rb8"/>
                         <outlet property="typingLbl" destination="gox-Ze-xad" id="J2n-jL-xtU"/>
                     </connections>
                 </viewController>
@@ -612,13 +613,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3tA-nb-o8O">
                                                     <rect key="frame" x="88" y="12.000000000000004" width="293" height="46.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
                                                             <rect key="frame" x="0.0" y="0.0" width="293" height="22.666666666666668"/>
                                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
                                                             <rect key="frame" x="0.0" y="26.666666666666664" width="293" height="19.666666666666664"/>
                                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1025,10 +1026,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

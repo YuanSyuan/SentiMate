@@ -32,6 +32,8 @@ class PostVC: UIViewController {
         saveEmotionBtn.isEnabled = false
         confirmEmotionBtn.isEnabled = false
         
+        saveEmotionBtn.addTouchAnimation()
+        confirmEmotionBtn.addTouchAnimation()
         
         guard ARWorldTrackingConfiguration.isSupported else { return }
          

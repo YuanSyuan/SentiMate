@@ -113,7 +113,6 @@ struct DonutChartView: View {
             
             
             .padding()
-            //            .navigationTitle("心情圖")
             .background(Color(backgroundColor))
         }
     }
