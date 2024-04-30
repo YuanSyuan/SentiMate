@@ -35,7 +35,6 @@ class HomeVC: UIViewController {
                 }
         
         configureCellSize()
-//        animateInitialLoad()
         
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername

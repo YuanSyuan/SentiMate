@@ -822,6 +822,22 @@
             </objects>
             <point key="canvasLocation" x="1696.9465648854962" y="2376.7605633802818"/>
         </scene>
+        <!--設定-->
+        <scene sceneID="Dym-TI-ece">
+            <objects>
+                <viewController id="bWF-xh-8LC" customClass="SettingVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6w7-mN-O8s">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0nS-Pd-u1E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="qNd-BF-VfP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnj-SF-A6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1013" y="155"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Et-kb-r1e">
             <objects>
@@ -840,6 +856,7 @@
                         <segue destination="rlI-CG-0uM" kind="relationship" relationship="viewControllers" id="fyi-4K-3Ua"/>
                         <segue destination="TyX-Zf-6vm" kind="relationship" relationship="viewControllers" id="Tgw-Af-7JM"/>
                         <segue destination="bBC-r1-PBv" kind="relationship" relationship="viewControllers" id="cYJ-wY-fFC"/>
+                        <segue destination="bWF-xh-8LC" kind="relationship" relationship="viewControllers" id="PRb-71-YBc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xm-Zl-jnZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1010,6 +1027,7 @@
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="123"/>
         <image name="forward.fill" catalog="system" width="128" height="77"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="icons8-apple-music-50(@1×)" width="50" height="50"/>

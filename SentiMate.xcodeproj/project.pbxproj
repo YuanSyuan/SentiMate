@@ -92,6 +92,8 @@
 		05CC58792BC93C3F003070EC /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC58782BC93C3F003070EC /* Diary.swift */; };
 		05CD0F7D2BD3B1C400242DA8 /* PostEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */; };
 		05D366BD2BE093AC004227A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05D366BC2BE093AB004227A3 /* GoogleService-Info.plist */; };
+		05D366C02BE09F4A004227A3 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D366BF2BE09F4A004227A3 /* SettingVC.swift */; };
+		05D366C22BE0A09A004227A3 /* AlertClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D366C12BE0A09A004227A3 /* AlertClass.swift */; };
 		05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
@@ -158,6 +160,9 @@
 		05CC58782BC93C3F003070EC /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEntryVC.swift; sourceTree = "<group>"; };
 		05D366BC2BE093AB004227A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentiMate.entitlements; sourceTree = "<group>"; };
+		05D366BF2BE09F4A004227A3 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = SentiMate/SettingVC.swift; sourceTree = SOURCE_ROOT; };
+		05D366C12BE0A09A004227A3 /* AlertClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertClass.swift; sourceTree = "<group>"; };
 		05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChenYuluoyan-Thin.ttf"; sourceTree = "<group>"; };
 		1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.debug.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.debug.xcconfig"; sourceTree = "<group>"; };
 		52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentiMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +238,7 @@
 		0502F33E2BC67B4200B89FE5 /* SentiMate */ = {
 			isa = PBXGroup;
 			children = (
+				05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */,
 				05223DA12BDFABFD0066AD61 /* openAI.json */,
 				051564742BDCECF00059FD82 /* CSCardTransition */,
 				056844812BC8177E004604E6 /* Managers */,
@@ -258,6 +264,7 @@
 		0506D6172BDA106F0045A8C1 /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
+				05D366C12BE0A09A004227A3 /* AlertClass.swift */,
 				0506D6102BDA0BA90045A8C1 /* AlertView.xib */,
 				0506D6152BDA0CF70045A8C1 /* AlertView.swift */,
 			);
@@ -306,6 +313,7 @@
 		0571E2EB2BC7979E0049B73E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05D366BF2BE09F4A004227A3 /* SettingVC.swift */,
 				0509C1592BCBB169000FB482 /* MusicCell.swift */,
 				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
 				05B44C1F2BD263D600798934 /* MusicEntryCell */,
@@ -553,6 +561,7 @@
 				0509C1522BCAC731000FB482 /* Music.swift in Sources */,
 				0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */,
 				0538A1812BDE4E9000796496 /* MainAppViewControllerRepresentable.swift in Sources */,
+				05D366C22BE0A09A004227A3 /* AlertClass.swift in Sources */,
 				05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */,
 				0509C1582BCACA95000FB482 /* Emotions.swift in Sources */,
 				05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */,
@@ -573,6 +582,7 @@
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				0574CA162BC7D5BD0075A296 /* EmotionCell.swift in Sources */,
+				05D366C02BE09F4A004227A3 /* SettingVC.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
 				05B250812BD69BE50073D4AD /* ModelManager.swift in Sources */,
 				05CC58772BC9321B003070EC /* HomeDiaryCell.swift in Sources */,
@@ -749,6 +759,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SentiMate/SentiMate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DMLVNU9R64;
@@ -779,6 +790,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SentiMate/SentiMate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DMLVNU9R64;
