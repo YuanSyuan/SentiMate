@@ -281,7 +281,7 @@ extension MusicVC: UITableViewDataSource {
             let song = calmSongs[indexPath.row]
             cell.songLbl.text = song.name
             cell.songImg.image = UIImage(named: song.image)
-            cell.singerLbl.text = "YuanSyuan Li"
+            cell.singerLbl.text = "Suno"
         }
         return cell
     }

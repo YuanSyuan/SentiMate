@@ -26,9 +26,6 @@ class MusicEntryVC: UIViewController {
         collectionView.delegate = self
         
         configureCellSize()
-        
-        let animation = AnimationType.from(direction: .left, offset: 300)
-        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +35,8 @@ class MusicEntryVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
+        let animation = AnimationType.from(direction: .left, offset: 300)
+        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
     }
     
     func configureCellSize() {

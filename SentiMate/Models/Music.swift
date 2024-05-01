@@ -26,18 +26,18 @@ var image: String
 }
 
 let softMusicPlaylist: [SoftMusic] = [
-SoftMusic(name: "0", url: "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF", image: "musicImg0"),
-SoftMusic(name: "1", url: "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF", image: "musicImg1"),
-SoftMusic(name: "2", url: "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq", image: "musicImg2"),
-SoftMusic(name: "3", url: "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38", image: "musicImg3"),
-SoftMusic(name: "4", url: "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli", image: "musicImg4"),
-SoftMusic(name: "5", url: "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld", image: "musicImg5"),
-SoftMusic(name: "6", url: "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO", image: "musicImg6"),
-SoftMusic(name: "7", url: "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5", image: "musicImg7"),
-SoftMusic(name: "8", url: "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z", image: "musicImg8"),
-SoftMusic(name: "9", url: "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h", image: "musicImg9"),
-SoftMusic(name: "10", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "musicImg10"),
-SoftMusic(name: "11", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "musicImg11")
+SoftMusic(name: "Whispering Winds", url: "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF", image: "musicImg0"),
+SoftMusic(name: "Moonlit Serenade", url: "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF", image: "musicImg1"),
+SoftMusic(name: "Celestial Echoes", url: "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq", image: "musicImg2"),
+SoftMusic(name: "Gentle Embrace", url: "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38", image: "musicImg3"),
+SoftMusic(name: "Silent Reverie", url: "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli", image: "musicImg4"),
+SoftMusic(name: "Ethereal Moments", url: "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld", image: "musicImg5"),
+SoftMusic(name: "Misty Horizons", url: "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO", image: "musicImg6"),
+SoftMusic(name: "Twilight Whispers", url: "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5", image: "musicImg7"),
+SoftMusic(name: "Tranquil Mornings", url: "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z", image: "musicImg8"),
+SoftMusic(name: "Velvet Dreams", url: "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h", image: "musicImg9"),
+SoftMusic(name: "Softly Spoken", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "musicImg10"),
+SoftMusic(name: "Quietude Cascade", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "musicImg11")
 ]
 //let playlistURL: [String] = [
 //    "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF",
