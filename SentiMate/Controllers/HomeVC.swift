@@ -21,7 +21,7 @@ class HomeVC: UIViewController {
     
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,15 +33,15 @@ class HomeVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
         self.firebaseManager.onNewData = { newDiaries in
-                    DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
-                }
+            DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
+        }
         
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername
         }
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-            diaryCollectionView.addGestureRecognizer(longPressGesture)
+        diaryCollectionView.addGestureRecognizer(longPressGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,28 +50,28 @@ class HomeVC: UIViewController {
     }
     
     private func animateInitialLoad() {
-            if initiallyAnimates {
-                diaryCollectionView.reloadData()
-                diaryCollectionView.performBatchUpdates({
-                    UIView.animate(views: self.diaryCollectionView.visibleCells,
-                                   animations: animations, completion: {
-                    })
-                }, completion: nil)
-            }
+        if initiallyAnimates {
+            diaryCollectionView.reloadData()
+            diaryCollectionView.performBatchUpdates({
+                UIView.animate(views: self.diaryCollectionView.visibleCells,
+                               animations: animations, completion: {
+                })
+            }, completion: nil)
         }
+    }
     
     @objc private func diariesDidUpdate() {
-           diaryCollectionView.reloadData()
+        diaryCollectionView.reloadData()
         diaryCollectionView.performBatchUpdates({
             UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
-                        animations: animations, options: [.curveEaseInOut], completion: nil)
-                }, completion: nil)
-       }
+                           animations: animations, options: [.curveEaseInOut], completion: nil)
+        }, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryVC",
            let destinationVC = segue.destination as? DiaryVC,
-            let indexPath = diaryCollectionView.indexPathsForSelectedItems?.first {
+           let indexPath = diaryCollectionView.indexPathsForSelectedItems?.first {
             let diary = DiaryManager.shared.diaries[indexPath.row]
             destinationVC.diary = diary
         }
@@ -86,59 +86,59 @@ class HomeVC: UIViewController {
     }
     
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-         guard gestureReconizer.state != .began else { return }
-         let point = gestureReconizer.location(in: self.diaryCollectionView)
-         let indexPath = self.diaryCollectionView.indexPathForItem(at: point)
-         if let index = indexPath {
-               print(index.row)}
-         else {
-               print("Could not find index path")
-         }
+        guard gestureReconizer.state != .began else { return }
+        let point = gestureReconizer.location(in: self.diaryCollectionView)
+        let indexPath = self.diaryCollectionView.indexPathForItem(at: point)
+        if let index = indexPath {
+            print(index.row)}
+        else {
+            print("Could not find index path")
+        }
     }}
 
 extension HomeVC: UICollectionViewDataSource {
-func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return DiaryManager.shared.diaries.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return DiaryManager.shared.diaries.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "diary", for: indexPath) as? HomeDiaryCell else {
+            fatalError("Could not dequeue HomeDiaryCell")
+        }
+        var diary = DiaryManager.shared.diaries[indexPath.row]
+        
+        let emojiText: String
+        switch diary.emotion {
+        case "Fear":
+            emojiText = "緊張"
+        case "Sad":
+            emojiText = "難過"
+        case "Neutral":
+            emojiText = "普通"
+        case "Happy":
+            emojiText = "開心"
+        case "Surprise":
+            emojiText = "驚喜"
+        case "Angry":
+            emojiText = "生氣"
+        default:
+            emojiText = "厭惡"
+        }
+        
+        cell.dateLbl.text = "\(diary.customTime)"
+        cell.categoryLbl.text = buttonTitles[diary.category]
+        cell.emotionLbl.text = emojiText
+        cell.emotionImg.image = UIImage(named: diary.emotion)
+        
+        return cell
+    }
 }
 
-func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "diary", for: indexPath) as? HomeDiaryCell else {
-        fatalError("Could not dequeue HomeDiaryCell")
-    }
-    var diary = DiaryManager.shared.diaries[indexPath.row]
-    
-    let emojiText: String
-    switch diary.emotion {
-        case "Fear":
-        emojiText = "緊張"
-        case "Sad":
-        emojiText = "難過"
-        case "Neutral":
-        emojiText = "普通"
-        case "Happy":
-        emojiText = "開心"
-        case "Surprise":
-        emojiText = "驚喜"
-        case "Angry":
-        emojiText = "生氣"
-        default:
-        emojiText = "厭惡"
-        }
-    
-    cell.dateLbl.text = "\(diary.customTime)"
-    cell.categoryLbl.text = buttonTitles[diary.category]
-    cell.emotionLbl.text = emojiText
-    cell.emotionImg.image = UIImage(named: diary.emotion)
-    
-    return cell
-    }
-}
- 
 
 extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       guard let viewController = UIStoryboard(name: "Main", bundle: .main)
-        .instantiateViewController(identifier: "diary") as? DiaryVC else { fatalError("Could not find DiaryVC") }
+        guard let viewController = UIStoryboard(name: "Main", bundle: .main)
+            .instantiateViewController(identifier: "diary") as? DiaryVC else { fatalError("Could not find DiaryVC") }
         let diary = DiaryManager.shared.diaries[indexPath.row]
         viewController.diary = diary
         self.navigationController?.present(viewController, animated: true)
@@ -146,15 +146,15 @@ extension HomeVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return configureContextMenu(for: indexPath)
-       }
-
+    }
+    
     func configureContextMenu(for indexPath: IndexPath) -> UIContextMenuConfiguration {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { _ in
                 self.editDiaryEntry(at: indexPath)
                 print("Edit action for item at \(indexPath.row)")
             }
-
+            
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
                 self.deleteDiaryEntry(at: indexPath)
                 print("Delete action for item at \(indexPath.row)")
@@ -166,7 +166,6 @@ extension HomeVC: UICollectionViewDelegate {
     func editDiaryEntry(at indexPath: IndexPath) {
         // Fetch the diary
         let diary = DiaryManager.shared.diaries[indexPath.row]
-        // Assuming you have a way to edit the diary, possibly by navigating to another view controller
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
             viewController.documentID = diary.documentID
             viewController.emotion = diary.emotion
@@ -177,17 +176,12 @@ extension HomeVC: UICollectionViewDelegate {
             print(viewController.selectedDate)
         }
     }
-
+    
     func deleteDiaryEntry(at indexPath: IndexPath) {
         let diary = DiaryManager.shared.diaries[indexPath.row]
         
         firebaseManager.deleteDiaryEntry(documentID: diary.documentID) { success, error in
             if success {
-                DiaryManager.shared.diaries.remove(at: indexPath.row)
-                DispatchQueue.main.async {
-//                    self.diaryCollectionView.deleteItems(at: [indexPath])
-                    self.diaryCollectionView.reloadData()
-                }
             } else if let error = error {
                 print("Error deleting diary entry: \(error.localizedDescription)")
             }

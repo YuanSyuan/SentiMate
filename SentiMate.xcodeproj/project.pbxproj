@@ -302,8 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				0568447F2BC81765004604E6 /* FirebaseManager.swift */,
-				0509C1532BCAC91C000FB482 /* MusicManager.swift */,
 				053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */,
+				0509C1532BCAC91C000FB482 /* MusicManager.swift */,
 				05A4812C2BD119C40073F305 /* OpenAIManager.swift */,
 				05B250802BD69BE40073D4AD /* ModelManager.swift */,
 			);
