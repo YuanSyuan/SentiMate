@@ -7,8 +7,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ChenYuluoyan-Thin.ttf">
-            <string>ChenYuluoyan-Thin</string>
+        <array key="jf-openhuninn-2.0.ttf">
+            <string>jf-openhuninn-2.0</string>
         </array>
     </customFonts>
     <objects>
@@ -56,15 +56,15 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-ZA-pHb">
-                                    <rect key="frame" x="20" y="55" width="255" height="29"/>
-                                    <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="22"/>
+                                    <rect key="frame" x="20" y="55" width="255" height="20"/>
+                                    <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSF-1V-CHJ">
-                                    <rect key="frame" x="20" y="104" width="255" height="93.5"/>
+                                    <rect key="frame" x="20" y="95" width="255" height="78.5"/>
                                     <string key="text">messagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessage</string>
-                                    <fontDescription key="fontDescription" name="ChenYuluoyan-Thin" family="Chenyuluoyan" pointSize="18"/>
+                                    <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>

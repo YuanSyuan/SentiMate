@@ -47,9 +47,9 @@ class AlertView: UIView {
         case empty
     }
     
-    func showAlert(image: String, title: String, message: String, alertType: AlertType) {
+    func showAlert(image: String, title: String, message: NSAttributedString, alertType: AlertType) {
         self.titleLbl.text = title
-        self.messageLbl.text = message
+        self.messageLbl.attributedText = message
         self.img.image = UIImage(named: image)
         
         switch alertType {

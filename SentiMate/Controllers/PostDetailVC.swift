@@ -102,11 +102,19 @@ extension PostDetailVC: UITableViewDataSource {
                 if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
                         // Show an alert with the last diary's details
                     guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 8
+                    paragraphStyle.alignment = .center
+                    
+                    let attributes = NSAttributedString(string: "\(lastDiary.content)",
+                                                        attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                        paragraphStyle])
+                    
                         DispatchQueue.main.async {
                             AlertView.instance.showAlert(
                                 image: lastDiary.emotion,
                                 title: "上一次感到\(mandarinEmotion)是因為\(buttonTitles[lastDiary.category])",
-                                message: "\(lastDiary.content)",
+                                message: attributes,
                                 alertType: .reminder)
                             
                                 self?.saveDiaryEntry(newEntry: newEntry)

@@ -23,7 +23,7 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
         
         textField.text = "說說今天發生什麼事吧！"
         textField.textColor = UIColor.lightGray
-        textField.font = customFontContent
+        textField.font = customFontInt
         
         textViewDidBeginEditing(textField)
         textViewDidEndEditing(textField)

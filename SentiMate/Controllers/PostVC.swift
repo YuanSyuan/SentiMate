@@ -56,7 +56,7 @@ class PostVC: UIViewController {
         emotionLabel.translatesAutoresizingMaskIntoConstraints = false
         emotionLabel.textColor = defaultTextColor
         emotionLabel.textAlignment = .center
-        emotionLabel.font = customFontTitle
+        emotionLabel.font = customFontSubTitle
         emotionLabel.backgroundColor = .black.withAlphaComponent(0.5)
         view.addSubview(emotionLabel)
         

@@ -80,11 +80,25 @@ extension AnalyticsVC: UITableViewDataSource {
             cell.delegate = self
             
             if AIResponse != nil {
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = 8
+                paragraphStyle.alignment = .left
+                
+                let attributes = NSAttributedString(string: AIResponse ?? "",
+                                                    attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                    paragraphStyle])
                 cell.AIResponseLbl.textAlignment = .left
-                cell.AIResponseLbl.text = AIResponse
+                cell.AIResponseLbl.attributedText = attributes
             } else {
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = 8
+                paragraphStyle.alignment = .center
+                
+                let newAttributes = NSAttributedString(string: "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！",
+                                                    attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                    paragraphStyle])
                 cell.AIResponseLbl.textAlignment = .center
-                cell.AIResponseLbl.text = "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！"
+                cell.AIResponseLbl.attributedText = newAttributes
             }
             
             return cell
