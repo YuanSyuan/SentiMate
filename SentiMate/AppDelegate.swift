@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        IQKeyboardManager.shared.enable = true
         ModelManager.shared.loadModelInBackground()
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.carPlay,.sound]) { (granted, error) in
+                    if granted {
+                        print("允許開啟")
+                    }else{
+                        print("拒絕接受開啟")
+                    }
+                }
+        UNUserNotificationCenter.current().delegate = self
 
         return true
     }
@@ -84,3 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge, .banner, .list, .sound])
+    }
+}

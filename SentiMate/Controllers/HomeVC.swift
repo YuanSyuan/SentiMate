@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseStorage
 import ViewAnimator
+import UserNotifications
 
 class HomeVC: UIViewController {
     
@@ -29,6 +30,7 @@ class HomeVC: UIViewController {
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         configureCellSize()
+        createNotificationContent ()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
@@ -40,8 +42,8 @@ class HomeVC: UIViewController {
             nameLbl.text = savedUsername
         }
         
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        diaryCollectionView.addGestureRecognizer(longPressGesture)
+        //        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        //        diaryCollectionView.addGestureRecognizer(longPressGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,16 +87,17 @@ class HomeVC: UIViewController {
         layout?.itemSize = CGSize(width: width, height: width)
     }
     
-    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-        guard gestureReconizer.state != .began else { return }
-        let point = gestureReconizer.location(in: self.diaryCollectionView)
-        let indexPath = self.diaryCollectionView.indexPathForItem(at: point)
-        if let index = indexPath {
-            print(index.row)}
-        else {
-            print("Could not find index path")
-        }
-    }}
+//    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+//        guard gestureReconizer.state != .began else { return }
+//        let point = gestureReconizer.location(in: self.diaryCollectionView)
+//        let indexPath = self.diaryCollectionView.indexPathForItem(at: point)
+//        if let index = indexPath {
+//            print(index.row)}
+//        else {
+//            print("Could not find index path")
+//        }
+//    }
+}
 
 extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -193,6 +196,28 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 90, left: 0, bottom: 0, right: 0)
     }
+}
+
+extension HomeVC {
+    func createNotificationContent () {
+            let content = UNMutableNotificationContent()    // 建立內容透過指派content來取得UNMutableNotificationContent功能
+            content.title = "今天過得如何呢？"                 // 推播標題
+            content.subtitle = "不管有什麼樣的情緒"            // 推播副標題
+            content.body = "在休息之前，把今天好好的記錄下來吧！"        // 推播內文
+            content.badge = 1                               // app的icon右上角跳出的紅色數字數量 line 999的那個
+            content.sound = UNNotificationSound.defaultCritical     //推播的聲音
+        
+        var dateComponents = DateComponents()
+               dateComponents.hour = 17    // 21:00 hours
+               dateComponents.minute = 45   // 0 minutes
+
+            
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)   //設定透過時間來完成推播，另有日期地點跟遠端推播
+            let uuidString = UUID().uuidString              //建立UNNotificationRequest所需要的ID
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //向UNUserNotificationCenter新增註冊這一則推播
+        }
 }
 
 extension DateFormatter {
