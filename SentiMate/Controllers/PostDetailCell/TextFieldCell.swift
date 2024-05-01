@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class TextFieldCell: UITableViewCell, UITextViewDelegate {
 
@@ -28,6 +29,8 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
         
         saveBtn.isEnabled = false
         saveBtn.addTouchAnimation()
+        
+        IQKeyboardManager.shared.enable = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,6 +52,12 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
             textView.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 195 
     }
 
     @IBAction func saveBtnTapped(_ sender: Any) {

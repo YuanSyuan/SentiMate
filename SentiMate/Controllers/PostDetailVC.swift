@@ -133,7 +133,7 @@ extension PostDetailVC {
         switch result {
         case .success():
             DispatchQueue.main.async {
-                self.navigationController?.popToRootViewController(animated: true)
+                self.dismiss(animated: true)
             }
         case .failure(let error):
             print("Error saving data: \(error)")
