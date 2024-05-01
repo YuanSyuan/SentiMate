@@ -60,25 +60,6 @@ class DiaryVC: UIViewController {
             }
         }
 
-//        private func backgroundImg(forEmotion emotion: String?) -> String {
-//            switch emotion {
-//            case "Fear":
-//                return "nature14"
-//            case "Sad":
-//                return "nature6"
-//            case "Neutral":
-//                return "nature16"
-//            case "Happy":
-//                return "nature5"
-//            case "Surprise":
-//                return "nature12"
-//            case "Angry":
-//                return "nature17"
-//            default:
-//                return "nature2"
-//            }
-//        }
-
         func configureUI() {
             if let emotion = diary?.emotion {
                 let emojiText = emojiText(forEmotion: emotion)
@@ -97,54 +78,3 @@ class DiaryVC: UIViewController {
         }
     }
 
-//extension DiaryVC: CSCardPresentedView {
-//    
-//    private func activateSmallConstraint() {
-//        bigConstraints.forEach { (constraint) in
-//            constraint.isActive = false
-//        }
-//        smallConstraints.forEach { (constraint) in
-//            constraint.isActive = true
-//        }
-//    }
-//    
-//    private func activateBigConstraint() {
-//        smallConstraints.forEach { (constraint) in
-//            constraint.isActive = false
-//        }
-//        bigConstraints.forEach { (constraint) in
-//            constraint.isActive = true
-//        }
-//    }
-//    
-//    func cardPresentedViewDidUpdatePresentingTransition(progress: CGFloat) {
-//        containerView.layer.cornerRadius = 12-progress*12
-////        lyricsCellView.titleLabel.font = lyricsCellView.titleLabel.font.withSize(24+progress*24)
-//    }
-//    
-//    func cardPresentedViewDidStartPresenting() {
-//        // Layout changes are automatically animated when written here
-//        activateBigConstraint()
-//    }
-//    
-//    func cardPresentedViewWillEndPresenting() {
-//        containerView.layer.cornerRadius = 0
-////        lyricsCellView.titleLabel.font = lyricsCellView.titleLabel.font.withSize(48)
-//    }
-//    func cardPresentedViewDidStartDismissing() {
-//        activateSmallConstraint()
-//    }
-//    
-//    // Dismissing the view
-//    func cardPresentedViewWillCancelDismissing() {
-//        cardPresentedViewWillEndPresenting()
-//    }
-//    func cardPresentedViewDidUpdateDismissingTransition(progress: CGFloat) {
-//        containerView.layer.cornerRadius = min(progress*4, 1)*12
-////        lyricsCellView.titleLabel.font = lyricsCellView.titleLabel.font.withSize(48-progress*24)
-//    }
-//    func cardPresentedViewWillEndDismissing() {
-//        containerView.layer.cornerRadius = 12
-////        lyricsCellView.titleLabel.font = lyricsCellView.titleLabel.font.withSize(24)
-//    }
-//}

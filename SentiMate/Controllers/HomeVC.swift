@@ -25,8 +25,10 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = true
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
+        configureCellSize()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
@@ -34,14 +36,12 @@ class HomeVC: UIViewController {
                     DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
                 }
         
-        configureCellSize()
-        
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername
         }
         
-        navigationController?.navigationBar.isHidden = true
-     
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+            diaryCollectionView.addGestureRecognizer(longPressGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,8 +59,6 @@ class HomeVC: UIViewController {
                 }, completion: nil)
             }
         }
-
- 
     
     @objc private func diariesDidUpdate() {
            diaryCollectionView.reloadData()
@@ -68,7 +66,6 @@ class HomeVC: UIViewController {
             UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
                         animations: animations, options: [.curveEaseInOut], completion: nil)
                 }, completion: nil)
-        
        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,7 +84,17 @@ class HomeVC: UIViewController {
         let width = floor((diaryCollectionView.bounds.width - 20) / 2)
         layout?.itemSize = CGSize(width: width, height: width)
     }
-}
+    
+    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+         guard gestureReconizer.state != .began else { return }
+         let point = gestureReconizer.location(in: self.diaryCollectionView)
+         let indexPath = self.diaryCollectionView.indexPathForItem(at: point)
+         if let index = indexPath {
+               print(index.row)}
+         else {
+               print("Could not find index path")
+         }
+    }}
 
 extension HomeVC: UICollectionViewDataSource {
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,24 +143,56 @@ extension HomeVC: UICollectionViewDelegate {
         viewController.diary = diary
         self.navigationController?.present(viewController, animated: true)
     }
-//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        UIView.animate(withDuration: 0.5) {
-//            if let cell = collectionView.cellForItem(at: indexPath) as? HomeDiaryCell {
-//                cell.contentView.transform = .init(scaleX: 0.95, y: 0.95)
-//                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-//            }
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-//        UIView.animate(withDuration: 0.5) {
-//            if let cell = collectionView.cellForItem(at: indexPath) as? HomeDiaryCell {
-//                cell.contentView.transform = .identity
-//                cell.contentView.backgroundColor = .clear
-//            }
-//        }
-//    }
     
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return configureContextMenu(for: indexPath)
+       }
+
+    func configureContextMenu(for indexPath: IndexPath) -> UIContextMenuConfiguration {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+            let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { _ in
+                self.editDiaryEntry(at: indexPath)
+                print("Edit action for item at \(indexPath.row)")
+            }
+
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                self.deleteDiaryEntry(at: indexPath)
+                print("Delete action for item at \(indexPath.row)")
+            }
+            return UIMenu(title: "Options", children: [edit, delete])
+        }
+    }
+    
+    func editDiaryEntry(at indexPath: IndexPath) {
+        // Fetch the diary
+        let diary = DiaryManager.shared.diaries[indexPath.row]
+        // Assuming you have a way to edit the diary, possibly by navigating to another view controller
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
+            viewController.documentID = diary.documentID
+            viewController.emotion = diary.emotion
+            viewController.selectedCategoryIndex = diary.category
+            viewController.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime)
+            viewController.userInput = diary.content
+            navigationController?.pushViewController(viewController, animated: true)
+            print(viewController.selectedDate)
+        }
+    }
+
+    func deleteDiaryEntry(at indexPath: IndexPath) {
+        let diary = DiaryManager.shared.diaries[indexPath.row]
+        
+        firebaseManager.deleteDiaryEntry(documentID: diary.documentID) { success, error in
+            if success {
+                DiaryManager.shared.diaries.remove(at: indexPath.row)
+                DispatchQueue.main.async {
+//                    self.diaryCollectionView.deleteItems(at: [indexPath])
+                    self.diaryCollectionView.reloadData()
+                }
+            } else if let error = error {
+                print("Error deleting diary entry: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
@@ -161,10 +200,11 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 90, left: 0, bottom: 0, right: 0)
     }
 }
-//
-//extension HomeVC: CSCardViewPresenter {
-//    var cardViewPresenterCard: UIView? {
-//        
-//        return self.view // Return the view that represents the start of your transition
-//    }
-//}
+
+extension DateFormatter {
+    static let diaryEntryFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+}

@@ -13,13 +13,12 @@ class PostDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var documentID: String?
     var emotion: String?
-    
     var selectedDate: Date?
     var selectedCategoryIndex: Int?
     var userInput: String?
     let dateFormatter = DateFormatter()
-    
     let musicManager = MusicManager()
    
     
@@ -33,16 +32,6 @@ class PostDetailVC: UIViewController {
         
         hideKeyboardWhenTappedAround()
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated);
-//        super.viewWillDisappear(animated)
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
 }
 
 extension PostDetailVC: UITableViewDataSource {
@@ -90,13 +79,18 @@ extension PostDetailVC: UITableViewDataSource {
             cell.onSave = { [weak self] in
                 self?.userInput = cell.textField.text
                 let userUID = Auth.auth().currentUser?.uid ?? "Unknown UID"
-                let newEntry: [String: Any] = [
+                var newEntry: [String: Any] = [
                     "userID": userUID,
                     "customTime": self?.dateFormatter.string(from: self?.selectedDate ?? .now),
                     "emotion": self?.emotion,
                     "category": self?.selectedCategoryIndex,
                     "content": self?.userInput
                 ]
+                
+                if let docID = self?.documentID {
+                        newEntry["documentID"] = docID
+                    }
+
                 
                 if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
                         // Show an alert with the last diary's details
@@ -122,15 +116,27 @@ extension PostDetailVC: UITableViewDataSource {
 
 extension PostDetailVC {
     func saveDiaryEntry(newEntry: [String: Any]) {
-        FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
-            switch result {
-            case .success():
-                DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-            case .failure(let error):
-                print("Error saving data: \(error)")
+        if let documentID = newEntry["documentID"] as? String {
+            // Update existing entry
+            FirebaseManager.shared.updateData(to: "diaries", documentID: documentID , data: newEntry) { result in
+                self.handleSaveResult(result)
             }
+        } else {
+            // Save new entry
+            FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
+                self.handleSaveResult(result)
+            }
+        }
+    }
+
+    private func handleSaveResult(_ result: Result<Void, Error>) {
+        switch result {
+        case .success():
+            DispatchQueue.main.async {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        case .failure(let error):
+            print("Error saving data: \(error)")
         }
     }
 }

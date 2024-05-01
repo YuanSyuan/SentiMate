@@ -8,6 +8,7 @@ import UIKit
 import FirebaseFirestore
 
 struct Diary: Codable {
+    var documentID: String
     var emotion: String
     var content: String
     var customTime: String
