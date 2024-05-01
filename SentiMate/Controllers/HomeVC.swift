@@ -172,7 +172,7 @@ extension HomeVC: UICollectionViewDelegate {
             viewController.selectedCategoryIndex = diary.category
             viewController.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime)
             viewController.userInput = diary.content
-            navigationController?.present(viewController, animated: true)
+            navigationController?.pushViewController(viewController, animated: true)
             print(viewController.selectedDate)
         }
     }

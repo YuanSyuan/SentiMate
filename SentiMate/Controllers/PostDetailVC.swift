@@ -51,6 +51,8 @@ extension PostDetailVC: UITableViewDataSource {
                 self?.selectedDate = date
             }
             
+            cell.setDate(selectedDate ?? Date())
+            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "emotion", for: indexPath) as? EmotionCell else {
@@ -70,11 +72,16 @@ extension PostDetailVC: UITableViewDataSource {
                                 textFieldCell.saveBtn.isEnabled = true
                             }
             }
+            
+            cell.setCategoryIndex(selectedCategoryIndex)
+            
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "textfield", for: indexPath) as? TextFieldCell else {
                 fatalError("Could not dequeue TextFieldCell")
             }
+            
+            cell.textField.text = userInput
             
             cell.onSave = { [weak self] in
                 self?.userInput = cell.textField.text
@@ -133,7 +140,7 @@ extension PostDetailVC {
         switch result {
         case .success():
             DispatchQueue.main.async {
-                self.dismiss(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         case .failure(let error):
             print("Error saving data: \(error)")

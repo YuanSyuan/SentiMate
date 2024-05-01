@@ -41,16 +41,16 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
-            textView.text = nil
+//            textView.text = nil
             textView.textColor = UIColor.black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "說說今天發生什麼事吧！"
-            textView.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
-            textView.textColor = UIColor.lightGray
+            textView.text = ""
+//            textView.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
+//            textView.textColor = UIColor.lightGray
         }
     }
     
