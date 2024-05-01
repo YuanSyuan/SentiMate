@@ -13,12 +13,12 @@ struct PageView: View {
     var body: some View {
         VStack(spacing: 10) {
             Text(page.name)
-                .font(.custom("PingFangTC-Medium", size: 24))
+                .font(.custom("jf-openhuninn-2.0", size: 24))
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .foregroundColor(Color(defaultTextColor))
             Text(page.styledDescription())
-                .font(.custom("PingFangTC-Medium", size: 16))
+                .font(.custom("jf-openhuninn-2.0", size: 16))
                 .frame(width: 300)
                 .multilineTextAlignment(.center)
             //                .padding()

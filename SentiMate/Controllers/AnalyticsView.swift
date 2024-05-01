@@ -24,7 +24,7 @@ struct DonutChartView: View {
             VStack {
                 HStack {
                     Text("心情圖")
-                        .font(.custom("PingFangTC-Medium", size: 36))
+                        .font(.custom("jf-openhuninn-2.0", size: 36))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color(textColor))
@@ -57,10 +57,10 @@ struct DonutChartView: View {
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)
                             Text(selectedEmotionType.mandarinName)
-                                .font(.custom("PingFangTC-Medium", size: 24))
+                                .font(.custom("jf-openhuninn-2.0", size: 24))
                                 .foregroundColor(Color(textColor))
                             Text("\(selectedEmotionType.percentage) %")
-                                .font(.custom("PingFangTC", size: 20))
+                                .font(.custom("jf-openhuninn-2.0", size: 20))
                                 .foregroundColor(Color(textColor))
                         }
                     } else {
@@ -71,14 +71,14 @@ struct DonutChartView: View {
                                 .frame(width: 50, height: 50)
                             Text("請點擊圖表")
                                 .foregroundColor(Color(textColor))
-                                .font(.custom("PingFangTC", size: 16))
+                                .font(.custom("jf-openhuninn-2.0", size: 16))
                         }
                     }
                 }
                 .frame(height: 300)
                 if let selectedEmotionType {
                     Text("讓我感到\(selectedEmotionType.mandarinName)的是")
-                        .font(.custom("PingFangTC-Medium", size: 18))
+                        .font(.custom("jf-openhuninn-2.0", size: 18))
                         .foregroundColor(Color(textColor))
                 }
                 
@@ -154,7 +154,7 @@ struct CategoryCircleView: View {
                 }
             Text(categoryData.name)
                 .foregroundColor(Color(defaultBackgroundColor))
-                .font(.custom("PingFangTC-Medium", size: 18))
+                .font(.custom("jf-openhuninn-2.0", size: 18))
                 .scaleEffect(scale) // Apply the same scale effect to the text
                 .opacity(scale) // Fade the text in and out with the scale
                 .animation(.easeOut(duration: 0.5), value: scale)

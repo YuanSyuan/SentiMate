@@ -37,14 +37,14 @@ class AICell: UITableViewCell {
         titleLabel.numberOfLines = 1
                 titleLabel.textColor = defaultTextColor
                 titleLabel.textAlignment = .left
-                titleLabel.font = UIFont(name: "PingFangTC-Medium", size: 36)
+                titleLabel.font = customFontTitle
                 contentView.addSubview(titleLabel)
                 titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "情緒變化"
         
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultBackgroundColor
-        AIResponseLbl.font = UIFont(name: "ChenYuluoyan-Thin", size: 22)
+        AIResponseLbl.font = customFontInt
         containerView.backgroundColor = defaultTextColor
 //        containerView.layer.borderColor = defaultTextColor.cgColor
 //        containerView.layer.borderWidth = 2
