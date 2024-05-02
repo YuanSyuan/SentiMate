@@ -9,6 +9,7 @@ import UIKit
 import FirebaseStorage
 import ViewAnimator
 import UserNotifications
+import SceneKit
 
 class HomeVC: UIViewController {
     
@@ -22,6 +23,9 @@ class HomeVC: UIViewController {
     
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     
+    var sceneView: SCNView!
+    
+    var floatingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +46,8 @@ class HomeVC: UIViewController {
             nameLbl.text = savedUsername
         }
         
-        //        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        //        diaryCollectionView.addGestureRecognizer(longPressGesture)
+        setupFloatingSceneView()
+        configureGestureRecognizers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,16 +91,42 @@ class HomeVC: UIViewController {
         layout?.itemSize = CGSize(width: width, height: width)
     }
     
-//    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-//        guard gestureReconizer.state != .began else { return }
-//        let point = gestureReconizer.location(in: self.diaryCollectionView)
-//        let indexPath = self.diaryCollectionView.indexPathForItem(at: point)
-//        if let index = indexPath {
-//            print(index.row)}
-//        else {
-//            print("Could not find index path")
-//        }
-//    }
+    func setupFloatingSceneView() {
+            // Initialize the draggable floating view
+            floatingView = DraggableFloatingView(frame: CGRect(x: 20, y: 100, width: 300, height: 300))
+        floatingView.backgroundColor = .red
+            
+            // Initialize and add SCNView
+            sceneView = SCNView(frame: CGRect(x: 10, y: 10, width: 150, height: 150))
+            sceneView.allowsCameraControl = true
+            sceneView.autoenablesDefaultLighting = true
+            sceneView.backgroundColor = .clear
+            floatingView.addSubview(sceneView)
+            
+            // Add floating view to the main view
+            view.addSubview(floatingView)
+            
+            // Load the 3D scene
+            if let scene = SCNScene(named: "Emoticon_56.scn") {
+                sceneView.scene = scene
+            } else {
+                print("Failed to load the scene")
+            }
+        }
+        
+        func configureGestureRecognizers() {
+            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag(_:)))
+            floatingView.addGestureRecognizer(panGesture)
+        }
+        
+        @objc func handleDrag(_ gesture: UIPanGestureRecognizer) {
+            let translation = gesture.translation(in: view)
+            if gesture.state == .changed {
+                gesture.view?.center.x += translation.x
+                gesture.view?.center.y += translation.y
+                gesture.setTranslation(.zero, in: view)
+            }
+        }
 }
 
 extension HomeVC: UICollectionViewDataSource {

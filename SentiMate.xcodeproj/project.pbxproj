@@ -26,6 +26,10 @@
 		051564812BDCECF00059FD82 /* CSCardTransitionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564792BDCECF00059FD82 /* CSCardTransitionHelpers.swift */; };
 		051564822BDCECF00059FD82 /* CSCardTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */; };
 		051564852BDCED400059FD82 /* MyCustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051564842BDCED400059FD82 /* MyCustomNavigationController.swift */; };
+		052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */ = {isa = PBXBuildFile; fileRef = 052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */; };
+		052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */ = {isa = PBXBuildFile; fileRef = 052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */; };
+		052013082BE3B35600A2A1F5 /* Emoticon_56.scn in Resources */ = {isa = PBXBuildFile; fileRef = 052013072BE3B35600A2A1F5 /* Emoticon_56.scn */; };
+		0520130A2BE3BB6600A2A1F5 /* DraggableFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052013092BE3BB6600A2A1F5 /* DraggableFloatingView.swift */; };
 		05223DA22BDFABFE0066AD61 /* openAI.json in Resources */ = {isa = PBXBuildFile; fileRef = 05223DA12BDFABFD0066AD61 /* openAI.json */; };
 		05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */; };
 		05223DAA2BDFDBF20066AD61 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */; };
@@ -123,6 +127,10 @@
 		0515647A2BDCECF00059FD82 /* CSCardTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCardTransitionAnimation.swift; sourceTree = "<group>"; };
 		0515647B2BDCECF00059FD82 /* CSCardTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCardTransition.h; sourceTree = "<group>"; };
 		051564842BDCED400059FD82 /* MyCustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomNavigationController.swift; sourceTree = "<group>"; };
+		052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Emoticon_56.dae; sourceTree = "<group>"; };
+		052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Diffuse_Emoticon 56.png"; sourceTree = "<group>"; };
+		052013072BE3B35600A2A1F5 /* Emoticon_56.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Emoticon_56.scn; sourceTree = "<group>"; };
+		052013092BE3BB6600A2A1F5 /* DraggableFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableFloatingView.swift; sourceTree = "<group>"; };
 		05223DA12BDFABFD0066AD61 /* openAI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openAI.json; sourceTree = "<group>"; };
 		05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
@@ -244,6 +252,7 @@
 			children = (
 				05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */,
 				05223DA12BDFABFD0066AD61 /* openAI.json */,
+				052013042BE3B2E700A2A1F5 /* Obj */,
 				051564742BDCECF00059FD82 /* CSCardTransition */,
 				056844812BC8177E004604E6 /* Managers */,
 				059C5AB42BD559FB004E5331 /* Extensions */,
@@ -288,6 +297,17 @@
 				0515647B2BDCECF00059FD82 /* CSCardTransition.h */,
 			);
 			path = CSCardTransition;
+			sourceTree = "<group>";
+		};
+		052013042BE3B2E700A2A1F5 /* Obj */ = {
+			isa = PBXGroup;
+			children = (
+				052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */,
+				052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */,
+				052013072BE3B35600A2A1F5 /* Emoticon_56.scn */,
+			);
+			name = Obj;
+			path = Managers/Obj;
 			sourceTree = "<group>";
 		};
 		0538A17B2BDE458600796496 /* WalkThrough */ = {
@@ -337,6 +357,7 @@
 				05CC58762BC9321B003070EC /* HomeDiaryCell.swift */,
 				058143692BC9291400C6D111 /* HomeVC.swift */,
 				051564842BDCED400059FD82 /* MyCustomNavigationController.swift */,
+				052013092BE3BB6600A2A1F5 /* DraggableFloatingView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -485,9 +506,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */,
+				052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */,
 				05B44C182BD2467100798934 /* APIKey.plist in Resources */,
 				05D366BD2BE093AC004227A3 /* GoogleService-Info.plist in Resources */,
 				0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */,
+				052013082BE3B35600A2A1F5 /* Emoticon_56.scn in Resources */,
 				05BC62D92BE27D1E0003E263 /* jf-openhuninn-2.0.ttf in Resources */,
 				05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */,
 				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
@@ -572,6 +596,7 @@
 				05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */,
 				0509C1582BCACA95000FB482 /* Emotions.swift in Sources */,
 				05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */,
+				0520130A2BE3BB6600A2A1F5 /* DraggableFloatingView.swift in Sources */,
 				05B44C1C2BD263AE00798934 /* EmtionMusicEntryCell.swift in Sources */,
 				05A4812B2BD119660073F305 /* AIResponse.swift in Sources */,
 				05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */,
