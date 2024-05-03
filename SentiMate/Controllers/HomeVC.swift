@@ -24,12 +24,14 @@ class HomeVC: UIViewController {
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     
     var sceneView: SCNView!
-    
+    var sceneEmoji = "Emoticon_27.scn"
     var rotatePanGesture: UIPanGestureRecognizer!
     var dragPanGesture: UIPanGestureRecognizer!
     var longPressGesture: UILongPressGestureRecognizer!
     var initialCameraTransform: SCNMatrix4?
     var initialFieldOfView: CGFloat?
+    
+    private var emotionType: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,28 +41,36 @@ class HomeVC: UIViewController {
         diaryCollectionView.delegate = self
         configureCellSize()
         createNotificationContent()
+        sceneView = SCNView(frame: CGRect(x: 10, y: 10, width: 150, height: 150))
+        sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.backgroundColor = .clear
+        view.addSubview(sceneView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
         self.firebaseManager.onNewData = { newDiaries in
             DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
+            self.emotionType = newDiaries.first?.emotion
+            self.setupBasedOnMostCommonEmotion(with: self.emotionType ?? "Neutral")
         }
         
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername
         }
+        
+        emotionType = DiaryManager.shared.getEmotionTypes(forPeriod: .last7Days).first?.name ?? "Neutral"
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         firebaseManager.listenForUpdate()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupFloatingSceneView()
-        configureGestureRecognizers()
-        setupInitialCamera()
     }
        
     private func animateInitialLoad() {
@@ -76,6 +86,7 @@ class HomeVC: UIViewController {
     
     @objc private func diariesDidUpdate() {
         diaryCollectionView.reloadData()
+        
         diaryCollectionView.performBatchUpdates({
             UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
                            animations: animations, options: [.curveEaseInOut], completion: nil)
@@ -99,29 +110,46 @@ class HomeVC: UIViewController {
         layout?.itemSize = CGSize(width: width, height: width)
     }
     
-    func setupFloatingSceneView() {
-        let diary = DiaryManager.shared.diaries[0]
-        let sceneEmoji: String
-        switch diary.emotion {
-        case "Happy", "Surprise":
-            sceneEmoji = "Emoticon_27.scn"
-        case "Neutral":
-            sceneEmoji = "Emoticon_40.scn"
-        default:
-            sceneEmoji = "Emoticon_56.scn"
-        }
+    func setupBasedOnMostCommonEmotion(with emotionType: String) {
+        setupFloatingSceneView(for: emotionType)
+        configureGestureRecognizers()
+        setupInitialCamera()
+    }
+    
+    func setupFloatingSceneView(for emotion: String) {
+//        guard let diary = DiaryManager.shared.diaries.first else {
+//                print("No diaries available.")
+//                return
+//            }
         
-        sceneView = SCNView(frame: CGRect(x: 10, y: 10, width: 150, height: 150))
-        sceneView.allowsCameraControl = true
-        sceneView.autoenablesDefaultLighting = true
-        sceneView.backgroundColor = .clear
-        view.addSubview(sceneView)
+        let sceneEmoji: String
+            switch emotion {
+            case "Happy", "Surprise":
+                sceneEmoji = "Emoticon_27.scn"
+            case "Neutral":
+                sceneEmoji = "Emoticon_40.scn"
+            default:
+                sceneEmoji = "Emoticon_56.scn"
+            }
+        
+        
         
         // Load the 3D scene
         if let scene = SCNScene(named: sceneEmoji) {
             sceneView.scene = scene
         } else {
             print("Failed to load the scene")
+        }
+    }
+    
+    func sceneEmoji(for emotion: String) -> String {
+        switch emotion {
+        case "Happy", "Surprise":
+            return "Emoticon_27.scn"
+        case "Neutral":
+            return "Emoticon_40.scn"
+        default:
+            return "Emoticon_56.scn"
         }
     }
     
@@ -180,10 +208,6 @@ class HomeVC: UIViewController {
         }
     }
 }
-
-
-
-
 
 extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
