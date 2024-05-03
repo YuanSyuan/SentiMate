@@ -43,6 +43,18 @@
 		053A5EB12BCCFB7A00EAC1F2 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */; };
 		053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */; };
 		053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */; };
+		054D94672BE4D9A300E4F415 /* Emoticon_27.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 054D94612BE4D99F00E4F415 /* Emoticon_27.mtl */; };
+		054D94682BE4D9A300E4F415 /* Emoticon_40.obj in Resources */ = {isa = PBXBuildFile; fileRef = 054D94622BE4D9A000E4F415 /* Emoticon_40.obj */; };
+		054D94692BE4D9A300E4F415 /* Emoticon_40.dae in Resources */ = {isa = PBXBuildFile; fileRef = 054D94632BE4D9A100E4F415 /* Emoticon_40.dae */; };
+		054D946A2BE4D9A300E4F415 /* Emoticon_27.obj in Resources */ = {isa = PBXBuildFile; fileRef = 054D94642BE4D9A100E4F415 /* Emoticon_27.obj */; };
+		054D946B2BE4D9A300E4F415 /* Emoticon_27.dae in Resources */ = {isa = PBXBuildFile; fileRef = 054D94652BE4D9A200E4F415 /* Emoticon_27.dae */; };
+		054D946C2BE4D9A300E4F415 /* Emoticon_40.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 054D94662BE4D9A300E4F415 /* Emoticon_40.mtl */; };
+		054D94712BE4D9F400E4F415 /* T_Diffuse_Emoticon 27.png in Resources */ = {isa = PBXBuildFile; fileRef = 054D946D2BE4D9F200E4F415 /* T_Diffuse_Emoticon 27.png */; };
+		054D94722BE4D9F400E4F415 /* T_Roughness_Emoticon 40.png in Resources */ = {isa = PBXBuildFile; fileRef = 054D946E2BE4D9F300E4F415 /* T_Roughness_Emoticon 40.png */; };
+		054D94732BE4D9F400E4F415 /* T_Roughness_Emoticon 27.png in Resources */ = {isa = PBXBuildFile; fileRef = 054D946F2BE4D9F300E4F415 /* T_Roughness_Emoticon 27.png */; };
+		054D94742BE4D9F400E4F415 /* T_Diffuse_Emoticon 40.png in Resources */ = {isa = PBXBuildFile; fileRef = 054D94702BE4D9F400E4F415 /* T_Diffuse_Emoticon 40.png */; };
+		054D94762BE4DA3400E4F415 /* Emoticon_27.scn in Resources */ = {isa = PBXBuildFile; fileRef = 054D94752BE4DA3400E4F415 /* Emoticon_27.scn */; };
+		054D94782BE4DA4400E4F415 /* Emoticon_40.scn in Resources */ = {isa = PBXBuildFile; fileRef = 054D94772BE4DA4400E4F415 /* Emoticon_40.scn */; };
 		0568444A2BC81557004604E6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 056844492BC81557004604E6 /* FirebaseAnalytics */; };
 		0568444C2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444B2BC81557004604E6 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0568444E2BC81557004604E6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0568444D2BC81557004604E6 /* FirebaseAnalyticsSwift */; };
@@ -144,6 +156,18 @@
 		053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		053A5EB22BCD224E00EAC1F2 /* DiaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryManager.swift; sourceTree = "<group>"; };
 		053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
+		054D94612BE4D99F00E4F415 /* Emoticon_27.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = Emoticon_27.mtl; sourceTree = "<group>"; };
+		054D94622BE4D9A000E4F415 /* Emoticon_40.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = Emoticon_40.obj; sourceTree = "<group>"; };
+		054D94632BE4D9A100E4F415 /* Emoticon_40.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Emoticon_40.dae; sourceTree = "<group>"; };
+		054D94642BE4D9A100E4F415 /* Emoticon_27.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = Emoticon_27.obj; sourceTree = "<group>"; };
+		054D94652BE4D9A200E4F415 /* Emoticon_27.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Emoticon_27.dae; sourceTree = "<group>"; };
+		054D94662BE4D9A300E4F415 /* Emoticon_40.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = Emoticon_40.mtl; sourceTree = "<group>"; };
+		054D946D2BE4D9F200E4F415 /* T_Diffuse_Emoticon 27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Diffuse_Emoticon 27.png"; sourceTree = "<group>"; };
+		054D946E2BE4D9F300E4F415 /* T_Roughness_Emoticon 40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Roughness_Emoticon 40.png"; sourceTree = "<group>"; };
+		054D946F2BE4D9F300E4F415 /* T_Roughness_Emoticon 27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Roughness_Emoticon 27.png"; sourceTree = "<group>"; };
+		054D94702BE4D9F400E4F415 /* T_Diffuse_Emoticon 40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Diffuse_Emoticon 40.png"; sourceTree = "<group>"; };
+		054D94752BE4DA3400E4F415 /* Emoticon_27.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Emoticon_27.scn; sourceTree = "<group>"; };
+		054D94772BE4DA4400E4F415 /* Emoticon_40.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Emoticon_40.scn; sourceTree = "<group>"; };
 		0568447F2BC81765004604E6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
@@ -302,6 +326,18 @@
 		052013042BE3B2E700A2A1F5 /* Obj */ = {
 			isa = PBXGroup;
 			children = (
+				054D946D2BE4D9F200E4F415 /* T_Diffuse_Emoticon 27.png */,
+				054D94702BE4D9F400E4F415 /* T_Diffuse_Emoticon 40.png */,
+				054D946F2BE4D9F300E4F415 /* T_Roughness_Emoticon 27.png */,
+				054D946E2BE4D9F300E4F415 /* T_Roughness_Emoticon 40.png */,
+				054D94652BE4D9A200E4F415 /* Emoticon_27.dae */,
+				054D94752BE4DA3400E4F415 /* Emoticon_27.scn */,
+				054D94612BE4D99F00E4F415 /* Emoticon_27.mtl */,
+				054D94642BE4D9A100E4F415 /* Emoticon_27.obj */,
+				054D94632BE4D9A100E4F415 /* Emoticon_40.dae */,
+				054D94772BE4DA4400E4F415 /* Emoticon_40.scn */,
+				054D94662BE4D9A300E4F415 /* Emoticon_40.mtl */,
+				054D94622BE4D9A000E4F415 /* Emoticon_40.obj */,
 				052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */,
 				052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */,
 				052013072BE3B35600A2A1F5 /* Emoticon_56.scn */,
@@ -506,6 +542,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054D94712BE4D9F400E4F415 /* T_Diffuse_Emoticon 27.png in Resources */,
+				054D94722BE4D9F400E4F415 /* T_Roughness_Emoticon 40.png in Resources */,
+				054D94782BE4DA4400E4F415 /* Emoticon_40.scn in Resources */,
+				054D94732BE4D9F400E4F415 /* T_Roughness_Emoticon 27.png in Resources */,
+				054D94742BE4D9F400E4F415 /* T_Diffuse_Emoticon 40.png in Resources */,
+				054D94672BE4D9A300E4F415 /* Emoticon_27.mtl in Resources */,
+				054D94682BE4D9A300E4F415 /* Emoticon_40.obj in Resources */,
+				054D94692BE4D9A300E4F415 /* Emoticon_40.dae in Resources */,
+				054D946A2BE4D9A300E4F415 /* Emoticon_27.obj in Resources */,
+				054D946B2BE4D9A300E4F415 /* Emoticon_27.dae in Resources */,
+				054D946C2BE4D9A300E4F415 /* Emoticon_40.mtl in Resources */,
 				052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */,
 				052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */,
 				05B44C182BD2467100798934 /* APIKey.plist in Resources */,
@@ -516,6 +563,7 @@
 				05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */,
 				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
+				054D94762BE4DA3400E4F415 /* Emoticon_27.scn in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
 				05223DA22BDFABFE0066AD61 /* openAI.json in Resources */,
 			);

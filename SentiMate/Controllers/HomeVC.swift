@@ -25,7 +25,11 @@ class HomeVC: UIViewController {
     
     var sceneView: SCNView!
     
-    var floatingView: UIView!
+    var rotatePanGesture: UIPanGestureRecognizer!
+    var dragPanGesture: UIPanGestureRecognizer!
+    var longPressGesture: UILongPressGestureRecognizer!
+    var initialCameraTransform: SCNMatrix4?
+    var initialFieldOfView: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,7 @@ class HomeVC: UIViewController {
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         configureCellSize()
-        createNotificationContent ()
+        createNotificationContent()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
@@ -45,9 +49,6 @@ class HomeVC: UIViewController {
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername
         }
-        
-        setupFloatingSceneView()
-        configureGestureRecognizers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +56,13 @@ class HomeVC: UIViewController {
         firebaseManager.listenForUpdate()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupFloatingSceneView()
+        configureGestureRecognizers()
+        setupInitialCamera()
+    }
+       
     private func animateInitialLoad() {
         if initiallyAnimates {
             diaryCollectionView.reloadData()
@@ -92,42 +100,90 @@ class HomeVC: UIViewController {
     }
     
     func setupFloatingSceneView() {
-            // Initialize the draggable floating view
-            floatingView = DraggableFloatingView(frame: CGRect(x: 20, y: 100, width: 300, height: 300))
-        floatingView.backgroundColor = .red
-            
-            // Initialize and add SCNView
-            sceneView = SCNView(frame: CGRect(x: 10, y: 10, width: 150, height: 150))
-            sceneView.allowsCameraControl = true
-            sceneView.autoenablesDefaultLighting = true
-            sceneView.backgroundColor = .clear
-            floatingView.addSubview(sceneView)
-            
-            // Add floating view to the main view
-            view.addSubview(floatingView)
-            
-            // Load the 3D scene
-            if let scene = SCNScene(named: "Emoticon_56.scn") {
-                sceneView.scene = scene
-            } else {
-                print("Failed to load the scene")
-            }
+        let diary = DiaryManager.shared.diaries[0]
+        let sceneEmoji: String
+        switch diary.emotion {
+        case "Happy", "Surprise":
+            sceneEmoji = "Emoticon_27.scn"
+        case "Neutral":
+            sceneEmoji = "Emoticon_40.scn"
+        default:
+            sceneEmoji = "Emoticon_56.scn"
         }
         
-        func configureGestureRecognizers() {
-            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag(_:)))
-            floatingView.addGestureRecognizer(panGesture)
+        sceneView = SCNView(frame: CGRect(x: 10, y: 10, width: 150, height: 150))
+        sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.backgroundColor = .clear
+        view.addSubview(sceneView)
+        
+        // Load the 3D scene
+        if let scene = SCNScene(named: sceneEmoji) {
+            sceneView.scene = scene
+        } else {
+            print("Failed to load the scene")
+        }
+    }
+    
+    func configureGestureRecognizers() {
+        let dragPanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        dragPanRecognizer.delegate = self
+        dragPanRecognizer.minimumNumberOfTouches = 2
+        sceneView.addGestureRecognizer(dragPanRecognizer)
+        
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        sceneView.addGestureRecognizer(pinchGesture)
+        
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.delegate = self
+        sceneView.addGestureRecognizer(doubleTapGesture)
+    }
+    
+    @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
+        guard let sceneView = gesture.view as? SCNView else { return }
+        let scale = gesture.scale
+        sceneView.transform = sceneView.transform.scaledBy(x: scale, y: scale)
+        gesture.scale = 1.0
+    }
+    
+    @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        let translation = gestureRecognizer.translation(in: gestureRecognizer.view?.superview)
+        
+        if let view = gestureRecognizer.view {
+            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
         }
         
-        @objc func handleDrag(_ gesture: UIPanGestureRecognizer) {
-            let translation = gesture.translation(in: view)
-            if gesture.state == .changed {
-                gesture.view?.center.x += translation.x
-                gesture.view?.center.y += translation.y
-                gesture.setTranslation(.zero, in: view)
-            }
+        gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view?.superview)
+    }
+    
+    func setupInitialCamera() {
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 10)
+        cameraNode.rotation = SCNVector4(x: 0, y: 0, z: 0, w: 0)
+        
+        sceneView.scene?.rootNode.addChildNode(cameraNode)
+        sceneView.pointOfView = cameraNode
+        
+        initialCameraTransform = cameraNode.transform
+        initialFieldOfView = cameraNode.camera?.fieldOfView
+    }
+    
+    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        if let cameraNode = sceneView.pointOfView {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0.5
+            cameraNode.transform = initialCameraTransform ?? SCNMatrix4Identity
+            cameraNode.camera?.fieldOfView = initialFieldOfView ?? 60
+            SCNTransaction.commit()
         }
+    }
 }
+
+
+
+
 
 extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -229,25 +285,31 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeVC {
-    func createNotificationContent () {
-            let content = UNMutableNotificationContent()    // 建立內容透過指派content來取得UNMutableNotificationContent功能
-            content.title = "今天過得如何呢？"                 // 推播標題
-            content.subtitle = "不管有什麼樣的情緒"            // 推播副標題
-            content.body = "在休息之前，把今天好好的記錄下來吧！"        // 推播內文
-            content.badge = 1                               // app的icon右上角跳出的紅色數字數量 line 999的那個
-            content.sound = UNNotificationSound.defaultCritical     //推播的聲音
+    func createNotificationContent() {
+        let content = UNMutableNotificationContent()    // 建立內容透過指派content來取得UNMutableNotificationContent功能
+        content.title = "今天過得如何呢？"                 // 推播標題
+        content.subtitle = "不管有什麼樣的情緒"            // 推播副標題
+        content.body = "在休息之前，把今天好好的記錄下來吧！"        // 推播內文
+        content.badge = 1
+        content.sound = UNNotificationSound.defaultCritical     //推播的聲音
         
         var dateComponents = DateComponents()
-               dateComponents.hour = 17    // 21:00 hours
-               dateComponents.minute = 45   // 0 minutes
-
-            
+        dateComponents.hour = 17    // 21:00 hours
+        dateComponents.minute = 45   // 0 minutes
+        
+        
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)   //設定透過時間來完成推播，另有日期地點跟遠端推播
-            let uuidString = UUID().uuidString              //建立UNNotificationRequest所需要的ID
-            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //向UNUserNotificationCenter新增註冊這一則推播
-        }
+        let uuidString = UUID().uuidString              //建立UNNotificationRequest所需要的ID
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //向UNUserNotificationCenter新增註冊這一則推播
+    }
+}
+
+extension HomeVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
 
 extension DateFormatter {
