@@ -613,13 +613,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3tA-nb-o8O">
                                                     <rect key="frame" x="88" y="18.333333333333332" width="293" height="33.666666666666671"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
                                                             <rect key="frame" x="0.0" y="0.0" width="293" height="15.666666666666666"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
                                                             <rect key="frame" x="0.0" y="19.666666666666668" width="293" height="14.000000000000004"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -836,7 +836,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnj-SF-A6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1013" y="155"/>
+            <point key="canvasLocation" x="-1129" y="706"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="JVa-Wz-jcL">
+            <objects>
+                <viewController id="Pmd-c7-9Wl" customClass="TestDeleteVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nb6-1J-UxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jGT-1V-2ST"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="4vm-OK-K7e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0TH-Ew-IWq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-961" y="-73"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Et-kb-r1e">
@@ -857,6 +873,7 @@
                         <segue destination="TyX-Zf-6vm" kind="relationship" relationship="viewControllers" id="Tgw-Af-7JM"/>
                         <segue destination="bBC-r1-PBv" kind="relationship" relationship="viewControllers" id="cYJ-wY-fFC"/>
                         <segue destination="bWF-xh-8LC" kind="relationship" relationship="viewControllers" id="PRb-71-YBc"/>
+                        <segue destination="Pmd-c7-9Wl" kind="relationship" relationship="viewControllers" id="ju7-Bs-8a4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xm-Zl-jnZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
