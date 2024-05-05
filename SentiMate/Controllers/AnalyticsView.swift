@@ -24,10 +24,12 @@ struct DonutChartView: View {
             VStack {
                 HStack {
                     Text("心情圖")
-                        .font(.custom("jf-openhuninn-2.0", size: 36))
+                        .font(.custom("jf-openhuninn-2.0", size: 32))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color(textColor))
+                    Spacer()
+                                   .frame(height: 20)
                 }
                 Picker("Time Period", selection: $selectedTimePeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
@@ -37,7 +39,8 @@ struct DonutChartView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .background(Color.gray.opacity(0.7))
-                
+                Spacer()
+                               .frame(height: 20)
                 Chart(emotionTypes) { emotionType in
                     SectorMark(
                         angle: .value("Percentage", emotionType.percentage),
@@ -76,13 +79,15 @@ struct DonutChartView: View {
                     }
                 }
                 .frame(height: 300)
+                Spacer()
+                               .frame(height: 20)
                 if let selectedEmotionType {
                     Text("讓我感到\(selectedEmotionType.mandarinName)的是")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
                         .foregroundColor(Color(textColor))
                 }
-                
-                
+                Spacer()
+                               .frame(height: 20)
                 let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
                 
                 HStack(spacing: 20) {

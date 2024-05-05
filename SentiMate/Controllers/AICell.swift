@@ -40,7 +40,7 @@ class AICell: UITableViewCell {
                 titleLabel.font = customFontTitle
                 contentView.addSubview(titleLabel)
                 titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "情緒變化"
+        titleLabel.text = "AI諮商室"
         
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultBackgroundColor
@@ -63,22 +63,22 @@ class AICell: UITableViewCell {
         
         NSLayoutConstraint.activate([
                    titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-                   titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-                   titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
+                   titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+                   titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
                ])
         
         NSLayoutConstraint.activate([
 //            containerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            containerView.heightAnchor.constraint(equalToConstant: 340)
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            containerView.heightAnchor.constraint(equalToConstant: 380)
         ])
         
         NSLayoutConstraint.activate([
             AIResponseLbl.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             AIResponseLbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
             AIResponseLbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
-            AIResponseLbl.heightAnchor.constraint(equalToConstant: 300)
+            AIResponseLbl.heightAnchor.constraint(equalToConstant: 340)
         ])
         
         NSLayoutConstraint.activate([

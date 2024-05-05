@@ -22,9 +22,7 @@ class CategoryCell: UITableViewCell {
             }
         
         let attributedString = NSMutableAttributedString(string: "我想是因為 *")
-        // 從第1個字開始，5個字都設置為 defaultTextColor
         attributedString.addAttribute(.foregroundColor, value: defaultTextColor, range: NSMakeRange(0, 5))
-        // 從第7個字開始，後面7個字都設置為 midOrange
         attributedString.addAttribute(.foregroundColor, value: midOrange, range: NSMakeRange(6, 1))
         categoryLbl.attributedText = attributedString
         

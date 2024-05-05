@@ -95,8 +95,8 @@ extension AnalyticsVC: UITableViewDataSource {
                 paragraphStyle.alignment = .center
                 
                 let newAttributes = NSAttributedString(string: "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！",
-                                                    attributes: [NSAttributedString.Key.paragraphStyle:
-                                                                    paragraphStyle])
+                                                       attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                        paragraphStyle])
                 cell.AIResponseLbl.textAlignment = .center
                 cell.AIResponseLbl.attributedText = newAttributes
             }
@@ -118,10 +118,10 @@ extension AnalyticsVC: UITableViewDataSource {
                 newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
                 
                 NSLayoutConstraint.activate([
-                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.safeAreaLayoutGuide.topAnchor),
+                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
                     newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
                     newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
-                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.safeAreaLayoutGuide.bottomAnchor)
+                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
                 ])
                 
                 newHostingController.didMove(toParent: self)
@@ -139,21 +139,36 @@ extension AnalyticsVC: UITableViewDelegate {
         case 0:
             return view.bounds.height
         default:
-            return 560
+            return 600
         }
     }
 }
 
 extension AnalyticsVC: AICellDelegate {
     func aiButtonTapped(cell: AICell) {
+        guard !DiaryManager.shared.diaries.isEmpty else {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 8
+            paragraphStyle.alignment = .center
+            let attributes = NSAttributedString(string: "歡迎來到AI諮商室，先到新增頁面填寫情緒日記再回來吧!",
+                                                attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                paragraphStyle])
+            AlertView.instance.showAlert(
+                image: "icons8-exclamation-mark-96",
+                title: "哎呀!找不到日記",
+                message: attributes,
+                alertType: .empty)
+                return
+             }
+        
         if !isLoading {
-                isLoading = true
+            isLoading = true
             cell.callAIBtn.isEnabled = false
-                showLoadingAnimation()
+            showLoadingAnimation()
             analyzeEntry {
-                        cell.callAIBtn.isEnabled = true
-                    }
+                cell.callAIBtn.isEnabled = true
             }
+        }
     }
     
     func analyzeEntry(completion: @escaping () -> Void)  {
@@ -190,7 +205,7 @@ extension AnalyticsVC: AICellDelegate {
     private func showLoadingAnimation() {
         loadingAnimationView = .init(name: "openAI")
         loadingAnimationView?.frame = view.bounds
-        loadingAnimationView?.center.y += 15
+        loadingAnimationView?.center.y -= 10
         loadingAnimationView?.center.x -= 10
         loadingAnimationView?.contentMode = .scaleAspectFit
         loadingAnimationView?.loopMode = .loop

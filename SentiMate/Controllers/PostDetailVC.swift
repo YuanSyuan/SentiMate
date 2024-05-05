@@ -113,7 +113,7 @@ extension PostDetailVC: UITableViewDataSource {
                         DispatchQueue.main.async {
                             AlertView.instance.showAlert(
                                 image: lastDiary.emotion,
-                                title: "上一次感到\(mandarinEmotion)是因為\(buttonTitles[lastDiary.category])",
+                                title: "上次是因為「\(buttonTitles[lastDiary.category])」而\(mandarinEmotion)",
                                 message: attributes,
                                 alertType: .reminder)
                             
