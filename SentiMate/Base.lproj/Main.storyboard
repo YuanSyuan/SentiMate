@@ -403,7 +403,9 @@
                         <viewLayoutGuide key="safeArea" id="qdn-db-CHk"/>
                         <color key="backgroundColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="F3Z-Xb-Axc"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="F3Z-Xb-Axc">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="bWC-K0-5t0"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hB7-Km-7DU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

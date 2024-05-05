@@ -17,6 +17,8 @@ class PostEntryVC: UIViewController {
         let attributedText = createAttributedText()
             typingAnimation(for: attributedText, in: typingLbl, typingSpeed: 0.2)
         startBtn.addTouchAnimation()
+        
+        self.navigationItem.backButtonTitle = "返回"
     }
     
     func createAttributedText() -> NSAttributedString {
