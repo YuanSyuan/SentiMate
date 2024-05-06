@@ -156,13 +156,25 @@ extension SettingVC {
     // MARK: - Firebase 取得登入使用者的資訊
     func getFirebaseUserInfo() {
         let currentUser = Auth.auth().currentUser
-        guard let user = currentUser else {
+        if let user = currentUser {
+            self.dismiss(animated: true, completion: nil)
+        } else {
             CustomFunc.customAlert(title: "無法取得使用者資料！", message: "", vc: self, actionHandler: nil)
             return
         }
-        let uid = user.uid
-        let email = user.email
-        CustomFunc.customAlert(title: "使用者資訊", message: "UID：\(uid)\nEmail：\(email!)", vc: self, actionHandler: nil)
+        
+        //        guard let user = currentUser else {
+        //            CustomFunc.customAlert(title: "無法取得使用者資料！", message: "", vc: self, actionHandler: nil)
+        //            return
+        //        }
+        //        self.dismiss(animated: true, completion: nil)
+        g
+//        let uid = user.uid
+//        let email = user.email
+//        let action: (() -> Void)? = {
+//            self.dismiss(animated: true, completion: nil)
+//            }
+//        CustomFunc.customAlert(title: "使用者資訊", message: "UID：\(uid)\nEmail：\(email!)", vc: self, actionHandler: action)
     }
     
     // MARK: - 監聽目前的 Apple ID 的登入狀況
