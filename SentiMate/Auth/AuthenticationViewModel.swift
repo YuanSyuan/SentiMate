@@ -72,7 +72,7 @@ class AuthenticationViewModel: ObservableObject {
       authStateHandler = Auth.auth().addStateDidChangeListener { auth, user in
         self.user = user
         self.authenticationState = user == nil ? .unauthenticated : .authenticated
-        self.displayName = user?.displayName ?? user?.email ?? ""
+        self.displayName = user?.displayName ?? user?.email ?? "尚未登入"
       }
     }
   }
@@ -132,6 +132,20 @@ extension AuthenticationViewModel {
       return false
     }
   }
+    
+    // for signout tapped by user
+    func signOutTapped() async -> Bool {
+        do {
+            try Auth.auth().signOut()
+            // Assuming DiaryManager.shared.diaries being reset is not throwing an error
+            DiaryManager.shared.diaries = []
+            return true
+        } catch {
+            print("Error signing out: \(error.localizedDescription)")
+            // Optionally handle the error more explicitly here
+            return false
+        }
+    }
 
   func signOut() {
     do {

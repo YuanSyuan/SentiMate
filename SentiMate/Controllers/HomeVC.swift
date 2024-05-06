@@ -141,17 +141,17 @@ class HomeVC: UIViewController {
             print("Failed to load the scene")
         }
     }
-    
-    func sceneEmoji(for emotion: String) -> String {
-        switch emotion {
-        case "Happy", "Surprise":
-            return "Emoticon_27.scn"
-        case "Neutral":
-            return "Emoticon_40.scn"
-        default:
-            return "Emoticon_56.scn"
-        }
-    }
+//    
+//    func sceneEmoji(for emotion: String) -> String {
+//        switch emotion {
+//        case "Happy", "Surprise":
+//            return "Emoticon_27.scn"
+//        case "Neutral":
+//            return "Emoticon_40.scn"
+//        default:
+//            return "Emoticon_56.scn"
+//        }
+//    }
     
     func configureGestureRecognizers() {
         let dragPanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))

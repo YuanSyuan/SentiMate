@@ -827,7 +827,7 @@
             </objects>
             <point key="canvasLocation" x="-1129" y="706"/>
         </scene>
-        <!--Item-->
+        <!--設定-->
         <scene sceneID="JVa-Wz-jcL">
             <objects>
                 <viewController id="Pmd-c7-9Wl" customClass="TestDeleteVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
@@ -837,7 +837,7 @@
                         <viewLayoutGuide key="safeArea" id="jGT-1V-2ST"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="4vm-OK-K7e"/>
+                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="4vm-OK-K7e"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0TH-Ew-IWq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -861,7 +861,6 @@
                         <segue destination="rlI-CG-0uM" kind="relationship" relationship="viewControllers" id="fyi-4K-3Ua"/>
                         <segue destination="TyX-Zf-6vm" kind="relationship" relationship="viewControllers" id="Tgw-Af-7JM"/>
                         <segue destination="bBC-r1-PBv" kind="relationship" relationship="viewControllers" id="cYJ-wY-fFC"/>
-                        <segue destination="bWF-xh-8LC" kind="relationship" relationship="viewControllers" id="PRb-71-YBc"/>
                         <segue destination="Pmd-c7-9Wl" kind="relationship" relationship="viewControllers" id="ju7-Bs-8a4"/>
                     </connections>
                 </tabBarController>

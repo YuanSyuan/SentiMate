@@ -18,77 +18,158 @@
 // limitations under the License.
 
 import SwiftUI
+import SceneKit
 //import FirebaseAnalyticsSwift
 
 struct UserProfileView: View {
-  @EnvironmentObject var viewModel: AuthenticationViewModel
-  @Environment(\.dismiss) var dismiss
-  @State var presentingConfirmationDialog = false
-
-  private func deleteAccount() {
-    Task {
-      if await viewModel.deleteAccount() == true {
-        dismiss()
-      }
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @Environment(\.dismiss) var dismiss
+    @State var presentingConfirmationDialog = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
+    let textColor = defaultTextColor
+    let backgroundColor = defaultBackgroundColor
+    
+    private func deleteAccount() {
+        Task {
+                if await viewModel.deleteAccount() {
+                    alertMessage = "刪除成功"
+                    showAlert = true
+                } else {
+                    alertMessage = "刪除失敗"
+                    showAlert = true
+                }
+            }
     }
-  }
-
-  private func signOut() {
-    viewModel.signOut()
-  }
-
-  var body: some View {
-    Form {
-      Section {
-        VStack {
-          HStack {
-            Spacer()
-            Image(systemName: "person.fill")
-              .resizable()
-              .frame(width: 100 , height: 100)
-              .aspectRatio(contentMode: .fit)
-              .clipShape(Circle())
-              .clipped()
-              .padding(4)
-              .overlay(Circle().stroke(Color.accentColor, lineWidth: 2))
-            Spacer()
-          }
-          Button(action: {}) {
-            Text("edit")
-          }
-        }
-      }
-      .listRowBackground(Color(UIColor.systemGroupedBackground))
-      Section("Email") {
-        Text(viewModel.displayName)
-      }
-      Section {
-        Button(role: .cancel, action: signOut) {
-          HStack {
-            Spacer()
-            Text("Sign out")
-            Spacer()
-          }
-        }
-      }
-      Section {
-        Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
-          HStack {
-            Spacer()
-            Text("Delete Account")
-            Spacer()
-          }
-        }
-      }
+    
+    private func signOut() {
+        Task {
+                let signedOut = await viewModel.signOutTapped()
+                if signedOut {
+                    alertMessage = "登出成功"
+                    showAlert = true
+                } else {
+                    alertMessage = "登出失敗"
+                    showAlert = true
+                }
+            }
     }
-    .navigationTitle("Profile")
-    .navigationBarTitleDisplayMode(.inline)
-//    .analyticsScreen(name: "\(Self.self)")
-    .confirmationDialog("Deleting your account is permanent. Do you want to delete your account?",
-                        isPresented: $presentingConfirmationDialog, titleVisibility: .visible) {
-      Button("Delete Account", role: .destructive, action: deleteAccount)
-      Button("Cancel", role: .cancel, action: { })
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    VStack {
+                        Spacer()
+                        Text("設定")
+                            .font(.custom("jf-openhuninn-2.0", size: 32))
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(Color(backgroundColor))
+                        HStack {
+                            Spacer()
+                            SceneKitView()
+                                .frame(width: 200 , height: 200)
+                                .clipShape(Circle())
+                                .clipped()
+                                .padding(4)
+                            Spacer()
+                        }
+                    }
+                }
+                .listRowBackground(Color(UIColor.systemGroupedBackground))
+                Section(header: Text("目前登入的信箱")
+                    .font(.custom("jf-openhuninn-2.0", size: 12))) {
+                        Text(viewModel.displayName)
+                            .foregroundColor(Color(backgroundColor))
+                    }
+                NavigationLink {
+                    Form {
+                        Section {
+                            Button(role: .cancel, action: signOut) {
+                                HStack {
+                                    Spacer()
+                                    Text("登出")
+                                        .foregroundColor(Color(backgroundColor))
+                                    Spacer()
+                                }
+                            }
+                        }
+                        Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
+                            HStack {
+                                Spacer()
+                                Text("刪除帳號")
+                                    .foregroundColor(Color(backgroundColor))
+                                Spacer()
+                            }
+                        }
+                    }
+                } label: {
+                    Text("帳號管理")
+                        .foregroundColor(Color(backgroundColor))
+                }
+            }
+            .alert(isPresented: $showAlert) {
+                        Alert(title: Text("通知"), message: Text(alertMessage), dismissButton: .default(Text("確認")))
+                    }
+            .navigationTitle("")
+            .foregroundColor(Color(backgroundColor))
+            .confirmationDialog("刪除帳號將會永久性的清除所有資料。您確定要刪除您的帳戶嗎？",
+                                isPresented: $presentingConfirmationDialog, titleVisibility: .visible) {
+                Button("確定刪除", role: .destructive, action: deleteAccount)
+                Button("取消", role: .cancel, action: { })
+            }
+        }
+        .customFont(fontName: "jf-openhuninn-2.0", size: 18)
     }
-  }
 }
 
+struct CustomFontModifier: ViewModifier {
+    var fontName: String
+    var size: CGFloat
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(fontName, size: size))
+    }
+}
+
+extension View {
+    func customFont(fontName: String, size: CGFloat) -> some View {
+        self.modifier(CustomFontModifier(fontName: fontName, size: size))
+    }
+}
+
+struct SceneKitView: UIViewRepresentable {
+    let sceneEmoji: String
+    
+    init() {
+            // Assuming DiaryManager is accessible and contains diaries
+            guard let diary = DiaryManager.shared.diaries.first else {
+                sceneEmoji = ""
+                return
+            }
+
+            switch diary.emotion {
+                case "Happy", "Surprise":
+                    sceneEmoji = "Emoticon_27.scn"
+                case "Neutral":
+                    sceneEmoji = "Emoticon_40.scn"
+                default:
+                    sceneEmoji = "Emoticon_56.scn"
+            }
+        }
+    
+    func makeUIView(context: Context) -> SCNView {
+        let sceneView = SCNView()
+        sceneView.scene = SCNScene(named: sceneEmoji)  // Specify your .scn file here
+        sceneView.autoenablesDefaultLighting = true  // Adds default lighting
+        sceneView.allowsCameraControl = true  // Allows user to manipulate the camera
+        return sceneView
+    }
+
+    func updateUIView(_ uiView: SCNView, context: Context) {
+        // Update the view during SwiftUI state updates.
+    }
+}
