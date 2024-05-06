@@ -16,6 +16,22 @@ class SettingVC: UIViewController {
         setSignInWithAppleBtn()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.view.layer.cornerRadius = 10
+        self.view.backgroundColor = defaultTextColor
+        
+        if let parentView = self.presentingViewController?.view {
+            self.view.frame = CGRect(
+                x: 0,
+                y: parentView.frame.height * (3/4),
+                width: parentView.frame.width,
+                height: parentView.frame.height / 4
+            )
+        }
+    }
+    
     // MARK: - 在畫面上產生 Sign in with Apple 按鈕
     func setSignInWithAppleBtn() {
         let signInWithAppleBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: chooseAppleButtonStyle())
@@ -26,7 +42,7 @@ class SettingVC: UIViewController {
         signInWithAppleBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         signInWithAppleBtn.widthAnchor.constraint(equalToConstant: 280).isActive = true
         signInWithAppleBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        signInWithAppleBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        signInWithAppleBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     func chooseAppleButtonStyle() -> ASAuthorizationAppleIDButton.Style {
