@@ -154,7 +154,7 @@ extension AnalyticsVC: AICellDelegate {
                                                 attributes: [NSAttributedString.Key.paragraphStyle:
                                                                 paragraphStyle])
             AlertView.instance.showAlert(
-                image: "icons8-exclamation-mark-96",
+                image: "exclamation-mark",
                 title: "哎呀!找不到日記",
                 message: attributes,
                 alertType: .empty)

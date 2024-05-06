@@ -364,7 +364,7 @@
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="JQ2-kv-bCZ" kind="show" id="hEO-KL-QQH"/>
+                                    <action selector="startBtnTapped:" destination="kj1-Sm-nA4" eventType="touchUpInside" id="1NR-b8-wJY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -396,7 +396,7 @@
         <!--PostVC-->
         <scene sceneID="oN2-PA-qTb">
             <objects>
-                <viewController id="JQ2-kv-bCZ" customClass="PostVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="post" id="JQ2-kv-bCZ" customClass="PostVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LHr-RC-63s">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -468,13 +468,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我現在覺得..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ4-Fb-Yg6">
-                                                    <rect key="frame" x="16" y="15.999999999999996" width="377" height="57.666666666666657"/>
+                                                    <rect key="frame" x="16" y="15.999999999999996" width="377" height="58.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="20"/>
                                                     <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="沮喪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-0o-I0b">
-                                                    <rect key="frame" x="16" y="77.666666666666671" width="377" height="32.333333333333329"/>
+                                                    <rect key="frame" x="16" y="78.666666666666671" width="377" height="31.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="32"/>
                                                     <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -827,7 +827,7 @@
         <!--設定-->
         <scene sceneID="Dym-TI-ece">
             <objects>
-                <viewController id="bWF-xh-8LC" customClass="SettingVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="bWF-xh-8LC" customClass="SettingVC" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6w7-mN-O8s">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

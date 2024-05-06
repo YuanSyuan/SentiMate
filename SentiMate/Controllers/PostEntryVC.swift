@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PostEntryVC: UIViewController {
     
@@ -61,5 +62,18 @@ class PostEntryVC: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func startBtnTapped(_ sender: UIButton) {
+        if Auth.auth().currentUser?.uid == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let presentVC = storyboard.instantiateViewController(withIdentifier: "login") as? SettingVC {
+                self.navigationController?.present(presentVC, animated: true)
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let pushVC = storyboard.instantiateViewController(withIdentifier: "post") as? PostVC {
+                self.navigationController?.pushViewController(pushVC, animated: true)
+            }
+        }
+    }
 }
