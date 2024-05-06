@@ -168,7 +168,7 @@ extension SettingVC {
         //            return
         //        }
         //        self.dismiss(animated: true, completion: nil)
-        g
+        
 //        let uid = user.uid
 //        let email = user.email
 //        let action: (() -> Void)? = {

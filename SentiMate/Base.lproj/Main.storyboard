@@ -436,28 +436,15 @@
                                                     <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="HM8-OV-Ncq">
-                                                    <rect key="frame" x="218" y="19.333333333333332" width="159" height="34.333333333333343"/>
-                                                    <color key="backgroundColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                                        <!--1970-01-01 11:00:00 +0000-->
-                                                    </date>
-                                                    <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                                        <!--2037-12-31 11:00:00 +0000-->
-                                                    </date>
-                                                </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="HM8-OV-Ncq" firstAttribute="leading" secondItem="abz-dJ-VAn" secondAttribute="trailing" constant="142" id="DuX-c3-gJm"/>
-                                                <constraint firstAttribute="trailing" secondItem="HM8-OV-Ncq" secondAttribute="trailing" constant="16" id="LD3-6H-WsK"/>
                                                 <constraint firstItem="abz-dJ-VAn" firstAttribute="centerY" secondItem="Kc9-12-gza" secondAttribute="centerY" id="OaJ-Ov-bOc"/>
-                                                <constraint firstItem="HM8-OV-Ncq" firstAttribute="centerY" secondItem="Kc9-12-gza" secondAttribute="centerY" id="Vc5-Lm-BlG"/>
                                                 <constraint firstItem="abz-dJ-VAn" firstAttribute="leading" secondItem="Kc9-12-gza" secondAttribute="leading" constant="16" id="wnE-e6-hiM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="datePicker" destination="HM8-OV-Ncq" id="mxw-BR-EWk"/>
+                                            <outlet property="todayLbl" destination="abz-dJ-VAn" id="yKA-vN-JVV"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emotion" rowHeight="126" id="YI7-Ov-IwF" customClass="EmotionCell" customModule="SentiMate" customModuleProvider="target">
@@ -467,16 +454,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我現在覺得..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ4-Fb-Yg6">
-                                                    <rect key="frame" x="16" y="15.999999999999996" width="377" height="58.666666666666657"/>
-                                                    <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="20"/>
-                                                    <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="沮喪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-0o-I0b">
                                                     <rect key="frame" x="16" y="78.666666666666671" width="377" height="31.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="32"/>
                                                     <color key="textColor" red="0.96470588239999999" green="0.69411764710000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="我現在覺得..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ4-Fb-Yg6">
+                                                    <rect key="frame" x="16" y="12" width="377" height="58.666666666666657"/>
+                                                    <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="20"/>
+                                                    <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
