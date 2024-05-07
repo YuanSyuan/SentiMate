@@ -21,7 +21,6 @@ struct PageView: View {
                 .font(.custom("jf-openhuninn-2.0", size: 16))
                 .frame(width: 300)
                 .multilineTextAlignment(.center)
-            //                .padding()
                 .foregroundColor(Color(defaultTextColor))
             if let imageUrl = page.imageUrl, !imageUrl.isEmpty {
                 Image(imageUrl)
@@ -29,11 +28,7 @@ struct PageView: View {
                     .scaledToFit()
                     .frame(width: 300, height: 200)
                     .padding()
-                //                                .cornerRadius(30)
-                //                                .background(Color.gray.opacity(0.10))
-                //                                .cornerRadius(10)
             }
-            
         }
     }
 }

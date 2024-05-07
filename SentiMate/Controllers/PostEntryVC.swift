@@ -15,6 +15,7 @@ class PostEntryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let attributedText = createAttributedText()
             typingAnimation(for: attributedText, in: typingLbl, typingSpeed: 0.2)
         startBtn.addTouchAnimation()
@@ -28,22 +29,18 @@ class PostEntryVC: UIViewController {
         
         let attributedString = NSMutableAttributedString(string: fullText)
         
-        // Create a paragraph style
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 12 // Adjust line spacing as needed
+        paragraphStyle.lineSpacing = 12
         paragraphStyle.alignment = .center
-        
-        // Apply the paragraph style to the whole text
+      
         attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
         
-        // Change the color of the special text
         let specialTextRange = (fullText as NSString).range(of: specialText)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.orange, range: specialTextRange) // Ensure UIColor.orange or your custom color
+        attributedString.addAttribute(.foregroundColor, value: UIColor.orange, range: specialTextRange)
         
         return attributedString
     }
 
-    
     func typingAnimation(for attributedText: NSAttributedString, in label: UILabel, typingSpeed: TimeInterval) {
         label.attributedText = NSAttributedString(string: "")
 

@@ -10,21 +10,24 @@ import UIKit
 class DateCell: UITableViewCell {
     
     @IBOutlet weak var todayLbl: UILabel!
+    
     let datePicker = UIDatePicker()
     var onDateChanged: ((Date) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        contentView.addSubview(datePicker)
         
-        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
-       
         datePicker.datePickerMode = .date
         datePicker.layer.backgroundColor = defaultTextColor.cgColor
         datePicker.layer.cornerRadius = 8
         datePicker.sizeToFit()
-        datePicker.frame = .init(x: 0, y: 0, width: datePicker.bounds.size.width, height: datePicker.bounds.size.height)
+        datePicker.frame = .init(x: 0, y: 0, 
+                                 width: datePicker.bounds.size.width,
+                                 height: datePicker.bounds.size.height)
+        
+        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        
+        contentView.addSubview(datePicker)
         
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         
@@ -47,6 +50,5 @@ class DateCell: UITableViewCell {
     func setDate(_ date: Date) {
         self.datePicker.date = date
     }
-    
 }
 

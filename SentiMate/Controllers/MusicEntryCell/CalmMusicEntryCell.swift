@@ -13,7 +13,6 @@ class CalmMusicEntryCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var playlistImg: UIImageView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,8 +25,5 @@ class CalmMusicEntryCell: UICollectionViewCell {
        
         playlistImg.layer.shouldRasterize = true
         playlistImg.layer.rasterizationScale = UIScreen.main.scale
-//        playlistImg.layer.borderWidth = 2
-//        playlistImg.layer.borderColor = defaultTextColor.cgColor
-
     }
 }

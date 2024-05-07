@@ -871,7 +871,7 @@
         <!--首頁-->
         <scene sceneID="kEH-rC-vme">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3zS-TJ-5An" customClass="MyCustomNavigationController" customModule="SentiMate" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3zS-TJ-5An" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首頁" image="house" catalog="system" selectedImage="house.fill" id="Gjq-Dy-aUZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RAR-uw-lbS">

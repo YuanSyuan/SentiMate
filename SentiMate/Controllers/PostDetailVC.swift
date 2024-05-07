@@ -20,7 +20,6 @@ class PostDetailVC: UIViewController {
     var userInput: String?
     let dateFormatter = DateFormatter()
     let musicManager = MusicManager()
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +68,8 @@ extension PostDetailVC: UITableViewDataSource {
                 self?.selectedCategoryIndex = index
                 
                 if let textFieldCell = tableView.cellForRow(at: IndexPath(row: 3, section: indexPath.section)) as? TextFieldCell {
-                                textFieldCell.saveBtn.isEnabled = true
-                            }
+                    textFieldCell.saveBtn.isEnabled = true
+                }
             }
             
             cell.setCategoryIndex(selectedCategoryIndex)
@@ -95,12 +94,11 @@ extension PostDetailVC: UITableViewDataSource {
                 ]
                 
                 if let docID = self?.documentID {
-                        newEntry["documentID"] = docID
-                    }
-
+                    newEntry["documentID"] = docID
+                }
+                
                 
                 if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
-                        // Show an alert with the last diary's details
                     guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
                     let paragraphStyle = NSMutableParagraphStyle()
                     paragraphStyle.lineSpacing = 8
@@ -110,20 +108,20 @@ extension PostDetailVC: UITableViewDataSource {
                                                         attributes: [NSAttributedString.Key.paragraphStyle:
                                                                         paragraphStyle])
                     
-                        DispatchQueue.main.async {
-                            AlertView.instance.showAlert(
-                                image: lastDiary.emotion,
-                                title: "上次是因為「\(buttonTitles[lastDiary.category])」而\(mandarinEmotion)",
-                                message: attributes,
-                                alertType: .reminder)
-                            
-                                self?.saveDiaryEntry(newEntry: newEntry)
-                        }
-                    } else {
-                        // If no previous entry, save directly
+                    DispatchQueue.main.async {
+                        AlertView.instance.showAlert(
+                            image: lastDiary.emotion,
+                            title: "上次是因為「\(buttonTitles[lastDiary.category])」而\(mandarinEmotion)",
+                            message: attributes,
+                            alertType: .reminder)
+                        
                         self?.saveDiaryEntry(newEntry: newEntry)
                     }
+                } else {
+                    // If no previous entry, save directly
+                    self?.saveDiaryEntry(newEntry: newEntry)
                 }
+            }
             return cell
         }
     }
@@ -132,18 +130,16 @@ extension PostDetailVC: UITableViewDataSource {
 extension PostDetailVC {
     func saveDiaryEntry(newEntry: [String: Any]) {
         if let documentID = newEntry["documentID"] as? String {
-            // Update existing entry
             FirebaseManager.shared.updateData(to: "diaries", documentID: documentID , data: newEntry) { result in
                 self.handleSaveResult(result)
             }
         } else {
-            // Save new entry
             FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
                 self.handleSaveResult(result)
             }
         }
     }
-
+    
     private func handleSaveResult(_ result: Result<Void, Error>) {
         switch result {
         case .success():
@@ -169,19 +165,18 @@ extension PostDetailVC: UITableViewDelegate {
             return 291
         }
     }
-    
 }
 
 extension PostDetailVC {
     func textForEmotion(_ emotion: String) -> String {
-            switch emotion {
-            case "Surprise": return "驚喜"
-            case "Happy": return "開心"
-            case "Neutral": return "普通"
-            case "Fear": return "緊張"
-            case "Sad": return "難過"
-            case "Angry": return "生氣"
-            default: return "厭惡"
-            }
+        switch emotion {
+        case "Surprise": return "驚喜"
+        case "Happy": return "開心"
+        case "Neutral": return "普通"
+        case "Fear": return "緊張"
+        case "Sad": return "難過"
+        case "Angry": return "生氣"
+        default: return "厭惡"
         }
+    }
 }

@@ -15,7 +15,6 @@ class HomeDiaryCell: UICollectionViewCell {
     @IBOutlet weak var categoryLbl: UILabel!
     @IBOutlet weak var emotionLbl: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -23,11 +22,10 @@ class HomeDiaryCell: UICollectionViewCell {
         
         containerView.clipsToBounds = false
         containerView.layer.shadowColor = UIColor.black.cgColor
-            containerView.layer.shadowOpacity = 0.7 // Adjust the opacity as needed
-            containerView.layer.shadowRadius = 5 // Adjust the blur radius as needed
-            containerView.layer.shadowOffset = CGSize(width: 2, height: 2) // Adjust the offset as needed
+            containerView.layer.shadowOpacity = 0.7
+            containerView.layer.shadowRadius = 5
+            containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
             
-            // Optimize performance by rasterizing the layer
             containerView.layer.shouldRasterize = true
             containerView.layer.rasterizationScale = UIScreen.main.scale
     }

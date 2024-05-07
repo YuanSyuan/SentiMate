@@ -117,11 +117,6 @@ class HomeVC: UIViewController {
     }
     
     func setupFloatingSceneView(for emotion: String) {
-//        guard let diary = DiaryManager.shared.diaries.first else {
-//                print("No diaries available.")
-//                return
-//            }
-        
         let sceneEmoji: String
             switch emotion {
             case "Happy", "Surprise":
@@ -132,8 +127,6 @@ class HomeVC: UIViewController {
                 sceneEmoji = "Emoticon_56.scn"
             }
         
-        
-        
         // Load the 3D scene
         if let scene = SCNScene(named: sceneEmoji) {
             sceneView.scene = scene
@@ -141,17 +134,6 @@ class HomeVC: UIViewController {
             print("Failed to load the scene")
         }
     }
-//    
-//    func sceneEmoji(for emotion: String) -> String {
-//        switch emotion {
-//        case "Happy", "Surprise":
-//            return "Emoticon_27.scn"
-//        case "Neutral":
-//            return "Emoticon_40.scn"
-//        default:
-//            return "Emoticon_56.scn"
-//        }
-//    }
     
     func configureGestureRecognizers() {
         let dragPanRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
@@ -246,7 +228,6 @@ extension HomeVC: UICollectionViewDataSource {
         return cell
     }
 }
-
 
 extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

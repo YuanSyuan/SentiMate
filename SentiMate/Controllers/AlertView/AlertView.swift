@@ -53,12 +53,9 @@ class AlertView: UIView {
         self.img.image = UIImage(named: image)
         
         switch alertType {
-            // create 7 emotion cases
         case .reminder:
-//            img.image = UIImage(named: "Success")
             doneBtn.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.1960784314, blue: 0.3137254902, alpha: 1)
         case .empty:
-//            img.image = UIImage(named: "Failure")
             doneBtn.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         }
         

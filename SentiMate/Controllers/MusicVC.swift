@@ -14,13 +14,8 @@ import ViewAnimator
 class MusicVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var topTitle: UILabel!
-    
-    let musicManager = MusicManager()
-    var songs: [StoreItem] = []
-    var calmSongs: [SoftMusic] = []
     
     @IBOutlet weak var albumImg: UIImageView!
     @IBOutlet weak var songLbl: UILabel!
@@ -35,6 +30,9 @@ class MusicVC: UIViewController {
     @IBOutlet weak var remainTimeLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     
+    let musicManager = MusicManager()
+    var songs: [StoreItem] = []
+    var calmSongs: [SoftMusic] = []
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
     var songIndex = 0
@@ -108,7 +106,6 @@ class MusicVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         player?.pause()
-//        calmSongs = []
     }
     
     @IBAction func handleBack(_ sender: Any) {
@@ -185,7 +182,6 @@ class MusicVC: UIViewController {
                 songIndex -= 1
                 playSong(index: songIndex)
                 playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-                
             }
         } else {
             if songIndex == 0 {
@@ -227,7 +223,6 @@ class MusicVC: UIViewController {
     }
     
     func checkMusicIsEnd() {
-        // 偵測是否播放到最後
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { (_) in
             self.playNextMusic()
         }
@@ -288,7 +283,6 @@ extension MusicVC: UITableViewDataSource {
 }
 
 extension MusicVC: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
     }
@@ -304,17 +298,14 @@ extension MusicVC: UITableViewDelegate {
         if songs != [] {
             let song = songs[indexPath.row]
             let previewUrl = song.previewUrl
-            
             self.songIndex = indexPath.row
             player = AVPlayer(url: previewUrl)
             songLbl.text = song.trackName
             singerLbl.text = song.artistName
             albumImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
-            
         } else {
             let song = calmSongs[indexPath.row]
             guard let url = URL(string: song.url) else { return }
-            
             self.songIndex = indexPath.row
             player = AVPlayer(url: url)
             songLbl.text = song.name

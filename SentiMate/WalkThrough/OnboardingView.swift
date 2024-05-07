@@ -10,9 +10,9 @@ import SwiftUI
 struct OnboardingView: View {
     @EnvironmentObject var appManager: AppManager
     @ObservedObject private var keyboard = KeyboardResponder()
-    
     @State private var pageIndex = 0
     @State private var username: String = ""
+    
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
     
@@ -40,11 +40,11 @@ struct OnboardingView: View {
                     Spacer()
                 }
                 .tag(page.tag)
-                .padding(.bottom, keyboard.currentHeight)  // Adjust padding based on keyboard height
-                .animation(.easeOut, value: 0.16)// Smooth transition
-                        .onTapGesture {
-                            self.hideKeyboard()  // Dismiss the keyboard when tapping outside the TextField
-                        }
+                .padding(.bottom, keyboard.currentHeight)
+                .animation(.easeOut, value: 0.16)
+                .onTapGesture {
+                    self.hideKeyboard()
+                }
             }
         }
         .animation(.easeInOut, value: pageIndex)// 2
@@ -63,7 +63,7 @@ struct OnboardingView: View {
     }
     
     private func hideKeyboard() {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        }
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
 

@@ -16,12 +16,12 @@ class AnalyticsVC: UIViewController {
     var firebaseManager = FirebaseManager.shared
     private var tableView: UITableView!
     private var hostingController: UIHostingController<DonutChartView>?
-    private var latestDiaries: [Diary] {
-        Array(DiaryManager.shared.diaries.prefix(7))
-    }
     var AIResponse: String?
     var isLoading = false
     private var loadingAnimationView: LottieAnimationView?
+    private var latestDiaries: [Diary] {
+        Array(DiaryManager.shared.diaries.prefix(7))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +60,7 @@ class AnalyticsVC: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
 }
-
 
 extension AnalyticsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,7 +98,6 @@ extension AnalyticsVC: UITableViewDataSource {
                 cell.AIResponseLbl.textAlignment = .center
                 cell.AIResponseLbl.attributedText = newAttributes
             }
-            
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as? ChartCell else {
@@ -202,6 +199,7 @@ extension AnalyticsVC: AICellDelegate {
         }
     }
     
+    // Configure animation
     private func showLoadingAnimation() {
         loadingAnimationView = .init(name: "openAI")
         loadingAnimationView?.frame = view.bounds

@@ -27,30 +27,15 @@ struct Page: Identifiable, Equatable {
     ]
 }
 
-
-//extension Page {
-//    func styledDescription() -> AttributedString {
-//        var attributedString = try? AttributedString(markdown: self.description)
-//        if let range = attributedString?.range(of: "SentiMate") {
-//            attributedString?[range].foregroundColor = midOrange
-//        }
-//        return attributedString ?? AttributedString(self.description)
-//    }
-//}
-
 extension Page {
     func styledDescription() -> AttributedString {
-        // Split the description into lines based on the newline character
         let lines = self.description.split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
-        
-        // Initialize an empty AttributedString
+    
         var finalAttributedString = AttributedString()
         
-        // Loop through each line, convert it to AttributedString, and append it
         for line in lines {
             var attributedLine = AttributedString(line)
             
-            // Check and style "SentiMate"
             if let range = attributedLine.range(of: "SentiMate") {
                 attributedLine[range].foregroundColor = midOrange
             }
@@ -70,10 +55,9 @@ extension Page {
             if let range = attributedLine.range(of: "OpenAI") {
                 attributedLine[range].foregroundColor = midOrange
             }
-            // Append the line to the final AttributedString
+
             finalAttributedString.append(attributedLine)
             
-            // Append a newline character unless it's the last line
             if line != lines.last {
                 finalAttributedString.append(AttributedString("\n"))
             }

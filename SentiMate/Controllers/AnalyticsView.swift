@@ -15,7 +15,6 @@ struct DonutChartView: View {
     @State private var topCategories: [CategoryData] = []
     @State private var selectedTimePeriod: TimePeriod = .allTime
     
-    
     var body: some View {
         let textColor = defaultTextColor
         let backgroundColor = defaultBackgroundColor
@@ -29,7 +28,7 @@ struct DonutChartView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color(textColor))
                     Spacer()
-                                   .frame(height: 20)
+                        .frame(height: 20)
                 }
                 Picker("Time Period", selection: $selectedTimePeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
@@ -40,7 +39,7 @@ struct DonutChartView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .background(Color.gray.opacity(0.7))
                 Spacer()
-                               .frame(height: 20)
+                    .frame(height: 20)
                 Chart(emotionTypes) { emotionType in
                     SectorMark(
                         angle: .value("Percentage", emotionType.percentage),
@@ -80,14 +79,14 @@ struct DonutChartView: View {
                 }
                 .frame(height: 300)
                 Spacer()
-                               .frame(height: 20)
+                    .frame(height: 20)
                 if let selectedEmotionType {
                     Text("讓我感到\(selectedEmotionType.mandarinName)的是")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
                         .foregroundColor(Color(textColor))
                 }
                 Spacer()
-                               .frame(height: 20)
+                    .frame(height: 20)
                 let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
                 
                 HStack(spacing: 20) {
@@ -98,19 +97,19 @@ struct DonutChartView: View {
                 
                 Spacer()
             }
-            .onChange(of: selectedTimePeriod) { newPeriod in
+            .onChange(of: selectedTimePeriod) { _, newPeriod in
                 withAnimation(.easeInOut(duration: 0.5)) {
                     emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: newPeriod)
                 }
             }
-            .onChange(of: selectedCount) { oldValue, newValue in
+            .onChange(of: selectedCount) { _, newValue in
                 if let newValue {
                     withAnimation(.spring()) {
                         getSelectedEmotionType(value: newValue)
                     }
                 }
             }
-            .onChange(of: selectedEmotionType) { oldValue, newValue in
+            .onChange(of: selectedEmotionType) { _, newValue in
                 if let emotionType = newValue {
                     topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
                 }
@@ -139,11 +138,11 @@ struct CategoryCircleView: View {
     var categoryData: CategoryData
     var maxCount: Int
     @State private var scale: CGFloat = 0.1 // Start from a scaled down state
-
+    
     var body: some View {
         let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
         let diameter = max(scaledCount * 100, 20) // Ensure a minimum size for visibility
-
+        
         ZStack {
             Circle()
                 .frame(width: diameter, height: diameter)

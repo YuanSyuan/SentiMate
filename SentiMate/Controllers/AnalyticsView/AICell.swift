@@ -35,40 +35,39 @@ class AICell: UITableViewCell {
         contentView.backgroundColor = defaultBackgroundColor
         
         titleLabel.numberOfLines = 1
-                titleLabel.textColor = defaultTextColor
-                titleLabel.textAlignment = .left
-                titleLabel.font = customFontTitle
-                contentView.addSubview(titleLabel)
-                titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = defaultTextColor
+        titleLabel.textAlignment = .left
+        titleLabel.font = customFontTitle
         titleLabel.text = "AI諮商室"
         
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultBackgroundColor
         AIResponseLbl.font = customFontInt
+        
         containerView.backgroundColor = defaultTextColor
-//        containerView.layer.borderColor = defaultTextColor.cgColor
-//        containerView.layer.borderWidth = 2
+        
         callAIBtn.setTitle("查看AI分析", for: .normal)
         callAIBtn.setTitleColor(defaultBackgroundColor, for: .normal)
         callAIBtn.backgroundColor = midOrange
         callAIBtn.layer.cornerRadius = 4
-      
+        
+        contentView.addSubview(titleLabel)
         contentView.addSubview(containerView)
         contentView.addSubview(AIResponseLbl)
         contentView.addSubview(callAIBtn)
         
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
         AIResponseLbl.translatesAutoresizingMaskIntoConstraints = false
         callAIBtn.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-                   titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-                   titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-                   titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
-               ])
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+        ])
         
         NSLayoutConstraint.activate([
-//            containerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             containerView.heightAnchor.constraint(equalToConstant: 380)
@@ -111,27 +110,20 @@ class AICell: UITableViewCell {
         
         
         imageViews.forEach { $0.removeFromSuperview() }
-                imageViews.removeAll()
+        imageViews.removeAll()
         
-                    for emojiName in emojiNames {
-                    let imageView = UIImageView()
-                    imageView.contentMode = .scaleAspectFit
-                    imageView.clipsToBounds = true
-                    imageView.image = UIImage(named: emojiName)
-                    imageViews.append(imageView)
-                    stackView.addArrangedSubview(imageView)
-                }
-        
-//        for (index, imageView) in imageViews.enumerated() {
-//                UIView.animate(withDuration: 0.5, delay: Double(index) * 0.3, options: [], animations: {
-//                    imageView.alpha = 1
-//                }, completion: nil)
-//            }
+        for emojiName in emojiNames {
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.clipsToBounds = true
+            imageView.image = UIImage(named: emojiName)
+            imageViews.append(imageView)
+            stackView.addArrangedSubview(imageView)
         }
+    }
     
     @objc func callAIBtnTapped(_ sender: UIButton) {
         delegate?.aiButtonTapped(cell: self)
     }
-
 }
 

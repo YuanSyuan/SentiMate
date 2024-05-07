@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import FirebaseAuth // 用來與 Firebase Auth 進行串接用的
-import AuthenticationServices // Sign in with Apple 的主體框架
-import CryptoKit // 用來產生隨機字串 (Nonce) 的
+import FirebaseAuth
+import AuthenticationServices
+import CryptoKit
 
 class SettingVC: UIViewController {
     override func viewDidLoad() {
@@ -29,6 +29,7 @@ class SettingVC: UIViewController {
                 width: parentView.frame.width,
                 height: parentView.frame.height / 4
             )
+            
         }
     }
     
@@ -50,7 +51,7 @@ class SettingVC: UIViewController {
     }
     
     fileprivate var currentNonce: String?
-
+    
     @objc func signInWithApple() {
         let nonce = randomNonceString()
         currentNonce = nonce
@@ -58,7 +59,7 @@ class SettingVC: UIViewController {
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = sha256(nonce)
-
+        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
@@ -70,7 +71,7 @@ class SettingVC: UIViewController {
         let charset: Array<Character> = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
-
+        
         while(remainingLength > 0) {
             let randoms: [UInt8] = (0 ..< 16).map { _ in
                 var random: UInt8 = 0
@@ -80,12 +81,12 @@ class SettingVC: UIViewController {
                 }
                 return random
             }
-
+            
             randoms.forEach { random in
                 if (remainingLength == 0) {
                     return
                 }
-
+                
                 if (random < charset.count) {
                     result.append(charset[Int(random)])
                     remainingLength -= 1
@@ -94,7 +95,7 @@ class SettingVC: UIViewController {
         }
         return result
     }
-
+    
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
@@ -185,12 +186,12 @@ extension SettingVC {
         //        }
         //        self.dismiss(animated: true, completion: nil)
         
-//        let uid = user.uid
-//        let email = user.email
-//        let action: (() -> Void)? = {
-//            self.dismiss(animated: true, completion: nil)
-//            }
-//        CustomFunc.customAlert(title: "使用者資訊", message: "UID：\(uid)\nEmail：\(email!)", vc: self, actionHandler: action)
+        //        let uid = user.uid
+        //        let email = user.email
+        //        let action: (() -> Void)? = {
+        //            self.dismiss(animated: true, completion: nil)
+        //            }
+        //        CustomFunc.customAlert(title: "使用者資訊", message: "UID：\(uid)\nEmail：\(email!)", vc: self, actionHandler: action)
     }
     
     // MARK: - 監聽目前的 Apple ID 的登入狀況

@@ -11,7 +11,6 @@ import IQKeyboardManagerSwift
 class TextFieldCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textField: UITextView!
-
     @IBOutlet weak var saveBtn: UIButton!
     
     var onSave: (() -> Void)?
@@ -42,7 +41,6 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
-//            textView.text = nil
             textView.textColor = UIColor.black
         }
     }
@@ -50,8 +48,6 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = ""
-//            textView.font = UIFont(name: "ChenYuluoyan-Thin", size: 20)
-//            textView.textColor = UIColor.lightGray
         }
     }
     
@@ -64,6 +60,5 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     @IBAction func saveBtnTapped(_ sender: Any) {
         onSave?()
     }
-    
 }
 

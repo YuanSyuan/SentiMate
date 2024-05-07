@@ -180,8 +180,6 @@ struct StoreItem: Codable, Equatable {
     let isStreamable: Bool?
     
     var artworkUrl500: URL {
-        
         artworkUrl100.deletingLastPathComponent().appendingPathComponent("500x500bb.jpg")
-        
     }
 }

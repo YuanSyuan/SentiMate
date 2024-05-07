@@ -14,9 +14,9 @@ import FirebaseCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         FirebaseApp.configure()
-//        IQKeyboardManager.shared.enable = true
+        
         ModelManager.shared.loadModelInBackground()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.carPlay,.sound]) { (granted, error) in
@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("拒絕接受開啟")
                     }
                 }
+        
         UNUserNotificationCenter.current().delegate = self
 
         return true

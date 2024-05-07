@@ -14,10 +14,8 @@ import ARKit
 class PostVC: UIViewController {
     
     private let sceneView = ARSCNView()
-    
-   
     private var model: VNCoreMLModel?
-
+    
     let titleLbl = UILabel()
     var emotionLabel = UILabel()
     let confirmEmotionBtn = UIButton()
@@ -36,11 +34,11 @@ class PostVC: UIViewController {
         confirmEmotionBtn.addTouchAnimation()
         
         guard ARWorldTrackingConfiguration.isSupported else { return }
-         
-            view.addSubview(sceneView)
-            sceneView.delegate = self
-            sceneView.showsStatistics = false
-            sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
+        
+        view.addSubview(sceneView)
+        sceneView.delegate = self
+        sceneView.showsStatistics = false
+        sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
         
         model = ModelManager.shared.model
     }
@@ -52,7 +50,7 @@ class PostVC: UIViewController {
         titleLbl.textAlignment = .center
         titleLbl.font = customFontContent
         view.addSubview(titleLbl)
-    
+        
         emotionLabel.translatesAutoresizingMaskIntoConstraints = false
         emotionLabel.textColor = defaultTextColor
         emotionLabel.textAlignment = .center
@@ -60,35 +58,33 @@ class PostVC: UIViewController {
         emotionLabel.backgroundColor = .black.withAlphaComponent(0.5)
         view.addSubview(emotionLabel)
         
-        // Set up the button for checking emotion
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         saveEmotionBtn.setTitle("儲存", for: .normal)
         saveEmotionBtn.backgroundColor = midOrange
         saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
         saveEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
+        saveEmotionBtn.layer.cornerRadius = 20
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
-        saveEmotionBtn.layer.cornerRadius = 20
         
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
-                confirmEmotionBtn.setTitle("確認", for: .normal)
-                confirmEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
-                confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
-                confirmEmotionBtn.backgroundColor = .gray
-                confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
-                view.addSubview(confirmEmotionBtn)
+        confirmEmotionBtn.setTitle("確認", for: .normal)
+        confirmEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
+        confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
+        confirmEmotionBtn.backgroundColor = .gray
         confirmEmotionBtn.layer.cornerRadius = 20
+        confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
+        view.addSubview(confirmEmotionBtn)
         
-            sceneView.translatesAutoresizingMaskIntoConstraints = false
-            view.insertSubview(sceneView, at: 0) // Make sure the sceneView is behind all other views
-            NSLayoutConstraint.activate([
-                sceneView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
-                sceneView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60),
-                sceneView.bottomAnchor.constraint(equalTo: titleLbl.topAnchor, constant: -10),
-                sceneView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40)
-            ])
+        sceneView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(sceneView, at: 0)
+        NSLayoutConstraint.activate([
+            sceneView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
+            sceneView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60),
+            sceneView.bottomAnchor.constraint(equalTo: titleLbl.topAnchor, constant: -10),
+            sceneView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40)
+        ])
         
-        // Add constraints to label and button
         NSLayoutConstraint.activate([
             titleLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLbl.bottomAnchor.constraint(equalTo: emotionLabel.topAnchor, constant: -10),
@@ -124,18 +120,18 @@ class PostVC: UIViewController {
     
     @objc func confirmEmotionTapped() {
         if self.isSessionRunning == true {
-                sceneView.session.pause()
-                isSessionRunning = false
-                saveEmotionBtn.isEnabled = true
-                confirmEmotionBtn.setTitle("再拍一次", for: .normal)
-            } else {
-                isSessionRunning = true
-                saveEmotionBtn.isEnabled = false
-                let configuration = ARFaceTrackingConfiguration()
-                sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-                confirmEmotionBtn.setTitle("確認", for: .normal)
-            }
+            sceneView.session.pause()
+            isSessionRunning = false
+            saveEmotionBtn.isEnabled = true
+            confirmEmotionBtn.setTitle("再拍一次", for: .normal)
+        } else {
+            isSessionRunning = true
+            saveEmotionBtn.isEnabled = false
+            let configuration = ARFaceTrackingConfiguration()
+            sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+            confirmEmotionBtn.setTitle("確認", for: .normal)
         }
+    }
 }
 
 // extension: AVCaptureVideoDataOutputSampleBufferDelegate
@@ -144,26 +140,25 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
     }
     
-    // Update the label with the detected emotion
     func updateEmotionLabel(withEmotion emotion: String) {
         currentEmotion = emotion
         let emojiText: String
         switch emotion {
-            case "Fear":
+        case "Fear":
             emojiText = "緊張"
-            case "Sad":
+        case "Sad":
             emojiText = "難過"
-            case "Neutral":
+        case "Neutral":
             emojiText = "普通"
-            case "Happy":
+        case "Happy":
             emojiText = "開心"
-            case "Surprise":
+        case "Surprise":
             emojiText = "驚喜"
-            case "Angry":
+        case "Angry":
             emojiText = "生氣"
-            default:
+        default:
             emojiText = "厭惡"
-            }
+        }
         
         DispatchQueue.main.async {
             self.emotionLabel.text = emojiText
@@ -174,25 +169,25 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
 
 // extension: ARSCNViewDelegate
 extension PostVC: ARSCNViewDelegate {
-
+    
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard let device = sceneView.device else { return nil }
         let node = SCNNode(geometry: ARSCNFaceGeometry(device: device))
         node.geometry?.firstMaterial?.fillMode = .lines
         node.geometry?.firstMaterial?.diffuse.contents = UIColor(white: 0.0,
-                                                                alpha: 0)
+                                                                 alpha: 0)
         return node
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-      guard let faceAnchor = anchor as? ARFaceAnchor,
-                let faceGeometry = node.geometry as? ARSCNFaceGeometry else { return }
+        guard let faceAnchor = anchor as? ARFaceAnchor,
+              let faceGeometry = node.geometry as? ARSCNFaceGeometry else { return }
         
-      faceGeometry.update(from: faceAnchor.geometry)
+        faceGeometry.update(from: faceAnchor.geometry)
         
         guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else {
-                return
-            }
+            return
+        }
         if let model = self.model {
             try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .right, options: [:]).perform([VNCoreMLRequest(model: model) { [weak self] request, _ in
                 guard let firstResult = (request.results as? [VNClassificationObservation])?.first else { return }
@@ -202,9 +197,6 @@ extension PostVC: ARSCNViewDelegate {
                     }
                 }
             }])
-        } else {
-            // Handle the case where the model is nil
-        }
+        } else { }
     }
-    
 }

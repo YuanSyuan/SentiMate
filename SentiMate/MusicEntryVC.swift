@@ -14,7 +14,6 @@ class MusicEntryVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var firebaseManager = FirebaseManager.shared
-    
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
     var calmSongs: [SoftMusic] = softMusicPlaylist
@@ -47,7 +46,6 @@ class MusicEntryVC: UIViewController {
         layout?.itemSize = CGSize(width: width, height: width * 2.1)
     }
     
-    // Fetch music
     func fetchLatestDiaryEntry() {
         let db = Firestore.firestore()
         db.collection("diaries")
@@ -120,22 +118,12 @@ extension MusicEntryVC: UICollectionViewDataSource {
         return cell
         
     }
-    
-    
 }
 
 extension MusicEntryVC: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 40, left: 20, bottom: 20, right: 0)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
-        
-    }
-    
-    
 }
 
 

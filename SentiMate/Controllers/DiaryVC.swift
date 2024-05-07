@@ -10,22 +10,15 @@ import UIKit
 class DiaryVC: UIViewController {
     var diary: Diary?
     
-    lazy var cardTransitionInteractor: CSCardTransitionInteractor? = CSCardTransitionInteractor(viewController: self)
-    
     @IBOutlet weak var containerView: UIView!
-    
     @IBOutlet var bigConstraints: [NSLayoutConstraint]!
-    
     @IBOutlet var smallConstraints: [NSLayoutConstraint]!
-    
-    
     @IBOutlet weak var emotionBackground: UIImageView!
     @IBOutlet weak var emotionImg: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var categoryLbl: UILabel!
     @IBOutlet weak var emotionLbl: UILabel!
     @IBOutlet weak var contentLbl: UILabel!
-    //    @IBOutlet weak var contentBorderView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +29,6 @@ class DiaryVC: UIViewController {
         view.layer.shadowOpacity = 1
         view.layer.shadowOffset = .zero
         view.layer.shadowColor = UIColor.systemFill.cgColor
-        //        lyricsCellView.contentView.layer.shadowOpacity = 0
-        //        lyricsCellView.iconImageView.layer.cornerRadius = 0
         containerView.clipsToBounds = true
     }
     
@@ -71,7 +62,6 @@ class DiaryVC: UIViewController {
         
         if let emotion = diary?.emotion {
             let emojiText = emojiText(forEmotion: emotion)
-            //                let backgroundImg = backgroundImg(forEmotion: emotion)
             
             emotionImg.image = UIImage(named: emotion)
             emotionLbl.text = emojiText
@@ -81,8 +71,6 @@ class DiaryVC: UIViewController {
         dateLbl.text = diary?.customTime
         categoryLbl.text = buttonTitles[diary?.category ?? 0]
         contentLbl.attributedText = attributes
-        // contentBorderView.layer.borderColor = defaultTextColor.cgColor
-        // contentBorderView.layer.borderWidth = 1
     }
 }
 
