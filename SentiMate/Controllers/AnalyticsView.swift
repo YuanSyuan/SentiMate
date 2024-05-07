@@ -81,7 +81,13 @@ struct DonutChartView: View {
                 Spacer()
                     .frame(height: 20)
                 if let selectedEmotionType {
-                    Text("讓我感到\(selectedEmotionType.mandarinName)的是")
+                    Text("讓我感到")
+                        .font(.custom("jf-openhuninn-2.0", size: 18))
+                        .foregroundColor(Color(textColor))
+                    + Text("\(selectedEmotionType.mandarinName)")
+                        .font(.custom("jf-openhuninn-2.0", size: 18))
+                        .foregroundColor(Color(midOrange))
+                    + Text("的是")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
                         .foregroundColor(Color(textColor))
                 }

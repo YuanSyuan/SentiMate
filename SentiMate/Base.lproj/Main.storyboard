@@ -602,13 +602,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3tA-nb-o8O">
                                                     <rect key="frame" x="88" y="18.333333333333332" width="293" height="33.666666666666671"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
                                                             <rect key="frame" x="0.0" y="0.0" width="293" height="15.666666666666666"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
                                                             <rect key="frame" x="0.0" y="19.666666666666668" width="293" height="14.000000000000004"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -661,16 +661,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Love The Way You Are" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J90-Wo-ETv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Love The Way You Are" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J90-Wo-ETv">
                                         <rect key="frame" x="27.999999999999993" y="52" width="126.33333333333331" height="12"/>
                                         <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="NTi-Vt-SQN">
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NTi-Vt-SQN">
                                         <rect key="frame" x="231.00000000000003" y="43" width="127.33333333333334" height="34.333333333333343"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8d-Od-YAo">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8d-Od-YAo">
                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
@@ -682,7 +682,7 @@
                                                     <action selector="backBtn:" destination="MLr-BN-X6A" eventType="touchUpInside" id="IK0-X0-lKJ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulp-gB-j1T">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulp-gB-j1T">
                                                 <rect key="frame" x="44" y="0.0" width="39" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system">
@@ -693,7 +693,7 @@
                                                     <action selector="playBtn:" destination="MLr-BN-X6A" eventType="touchUpInside" id="YLw-CX-AOB"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy6-1S-tlK">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy6-1S-tlK">
                                                 <rect key="frame" x="83" y="0.0" width="44.333333333333343" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
@@ -707,7 +707,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="abc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acs-DQ-bJr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="abc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acs-DQ-bJr">
                                         <rect key="frame" x="160.33333333333334" y="52" width="70.666666666666657" height="12"/>
                                         <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="12"/>
                                         <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -719,7 +719,7 @@
                                     <constraint firstItem="cPT-jG-cuU" firstAttribute="top" secondItem="LGH-bo-okl" secondAttribute="top" constant="13" id="5RB-S2-FQq"/>
                                     <constraint firstItem="NTi-Vt-SQN" firstAttribute="top" secondItem="J90-Wo-ETv" secondAttribute="top" constant="-9" id="67T-lU-muS"/>
                                     <constraint firstItem="J90-Wo-ETv" firstAttribute="top" secondItem="D9Q-t4-AlK" secondAttribute="bottom" constant="9" id="8ac-sR-A8y"/>
-                                    <constraint firstItem="Acs-DQ-bJr" firstAttribute="top" secondItem="D9Q-t4-AlK" secondAttribute="bottom" constant="9" id="F1z-jX-DpU"/>
+                                    <constraint firstItem="Acs-DQ-bJr" firstAttribute="top" secondItem="J90-Wo-ETv" secondAttribute="top" id="F1z-jX-DpU"/>
                                     <constraint firstItem="egS-gH-RP4" firstAttribute="leading" secondItem="D9Q-t4-AlK" secondAttribute="trailing" constant="8" symbolic="YES" id="KcR-XH-aXV"/>
                                     <constraint firstAttribute="height" constant="80" id="M7U-2l-yOE"/>
                                     <constraint firstItem="egS-gH-RP4" firstAttribute="top" secondItem="LGH-bo-okl" secondAttribute="top" constant="13" id="POY-me-wf9"/>
@@ -729,8 +729,8 @@
                                     <constraint firstAttribute="bottom" secondItem="Acs-DQ-bJr" secondAttribute="bottom" constant="16" id="iKv-6y-Tkx"/>
                                     <constraint firstItem="cPT-jG-cuU" firstAttribute="leading" secondItem="LGH-bo-okl" secondAttribute="leading" constant="12" id="jq4-qU-e6D"/>
                                     <constraint firstItem="J90-Wo-ETv" firstAttribute="leading" secondItem="LGH-bo-okl" secondAttribute="leading" constant="28" id="nSs-Pd-PFS"/>
+                                    <constraint firstItem="NTi-Vt-SQN" firstAttribute="leading" secondItem="Acs-DQ-bJr" secondAttribute="trailing" id="p8T-FJ-tE0"/>
                                     <constraint firstItem="D9Q-t4-AlK" firstAttribute="leading" secondItem="cPT-jG-cuU" secondAttribute="trailing" constant="8" symbolic="YES" id="tkw-i9-k3b"/>
-                                    <constraint firstItem="NTi-Vt-SQN" firstAttribute="leading" secondItem="Acs-DQ-bJr" secondAttribute="trailing" id="uVS-Hc-tRA"/>
                                     <constraint firstAttribute="bottom" secondItem="J90-Wo-ETv" secondAttribute="bottom" constant="16" id="x4r-Z4-Qdr"/>
                                     <constraint firstItem="D9Q-t4-AlK" firstAttribute="top" secondItem="LGH-bo-okl" secondAttribute="top" constant="8" id="zS7-xl-frO"/>
                                 </constraints>

@@ -36,7 +36,7 @@ class PostEntryVC: UIViewController {
         attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
         
         let specialTextRange = (fullText as NSString).range(of: specialText)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.orange, range: specialTextRange)
+        attributedString.addAttribute(.foregroundColor, value: midOrange, range: specialTextRange)
         
         return attributedString
     }

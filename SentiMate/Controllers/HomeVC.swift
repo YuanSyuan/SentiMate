@@ -41,7 +41,7 @@ class HomeVC: UIViewController {
         diaryCollectionView.delegate = self
         configureCellSize()
         createNotificationContent()
-        sceneView = SCNView(frame: CGRect(x: 10, y: 10, width: 150, height: 150))
+        sceneView = SCNView(frame: CGRect(x: UIScreen.main.bounds.width * 3/5, y: UIScreen.main.bounds.height * 3/5, width: 150, height: 150))
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.backgroundColor = .clear
