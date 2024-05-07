@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.carPlay,.sound]) { (granted, error) in
                     if granted {
+                        self.scheduleDailyNotification()
                         print("允許開啟")
                     }else{
                         print("拒絕接受開啟")
@@ -30,6 +31,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
 
         return true
+    }
+    
+    func scheduleDailyNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "今天過得如何呢？"
+        content.subtitle = "不管有什麼樣的情緒"
+        content.body = "在休息之前，把今天好好的記錄下來吧！"
+        content.badge = 1
+        content.sound = UNNotificationSound.defaultCritical
+
+        var dateComponents = DateComponents()
+        dateComponents.hour = 18
+        dateComponents.minute = 10
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: "dailyEmotionReminder", content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error)")
+            }
+        }
     }
     
     // MARK: UISceneSession Lifecycle

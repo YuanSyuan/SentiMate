@@ -40,7 +40,7 @@ class HomeVC: UIViewController {
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         configureCellSize()
-        createNotificationContent()
+//        createNotificationContent()
         sceneView = SCNView(frame: CGRect(x: UIScreen.main.bounds.width * 3/5, y: UIScreen.main.bounds.height * 3/5, width: 150, height: 150))
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
@@ -289,27 +289,27 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension HomeVC {
-    func createNotificationContent() {
-        let content = UNMutableNotificationContent()    // 建立內容透過指派content來取得UNMutableNotificationContent功能
-        content.title = "今天過得如何呢？"                 // 推播標題
-        content.subtitle = "不管有什麼樣的情緒"            // 推播副標題
-        content.body = "在休息之前，把今天好好的記錄下來吧！"        // 推播內文
-        content.badge = 1
-        content.sound = UNNotificationSound.defaultCritical     //推播的聲音
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = 17    // 21:00 hours
-        dateComponents.minute = 45   // 0 minutes
-        
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)   //設定透過時間來完成推播，另有日期地點跟遠端推播
-        let uuidString = UUID().uuidString              //建立UNNotificationRequest所需要的ID
-        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //向UNUserNotificationCenter新增註冊這一則推播
-    }
-}
+//extension HomeVC {
+//    func createNotificationContent() {
+//        let content = UNMutableNotificationContent()    // 建立內容透過指派content來取得UNMutableNotificationContent功能
+//        content.title = "今天過得如何呢？"                 // 推播標題
+//        content.subtitle = "不管有什麼樣的情緒"            // 推播副標題
+//        content.body = "在休息之前，把今天好好的記錄下來吧！"        // 推播內文
+//        content.badge = 1
+//        content.sound = UNNotificationSound.defaultCritical     //推播的聲音
+//        
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 17    // 21:00 hours
+//        dateComponents.minute = 45   // 0 minutes
+//        
+//        
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)   //設定透過時間來完成推播，另有日期地點跟遠端推播
+//        let uuidString = UUID().uuidString              //建立UNNotificationRequest所需要的ID
+//        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+//        
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //向UNUserNotificationCenter新增註冊這一則推播
+//    }
+//}
 
 extension HomeVC: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
