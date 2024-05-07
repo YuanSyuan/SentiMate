@@ -39,35 +39,6 @@ SoftMusic(name: "Velvet Dreams", url: "https://drive.google.com/uc?export=downlo
 SoftMusic(name: "Softly Spoken", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "musicImg10"),
 SoftMusic(name: "Quietude Cascade", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "musicImg11")
 ]
-//let playlistURL: [String] = [
-//    "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF",
-//    "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF",
-//    "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq",
-//    "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38",
-//    "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli",
-//    "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld",
-//    "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO",
-//    "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5",
-//    "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z",
-//    "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h",
-//    "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5",
-//    "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz"
-//]
-//
-//let musicImage: [String] = [
-//    "musicImg0",
-//    "musicImg1",
-//    "musicImg2",
-//    "musicImg3",
-//    "musicImg4",
-//    "musicImg5",
-//    "musicImg6",
-//    "musicImg7",
-//    "musicImg8",
-//    "musicImg9",
-//    "musicImg10",
-//    "musicImg11"
-//]
 
 let angrySinger: [String] = [
     "Slipknot",
@@ -81,9 +52,11 @@ let angrySinger: [String] = [
     "FiveFingerDeathPunch",
     "MarilynManson",
     "KanhoYakushiji",
+    "Ólafur Arnalds",
     "草東沒有派對",
     "潤荷",
-    "陳粒"
+    "陳粒",
+    "告五人"
 ]
 
 let disgustSinger: [String] = [
@@ -97,7 +70,8 @@ let disgustSinger: [String] = [
     "DyingFetus",
     "PigDestroyer",
     "CarachAngren",
-    "BillieEilish"
+    "BillieEilish",
+    "Ólafur Arnalds"
 ]
 
 
@@ -112,6 +86,12 @@ let fearSinger: [String] = [
     "AliceCooper",
     "TheCure",
     "Bauhaus",
+    "Ólafur Arnalds",
+    "告五人",
+    "梁靜茹",
+    "徐佳瑩",
+    "蔡健雅",
+    "告五人",
     // 韓文
     "Rothy",
     "JimmyBrown",
@@ -130,9 +110,12 @@ let sadSinger: [String] = [
     "BillieEilish",
     "AmyWinehouse",
     "DamienRice",
+    "梁靜茹",
     "徐佳瑩",
     "蔡健雅",
     "魏如萱",
+    "陳綺貞",
+    "告五人",
     // 韓文
     "PaulKim"
 ]
@@ -162,6 +145,7 @@ let happySinger: [String] = [
     "Beyoncé",
     "Maroon5",
     "HarryStyles",
+    "就以斯",
     // 韓文
     "NewJeans"
 ]
