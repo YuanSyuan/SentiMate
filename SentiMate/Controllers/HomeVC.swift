@@ -31,8 +31,6 @@ class HomeVC: UIViewController {
     var initialCameraTransform: SCNMatrix4?
     var initialFieldOfView: CGFloat?
     
-    private var emotionType: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,27 +38,22 @@ class HomeVC: UIViewController {
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         configureCellSize()
-//        createNotificationContent()
         sceneView = SCNView(frame: CGRect(x: UIScreen.main.bounds.width * 3/5, y: UIScreen.main.bounds.height * 3/5, width: 150, height: 150))
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.backgroundColor = .clear
+        sceneView.scene = SCNScene(named: sceneEmoji)
         view.addSubview(sceneView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
         self.firebaseManager.onNewData = { newDiaries in
             DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
-            self.emotionType = newDiaries.first?.emotion
-            self.setupBasedOnMostCommonEmotion(with: self.emotionType ?? "Neutral")
         }
         
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             nameLbl.text = savedUsername
         }
-        
-        emotionType = DiaryManager.shared.getEmotionTypes(forPeriod: .last7Days).first?.name ?? "Neutral"
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,6 +64,12 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         firebaseManager.listenForUpdate()
+        if DiaryManager.shared.diaries != [] {
+            guard let emotion = DiaryManager.shared.diaries.first?.emotion else { return }
+            setupBasedOnMostCommonEmotion(with: emotion)
+        } else {
+            sceneView.scene = SCNScene(named: sceneEmoji)
+        }
     }
        
     private func animateInitialLoad() {

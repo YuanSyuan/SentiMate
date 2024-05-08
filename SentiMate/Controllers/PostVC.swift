@@ -60,19 +60,19 @@ class PostVC: UIViewController {
         
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         saveEmotionBtn.setTitle("儲存", for: .normal)
-        saveEmotionBtn.backgroundColor = midOrange
-        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
-        saveEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
-        saveEmotionBtn.layer.cornerRadius = 20
+        saveEmotionBtn.backgroundColor = .gray
+        saveEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
+        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
+        saveEmotionBtn.layer.cornerRadius = 10
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
         
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         confirmEmotionBtn.setTitle("確認", for: .normal)
-        confirmEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
-        confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
-        confirmEmotionBtn.backgroundColor = .gray
-        confirmEmotionBtn.layer.cornerRadius = 20
+        confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
+        confirmEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
+        confirmEmotionBtn.backgroundColor = midOrange
+        confirmEmotionBtn.layer.cornerRadius = 10
         confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
         view.addSubview(confirmEmotionBtn)
         
@@ -123,13 +123,17 @@ class PostVC: UIViewController {
             sceneView.session.pause()
             isSessionRunning = false
             saveEmotionBtn.isEnabled = true
+            saveEmotionBtn.backgroundColor = midOrange
             confirmEmotionBtn.setTitle("再拍一次", for: .normal)
+            confirmEmotionBtn.backgroundColor = .gray
         } else {
             isSessionRunning = true
             saveEmotionBtn.isEnabled = false
+            saveEmotionBtn.backgroundColor = .gray
             let configuration = ARFaceTrackingConfiguration()
             sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
             confirmEmotionBtn.setTitle("確認", for: .normal)
+            confirmEmotionBtn.backgroundColor = midOrange
         }
     }
 }

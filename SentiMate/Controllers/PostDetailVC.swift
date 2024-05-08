@@ -111,14 +111,13 @@ extension PostDetailVC: UITableViewDataSource {
                     DispatchQueue.main.async {
                         AlertView.instance.showAlert(
                             image: lastDiary.emotion,
-                            title: "上次是因為「\(buttonTitles[lastDiary.category])」而\(mandarinEmotion)",
+                            title: "上次感到\(mandarinEmotion)是因為「\(buttonTitles[lastDiary.category])」",
                             message: attributes,
                             alertType: .reminder)
                         
                         self?.saveDiaryEntry(newEntry: newEntry)
                     }
                 } else {
-                    // If no previous entry, save directly
                     self?.saveDiaryEntry(newEntry: newEntry)
                 }
             }

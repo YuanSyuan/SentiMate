@@ -7,7 +7,7 @@
 import UIKit
 import FirebaseFirestore
 
-struct Diary: Codable {
+struct Diary: Codable, Equatable {
     var documentID: String
     var emotion: String
     var content: String
