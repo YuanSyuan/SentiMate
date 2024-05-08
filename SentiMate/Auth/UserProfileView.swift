@@ -142,34 +142,38 @@ extension View {
 }
 
 struct SceneKitView: UIViewRepresentable {
-    let sceneEmoji: String
-    
-    init() {
-            // Assuming DiaryManager is accessible and contains diaries
-            guard let diary = DiaryManager.shared.diaries.first else {
-                sceneEmoji = ""
-                return
-            }
-
-            switch diary.emotion {
-                case "Happy", "Surprise":
-                    sceneEmoji = "Emoticon_27.scn"
-                case "Neutral":
-                    sceneEmoji = "Emoticon_40.scn"
-                default:
-                    sceneEmoji = "Emoticon_56.scn"
-            }
-        }
+    @ObservedObject var diaryManager = DiaryManager.shared
+//    let sceneEmoji: String
     
     func makeUIView(context: Context) -> SCNView {
-        let sceneView = SCNView()
-        sceneView.scene = SCNScene(named: sceneEmoji)  // Specify your .scn file here
-        sceneView.autoenablesDefaultLighting = true  // Adds default lighting
-        sceneView.allowsCameraControl = true  // Allows user to manipulate the camera
-        return sceneView
-    }
+            let sceneView = SCNView()
+            updateScene(sceneView: sceneView)
+            return sceneView
+        }
 
-    func updateUIView(_ uiView: SCNView, context: Context) {
-        // Update the view during SwiftUI state updates.
-    }
+        func updateUIView(_ uiView: SCNView, context: Context) {
+            updateScene(sceneView: uiView)
+        }
+
+        private func updateScene(sceneView: SCNView) {
+            // Assuming a method to decide the scene based on diaries
+            let sceneEmoji = decideSceneBasedOnDiaries()
+            sceneView.scene = SCNScene(named: sceneEmoji)  // Load the appropriate scene
+            sceneView.autoenablesDefaultLighting = true
+            sceneView.allowsCameraControl = true
+        }
+
+        private func decideSceneBasedOnDiaries() -> String {
+            guard let diary = diaryManager.diaries.first else {
+                return "Emoticon_40.scn" // A default scene
+            }
+            switch diary.emotion {
+            case "Happy", "Surprise":
+                return "Emoticon_27.scn"
+            case "Neutral":
+                return "Emoticon_40.scn"
+            default:
+                return "Emoticon_56.scn"
+            }
+        }
 }

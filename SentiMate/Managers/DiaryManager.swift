@@ -7,12 +7,12 @@
 
 import UIKit
 
-class DiaryManager {
+class DiaryManager: ObservableObject {
     static let shared = DiaryManager()
     
     private init() {}
     
-    var diaries: [Diary] = []
+    @Published var diaries: [Diary] = []
     
     func updateDiaries(newDiaries: [Diary]) {
         DispatchQueue.main.async {
