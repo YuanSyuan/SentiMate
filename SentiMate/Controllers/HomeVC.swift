@@ -24,7 +24,7 @@ class HomeVC: UIViewController {
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     
     var sceneView: SCNView!
-    var sceneEmoji = "Emoticon_27.scn"
+    var sceneEmoji = "Emoticon_40.scn"
     var rotatePanGesture: UIPanGestureRecognizer!
     var dragPanGesture: UIPanGestureRecognizer!
     var longPressGesture: UILongPressGestureRecognizer!
@@ -38,12 +38,15 @@ class HomeVC: UIViewController {
         diaryCollectionView.dataSource = self
         diaryCollectionView.delegate = self
         configureCellSize()
-        sceneView = SCNView(frame: CGRect(x: UIScreen.main.bounds.width * 3/5, y: UIScreen.main.bounds.height * 3/5, width: 150, height: 150))
+        sceneView = SCNView(frame: CGRect(x: UIScreen.main.bounds.width * 0.55, y: 20, width: 170, height: 170))
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.backgroundColor = .clear
         sceneView.scene = SCNScene(named: sceneEmoji)
         view.addSubview(sceneView)
+        
+        configureGestureRecognizers()
+        setupInitialCamera()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
@@ -111,8 +114,7 @@ class HomeVC: UIViewController {
     
     func setupBasedOnMostCommonEmotion(with emotionType: String) {
         setupFloatingSceneView(for: emotionType)
-        configureGestureRecognizers()
-        setupInitialCamera()
+        
     }
     
     func setupFloatingSceneView(for emotion: String) {
