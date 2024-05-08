@@ -52,6 +52,12 @@ class HomeVC: UIViewController {
         
         self.firebaseManager.onNewData = { newDiaries in
             DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
+            if newDiaries != [] {
+                guard let emotion = DiaryManager.shared.diaries.first?.emotion else { return }
+                self.setupBasedOnMostCommonEmotion(with: emotion)
+            } else {
+                self.sceneView.scene = SCNScene(named: self.sceneEmoji)
+            }
         }
         
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
