@@ -848,7 +848,7 @@
 				DEVELOPMENT_TEAM = DMLVNU9R64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentiMate/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "開啟相機以開始情緒識別";
+				INFOPLIST_KEY_NSCameraUsageDescription = "SentiMate將使用您的相機，進行AR臉部表情的偵測與識別，這並不會留存您的肖像及任何身體資訊。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -879,7 +879,7 @@
 				DEVELOPMENT_TEAM = DMLVNU9R64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentiMate/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "開啟相機以開始情緒識別";
+				INFOPLIST_KEY_NSCameraUsageDescription = "SentiMate將使用您的相機，進行AR臉部表情的偵測與識別，這並不會留存您的肖像及任何身體資訊。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
