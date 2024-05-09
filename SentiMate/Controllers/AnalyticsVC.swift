@@ -54,11 +54,13 @@ class AnalyticsVC: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height),
+            tableView.frameLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.frameLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.frameLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.frameLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        tableView.backgroundColor = defaultBackgroundColor
     }
 }
 
