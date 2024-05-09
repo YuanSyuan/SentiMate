@@ -12,6 +12,7 @@ class PostEntryVC: UIViewController {
     
     @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var typingLbl: UILabel!
+    @IBOutlet weak var backgrounfImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,15 @@ class PostEntryVC: UIViewController {
         startBtn.addTouchAnimation()
         
         self.navigationItem.backButtonTitle = "返回"
+//        
+//        backgrounfImg.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        NSLayoutConstraint.activate([
+//            backgrounfImg.topAnchor.constraint(equalTo: view.topAnchor),
+//            backgrounfImg.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            backgrounfImg.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            backgrounfImg.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
     }
     
     func createAttributedText() -> NSAttributedString {
