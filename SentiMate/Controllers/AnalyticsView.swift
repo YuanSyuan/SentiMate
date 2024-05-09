@@ -18,7 +18,6 @@ struct DonutChartView: View {
     var body: some View {
         let textColor = defaultTextColor
         let backgroundColor = defaultBackgroundColor
-        
         NavigationStack {
             VStack {
                 HStack {
