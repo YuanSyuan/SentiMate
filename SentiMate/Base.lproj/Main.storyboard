@@ -142,11 +142,18 @@
                                 <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6W-WK-Ix4">
+                                <rect key="frame" x="196.66666666666666" y="426" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="20"/>
+                                <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
                             <constraint firstItem="JHO-1K-cKn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="FTV-gL-YPA"/>
                             <constraint firstItem="tMx-4q-iKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IRK-gU-taj"/>
+                            <constraint firstItem="L6W-WK-Ix4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rze-WK-FwL"/>
                             <constraint firstAttribute="bottom" secondItem="tMx-4q-iKb" secondAttribute="bottom" id="UGP-wO-35o"/>
                             <constraint firstItem="JHO-1K-cKn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="a8g-RY-pEZ"/>
                             <constraint firstItem="Z6l-Vx-Dna" firstAttribute="leading" secondItem="JHO-1K-cKn" secondAttribute="trailing" id="exx-xz-rae"/>
@@ -154,6 +161,7 @@
                             <constraint firstItem="tMx-4q-iKb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="l3m-Ws-4T2"/>
                             <constraint firstItem="Z6l-Vx-Dna" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="oBt-Hu-Xop"/>
                             <constraint firstItem="tMx-4q-iKb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oCG-zZ-nJD"/>
+                            <constraint firstItem="L6W-WK-Ix4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xw9-1K-YrV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qJP-sV-sKh">
@@ -161,6 +169,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="diaryCollectionView" destination="tMx-4q-iKb" id="deG-Pg-1kz"/>
+                        <outlet property="hintLbl" destination="L6W-WK-Ix4" id="UWz-hh-9yy"/>
                         <outlet property="nameLbl" destination="Z6l-Vx-Dna" id="I9w-hN-ZOQ"/>
                     </connections>
                 </viewController>
