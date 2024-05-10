@@ -17,6 +17,7 @@ class DateCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        datePicker.tintColor = defaultBackgroundColor
         datePicker.datePickerMode = .date
         datePicker.layer.backgroundColor = defaultTextColor.cgColor
         datePicker.layer.cornerRadius = 8

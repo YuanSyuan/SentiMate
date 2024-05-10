@@ -71,7 +71,7 @@ struct DonutChartView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)
-                            Text("請點擊圖表")
+                            Text("請長按圖表")
                                 .foregroundColor(Color(textColor))
                                 .font(.custom("jf-openhuninn-2.0", size: 16))
                         }
