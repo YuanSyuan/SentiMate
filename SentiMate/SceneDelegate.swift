@@ -23,27 +23,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //   #endif
 //        
 //        
-//        let isFirstLaunch = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
-//                
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//                let window = UIWindow(windowScene: windowScene)
-//
-//                if isFirstLaunch {
-//                    // User has already completed the walkthrough
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    window.rootViewController = storyboard.instantiateInitialViewController()
-//                } else {
-//                    // First launch, show the walkthrough
-//                    let contentView = ContentView().environmentObject(appManager)
-//                    window.rootViewController = UIHostingController(rootView: contentView)
-//                    
-//                    UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-//                    UserDefaults.standard.synchronize()
-//                }
-//                
-//                self.window = window
-//                window.makeKeyAndVisible()
+        let isFirstLaunch = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+                
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+                let window = UIWindow(windowScene: windowScene)
+
+                if isFirstLaunch {
+                    // User has already completed the walkthrough
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    window.rootViewController = storyboard.instantiateInitialViewController()
+                } else {
+                    // First launch, show the walkthrough
+                    let contentView = ContentView().environmentObject(appManager)
+                    window.rootViewController = UIHostingController(rootView: contentView)
+                    
+                    UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+                    UserDefaults.standard.synchronize()
+                }
+                
+                self.window = window
+                window.makeKeyAndVisible()
     }
+    
+    func switchToMainInterface() {
+            DispatchQueue.main.async {
+                guard let window = self.window else { return }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let viewController = storyboard.instantiateInitialViewController() {
+                    window.rootViewController = viewController
+                    window.makeKeyAndVisible()
+                }
+            }
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
