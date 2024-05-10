@@ -10,13 +10,13 @@ import SwiftUI
 struct MainAppViewControllerRepresentable: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIViewController {
-        // Delaying execution to give SwiftUI view a chance to complete rendering
+       
         DispatchQueue.main.async {
                    if let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                        delegate.switchToMainInterface()
                    }
                }
-               return UIViewController() // Return a temporary view controller
+               return UIViewController() 
            }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
