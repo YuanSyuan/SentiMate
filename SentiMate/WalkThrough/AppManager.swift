@@ -10,3 +10,5 @@ import SwiftUI
 class AppManager: ObservableObject {
     @Published var didCompleteOnboarding: Bool = false
 }
+
+

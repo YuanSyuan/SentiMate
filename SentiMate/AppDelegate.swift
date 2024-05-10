@@ -34,15 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func scheduleDailyNotification() {
+        let savedUsername = UserDefaults.standard.string(forKey: "username")
         let content = UNMutableNotificationContent()
-        content.title = "今天過得如何呢？"
-        content.subtitle = "不管有什麼樣的情緒"
+        content.title = "晚安\(savedUsername)"
+        content.subtitle = "今天過得如何呢？"
         content.body = "在休息之前，把今天好好的記錄下來吧！"
         content.badge = 1
         content.sound = UNNotificationSound.defaultCritical
 
         var dateComponents = DateComponents()
-        dateComponents.hour = 18
+        dateComponents.hour = 21
         dateComponents.minute = 10
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)

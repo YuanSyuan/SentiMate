@@ -12,17 +12,12 @@ import UserNotifications
 import SceneKit
 
 class HomeVC: UIViewController {
-    
-    var firebaseManager = FirebaseManager.shared
-    
     @IBOutlet weak var nameLbl: UILabel!
-    
     @IBOutlet weak var diaryCollectionView: UICollectionView!
-    
+    @IBOutlet weak var hintLbl: UILabel!
+    var firebaseManager = FirebaseManager.shared
     var initiallyAnimates = false
-    
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
-    
     var sceneView: SCNView!
     var sceneEmoji = "Emoticon_40.scn"
     var rotatePanGesture: UIPanGestureRecognizer!
@@ -55,27 +50,33 @@ class HomeVC: UIViewController {
             if newDiaries != [] {
                 guard let emotion = DiaryManager.shared.diaries.first?.emotion else { return }
                 self.setupBasedOnMostCommonEmotion(with: emotion)
+                self.hintLbl.text = ""
             } else {
                 self.sceneView.scene = SCNScene(named: self.sceneEmoji)
+                self.hintLbl.text = "快去填寫情緒日記吧"
             }
         }
         
-        if let savedUsername = UserDefaults.standard.string(forKey: "username") {
-            nameLbl.text = savedUsername
-        }
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
+//        updateHintLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        if let savedUsername = UserDefaults.standard.string(forKey: "username") {
+            nameLbl.text = savedUsername
+        }
+        
         firebaseManager.listenForUpdate()
         if DiaryManager.shared.diaries != [] {
             guard let emotion = DiaryManager.shared.diaries.first?.emotion else { return }
             setupBasedOnMostCommonEmotion(with: emotion)
+            self.hintLbl.text = ""
         } else {
             sceneView.scene = SCNScene(named: sceneEmoji)
         }
@@ -94,12 +95,29 @@ class HomeVC: UIViewController {
     
     @objc private func diariesDidUpdate() {
         diaryCollectionView.reloadData()
-        
+
         diaryCollectionView.performBatchUpdates({
             UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
                            animations: animations, options: [.curveEaseInOut], completion: nil)
         }, completion: nil)
+        
+        DispatchQueue.main.async {
+                if DiaryManager.shared.diaries.isEmpty {
+                    self.hintLbl.text = "快去填寫情緒日記吧"
+                } else {
+                    self.hintLbl.text = ""
+                }
+            }
     }
+//    
+//    func updateHintLabel() {
+//            if DiaryManager.shared.diaries != [] {
+//                self.hintLbl.text = ""
+//            } else {
+//                
+//                self.hintLbl.text = "快去填寫情緒日記吧"
+//            }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryVC",
@@ -120,7 +138,6 @@ class HomeVC: UIViewController {
     
     func setupBasedOnMostCommonEmotion(with emotionType: String) {
         setupFloatingSceneView(for: emotionType)
-        
     }
     
     func setupFloatingSceneView(for emotion: String) {
@@ -251,14 +268,12 @@ extension HomeVC: UICollectionViewDelegate {
     
     func configureContextMenu(for indexPath: IndexPath) -> UIContextMenuConfiguration {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
-            let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { _ in
+            let edit = UIAction(title: "編輯", image: UIImage(systemName: "square.and.pencil")) { _ in
                 self.editDiaryEntry(at: indexPath)
-                print("Edit action for item at \(indexPath.row)")
             }
             
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+            let delete = UIAction(title: "刪除", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
                 self.deleteDiaryEntry(at: indexPath)
-                print("Delete action for item at \(indexPath.row)")
             }
             return UIMenu(title: "Options", children: [edit, delete])
         }
@@ -270,7 +285,7 @@ extension HomeVC: UICollectionViewDelegate {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
             viewController.documentID = diary.documentID
             viewController.emotion = diary.emotion
-            viewController.selectedCategoryIndex = diary.category
+//            viewController.selectedCategoryIndex = diary.category
             viewController.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime)
             viewController.userInput = diary.content
             navigationController?.pushViewController(viewController, animated: true)
@@ -295,28 +310,6 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 90, left: 0, bottom: 0, right: 0)
     }
 }
-
-//extension HomeVC {
-//    func createNotificationContent() {
-//        let content = UNMutableNotificationContent()    // 建立內容透過指派content來取得UNMutableNotificationContent功能
-//        content.title = "今天過得如何呢？"                 // 推播標題
-//        content.subtitle = "不管有什麼樣的情緒"            // 推播副標題
-//        content.body = "在休息之前，把今天好好的記錄下來吧！"        // 推播內文
-//        content.badge = 1
-//        content.sound = UNNotificationSound.defaultCritical     //推播的聲音
-//        
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 17    // 21:00 hours
-//        dateComponents.minute = 45   // 0 minutes
-//        
-//        
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)   //設定透過時間來完成推播，另有日期地點跟遠端推播
-//        let uuidString = UUID().uuidString              //建立UNNotificationRequest所需要的ID
-//        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-//        
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //向UNUserNotificationCenter新增註冊這一則推播
-//    }
-//}
 
 extension HomeVC: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
