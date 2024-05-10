@@ -12,15 +12,10 @@ import UserNotifications
 import SceneKit
 
 class HomeVC: UIViewController {
-    
-    var firebaseManager = FirebaseManager.shared
-    
     @IBOutlet weak var nameLbl: UILabel!
-    
     @IBOutlet weak var diaryCollectionView: UICollectionView!
-
     @IBOutlet weak var hintLbl: UILabel!
-    
+    var firebaseManager = FirebaseManager.shared
     var initiallyAnimates = false
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     var sceneView: SCNView!
@@ -55,29 +50,33 @@ class HomeVC: UIViewController {
             if newDiaries != [] {
                 guard let emotion = DiaryManager.shared.diaries.first?.emotion else { return }
                 self.setupBasedOnMostCommonEmotion(with: emotion)
-                self.hintLbl.text = "快去填寫情緒日記吧"
+                self.hintLbl.text = ""
             } else {
                 self.sceneView.scene = SCNScene(named: self.sceneEmoji)
-                self.hintLbl.text = ""
+                self.hintLbl.text = "快去填寫情緒日記吧"
             }
         }
         
-        if let savedUsername = UserDefaults.standard.string(forKey: "username") {
-            nameLbl.text = savedUsername
-        }
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateHintLabel()
+//        updateHintLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        if let savedUsername = UserDefaults.standard.string(forKey: "username") {
+            nameLbl.text = savedUsername
+        }
+        
         firebaseManager.listenForUpdate()
         if DiaryManager.shared.diaries != [] {
             guard let emotion = DiaryManager.shared.diaries.first?.emotion else { return }
             setupBasedOnMostCommonEmotion(with: emotion)
+            self.hintLbl.text = ""
         } else {
             sceneView.scene = SCNScene(named: sceneEmoji)
         }
@@ -101,17 +100,24 @@ class HomeVC: UIViewController {
             UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
                            animations: animations, options: [.curveEaseInOut], completion: nil)
         }, completion: nil)
-    }
-    
-    func updateHintLabel() {
+        
         DispatchQueue.main.async {
-            if DiaryManager.shared.diaries.isEmpty {
-                self.hintLbl.text = "快去填寫情緒日記吧"
-            } else {
-                self.hintLbl.text = ""
+                if DiaryManager.shared.diaries.isEmpty {
+                    self.hintLbl.text = "快去填寫情緒日記吧"
+                } else {
+                    self.hintLbl.text = ""
+                }
             }
-        }
     }
+//    
+//    func updateHintLabel() {
+//            if DiaryManager.shared.diaries != [] {
+//                self.hintLbl.text = ""
+//            } else {
+//                
+//                self.hintLbl.text = "快去填寫情緒日記吧"
+//            }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryVC",
@@ -279,7 +285,7 @@ extension HomeVC: UICollectionViewDelegate {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
             viewController.documentID = diary.documentID
             viewController.emotion = diary.emotion
-            viewController.selectedCategoryIndex = diary.category
+//            viewController.selectedCategoryIndex = diary.category
             viewController.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime)
             viewController.userInput = diary.content
             navigationController?.pushViewController(viewController, animated: true)

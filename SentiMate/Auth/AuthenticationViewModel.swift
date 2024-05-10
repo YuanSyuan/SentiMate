@@ -137,8 +137,6 @@ extension AuthenticationViewModel {
     func signOutTapped() async -> Bool {
         do {
             try Auth.auth().signOut()
-            // Assuming DiaryManager.shared.diaries being reset is not throwing an error
-            DiaryManager.shared.diaries = []
             return true
         } catch {
             print("Error signing out: \(error.localizedDescription)")

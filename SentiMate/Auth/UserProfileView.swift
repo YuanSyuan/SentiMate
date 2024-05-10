@@ -27,6 +27,7 @@ struct UserProfileView: View {
     @State var presentingConfirmationDialog = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var username: String = UserDefaults.standard.string(forKey: "username") ?? "設定暱稱"
     
     let textColor = defaultTextColor
     let backgroundColor = defaultBackgroundColor
@@ -36,6 +37,7 @@ struct UserProfileView: View {
                 if await viewModel.deleteAccount() {
                     alertMessage = "刪除成功"
                     showAlert = true
+                    dismiss()
                 } else {
                     alertMessage = "刪除失敗"
                     showAlert = true
@@ -78,7 +80,14 @@ struct UserProfileView: View {
                         }
                     }
                 }
+                
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
+                Section(header: Text("暱稱").font(.custom("jf-openhuninn-2.0", size: 12))) {
+                                NavigationLink(destination: UsernameEditView(username: $username)) {
+                                    Text(username)
+                                        .foregroundColor(Color(backgroundColor))
+                                }
+                            }
                 Section(header: Text("目前登入的信箱")
                     .font(.custom("jf-openhuninn-2.0", size: 12))) {
                         Text(viewModel.displayName)
@@ -86,16 +95,16 @@ struct UserProfileView: View {
                     }
                 NavigationLink {
                     Form {
-                        Section {
-                            Button(role: .cancel, action: signOut) {
-                                HStack {
-                                    Spacer()
-                                    Text("登出")
-                                        .foregroundColor(Color(backgroundColor))
-                                    Spacer()
-                                }
-                            }
-                        }
+//                        Section {
+//                            Button(role: .cancel, action: signOut) {
+//                                HStack {
+//                                    Spacer()
+//                                    Text("登出")
+//                                        .foregroundColor(Color(backgroundColor))
+//                                    Spacer()
+//                                }
+//                            }
+//                        }
                         Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
                             HStack {
                                 Spacer()

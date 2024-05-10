@@ -90,6 +90,7 @@
 		0574CA182BC7D5D80075A296 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574CA172BC7D5D80075A296 /* CategoryCell.swift */; };
 		0574CA1A2BC7DB360075A296 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574CA192BC7DB360075A296 /* TextFieldCell.swift */; };
 		0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058143692BC9291400C6D111 /* HomeVC.swift */; };
+		0584A64C2BEE2093000C0B5C /* UsernameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0584A64B2BEE2093000C0B5C /* UsernameEditView.swift */; };
 		059C5AB32BD559E7004E5331 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */; };
 		059E446A2BC6A5DF00184989 /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E44692BC6A5DF00184989 /* AnalyticsVC.swift */; };
 		059E446C2BC6A7A900184989 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E446B2BC6A7A900184989 /* PostVC.swift */; };
@@ -174,6 +175,7 @@
 		0574CA172BC7D5D80075A296 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0574CA192BC7DB360075A296 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		058143692BC9291400C6D111 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		0584A64B2BEE2093000C0B5C /* UsernameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameEditView.swift; sourceTree = "<group>"; };
 		059C5AB22BD559E7004E5331 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		059E44692BC6A5DF00184989 /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
 		059E446B2BC6A7A900184989 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				054D947C2BE753EB00E4F415 /* LoginView.swift */,
 				054D947D2BE753EB00E4F415 /* UserProfileView.swift */,
+				0584A64B2BEE2093000C0B5C /* UsernameEditView.swift */,
 				054D947E2BE753EB00E4F415 /* AuthenticatedView.swift */,
 				054D947F2BE753EB00E4F415 /* AuthenticationView.swift */,
 				054D94802BE753EB00E4F415 /* SignupView.swift */,
@@ -690,6 +693,7 @@
 				0574CA182BC7D5D80075A296 /* CategoryCell.swift in Sources */,
 				05CC58792BC93C3F003070EC /* Diary.swift in Sources */,
 				05CD0F7D2BD3B1C400242DA8 /* PostEntryVC.swift in Sources */,
+				0584A64C2BEE2093000C0B5C /* UsernameEditView.swift in Sources */,
 				0538A1782BDE456600796496 /* PageView.swift in Sources */,
 				053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */,
 			);

@@ -46,7 +46,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qox-vh-Q7d">
                                                     <rect key="frame" x="20" y="12" width="145" height="208"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad" translatesAutoresizingMaskIntoConstraints="NO" id="acA-AO-gqP">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="acA-AO-gqP">
                                                             <rect key="frame" x="12" y="12" width="40" height="40"/>
                                                             <color key="tintColor" red="1" green="0.79215686269999996" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -89,6 +89,14 @@
                                                             <nil key="highlightedColor"/>
                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o6C-Hp-H2f">
+                                                            <rect key="frame" x="114" y="11.666666666666666" width="19" height="3.9999999999999982"/>
+                                                            <color key="tintColor" red="0.1764705882" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="19" id="LJL-Yv-gb3"/>
+                                                                <constraint firstAttribute="height" constant="19" id="hVl-RL-5Cv"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -103,6 +111,8 @@
                                                         <constraint firstItem="acA-AO-gqP" firstAttribute="top" secondItem="qox-vh-Q7d" secondAttribute="top" constant="12" id="ba7-DB-UdD"/>
                                                         <constraint firstItem="GY3-LV-cCM" firstAttribute="top" secondItem="MaV-Be-ZCF" secondAttribute="bottom" constant="8" id="enI-22-9u1"/>
                                                         <constraint firstItem="226-WG-5qA" firstAttribute="top" secondItem="7st-U1-qTG" secondAttribute="bottom" constant="4" id="fTW-VL-cxX"/>
+                                                        <constraint firstItem="o6C-Hp-H2f" firstAttribute="top" secondItem="qox-vh-Q7d" secondAttribute="top" constant="4" id="gN7-Lt-Aks"/>
+                                                        <constraint firstAttribute="trailing" secondItem="o6C-Hp-H2f" secondAttribute="trailing" constant="12" id="pUh-Nf-O6M"/>
                                                         <constraint firstAttribute="trailing" secondItem="7st-U1-qTG" secondAttribute="trailing" id="qOA-Ls-fhc"/>
                                                         <constraint firstItem="MaV-Be-ZCF" firstAttribute="leading" secondItem="226-WG-5qA" secondAttribute="trailing" id="qez-Ld-eFZ"/>
                                                         <constraint firstItem="7st-U1-qTG" firstAttribute="top" secondItem="acA-AO-gqP" secondAttribute="bottom" constant="4" id="rDs-at-36w"/>
@@ -136,8 +146,8 @@
                                 <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yuan Syuan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-Vx-Dna">
-                                <rect key="frame" x="68" y="59.999999999999993" width="305" height="23.666666666666664"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-Vx-Dna">
+                                <rect key="frame" x="68" y="60" width="305" height="0.0"/>
                                 <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="24"/>
                                 <color key="textColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1041,6 +1051,7 @@
         <image name="chart.bar" catalog="system" width="128" height="89"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="forward.fill" catalog="system" width="128" height="77"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
