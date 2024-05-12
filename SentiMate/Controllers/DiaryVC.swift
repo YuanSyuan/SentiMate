@@ -14,6 +14,7 @@ class DiaryVC: UIViewController {
     @IBOutlet var bigConstraints: [NSLayoutConstraint]!
     @IBOutlet var smallConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var emotionBackground: UIImageView!
+    @IBOutlet weak var textContainerView: UIView!
     @IBOutlet weak var emotionImg: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var categoryLbl: UILabel!
@@ -24,12 +25,13 @@ class DiaryVC: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        view.backgroundColor = .clear
-        view.layer.shadowRadius = 12
-        view.layer.shadowOpacity = 1
-        view.layer.shadowOffset = .zero
-        view.layer.shadowColor = UIColor.systemFill.cgColor
+//        view.backgroundColor = .clear
+//        view.layer.shadowRadius = 12
+//        view.layer.shadowOpacity = 1
+//        view.layer.shadowOffset = .zero
+//        view.layer.shadowColor = UIColor.systemFill.cgColor
         containerView.clipsToBounds = true
+        textContainerView.layer.cornerRadius = 20
     }
     
     private func emojiText(forEmotion emotion: String?) -> String {

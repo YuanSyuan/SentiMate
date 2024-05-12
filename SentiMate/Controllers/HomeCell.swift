@@ -1,5 +1,5 @@
 //
-//  HomeDiaryCell.swift
+//  HomeCell.swift
 //  SentiMate
 //
 //  Created by 李芫萱 on 2024/4/12.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeDiaryCell: UICollectionViewCell {
+class HomeCell: UICollectionViewCell {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var emotionImg: UIImageView!

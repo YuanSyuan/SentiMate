@@ -109,7 +109,7 @@ extension MusicEntryVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalmMusic", for: indexPath) as? CalmMusicEntryCell else {
-            fatalError("Could not dequeue HomeDiaryCell")
+            fatalError("Could not dequeue HomeCell")
         }
         
         cell.playlistLbl.text = playlist[indexPath.row]

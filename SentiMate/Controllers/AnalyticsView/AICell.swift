@@ -50,7 +50,7 @@ class AICell: UITableViewCell {
         callAIBtn.setTitle("查看AI分析", for: .normal)
         callAIBtn.setTitleColor(defaultBackgroundColor, for: .normal)
         callAIBtn.backgroundColor = midOrange
-        callAIBtn.layer.cornerRadius = 20
+        callAIBtn.layer.cornerRadius = 12
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(containerView)

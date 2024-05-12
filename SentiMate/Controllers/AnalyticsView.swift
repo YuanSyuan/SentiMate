@@ -22,15 +22,8 @@ struct DonutChartView: View {
         let backgroundColor = defaultTextColor
         NavigationStack {
             VStack {
-//                HStack {
-//                    Text("心情圖")
-//                        .font(.custom("jf-openhuninn-2.0", size: 32))
-//                        .fontWeight(.bold)
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .foregroundColor(Color(textColor))
-//                    Spacer()
-//                        .frame(height: 20)
-//                }
+                Spacer()
+                    .frame(height: 10)
                 Picker("Time Period", selection: $selectedTimePeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
                         Text(period.rawValue).tag(period)
@@ -47,7 +40,6 @@ struct DonutChartView: View {
                         outerRadius: selectedEmotionType?.name == emotionType.name ? 150 : 125,
                         angularInset: 1
                     )
-                    .shadow(color: .gray, radius: 5, x: 2, y: 2)
                     .foregroundStyle(Color(emotionType.color))
                     .cornerRadius(10)
                 }
@@ -78,7 +70,7 @@ struct DonutChartView: View {
                         }
                     }
                 }
-                
+                .shadow(color: .gray, radius: 5, x: 2, y: 2)
                 .frame(height: 300)
                 Spacer()
                     .frame(height: 20)
@@ -95,9 +87,9 @@ struct DonutChartView: View {
                         .foregroundColor(Color(midOrange))
                 }
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 10)
                 let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
-                HStack(spacing: 20) {
+                HStack(spacing: 10) {
                     ForEach(topCategories, id: \.name) { categoryData in
                         CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
                     }
@@ -155,7 +147,7 @@ struct CategoryCircleView: View {
     
     var body: some View {
             let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
-            let diameter = max(scaledCount * 100, 20) // Ensure a minimum size for visibility
+            let diameter = max(scaledCount * 90, 20) // Ensure a minimum size for visibility
             
             ZStack {
                 Circle()

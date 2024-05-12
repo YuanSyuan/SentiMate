@@ -221,8 +221,8 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "diary", for: indexPath) as? HomeDiaryCell else {
-            fatalError("Could not dequeue HomeDiaryCell")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "diary", for: indexPath) as? HomeCell else {
+            fatalError("Could not dequeue HomeCell")
         }
         var diary = DiaryManager.shared.diaries[indexPath.row]
         
