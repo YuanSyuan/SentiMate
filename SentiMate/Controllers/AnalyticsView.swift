@@ -95,6 +95,7 @@ struct DonutChartView: View {
                     }
                 }
                 Spacer()
+                    .frame(height: 10)
                 Image(systemName: "arrow.down")  // System name for the down arrow
                     .font(.system(size: 20)) // You can adjust the size to fit your design
                     .foregroundColor(Color(textColor))

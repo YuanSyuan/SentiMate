@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func scheduleDailyNotification() {
         let savedUsername = UserDefaults.standard.string(forKey: "username")
         let content = UNMutableNotificationContent()
-        content.title = "晚安\(savedUsername)"
-        content.subtitle = "今天過得如何呢？"
+        content.title = "晚安～今天過得如何呢？"
+//        ＝＝
         content.body = "在休息之前，把今天好好的記錄下來吧！"
         content.badge = 1
         content.sound = UNNotificationSound.defaultCritical
