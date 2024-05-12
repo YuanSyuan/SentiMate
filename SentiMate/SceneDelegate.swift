@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import TipKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -43,6 +44,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
                 self.window = window
                 window.makeKeyAndVisible()
+        
+        try? Tips.configure([
+                    .displayFrequency(.immediate),
+                    .datastoreLocation(.applicationDefault)
+                ])
     }
     
     func switchToMainInterface() {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+import TipKit
 
 struct DonutChartView: View {
     @State var emotionTypes: [EmotionType]
@@ -14,6 +15,7 @@ struct DonutChartView: View {
     @State private var selectedEmotionType: EmotionType?
     @State private var topCategories: [CategoryData] = []
     @State private var selectedTimePeriod: TimePeriod = .allTime
+    private let chartTip = ChartTip()
     
     var body: some View {
         let textColor = defaultTextColor
@@ -79,6 +81,7 @@ struct DonutChartView: View {
                 .frame(height: 300)
                 Spacer()
                     .frame(height: 20)
+                TipView(chartTip)
                 if let selectedEmotionType {
                     Text("讓我感到")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
@@ -113,6 +116,7 @@ struct DonutChartView: View {
                         getSelectedEmotionType(value: newValue)
                     }
                 }
+                chartTip.invalidate(reason: .actionPerformed)
             }
             .onChange(of: selectedEmotionType) { _, newValue in
                 if let emotionType = newValue {

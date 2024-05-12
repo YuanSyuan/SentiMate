@@ -113,6 +113,7 @@
 		05D366C02BE09F4A004227A3 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D366BF2BE09F4A004227A3 /* SettingVC.swift */; };
 		05D366C22BE0A09A004227A3 /* AlertClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D366C12BE0A09A004227A3 /* AlertClass.swift */; };
 		05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */; };
+		05EEB6432BF0918200513B2A /* TipKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EEB6422BF0918200513B2A /* TipKit.swift */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
 
@@ -199,6 +200,7 @@
 		05D366BF2BE09F4A004227A3 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = SentiMate/SettingVC.swift; sourceTree = SOURCE_ROOT; };
 		05D366C12BE0A09A004227A3 /* AlertClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertClass.swift; sourceTree = "<group>"; };
 		05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChenYuluoyan-Thin.ttf"; sourceTree = "<group>"; };
+		05EEB6422BF0918200513B2A /* TipKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipKit.swift; sourceTree = "<group>"; };
 		1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.debug.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.debug.xcconfig"; sourceTree = "<group>"; };
 		52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentiMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC50F02A987BF42F8DC6D074 /* Pods-SentiMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.release.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				0509C1512BCAC731000FB482 /* Music.swift */,
 				0509C1572BCACA95000FB482 /* Emotions.swift */,
 				05A4812A2BD119660073F305 /* AIResponse.swift */,
+				05EEB6422BF0918200513B2A /* TipKit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				05B44C1E2BD263C900798934 /* CalmMusicEntryCell.swift in Sources */,
 				054D94852BE753EB00E4F415 /* AuthenticationView.swift in Sources */,
 				0509C1522BCAC731000FB482 /* Music.swift in Sources */,
+				05EEB6432BF0918200513B2A /* TipKit.swift in Sources */,
 				0581436A2BC9291400C6D111 /* HomeVC.swift in Sources */,
 				0538A1812BDE4E9000796496 /* MainAppViewControllerRepresentable.swift in Sources */,
 				05D366C22BE0A09A004227A3 /* AlertClass.swift in Sources */,
