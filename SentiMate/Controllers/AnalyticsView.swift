@@ -22,15 +22,15 @@ struct DonutChartView: View {
         let backgroundColor = defaultTextColor
         NavigationStack {
             VStack {
-                HStack {
-                    Text("心情圖")
-                        .font(.custom("jf-openhuninn-2.0", size: 32))
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color(textColor))
-                    Spacer()
-                        .frame(height: 20)
-                }
+//                HStack {
+//                    Text("心情圖")
+//                        .font(.custom("jf-openhuninn-2.0", size: 32))
+//                        .fontWeight(.bold)
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .foregroundColor(Color(textColor))
+//                    Spacer()
+//                        .frame(height: 20)
+//                }
                 Picker("Time Period", selection: $selectedTimePeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
                         Text(period.rawValue).tag(period)
@@ -38,7 +38,6 @@ struct DonutChartView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .background(Color.gray.opacity(0.7))
                 Spacer()
                     .frame(height: 20)
                 Chart(emotionTypes) { emotionType in
@@ -48,6 +47,7 @@ struct DonutChartView: View {
                         outerRadius: selectedEmotionType?.name == emotionType.name ? 150 : 125,
                         angularInset: 1
                     )
+                    .shadow(color: .gray, radius: 5, x: 2, y: 2)
                     .foregroundStyle(Color(emotionType.color))
                     .cornerRadius(10)
                 }
@@ -78,6 +78,7 @@ struct DonutChartView: View {
                         }
                     }
                 }
+                
                 .frame(height: 300)
                 Spacer()
                     .frame(height: 20)
@@ -85,25 +86,28 @@ struct DonutChartView: View {
                 if let selectedEmotionType {
                     Text("讓我感到")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
-                        .foregroundColor(Color(textColor))
+                        .foregroundColor(Color(midOrange))
                     + Text("\(selectedEmotionType.mandarinName)")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
-                        .foregroundColor(Color(midOrange))
+                        .foregroundColor(Color(textColor))
                     + Text("的是")
                         .font(.custom("jf-openhuninn-2.0", size: 18))
-                        .foregroundColor(Color(textColor))
+                        .foregroundColor(Color(midOrange))
                 }
                 Spacer()
                     .frame(height: 20)
                 let maxCount = topCategories.max(by: { $0.count < $1.count })?.count ?? 1
-                
                 HStack(spacing: 20) {
                     ForEach(topCategories, id: \.name) { categoryData in
                         CategoryCircleView(categoryData: categoryData, maxCount: maxCount)
                     }
                 }
-                
                 Spacer()
+                Image(systemName: "arrow.down")  // System name for the down arrow
+                    .font(.system(size: 20)) // You can adjust the size to fit your design
+                    .foregroundColor(Color(textColor))
+                Spacer()
+                    .frame(height: 10)
             }
             .onChange(of: selectedTimePeriod) { _, newPeriod in
                 withAnimation(.easeInOut(duration: 0.5)) {
@@ -125,10 +129,9 @@ struct DonutChartView: View {
             }
             
             
-            .padding()
+            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
             .background(Color(backgroundColor))
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-//            .shadow(radius: 10)
+//            .clipShape(RoundedRectangle(cornerRadius: 20))
         }
     }
     
@@ -151,29 +154,30 @@ struct CategoryCircleView: View {
     @State private var scale: CGFloat = 0.1 // Start from a scaled down state
     
     var body: some View {
-        let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
-        let diameter = max(scaledCount * 100, 20) // Ensure a minimum size for visibility
-        
-        ZStack {
-            Circle()
-                .frame(width: diameter, height: diameter)
-                .foregroundColor(Color(defaultTextColor))
-                .scaleEffect(scale)
-                .onAppear {
-                    withAnimation(.easeOut(duration: 0.5)) {
-                        scale = 1.0 // Animate to full size
+            let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
+            let diameter = max(scaledCount * 100, 20) // Ensure a minimum size for visibility
+            
+            ZStack {
+                Circle()
+                    .frame(width: diameter, height: diameter)
+                    .foregroundColor(Color(defaultBackgroundColor))
+                    .scaleEffect(scale)
+                    .onAppear {
+                        withAnimation(.easeOut(duration: 0.5)) {
+                            scale = 1.0 // Animate to full size
+                        }
                     }
-                }
-                .onDisappear {
-                    scale = 0.1 // Reset when disappearing
-                }
-            Text(categoryData.name)
-                .foregroundColor(Color(defaultBackgroundColor))
-                .font(.custom("jf-openhuninn-2.0", size: 18))
-                .scaleEffect(scale) // Apply the same scale effect to the text
-                .opacity(scale) // Fade the text in and out with the scale
-                .animation(.easeOut(duration: 0.5), value: scale)
-        }
+                    .onDisappear {
+                        scale = 0.1 // Reset when disappearing
+                    }
+                Text(categoryData.name)
+                    .foregroundColor(Color(defaultTextColor))
+                    .font(.custom("jf-openhuninn-2.0", size: 18))
+                    .scaleEffect(scale) // Apply the same scale effect to the text
+                    .opacity(scale) // Fade the text in and out with the scale
+                    .animation(.easeOut(duration: 0.5), value: scale)
+            }
+            .shadow(color: .gray, radius: 5, x: 2, y: 2)
     }
 }
 

@@ -9,36 +9,35 @@ import UIKit
 import SwiftUI
 
 class ChartCell: UITableViewCell {
-    let containerView = UIView()
+let chartLbl = UILabel()
     var hostingController: UIHostingController<AnyView>?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-//        containerView.backgroundColor = defaultTextColor
-//        containerView.layer.cornerRadius = 20
-//        
         contentView.backgroundColor = defaultBackgroundColor
-//        
+//
 //        containerView.clipsToBounds = false
 //        containerView.layer.shadowColor = UIColor.black.cgColor
 //        containerView.layer.shadowOpacity = 0.7
 //        containerView.layer.shadowRadius = 5
 //        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
-//       
+//
 //        containerView.layer.shouldRasterize = true
 //        containerView.layer.rasterizationScale = UIScreen.main.scale
-//        
-//        contentView.addSubview(containerView)
-//        
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        NSLayoutConstraint.activate([
-//            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-//            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-//            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
-//        ])
+//
+        contentView.addSubview(chartLbl)
+//
+        chartLbl.translatesAutoresizingMaskIntoConstraints = false
+        chartLbl.text = "心情圖"
+        chartLbl.font = customFontTitle
+        chartLbl.textColor = defaultTextColor
+        
+        NSLayoutConstraint.activate([
+            chartLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            chartLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            chartLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20)
+//            chartLbl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

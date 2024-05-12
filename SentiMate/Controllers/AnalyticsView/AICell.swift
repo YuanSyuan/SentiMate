@@ -43,18 +43,19 @@ class AICell: UITableViewCell {
         AIResponseLbl.numberOfLines = 0
         AIResponseLbl.textColor = defaultBackgroundColor
         AIResponseLbl.font = customFontInt
-        
+        AIResponseLbl.layer.borderColor = defaultBackgroundColor.cgColor
         containerView.backgroundColor = defaultTextColor
+        containerView.layer.cornerRadius = 20
         
         callAIBtn.setTitle("查看AI分析", for: .normal)
         callAIBtn.setTitleColor(defaultBackgroundColor, for: .normal)
         callAIBtn.backgroundColor = midOrange
-        callAIBtn.layer.cornerRadius = 4
+        callAIBtn.layer.cornerRadius = 20
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(containerView)
-        contentView.addSubview(AIResponseLbl)
-        contentView.addSubview(callAIBtn)
+        containerView.addSubview(AIResponseLbl)
+        containerView.addSubview(callAIBtn)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,22 +69,25 @@ class AICell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            containerView.heightAnchor.constraint(equalToConstant: 380)
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
-            AIResponseLbl.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-            AIResponseLbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 4),
-            AIResponseLbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
+            AIResponseLbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            AIResponseLbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+//            AIResponseLbl.bottomAnchor.constraint(equalTo: callAIBtn.topAnchor),
             AIResponseLbl.heightAnchor.constraint(equalToConstant: 340)
         ])
         
         NSLayoutConstraint.activate([
-            callAIBtn.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
-            callAIBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
-            callAIBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
+//            callAIBtn.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+            callAIBtn.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 70),
+            callAIBtn.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -70),
+//            callAIBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            callAIBtn.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             callAIBtn.heightAnchor.constraint(equalToConstant: 40)
         ])
         
@@ -97,17 +101,16 @@ class AICell: UITableViewCell {
         stackView.alignment = .center
         stackView.spacing = 5
         
-        contentView.addSubview(stackView)
+        containerView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            stackView.heightAnchor.constraint(equalToConstant: 50),
-            stackView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: -10)
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            stackView.bottomAnchor.constraint(equalTo: AIResponseLbl.topAnchor, constant: -10),
+            stackView.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
         
         imageViews.forEach { $0.removeFromSuperview() }
         imageViews.removeAll()

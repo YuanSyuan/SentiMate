@@ -120,7 +120,7 @@ extension AnalyticsVC: UITableViewDataSource {
                 newHostingController.view.layer.cornerRadius = 20
                 
                 NSLayoutConstraint.activate([
-                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 20),
+                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
                     newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
                     newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
                     newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
