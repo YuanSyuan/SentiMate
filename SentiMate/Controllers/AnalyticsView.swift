@@ -18,8 +18,8 @@ struct DonutChartView: View {
     private let chartTip = ChartTip()
     
     var body: some View {
-        let textColor = defaultTextColor
-        let backgroundColor = defaultBackgroundColor
+        let textColor = defaultBackgroundColor
+        let backgroundColor = defaultTextColor
         NavigationStack {
             VStack {
                 HStack {
@@ -127,6 +127,8 @@ struct DonutChartView: View {
             
             .padding()
             .background(Color(backgroundColor))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+//            .shadow(radius: 10)
         }
     }
     

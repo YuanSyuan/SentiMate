@@ -116,11 +116,14 @@ extension AnalyticsVC: UITableViewDataSource {
                 cell.contentView.addSubview(newHostingController.view)
                 newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
                 
+                newHostingController.view.clipsToBounds = true
+                newHostingController.view.layer.cornerRadius = 20
+                
                 NSLayoutConstraint.activate([
-                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
-                    newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
-                    newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
-                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
+                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 20),
+                    newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
+                    newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
+                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
                 ])
                 
                 newHostingController.didMove(toParent: self)
