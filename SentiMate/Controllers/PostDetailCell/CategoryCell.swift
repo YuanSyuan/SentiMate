@@ -83,6 +83,8 @@ class CategoryCell: UITableViewCell {
     }
     
     @objc func categoryButtonTapped(sender: UIButton) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
         categoryButtons.forEach {
             $0.alpha = 0.5
             $0.setTitleColor(defaultTextColor, for: .normal)

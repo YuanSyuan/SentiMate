@@ -211,6 +211,8 @@ class HomeVC: UIViewController {
     @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             configureTipKit()
+            let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
         } else {
             tipView?.removeFromSuperview()
         }

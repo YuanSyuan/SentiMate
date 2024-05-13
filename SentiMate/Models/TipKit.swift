@@ -46,6 +46,6 @@ struct EmotionFeatureTip: Tip {
     }
 
     var image: Image? {
-        Image(systemName: "Hand")
+        Image("Hand")
     }
 }

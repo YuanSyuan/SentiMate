@@ -110,6 +110,8 @@ struct DonutChartView: View {
                 if let newValue {
                     withAnimation(.spring()) {
                         getSelectedEmotionType(value: newValue)
+                        let generator = UISelectionFeedbackGenerator()
+                        generator.selectionChanged()
                     }
                 }
                 chartTip.invalidate(reason: .actionPerformed)
@@ -145,7 +147,7 @@ struct CategoryCircleView: View {
     
     var body: some View {
             let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
-            let diameter = max(scaledCount * 90, 20) // Ensure a minimum size for visibility
+            let diameter = max(scaledCount * 80, 20) 
             
             ZStack {
                 Circle()

@@ -116,9 +116,13 @@ extension PostDetailVC: UITableViewDataSource {
                             alertType: .reminder)
                         
                         self?.saveDiaryEntry(newEntry: newEntry)
+                        let generator = UINotificationFeedbackGenerator()
+                                   generator.notificationOccurred(.success)
                     }
                 } else {
                     self?.saveDiaryEntry(newEntry: newEntry)
+                    let generator = UINotificationFeedbackGenerator()
+                               generator.notificationOccurred(.success)
                 }
             }
             return cell

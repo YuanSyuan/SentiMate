@@ -47,12 +47,14 @@ class PostVC: UIViewController {
         sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
         
         model = ModelManager.shared.model
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        
         self.tabBarController?.tabBar.alpha = 0
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//
+//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -132,6 +134,8 @@ class PostVC: UIViewController {
     
     @objc func confirmEmotionTapped() {
         if self.isSessionRunning == true {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
             sceneView.session.pause()
             isSessionRunning = false
             saveEmotionBtn.isEnabled = true
@@ -220,7 +224,7 @@ extension PostVC: ARSCNViewDelegate {
         textGeometry.materials = [material]
 
         let textNode = SCNNode(geometry: textGeometry)
-        textNode.position = SCNVector3(-0.03, 0.11, 0)
+        textNode.position = SCNVector3(-0.04, 0.11, 0)
         textNode.scale = SCNVector3(0.002, 0.002, 0.002)
 
         node.addChildNode(textNode)
