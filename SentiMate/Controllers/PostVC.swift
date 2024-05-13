@@ -19,6 +19,7 @@ class PostVC: UIViewController {
     
     let titleLbl = UILabel()
     var emotionLabel = UILabel()
+    var textNode: SCNNode?
     let confirmEmotionBtn = UIButton()
     let saveEmotionBtn = UIButton()
     let containerView = UIView()
@@ -60,7 +61,7 @@ class PostVC: UIViewController {
     func setupUI() {
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
         titleLbl.text = "現在的情緒"
-        titleLbl.textColor = .black
+        titleLbl.textColor = midOrange
         titleLbl.textAlignment = .center
         titleLbl.font = customFontContent
         sceneView.addSubview(titleLbl)
@@ -69,34 +70,18 @@ class PostVC: UIViewController {
         emotionLabel.textColor = midOrange
         emotionLabel.textAlignment = .center
         emotionLabel.font = customFontTitle
-//        emotionLabel.backgroundColor = defaultTextColor.withAlphaComponent(0.5)
-//        emotionLabel.layer.cornerRadius = 10
         sceneView.addSubview(emotionLabel)
         
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//        containerView.backgroundColor = .black
-//        sceneView.addSubview(containerView)
-        
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
-//        saveEmotionBtn.setTitle("填寫日記", for: .normal)
         
-        saveEmotionBtn.setImage(UIImage(named: ""), for: .disabled)
-//        saveEmotionBtn.largeContentImageInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-//        saveEmotionBtn.backgroundColor = .gray
-//        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
-//        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
+        saveEmotionBtn.setImage(UIImage(named: "Send_Orange"), for: .normal)
         saveEmotionBtn.layer.cornerRadius = 10
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
         
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
-//        confirmEmotionBtn.setTitle("確認", for: .normal)
         confirmEmotionBtn.setImage(UIImage(named: "Button_Orange_Filled"), for: .normal)
         confirmEmotionBtn.contentMode = .scaleAspectFill
-//        confirmEmotionBtn.largeContentImageInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-//        confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
-//        confirmEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
-//        confirmEmotionBtn.backgroundColor = midOrange
         confirmEmotionBtn.layer.cornerRadius = 30
         confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
         view.addSubview(confirmEmotionBtn)
@@ -112,7 +97,6 @@ class PostVC: UIViewController {
         
         NSLayoutConstraint.activate([
             titleLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            titleLbl.bottomAnchor.constraint(equalTo: emotionLabel.topAnchor, constant: -10),
             titleLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             titleLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             titleLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
@@ -124,16 +108,11 @@ class PostVC: UIViewController {
             emotionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             emotionLabel.heightAnchor.constraint(equalToConstant: 50),
             
-//            containerView.widthAnchor.constraint(equalToConstant: view.bounds.width),
-//            containerView.heightAnchor.constraint(equalToConstant: 120),
-//            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
             saveEmotionBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             saveEmotionBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             saveEmotionBtn.widthAnchor.constraint(equalToConstant: 50),
             saveEmotionBtn.heightAnchor.constraint(equalToConstant: 50),
             
-//            confirmEmotionBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             confirmEmotionBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             confirmEmotionBtn.centerYAnchor.constraint(equalTo: saveEmotionBtn.centerYAnchor),
             confirmEmotionBtn.widthAnchor.constraint(equalToConstant: 60),
@@ -156,21 +135,16 @@ class PostVC: UIViewController {
             sceneView.session.pause()
             isSessionRunning = false
             saveEmotionBtn.isEnabled = true
-            saveEmotionBtn.setImage(UIImage(named: "Send_Orange"), for: .normal)
-//            saveEmotionBtn.backgroundColor = midOrange
             confirmEmotionBtn.setImage(UIImage(named: "Back_Arrow_Orange32"), for: .normal)
-//            confirmEmotionBtn.setTitle("再拍一次", for: .normal)
-//            confirmEmotionBtn.backgroundColor = .gray
         } else {
             isSessionRunning = true
             saveEmotionBtn.isEnabled = false
-            saveEmotionBtn.setImage(UIImage(named: ""), for: .disabled)
-//            saveEmotionBtn.backgroundColor = .gray
+            //            saveEmotionBtn.backgroundColor = .gray
             let configuration = ARFaceTrackingConfiguration()
             sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
             confirmEmotionBtn.setImage(UIImage(named: "Button_Orange_Filled"), for: .normal)
-//            confirmEmotionBtn.setTitle("確認", for: .normal)
-//            confirmEmotionBtn.backgroundColor = midOrange
+//            titleLbl.text = "現在的情緒"
+            showLoadingAnimation()
         }
     }
     
@@ -184,11 +158,11 @@ class PostVC: UIViewController {
         emotionLabel.addSubview(loadingAnimationView!)
         
         NSLayoutConstraint.activate([
-               loadingAnimationView!.centerXAnchor.constraint(equalTo: emotionLabel.centerXAnchor),
-               loadingAnimationView!.centerYAnchor.constraint(equalTo: emotionLabel.centerYAnchor),
-               loadingAnimationView!.widthAnchor.constraint(equalTo: emotionLabel.widthAnchor, multiplier: 0.5), // Adjust size relative to emotionLabel width
-               loadingAnimationView!.heightAnchor.constraint(equalToConstant: 50)  // Keep aspect ratio 1:1 if desired
-           ])
+            loadingAnimationView!.centerXAnchor.constraint(equalTo: emotionLabel.centerXAnchor),
+            loadingAnimationView!.centerYAnchor.constraint(equalTo: emotionLabel.centerYAnchor),
+            loadingAnimationView!.widthAnchor.constraint(equalTo: emotionLabel.widthAnchor, multiplier: 0.5),
+            loadingAnimationView!.heightAnchor.constraint(equalToConstant: 50)
+        ])
         
         loadingAnimationView?.play()
     }
@@ -226,11 +200,9 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         
         DispatchQueue.main.async {
-            UIView.transition(with: self.emotionLabel, duration: 0.25, options: .transitionCrossDissolve, animations: {
-                    self.emotionLabel.text = emojiText
-                }, completion: nil)
-            
+            (self.textNode?.geometry as? SCNText)?.string = emojiText
             self.confirmEmotionBtn.isEnabled = true
+            self.titleLbl.text = ""
             self.hideLoadingAnimation()
         }
     }
@@ -238,6 +210,22 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
 
 // extension: ARSCNViewDelegate
 extension PostVC: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+
+        let textGeometry = SCNText(string: "", extrusionDepth: 4)
+        textGeometry.font = customFontSubTitle
+        let material = SCNMaterial()
+        material.diffuse.contents = midOrange
+        textGeometry.materials = [material]
+
+        let textNode = SCNNode(geometry: textGeometry)
+        textNode.position = SCNVector3(-0.03, 0.11, 0)
+        textNode.scale = SCNVector3(0.002, 0.002, 0.002)
+
+        node.addChildNode(textNode)
+        self.textNode = textNode
+    }
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard let device = sceneView.device else { return nil }
