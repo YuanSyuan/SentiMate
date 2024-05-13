@@ -10,6 +10,7 @@ import FirebaseStorage
 import ViewAnimator
 import UserNotifications
 import SceneKit
+import TipKit
 
 class HomeVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
@@ -20,11 +21,16 @@ class HomeVC: UIViewController {
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     var sceneView: SCNView!
     var sceneEmoji = "Emoticon_40.scn"
-    var rotatePanGesture: UIPanGestureRecognizer!
-    var dragPanGesture: UIPanGestureRecognizer!
-    var longPressGesture: UILongPressGestureRecognizer!
+//    var rotatePanGesture: UIPanGestureRecognizer!
+//    var dragPanGesture: UIPanGestureRecognizer!
+//    var longPressGesture: UILongPressGestureRecognizer!
     var initialCameraTransform: SCNMatrix4?
     var initialFieldOfView: CGFloat?
+    // TipKit
+//    var currentTipIndex = 0
+    private var emotionFeatureTip = EmotionFeatureTip()
+        private var tipObservationTask: Task<Void, Never>?
+        private weak var tipView: TipUIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +48,7 @@ class HomeVC: UIViewController {
         
         configureGestureRecognizers()
         setupInitialCamera()
+//        configureTipKit()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
@@ -56,8 +63,6 @@ class HomeVC: UIViewController {
                 self.hintLbl.text = "快去填寫情緒日記吧"
             }
         }
-        
-      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,6 +86,12 @@ class HomeVC: UIViewController {
             sceneView.scene = SCNScene(named: sceneEmoji)
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            tipObservationTask?.cancel()
+            tipObservationTask = nil
+        }
        
     private func animateInitialLoad() {
         if initiallyAnimates {
@@ -109,15 +120,6 @@ class HomeVC: UIViewController {
                 }
             }
     }
-//    
-//    func updateHintLabel() {
-//            if DiaryManager.shared.diaries != [] {
-//                self.hintLbl.text = ""
-//            } else {
-//                
-//                self.hintLbl.text = "快去填寫情緒日記吧"
-//            }
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDiaryVC",
@@ -172,6 +174,11 @@ class HomeVC: UIViewController {
         doubleTapGesture.numberOfTapsRequired = 2
         doubleTapGesture.delegate = self
         sceneView.addGestureRecognizer(doubleTapGesture)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action:  #selector(handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delegate = self
+        sceneView.addGestureRecognizer(longPressGesture)
     }
     
     @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
@@ -191,6 +198,24 @@ class HomeVC: UIViewController {
         gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view?.superview)
     }
     
+    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        if let cameraNode = sceneView.pointOfView {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0.5
+            cameraNode.transform = initialCameraTransform ?? SCNMatrix4Identity
+            cameraNode.camera?.fieldOfView = initialFieldOfView ?? 60
+            SCNTransaction.commit()
+        }
+    }
+    
+    @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            configureTipKit()
+        } else {
+            tipView?.removeFromSuperview()
+        }
+    }
+    
     func setupInitialCamera() {
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
@@ -204,14 +229,18 @@ class HomeVC: UIViewController {
         initialFieldOfView = cameraNode.camera?.fieldOfView
     }
     
-    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
-        if let cameraNode = sceneView.pointOfView {
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            cameraNode.transform = initialCameraTransform ?? SCNMatrix4Identity
-            cameraNode.camera?.fieldOfView = initialFieldOfView ?? 60
-            SCNTransaction.commit()
-        }
+    func configureTipKit() {
+        let tipHostingView = TipUIView(emotionFeatureTip) // Ensure this view is designed to display the tip content
+            tipHostingView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(tipHostingView)
+
+            NSLayoutConstraint.activate([
+                tipHostingView.topAnchor.constraint(equalTo: sceneView.bottomAnchor),
+                tipHostingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                tipHostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            ])
+
+            tipView = tipHostingView
     }
 }
 
@@ -316,6 +345,8 @@ extension HomeVC: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+
 
 extension DateFormatter {
     static let diaryEntryFormatter: DateFormatter = {

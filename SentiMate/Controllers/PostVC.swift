@@ -60,7 +60,7 @@ class PostVC: UIViewController {
     }
     func setupUI() {
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
-        titleLbl.text = "現在的情緒"
+        titleLbl.text = "識別情緒中"
         titleLbl.textColor = midOrange
         titleLbl.textAlignment = .center
         titleLbl.font = customFontContent
@@ -143,7 +143,7 @@ class PostVC: UIViewController {
             let configuration = ARFaceTrackingConfiguration()
             sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
             confirmEmotionBtn.setImage(UIImage(named: "Button_Orange_Filled"), for: .normal)
-//            titleLbl.text = "現在的情緒"
+            titleLbl.text = "識別情緒中"
             showLoadingAnimation()
         }
     }
