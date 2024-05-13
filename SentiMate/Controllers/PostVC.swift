@@ -10,6 +10,7 @@ import AVFoundation
 import CoreML
 import Vision
 import ARKit
+import Lottie
 
 class PostVC: UIViewController {
     
@@ -20,12 +21,16 @@ class PostVC: UIViewController {
     var emotionLabel = UILabel()
     let confirmEmotionBtn = UIButton()
     let saveEmotionBtn = UIButton()
+    let containerView = UIView()
     var currentEmotion: String?
     var isSessionRunning = true
+    
+    private var loadingAnimationView: LottieAnimationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .black
         setupUI()
         saveEmotionBtn.isEnabled = false
         confirmEmotionBtn.isEnabled = false
@@ -43,71 +48,99 @@ class PostVC: UIViewController {
         model = ModelManager.shared.model
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.alpha = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.tabBarController?.tabBar.alpha = 1
+    }
     func setupUI() {
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
-        titleLbl.text = "今天的心情："
-        titleLbl.textColor = defaultTextColor
+        titleLbl.text = "現在的情緒"
+        titleLbl.textColor = .black
         titleLbl.textAlignment = .center
         titleLbl.font = customFontContent
-        view.addSubview(titleLbl)
+        sceneView.addSubview(titleLbl)
         
         emotionLabel.translatesAutoresizingMaskIntoConstraints = false
-        emotionLabel.textColor = defaultTextColor
+        emotionLabel.textColor = midOrange
         emotionLabel.textAlignment = .center
-        emotionLabel.font = customFontSubTitle
-        emotionLabel.backgroundColor = .black.withAlphaComponent(0.5)
-        view.addSubview(emotionLabel)
+        emotionLabel.font = customFontTitle
+//        emotionLabel.backgroundColor = defaultTextColor.withAlphaComponent(0.5)
+//        emotionLabel.layer.cornerRadius = 10
+        sceneView.addSubview(emotionLabel)
+        
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.backgroundColor = .black
+//        sceneView.addSubview(containerView)
         
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
-        saveEmotionBtn.setTitle("儲存", for: .normal)
-        saveEmotionBtn.backgroundColor = .gray
-        saveEmotionBtn.setTitleColor(defaultTextColor, for: .normal)
-        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
+//        saveEmotionBtn.setTitle("填寫日記", for: .normal)
+        
+        saveEmotionBtn.setImage(UIImage(named: ""), for: .disabled)
+//        saveEmotionBtn.largeContentImageInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//        saveEmotionBtn.backgroundColor = .gray
+//        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
+//        saveEmotionBtn.setTitleColor(defaultBackgroundColor, for: .disabled)
         saveEmotionBtn.layer.cornerRadius = 10
         saveEmotionBtn.addTarget(self, action: #selector(saveEmotionTapped), for: .touchUpInside)
         view.addSubview(saveEmotionBtn)
         
         confirmEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
-        confirmEmotionBtn.setTitle("確認", for: .normal)
-        confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
-        confirmEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
-        confirmEmotionBtn.backgroundColor = midOrange
-        confirmEmotionBtn.layer.cornerRadius = 10
+//        confirmEmotionBtn.setTitle("確認", for: .normal)
+        confirmEmotionBtn.setImage(UIImage(named: "Button_Orange_Filled"), for: .normal)
+        confirmEmotionBtn.contentMode = .scaleAspectFill
+//        confirmEmotionBtn.largeContentImageInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+//        confirmEmotionBtn.setTitleColor(defaultBackgroundColor, for: .normal)
+//        confirmEmotionBtn.setTitleColor(defaultTextColor, for: .disabled)
+//        confirmEmotionBtn.backgroundColor = midOrange
+        confirmEmotionBtn.layer.cornerRadius = 30
         confirmEmotionBtn.addTarget(self, action: #selector(confirmEmotionTapped), for: .touchUpInside)
         view.addSubview(confirmEmotionBtn)
         
         sceneView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(sceneView, at: 0)
         NSLayoutConstraint.activate([
-            sceneView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
-            sceneView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60),
-            sceneView.bottomAnchor.constraint(equalTo: titleLbl.topAnchor, constant: -10),
-            sceneView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40)
+            sceneView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            sceneView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            sceneView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            sceneView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120)
         ])
         
         NSLayoutConstraint.activate([
             titleLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLbl.bottomAnchor.constraint(equalTo: emotionLabel.topAnchor, constant: -10),
+//            titleLbl.bottomAnchor.constraint(equalTo: emotionLabel.topAnchor, constant: -10),
+            titleLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             titleLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             titleLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             titleLbl.heightAnchor.constraint(equalToConstant: 50),
             
             emotionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emotionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
+            emotionLabel.topAnchor.constraint(equalTo: titleLbl.bottomAnchor),
             emotionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             emotionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             emotionLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            saveEmotionBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            saveEmotionBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            saveEmotionBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
+//            containerView.widthAnchor.constraint(equalToConstant: view.bounds.width),
+//            containerView.heightAnchor.constraint(equalToConstant: 120),
+//            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            saveEmotionBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            saveEmotionBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            saveEmotionBtn.widthAnchor.constraint(equalToConstant: 50),
             saveEmotionBtn.heightAnchor.constraint(equalToConstant: 50),
             
-            confirmEmotionBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+//            confirmEmotionBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            confirmEmotionBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             confirmEmotionBtn.centerYAnchor.constraint(equalTo: saveEmotionBtn.centerYAnchor),
-            confirmEmotionBtn.widthAnchor.constraint(equalTo: saveEmotionBtn.widthAnchor),
-            confirmEmotionBtn.heightAnchor.constraint(equalTo: saveEmotionBtn.heightAnchor)
+            confirmEmotionBtn.widthAnchor.constraint(equalToConstant: 60),
+            confirmEmotionBtn.heightAnchor.constraint(equalToConstant: 60)
         ])
+        
+        showLoadingAnimation()
     }
     
     @objc func saveEmotionTapped() {
@@ -123,18 +156,46 @@ class PostVC: UIViewController {
             sceneView.session.pause()
             isSessionRunning = false
             saveEmotionBtn.isEnabled = true
-            saveEmotionBtn.backgroundColor = midOrange
-            confirmEmotionBtn.setTitle("再拍一次", for: .normal)
-            confirmEmotionBtn.backgroundColor = .gray
+            saveEmotionBtn.setImage(UIImage(named: "Send_Orange"), for: .normal)
+//            saveEmotionBtn.backgroundColor = midOrange
+            confirmEmotionBtn.setImage(UIImage(named: "Back_Arrow_Orange32"), for: .normal)
+//            confirmEmotionBtn.setTitle("再拍一次", for: .normal)
+//            confirmEmotionBtn.backgroundColor = .gray
         } else {
             isSessionRunning = true
             saveEmotionBtn.isEnabled = false
-            saveEmotionBtn.backgroundColor = .gray
+            saveEmotionBtn.setImage(UIImage(named: ""), for: .disabled)
+//            saveEmotionBtn.backgroundColor = .gray
             let configuration = ARFaceTrackingConfiguration()
             sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-            confirmEmotionBtn.setTitle("確認", for: .normal)
-            confirmEmotionBtn.backgroundColor = midOrange
+            confirmEmotionBtn.setImage(UIImage(named: "Button_Orange_Filled"), for: .normal)
+//            confirmEmotionBtn.setTitle("確認", for: .normal)
+//            confirmEmotionBtn.backgroundColor = midOrange
         }
+    }
+    
+    private func showLoadingAnimation() {
+        loadingAnimationView = .init(name: "Indicator_Orange")
+        loadingAnimationView?.translatesAutoresizingMaskIntoConstraints = false
+        loadingAnimationView?.contentMode = .scaleAspectFill
+        loadingAnimationView?.loopMode = .loop
+        loadingAnimationView?.animationSpeed = 0.5
+        
+        emotionLabel.addSubview(loadingAnimationView!)
+        
+        NSLayoutConstraint.activate([
+               loadingAnimationView!.centerXAnchor.constraint(equalTo: emotionLabel.centerXAnchor),
+               loadingAnimationView!.centerYAnchor.constraint(equalTo: emotionLabel.centerYAnchor),
+               loadingAnimationView!.widthAnchor.constraint(equalTo: emotionLabel.widthAnchor, multiplier: 0.5), // Adjust size relative to emotionLabel width
+               loadingAnimationView!.heightAnchor.constraint(equalToConstant: 50)  // Keep aspect ratio 1:1 if desired
+           ])
+        
+        loadingAnimationView?.play()
+    }
+    
+    private func hideLoadingAnimation() {
+        loadingAnimationView?.stop()
+        loadingAnimationView?.removeFromSuperview()
     }
 }
 
@@ -165,8 +226,12 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         
         DispatchQueue.main.async {
-            self.emotionLabel.text = emojiText
+            UIView.transition(with: self.emotionLabel, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                    self.emotionLabel.text = emojiText
+                }, completion: nil)
+            
             self.confirmEmotionBtn.isEnabled = true
+            self.hideLoadingAnimation()
         }
     }
 }

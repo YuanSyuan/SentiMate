@@ -19,6 +19,9 @@
 		0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1532BCAC91C000FB482 /* MusicManager.swift */; };
 		0509C1582BCACA95000FB482 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1572BCACA95000FB482 /* Emotions.swift */; };
 		0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1592BCBB169000FB482 /* MusicCell.swift */; };
+		050CE07B2BF1B93500D57B95 /* Indicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 050CE07A2BF1B93400D57B95 /* Indicator.json */; };
+		050CE07D2BF1D27600D57B95 /* Indicator_Blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 050CE07C2BF1D27600D57B95 /* Indicator_Blue.json */; };
+		050CE07F2BF1E88A00D57B95 /* Indicator_Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */; };
 		052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */ = {isa = PBXBuildFile; fileRef = 052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */; };
 		052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */ = {isa = PBXBuildFile; fileRef = 052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */; };
 		052013082BE3B35600A2A1F5 /* Emoticon_56.scn in Resources */ = {isa = PBXBuildFile; fileRef = 052013072BE3B35600A2A1F5 /* Emoticon_56.scn */; };
@@ -132,6 +135,9 @@
 		0509C1532BCAC91C000FB482 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		0509C1572BCACA95000FB482 /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
 		0509C1592BCBB169000FB482 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		050CE07A2BF1B93400D57B95 /* Indicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Indicator.json; sourceTree = "<group>"; };
+		050CE07C2BF1D27600D57B95 /* Indicator_Blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Indicator_Blue.json; sourceTree = "<group>"; };
+		050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Indicator_Orange.json; sourceTree = "<group>"; };
 		052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Emoticon_56.dae; sourceTree = "<group>"; };
 		052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Diffuse_Emoticon 56.png"; sourceTree = "<group>"; };
 		052013072BE3B35600A2A1F5 /* Emoticon_56.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Emoticon_56.scn; sourceTree = "<group>"; };
@@ -276,6 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */,
+				050CE07A2BF1B93400D57B95 /* Indicator.json */,
+				050CE07C2BF1D27600D57B95 /* Indicator_Blue.json */,
+				050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */,
 				05223DA12BDFABFD0066AD61 /* openAI.json */,
 				052013042BE3B2E700A2A1F5 /* Obj */,
 				056844812BC8177E004604E6 /* Managers */,
@@ -561,8 +570,10 @@
 				054D94682BE4D9A300E4F415 /* Emoticon_40.obj in Resources */,
 				054D94692BE4D9A300E4F415 /* Emoticon_40.dae in Resources */,
 				054D946A2BE4D9A300E4F415 /* Emoticon_27.obj in Resources */,
+				050CE07D2BF1D27600D57B95 /* Indicator_Blue.json in Resources */,
 				054D946B2BE4D9A300E4F415 /* Emoticon_27.dae in Resources */,
 				054D946C2BE4D9A300E4F415 /* Emoticon_40.mtl in Resources */,
+				050CE07B2BF1B93500D57B95 /* Indicator.json in Resources */,
 				052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */,
 				052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */,
 				05B44C182BD2467100798934 /* APIKey.plist in Resources */,
@@ -574,6 +585,7 @@
 				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
 				054D94762BE4DA3400E4F415 /* Emoticon_27.scn in Resources */,
+				050CE07F2BF1E88A00D57B95 /* Indicator_Orange.json in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
 				05223DA22BDFABFE0066AD61 /* openAI.json in Resources */,
 			);

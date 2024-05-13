@@ -95,9 +95,8 @@ struct DonutChartView: View {
                     }
                 }
                 Spacer()
-                    .frame(height: 10)
-                Image(systemName: "arrow.down")  // System name for the down arrow
-                    .font(.system(size: 20)) // You can adjust the size to fit your design
+                Image(systemName: "arrow.down")
+                    .font(.system(size: 20))
                     .foregroundColor(Color(textColor))
                 Spacer()
                     .frame(height: 10)
@@ -120,8 +119,6 @@ struct DonutChartView: View {
                     topCategories = DiaryManager.shared.topCategories(forEmotion: emotionType.name)
                 }
             }
-            
-            
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
             .background(Color(backgroundColor))
 //            .clipShape(RoundedRectangle(cornerRadius: 20))
