@@ -17,6 +17,8 @@ class MusicEntryVC: UIViewController {
     let musicManager = MusicManager()
     var songs: [StoreItem] = []
     var calmSongs: [SoftMusic] = softMusicPlaylist
+    var emotion: String?
+    var activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,15 @@ class MusicEntryVC: UIViewController {
         collectionView.delegate = self
         
         configureCellSize()
+        // To-DO 改回來
+        collectionView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
         
 //        let animation = AnimationType.from(direction: .left, offset: 300)
 //        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
@@ -32,7 +43,10 @@ class MusicEntryVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchLatestDiaryEntry()
+        
+        emotion = DiaryManager.shared.diaries.first?.emotion
+        callAppleMusicAPI(with: emotion ?? "Neutral")
+//        fetchLatestDiaryEntry()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,34 +62,44 @@ class MusicEntryVC: UIViewController {
         layout?.itemSize = CGSize(width: width, height: width * 2.1)
     }
     
-    func fetchLatestDiaryEntry() {
-        let db = Firestore.firestore()
-        db.collection("diaries")
-            .order(by: "customTime", descending: true)
-            .limit(to: 1)
-            .getDocuments { [weak self] (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else if let document = querySnapshot?.documents.first,
-                          let data = document.data() as? [String: Any],
-                          let emotion = data["emotion"] as? String {
-                    self?.callAppleMusicAPI(with: emotion)
-                }
-            }
-    }
+//    func fetchLatestDiaryEntry() {
+//        let db = Firestore.firestore()
+//        db.collection("diaries")
+//            .order(by: "customTime", descending: true)
+//            .limit(to: 1)
+//            .getDocuments { [weak self] (querySnapshot, err) in
+//                if let err = err {
+//                    print("Error getting documents: \(err)")
+//                } else if let document = querySnapshot?.documents.first,
+//                          let data = document.data() as? [String: Any],
+//                          let emotion = data["emotion"] as? String {
+//                    self?.callAppleMusicAPI(with: emotion)
+//                }
+//            }
+//    }
     
     func callAppleMusicAPI(with emotion: String) {
+        self.songs = []
+        
+        let dispatchGroup = DispatchGroup()
+        
+        activityIndicator.startAnimating()
+        collectionView.isUserInteractionEnabled = false
+        
+        dispatchGroup.enter()
         musicManager.getAPIData(for: emotion) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let fetchedSongs):
-                    self?.songs = fetchedSongs
+                    self?.songs.append(contentsOf: fetchedSongs)
                 case .failure(let error):
                     print("Error fetching songs: \(error)")
                 }
+                dispatchGroup.leave()
             }
         }
         
+        dispatchGroup.enter()
         musicManager.getMySong(for: "李芫萱") {[weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -84,8 +108,15 @@ class MusicEntryVC: UIViewController {
                 case .failure(let error):
                     print("Error fetching songs: \(error)")
                 }
+                dispatchGroup.leave()
             }
         }
+        
+        dispatchGroup.notify(queue: .main) {
+                    // Stop the loading indicator and re-enable user interaction
+                    self.activityIndicator.stopAnimating()
+                    self.collectionView.isUserInteractionEnabled = true
+                }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -147,7 +147,7 @@ struct CategoryCircleView: View {
     
     var body: some View {
             let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
-            let diameter = max(scaledCount * 80, 20) 
+            let diameter = max(scaledCount * 90, 20)
             
             ZStack {
                 Circle()
@@ -164,7 +164,7 @@ struct CategoryCircleView: View {
                     }
                 Text(categoryData.name)
                     .foregroundColor(Color(defaultTextColor))
-                    .font(.custom("jf-openhuninn-2.0", size: 18))
+                    .font(.custom("jf-openhuninn-2.0", size: 16))
                     .scaleEffect(scale) // Apply the same scale effect to the text
                     .opacity(scale) // Fade the text in and out with the scale
                     .animation(.easeOut(duration: 0.5), value: scale)

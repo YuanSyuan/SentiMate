@@ -94,7 +94,7 @@ class PostVC: UIViewController {
             sceneView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             sceneView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             sceneView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            sceneView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120)
+            sceneView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -140)
         ])
         
         NSLayoutConstraint.activate([
