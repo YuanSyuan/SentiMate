@@ -97,33 +97,35 @@ extension PostDetailVC: UITableViewDataSource {
                     newEntry["documentID"] = docID
                 }
                 
+                self?.saveDiaryEntry(newEntry: newEntry)
                 
-                if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
-                    guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
-                    let paragraphStyle = NSMutableParagraphStyle()
-                    paragraphStyle.lineSpacing = 8
-                    paragraphStyle.alignment = .center
-                    
-                    let attributes = NSAttributedString(string: "\(lastDiary.content)",
-                                                        attributes: [NSAttributedString.Key.paragraphStyle:
-                                                                        paragraphStyle])
-                    
-                    DispatchQueue.main.async {
-                        AlertView.instance.showAlert(
-                            image: lastDiary.emotion,
-                            title: "上次感到\(mandarinEmotion)是因為「\(buttonTitles[lastDiary.category])」",
-                            message: attributes,
-                            alertType: .reminder)
-                        
-                        self?.saveDiaryEntry(newEntry: newEntry)
-                        let generator = UINotificationFeedbackGenerator()
-                                   generator.notificationOccurred(.success)
-                    }
-                } else {
-                    self?.saveDiaryEntry(newEntry: newEntry)
-                    let generator = UINotificationFeedbackGenerator()
-                               generator.notificationOccurred(.success)
-                }
+                // MARK: - 改位置
+                //                if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
+                //                    guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
+                //                    let paragraphStyle = NSMutableParagraphStyle()
+                //                    paragraphStyle.lineSpacing = 8
+                //                    paragraphStyle.alignment = .center
+                //
+                //                    let attributes = NSAttributedString(string: "\(lastDiary.content)",
+                //                                                        attributes: [NSAttributedString.Key.paragraphStyle:
+                //                                                                        paragraphStyle])
+                //
+                //                    DispatchQueue.main.async {
+                //                        AlertView.instance.showAlert(
+                //                            image: lastDiary.emotion,
+                //                            title: "上次感到\(mandarinEmotion)是因為「\(buttonTitles[lastDiary.category])」",
+                //                            message: attributes,
+                //                            alertType: .reminder)
+                //
+                //                        self?.saveDiaryEntry(newEntry: newEntry)
+                //                        let generator = UINotificationFeedbackGenerator()
+                //                                   generator.notificationOccurred(.success)
+                //                    }
+                //                } else {
+                //                    self?.saveDiaryEntry(newEntry: newEntry)
+                //                    let generator = UINotificationFeedbackGenerator()
+                //                               generator.notificationOccurred(.success)
+                //                }
             }
             return cell
         }
@@ -147,10 +149,35 @@ extension PostDetailVC {
         switch result {
         case .success():
             DispatchQueue.main.async {
+                self.showAlert()
                 self.navigationController?.popToRootViewController(animated: true)
             }
         case .failure(let error):
             print("Error saving data: \(error)")
+        }
+    }
+    
+    private func showAlert() {
+        if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self.emotion ?? "") {
+            let mandarinEmotion = self.textForEmotion(lastDiary.emotion)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 8
+            paragraphStyle.alignment = .center
+            
+            let attributes = NSAttributedString(string: "\(lastDiary.content)",
+                                                attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                paragraphStyle])
+            
+            DispatchQueue.main.async {
+                AlertView.instance.showAlert(
+                    image: lastDiary.emotion,
+                    title: "上次感到\(mandarinEmotion)是因為「\(buttonTitles[lastDiary.category])」",
+                    message: attributes,
+                    alertType: .reminder)
+                
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+            }
         }
     }
 }

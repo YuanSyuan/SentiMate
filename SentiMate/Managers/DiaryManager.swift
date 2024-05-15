@@ -25,10 +25,15 @@ class DiaryManager: ObservableObject {
 // MARK: - For PostDetailVC, same emotion alert
 extension DiaryManager {
     func lastDiaryWithEmotion(_ emotion: String) -> Diary? {
-        return diaries
+        let sortedDiaries = diaries
             .filter { $0.emotion == emotion }
             .sorted { $0.customTime > $1.customTime }
-            .first
+        
+        if sortedDiaries.count >= 2 {
+            return sortedDiaries[1]
+        } else {
+            return nil
+        }
     }
 }
 

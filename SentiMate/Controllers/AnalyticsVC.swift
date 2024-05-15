@@ -108,27 +108,54 @@ extension AnalyticsVC: UITableViewDataSource {
             let emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: .allTime)
             let swiftUIView = DonutChartView(emotionTypes: emotionTypes)
             // If we already have a hosting controller, just update the SwiftUI view
-            if let hostingController = hostingController {
-                hostingController.rootView = swiftUIView
-            } else {
-                // Create the hosting controller with the SwiftUI view
-                let newHostingController = UIHostingController(rootView: swiftUIView)
+            
+            // MARK: - original
+//            if let hostingController = hostingController {
+//                hostingController.rootView = swiftUIView
+//            } else {
+//                // Create the hosting controller with the SwiftUI view
+//                let newHostingController = UIHostingController(rootView: swiftUIView)
+//                addChild(newHostingController)
+//                cell.contentView.addSubview(newHostingController.view)
+//                newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+//                
+//                newHostingController.view.clipsToBounds = true
+//                newHostingController.view.layer.cornerRadius = 20
+//                
+//                NSLayoutConstraint.activate([
+//                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
+//                    newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
+//                    newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
+//                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
+//                ])
+//                
+//                newHostingController.didMove(toParent: self)
+//                hostingController = newHostingController
+//            }
+            //MARK: - for demo
+            if let existingHostingController = hostingController {
+                    existingHostingController.willMove(toParent: nil)
+                    existingHostingController.view.removeFromSuperview()
+                    existingHostingController.removeFromParent()
+                }
+            let newHostingController = UIHostingController(rootView: swiftUIView)
+                addChild(newHostingController)
                 cell.contentView.addSubview(newHostingController.view)
                 newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
                 
-                newHostingController.view.clipsToBounds = true
-                newHostingController.view.layer.cornerRadius = 20
-                
+            newHostingController.view.clipsToBounds = true
+            newHostingController.view.layer.cornerRadius = 20
+            
                 NSLayoutConstraint.activate([
                     newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
                     newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
                     newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
                     newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
                 ])
-                
+
                 newHostingController.didMove(toParent: self)
                 hostingController = newHostingController
-            }
+            
             return cell
         }
     }
@@ -244,8 +271,8 @@ extension AnalyticsVC: AICellDelegate {
         }
     }
     
-    func analyzeEntry(completion: @escaping () -> Void)  {
-        self.AIResponse = "從您的情緒日記來看，您在工作和日常生活中遇到了一些壓力和挑戰。面對工作中連續出現的bug，感到厭煩是很正常的。建議您嘗試將問題分解成小部分，逐一解決，並適時與同事溝通協助，以減輕壓力。在生活中，您似乎喜歡透過喝紅酒來放鬆，但建議不要過度依賴，可以嘗試其他健康的紓壓方式，如運動或與朋友聊天。對於您在app展示中獲得的成就感，這是非常積極的體驗，應該為自己感到自豪。整體而言，建議您保持正面思維，適當調整休息和工作的平衡，這將有助於您更好地管理情緒並享受生活。"
+    func analyzeEntry(completion: @escaping () -> Void) {
+        self.AIResponse = "從您的情緒日記來看，您在工作和日常生活中遇到了一些壓力和挑戰。面對工作中連續出現的bug，感到厭煩是很正常的。建議您嘗試將問題分解成小部分，逐一解決，並適時與同事溝通協助，以減輕壓力。在生活中，您似乎喜歡透過喝紅酒來放鬆，但建議不要過度依賴，可以嘗試其他健康的紓壓方式，如運動或與朋友聊天。對於您在app展示中獲得的成就感，這是非常積極的體驗，應該為自己感到自豪。整體而言，建議您保持正面思維，適當調整休息和工作的平衡。"
         self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
     }
     
