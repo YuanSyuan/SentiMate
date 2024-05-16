@@ -21,16 +21,11 @@ class HomeVC: UIViewController {
     private let animations = [AnimationType.vector((CGVector(dx: 0, dy: 30)))]
     var sceneView: SCNView!
     var sceneEmoji = "Emoticon_40.scn"
-//    var rotatePanGesture: UIPanGestureRecognizer!
-//    var dragPanGesture: UIPanGestureRecognizer!
-//    var longPressGesture: UILongPressGestureRecognizer!
     var initialCameraTransform: SCNMatrix4?
     var initialFieldOfView: CGFloat?
-    // TipKit
-//    var currentTipIndex = 0
     private var emotionFeatureTip = EmotionFeatureTip()
-        private var tipObservationTask: Task<Void, Never>?
-        private weak var tipView: TipUIView?
+    private var tipObservationTask: Task<Void, Never>?
+    private weak var tipView: TipUIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +43,7 @@ class HomeVC: UIViewController {
         
         configureGestureRecognizers()
         setupInitialCamera()
-//        configureTipKit()
+        //        configureTipKit()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
@@ -67,7 +62,7 @@ class HomeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        updateHintLabel()
+        //        updateHintLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,37 +83,36 @@ class HomeVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            tipObservationTask?.cancel()
-            tipObservationTask = nil
-        }
-       
-    private func animateInitialLoad() {
-        if initiallyAnimates {
-            diaryCollectionView.reloadData()
-            diaryCollectionView.performBatchUpdates({
-                UIView.animate(views: self.diaryCollectionView.visibleCells,
-                               animations: animations, completion: {
-                })
-            }, completion: nil)
-        }
+        super.viewWillDisappear(animated)
+        tipObservationTask?.cancel()
+        tipObservationTask = nil
     }
+    
+//    private func animateInitialLoad() {
+//        if initiallyAnimates {
+//            diaryCollectionView.reloadData()
+//            diaryCollectionView.performBatchUpdates({
+//                UIView.animate(views: self.diaryCollectionView.visibleCells,
+//                               animations: animations, completion: {
+//                })
+//            }, completion: nil)
+//        }
+//    }
     
     @objc private func diariesDidUpdate() {
         diaryCollectionView.reloadData()
-
         diaryCollectionView.performBatchUpdates({
             UIView.animate(views: self.diaryCollectionView.orderedVisibleCells,
                            animations: animations, options: [.curveEaseInOut], completion: nil)
         }, completion: nil)
         
         DispatchQueue.main.async {
-                if DiaryManager.shared.diaries.isEmpty {
-                    self.hintLbl.text = "快去填寫情緒日記吧"
-                } else {
-                    self.hintLbl.text = ""
-                }
+            if DiaryManager.shared.diaries.isEmpty {
+                self.hintLbl.text = "快去填寫情緒日記吧"
+            } else {
+                self.hintLbl.text = ""
             }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -143,15 +137,8 @@ class HomeVC: UIViewController {
     }
     
     func setupFloatingSceneView(for emotion: String) {
-        let sceneEmoji: String
-            switch emotion {
-            case "Happy", "Surprise":
-                sceneEmoji = "Emoticon_27.scn"
-            case "Neutral":
-                sceneEmoji = "Emoticon_40.scn"
-            default:
-                sceneEmoji = "Emoticon_56.scn"
-            }
+        let sceneEmoji = Emotions.getSceneEmoji(emotion: emotion)
+       
         
         // Load the 3D scene
         if let scene = SCNScene(named: sceneEmoji) {
@@ -212,7 +199,7 @@ class HomeVC: UIViewController {
         if gesture.state == .began {
             configureTipKit()
             let generator = UIImpactFeedbackGenerator(style: .light)
-                generator.impactOccurred()
+            generator.impactOccurred()
         } else {
             tipView?.removeFromSuperview()
         }
@@ -233,16 +220,16 @@ class HomeVC: UIViewController {
     
     func configureTipKit() {
         let tipHostingView = TipUIView(emotionFeatureTip) // Ensure this view is designed to display the tip content
-            tipHostingView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(tipHostingView)
-
-            NSLayoutConstraint.activate([
-                tipHostingView.topAnchor.constraint(equalTo: sceneView.bottomAnchor),
-                tipHostingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                tipHostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-            ])
-
-            tipView = tipHostingView
+        tipHostingView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tipHostingView)
+        
+        NSLayoutConstraint.activate([
+            tipHostingView.topAnchor.constraint(equalTo: sceneView.bottomAnchor),
+            tipHostingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tipHostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
+        tipView = tipHostingView
     }
 }
 
@@ -257,23 +244,7 @@ extension HomeVC: UICollectionViewDataSource {
         }
         var diary = DiaryManager.shared.diaries[indexPath.row]
         
-        let emojiText: String
-        switch diary.emotion {
-        case "Fear":
-            emojiText = "緊張"
-        case "Sad":
-            emojiText = "難過"
-        case "Neutral":
-            emojiText = "普通"
-        case "Happy":
-            emojiText = "開心"
-        case "Surprise":
-            emojiText = "驚喜"
-        case "Angry":
-            emojiText = "生氣"
-        default:
-            emojiText = "厭惡"
-        }
+        let emojiText = Emotions.getMandarinEmotion(emotion: diary.emotion)
         
         cell.dateLbl.text = "\(diary.customTime)"
         cell.categoryLbl.text = buttonTitles[diary.category]
@@ -316,7 +287,7 @@ extension HomeVC: UICollectionViewDelegate {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
             viewController.documentID = diary.documentID
             viewController.emotion = diary.emotion
-//            viewController.selectedCategoryIndex = diary.category
+            //            viewController.selectedCategoryIndex = diary.category
             viewController.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime)
             viewController.userInput = diary.content
             navigationController?.pushViewController(viewController, animated: true)

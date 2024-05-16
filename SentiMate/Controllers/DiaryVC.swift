@@ -24,33 +24,8 @@ class DiaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
-//        view.backgroundColor = .clear
-//        view.layer.shadowRadius = 12
-//        view.layer.shadowOpacity = 1
-//        view.layer.shadowOffset = .zero
-//        view.layer.shadowColor = UIColor.systemFill.cgColor
         containerView.clipsToBounds = true
         textContainerView.layer.cornerRadius = 20
-    }
-    
-    private func emojiText(forEmotion emotion: String?) -> String {
-        switch emotion {
-        case "Fear":
-            return "緊張"
-        case "Sad":
-            return "難過"
-        case "Neutral":
-            return "普通"
-        case "Happy":
-            return "開心"
-        case "Surprise":
-            return "驚喜"
-        case "Angry":
-            return "生氣"
-        default:
-            return "厭惡"
-        }
     }
     
     func configureUI() {
@@ -63,7 +38,7 @@ class DiaryVC: UIViewController {
                                                             paragraphStyle])
         
         if let emotion = diary?.emotion {
-            let emojiText = emojiText(forEmotion: emotion)
+            let emojiText = Emotions.getMandarinEmotion(emotion: emotion)
             
             emotionImg.image = UIImage(named: emotion)
             emotionLbl.text = emojiText

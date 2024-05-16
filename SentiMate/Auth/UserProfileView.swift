@@ -165,24 +165,10 @@ struct SceneKitView: UIViewRepresentable {
         }
 
         private func updateScene(sceneView: SCNView) {
-            // Assuming a method to decide the scene based on diaries
-            let sceneEmoji = decideSceneBasedOnDiaries()
-            sceneView.scene = SCNScene(named: sceneEmoji)  // Load the appropriate scene
+           let emotion = diaryManager.diaries.first?.emotion ?? "Neutral"
+            let sceneEmoji = Emotions.getSceneEmoji(emotion: emotion)
+            sceneView.scene = SCNScene(named: sceneEmoji)
             sceneView.autoenablesDefaultLighting = true
             sceneView.allowsCameraControl = true
-        }
-
-        private func decideSceneBasedOnDiaries() -> String {
-            guard let diary = diaryManager.diaries.first else {
-                return "Emoticon_40.scn" // A default scene
-            }
-            switch diary.emotion {
-            case "Happy", "Surprise":
-                return "Emoticon_27.scn"
-            case "Neutral":
-                return "Emoticon_40.scn"
-            default:
-                return "Emoticon_56.scn"
-            }
         }
 }

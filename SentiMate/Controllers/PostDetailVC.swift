@@ -136,7 +136,7 @@ extension PostDetailVC {
     
     private func showAlert() {
         if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self.emotion ?? "") {
-            let mandarinEmotion = self.textForEmotion(lastDiary.emotion)
+            let mandarinEmotion = Emotions.getMandarinEmotion(emotion: lastDiary.emotion)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 4
             paragraphStyle.alignment = .center
@@ -174,16 +174,3 @@ extension PostDetailVC: UITableViewDelegate {
     }
 }
 
-extension PostDetailVC {
-    func textForEmotion(_ emotion: String) -> String {
-        switch emotion {
-        case "Surprise": return "驚喜"
-        case "Happy": return "開心"
-        case "Neutral": return "普通"
-        case "Fear": return "緊張"
-        case "Sad": return "難過"
-        case "Angry": return "生氣"
-        default: return "厭惡"
-        }
-    }
-}

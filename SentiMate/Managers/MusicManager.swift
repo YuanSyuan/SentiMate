@@ -12,26 +12,7 @@ class MusicManager {
     var songs: [StoreItem] = []
     
     func getAPIData(for emotion: String, completion: @escaping (Result<[StoreItem], Error>) -> Void) {
-        
-        let artist: String
-        switch emotion {
-        case "Fear":
-            artist = fearSinger.randomElement() ?? ""
-        case "Sad":
-            artist = sadSinger.randomElement() ?? ""
-        case "Neutral":
-            artist = neutralSinger.randomElement() ?? ""
-        case "Happy":
-            artist = happySinger.randomElement() ?? ""
-        case "Surprise":
-            artist = surpriseSinger.randomElement() ?? ""
-        case "Angry":
-            artist = angrySinger.randomElement() ?? ""
-        default:
-            artist = disgustSinger.randomElement() ?? ""
-        }
-        
-        let value = artist
+        let value = Emotions.getEmotionSinger(emotion: emotion)
         guard let encodeUrlString = value.addingPercentEncoding(withAllowedCharacters:
                 .urlQueryAllowed) else {
             return

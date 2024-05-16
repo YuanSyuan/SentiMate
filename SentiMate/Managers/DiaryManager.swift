@@ -43,9 +43,14 @@ extension DiaryManager {
         let frequencies = emotionFrequencies(forPeriod: period)
         let totalDiaries = diaries.count
         guard totalDiaries > 0 else { return [] }
-        return frequencies.map { (emotion, count) -> EmotionType in
+        
+        return frequencies.map { (emotionRaw, count) -> EmotionType in
+                   guard let emotion = Emotions(rawValue: emotionRaw) else {
+                       fatalError("Invalid emotion type")
+                   }
+            
             let percentage = Int((Double(count) / Double(totalDiaries)) * 100.0.rounded())
-            return EmotionType(name: emotion, percentage: percentage, color: colorForEmotion(emotion))
+            return EmotionType(emotion: emotion, percentage: percentage)
         }.sorted { $0.percentage > $1.percentage }
     }
     
@@ -81,19 +86,6 @@ extension DiaryManager {
         return Dictionary(grouping: filteredDiaries, by: { $0.emotion })
             .mapValues { $0.count }
     }
-    
-    private func colorForEmotion(_ emotion: String) -> UIColor {
-        switch emotion {
-        case "Surprise": return lightRed
-        case "Happy": return softCoral
-        case "Neutral": return midOrange
-        case "Fear": return creamyWhite
-        case "Sad": return grayBlue
-        case "Angry": return brick
-        case "Disgust": return newBrown
-        default: return UIColor(hex: "cccccc")
-        }
-    }
 }
 
 // MARK: - For AnalyticsVC, circles
@@ -125,35 +117,22 @@ enum TimePeriod: String, CaseIterable {
 }
 
 struct EmotionType: Identifiable, Equatable {
-    let name: String
-    let percentage: Int
-    let color: UIColor
-    var id: String {
-        name
-    }
-}
-
-extension EmotionType {
-    var mandarinName: String {
-        switch self.name {
-        case "Happy":
-            return "開心"
-        case "Sad":
-            return "難過"
-        case "Angry":
-            return "生氣"
-        case "Fear":
-            return "緊張"
-        case "Surprise":
-            return "驚喜"
-        case "Disgust":
-            return "厭惡"
-        case "Neutral":
-            return "普通"
-        default:
-            return self.name
+        let emotion: Emotions
+        let percentage: Int
+        var id: String {
+            emotion.rawValue
         }
-    }
+        
+        var name: String {
+            emotion.rawValue
+        }
+        
+        var mandarinName: String {
+            Emotions.getMandarinEmotion(emotion: emotion.rawValue)
+        }
+        
+        var color: UIColor {
+            Emotions.getEmotionColor(emotion: emotion.rawValue)
+        }
 }
-
 

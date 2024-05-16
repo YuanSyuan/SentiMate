@@ -27,7 +27,6 @@ struct DonutChartView: View {
                 Picker("Time Period", selection: $selectedTimePeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
                         Text(period.rawValue).tag(period)
-                        
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -123,7 +122,6 @@ struct DonutChartView: View {
             }
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
             .background(Color(backgroundColor))
-//            .clipShape(RoundedRectangle(cornerRadius: 20))
         }
     }
     
@@ -143,7 +141,7 @@ struct DonutChartView: View {
 struct CategoryCircleView: View {
     var categoryData: CategoryData
     var maxCount: Int
-    @State private var scale: CGFloat = 0.1 // Start from a scaled down state
+    @State private var scale: CGFloat = 0.1
     
     var body: some View {
             let scaledCount = sqrt(CGFloat(categoryData.count) / CGFloat(maxCount))
@@ -156,17 +154,17 @@ struct CategoryCircleView: View {
                     .scaleEffect(scale)
                     .onAppear {
                         withAnimation(.easeOut(duration: 0.5)) {
-                            scale = 1.0 // Animate to full size
+                            scale = 1.0
                         }
                     }
                     .onDisappear {
-                        scale = 0.1 // Reset when disappearing
+                        scale = 0.1
                     }
                 Text(categoryData.name)
                     .foregroundColor(Color(defaultTextColor))
                     .font(.custom("jf-openhuninn-2.0", size: 16))
-                    .scaleEffect(scale) // Apply the same scale effect to the text
-                    .opacity(scale) // Fade the text in and out with the scale
+                    .scaleEffect(scale)
+                    .opacity(scale)
                     .animation(.easeOut(duration: 0.5), value: scale)
             }
             .shadow(color: .gray, radius: 5, x: 2, y: 2)

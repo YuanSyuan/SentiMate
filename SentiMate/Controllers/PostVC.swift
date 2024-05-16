@@ -185,23 +185,7 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func updateEmotionLabel(withEmotion emotion: String) {
         currentEmotion = emotion
-        let emojiText: String
-        switch emotion {
-        case "Fear":
-            emojiText = "緊張"
-        case "Sad":
-            emojiText = "難過"
-        case "Neutral":
-            emojiText = "普通"
-        case "Happy":
-            emojiText = "開心"
-        case "Surprise":
-            emojiText = "驚喜"
-        case "Angry":
-            emojiText = "生氣"
-        default:
-            emojiText = "厭惡"
-        }
+        let emojiText = Emotions.getMandarinEmotion(emotion: emotion)
         
         DispatchQueue.main.async {
             (self.textNode?.geometry as? SCNText)?.string = emojiText
@@ -249,6 +233,7 @@ extension PostVC: ARSCNViewDelegate {
         guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else {
             return
         }
+        
         if let model = self.model {
             try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .right, options: [:]).perform([VNCoreMLRequest(model: model) { [weak self] request, _ in
                 guard let firstResult = (request.results as? [VNClassificationObservation])?.first else { return }
