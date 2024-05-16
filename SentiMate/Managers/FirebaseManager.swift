@@ -108,45 +108,5 @@ class FirebaseManager {
             }
         }
     }
-
-    
-//    func loadAudioFiles(completion: @escaping (Bool, Error?) -> Void) {
-//            // Define the folder path where your audio files are located
-//            let filesFolderRef = storageRef.child("music")
-//            
-//            // List all files in the directory
-//            filesFolderRef.listAll { (result, error) in
-//                if let error = error {
-//                    completion(false, error)
-//                    return
-//                }
-//                
-//                guard let items = result?.items else {
-//                        // Handle the case where result is nil
-//                        completion(false, NSError(domain: "FirebaseManagerError", code: -1, userInfo: [NSLocalizedDescriptionKey: "No items in result."]))
-//                        return
-//                    }
-//                
-//                for item in items {
-//                    // The name of the file
-//                    let fileName = item.name
-//                    
-//                    // Create a URL for the local file you'll move the audio to
-//                    let localURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
-//                    
-//                    // Download to the local filesystem
-//                    item.write(toFile: localURL) { url, error in
-//                        if let error = error {
-//                            print("Error downloading audio file: \(error)")
-//                        } else if let url = url {
-//                            let audioFile = AudioFile(name: fileName, localURL: url)
-//                            self.audioFiles.append(audioFile)
-//                            completion(true, nil)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
 }
 

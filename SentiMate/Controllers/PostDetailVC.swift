@@ -96,36 +96,7 @@ extension PostDetailVC: UITableViewDataSource {
                 if let docID = self?.documentID {
                     newEntry["documentID"] = docID
                 }
-                
                 self?.saveDiaryEntry(newEntry: newEntry)
-                
-                // MARK: - 改位置
-                //                if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self?.emotion ?? "") {
-                //                    guard let mandarinEmotion = self?.textForEmotion(lastDiary.emotion) else { return }
-                //                    let paragraphStyle = NSMutableParagraphStyle()
-                //                    paragraphStyle.lineSpacing = 8
-                //                    paragraphStyle.alignment = .center
-                //
-                //                    let attributes = NSAttributedString(string: "\(lastDiary.content)",
-                //                                                        attributes: [NSAttributedString.Key.paragraphStyle:
-                //                                                                        paragraphStyle])
-                //
-                //                    DispatchQueue.main.async {
-                //                        AlertView.instance.showAlert(
-                //                            image: lastDiary.emotion,
-                //                            title: "上次感到\(mandarinEmotion)是因為「\(buttonTitles[lastDiary.category])」",
-                //                            message: attributes,
-                //                            alertType: .reminder)
-                //
-                //                        self?.saveDiaryEntry(newEntry: newEntry)
-                //                        let generator = UINotificationFeedbackGenerator()
-                //                                   generator.notificationOccurred(.success)
-                //                    }
-                //                } else {
-                //                    self?.saveDiaryEntry(newEntry: newEntry)
-                //                    let generator = UINotificationFeedbackGenerator()
-                //                               generator.notificationOccurred(.success)
-                //                }
             }
             return cell
         }
@@ -146,11 +117,17 @@ extension PostDetailVC {
     }
     
     private func handleSaveResult(_ result: Result<Void, Error>) {
+        let dispatchGroup = DispatchGroup()
+        
         switch result {
         case .success():
             DispatchQueue.main.async {
+                dispatchGroup.enter()
                 self.showAlert()
-                self.navigationController?.popToRootViewController(animated: true)
+                dispatchGroup.leave()
+                dispatchGroup.notify(queue: .main) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
             }
         case .failure(let error):
             print("Error saving data: \(error)")
