@@ -138,7 +138,7 @@ extension PostDetailVC {
         if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self.emotion ?? "") {
             let mandarinEmotion = self.textForEmotion(lastDiary.emotion)
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 8
+            paragraphStyle.lineSpacing = 4
             paragraphStyle.alignment = .center
             
             let attributes = NSAttributedString(string: "\(lastDiary.content)",

@@ -27,7 +27,6 @@ class MusicEntryVC: UIViewController {
         collectionView.delegate = self
         
         configureCellSize()
-        // To-DO 改回來
         collectionView.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -36,9 +35,6 @@ class MusicEntryVC: UIViewController {
             activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        
-//        let animation = AnimationType.from(direction: .left, offset: 300)
-//        UIView.animate(views: collectionView.visibleCells, animations: [animation], duration: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +42,6 @@ class MusicEntryVC: UIViewController {
         
         emotion = DiaryManager.shared.diaries.first?.emotion
         callAppleMusicAPI(with: emotion ?? "Neutral")
-//        fetchLatestDiaryEntry()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,22 +56,6 @@ class MusicEntryVC: UIViewController {
         let width = floor(collectionView.bounds.width * 3/5)
         layout?.itemSize = CGSize(width: width, height: width * 2.1)
     }
-    
-//    func fetchLatestDiaryEntry() {
-//        let db = Firestore.firestore()
-//        db.collection("diaries")
-//            .order(by: "customTime", descending: true)
-//            .limit(to: 1)
-//            .getDocuments { [weak self] (querySnapshot, err) in
-//                if let err = err {
-//                    print("Error getting documents: \(err)")
-//                } else if let document = querySnapshot?.documents.first,
-//                          let data = document.data() as? [String: Any],
-//                          let emotion = data["emotion"] as? String {
-//                    self?.callAppleMusicAPI(with: emotion)
-//                }
-//            }
-//    }
     
     func callAppleMusicAPI(with emotion: String) {
         self.songs = []
@@ -113,7 +92,6 @@ class MusicEntryVC: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-                    // Stop the loading indicator and re-enable user interaction
                     self.activityIndicator.stopAnimating()
                     self.collectionView.isUserInteractionEnabled = true
                 }

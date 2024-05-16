@@ -23,19 +23,6 @@ struct ChartTip: Tip {
     }
 }
 
-//struct EmotionSceneTip: Tip {
-//    var title: Text
-//    var message: Text?
-//    var image: Image?
-//}
-//
-//let tips = [
-//    EmotionSceneTip(title: Text("互動 01"), message:  Text("試著滑動 Emoji 吧！"), image: Image(systemName: "globe")),
-//    EmotionSceneTip(title: Text("互動 02"), message: Text("使用兩指觸碰來拖曳 Emoji"), image: Image(systemName: "globe")),
-//    EmotionSceneTip(title: Text("互動 03"), message: Text("使用兩指縮放來改變 Emoji 大小"), image: Image(systemName: "globe")),
-//    EmotionSceneTip(title: Text("互動 04"), message: Text("連按兩下讓 Emoji 轉回正面"), image: Image(systemName: "globe"))
-//]
-
 struct EmotionFeatureTip: Tip {
     var title: Text {
         Text("Emoji 手勢小百科")

@@ -81,7 +81,7 @@ extension AnalyticsVC: UITableViewDataSource {
             
             if AIResponse != nil {
                 let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 8
+                paragraphStyle.lineSpacing = 4
                 paragraphStyle.alignment = .left
                 
                 let attributes = NSAttributedString(string: AIResponse ?? "",
@@ -91,7 +91,7 @@ extension AnalyticsVC: UITableViewDataSource {
                 cell.AIResponseLbl.attributedText = attributes
             } else {
                 let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 8
+                paragraphStyle.lineSpacing = 4
                 paragraphStyle.alignment = .center
                 
                 let newAttributes = NSAttributedString(string: "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！",
@@ -107,32 +107,7 @@ extension AnalyticsVC: UITableViewDataSource {
             
             let emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: .allTime)
             let swiftUIView = DonutChartView(emotionTypes: emotionTypes)
-            // If we already have a hosting controller, just update the SwiftUI view
-            
-            // MARK: - original
-//            if let hostingController = hostingController {
-//                hostingController.rootView = swiftUIView
-//            } else {
-//                // Create the hosting controller with the SwiftUI view
-//                let newHostingController = UIHostingController(rootView: swiftUIView)
-//                addChild(newHostingController)
-//                cell.contentView.addSubview(newHostingController.view)
-//                newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
-//                
-//                newHostingController.view.clipsToBounds = true
-//                newHostingController.view.layer.cornerRadius = 20
-//                
-//                NSLayoutConstraint.activate([
-//                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
-//                    newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
-//                    newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
-//                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
-//                ])
-//                
-//                newHostingController.didMove(toParent: self)
-//                hostingController = newHostingController
-//            }
-            //MARK: - for demo
+           
             if let existingHostingController = hostingController {
                     existingHostingController.willMove(toParent: nil)
                     existingHostingController.view.removeFromSuperview()
@@ -173,132 +148,84 @@ extension AnalyticsVC: UITableViewDelegate {
     }
 }
 
-// MARK: - 改回來
-//extension AnalyticsVC: AICellDelegate {
-//    func aiButtonTapped(cell: AICell) {
-//        guard !DiaryManager.shared.diaries.isEmpty else {
-//            let paragraphStyle = NSMutableParagraphStyle()
-//            paragraphStyle.lineSpacing = 8
-//            paragraphStyle.alignment = .center
-//            let attributes = NSAttributedString(string: "歡迎來到AI諮商室，先到新增頁面填寫情緒日記再回來吧!",
-//                                                attributes: [NSAttributedString.Key.paragraphStyle:
-//                                                                paragraphStyle])
-//            AlertView.instance.showAlert(
-//                image: "exclamation-mark",
-//                title: "哎呀!找不到日記",
-//                message: attributes,
-//                alertType: .empty)
-//                return
-//             }
-//        
-//        if !isLoading {
-//            isLoading = true
-//            cell.callAIBtn.isEnabled = false
-//            showLoadingAnimation()
-//            analyzeEntry {
-//                cell.callAIBtn.isEnabled = true
-//            }
-//        }
-//    }
-//    
-//    func analyzeEntry(completion: @escaping () -> Void)  {
-//        let combinedText = latestDiaries.map { entry -> String in
-//            let content = entry.content
-//            let category = entry.category
-//            let emotion = entry.emotion
-//            
-//            return "Category: \(category), Emotion: \(emotion), Diary: \(content) "
-//        }.joined(separator: " ")
-//        // To-DO 改回來
-//        analyzeDiaryEntries(combinedText, completion: completion)
-//    }
-//    
-//    func analyzeDiaryEntries(_ content: String, completion: @escaping () -> Void) {
-//        OpenAIManager.shared.analyzeDiaryEntry(prompt: content) { [weak self] result in
-//            //            guard let self = self else { return }
-//            
-//            DispatchQueue.main.async {
-//                self?.hideLoadingAnimation()
-//                
-//                switch result {
-//                case .success(let analyzedText):
-//                    self?.AIResponse = analyzedText
-//                    self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
-//                case .failure(let error):
-//                    print("Error analyzing diary entries: \(error.localizedDescription)")
-//                }
-//                completion()
-//            }
-//        }
-//    }
-//    
-//    // Configure animation
-//    private func showLoadingAnimation() {
-//        loadingAnimationView = .init(name: "openAI")
-//        loadingAnimationView?.frame = view.bounds
-//        loadingAnimationView?.center.y -= 10
-//        loadingAnimationView?.center.x -= 10
-//        loadingAnimationView?.contentMode = .scaleAspectFit
-//        loadingAnimationView?.loopMode = .loop
-//        loadingAnimationView?.animationSpeed = 0.5
-//        
-//        view.addSubview(loadingAnimationView!)
-//        loadingAnimationView?.play()
-//    }
-//    
-//    private func hideLoadingAnimation() {
-//        loadingAnimationView?.stop()
-//        loadingAnimationView?.removeFromSuperview()
-//    }
-//}
-
-// MARK: - for demo
 extension AnalyticsVC: AICellDelegate {
     func aiButtonTapped(cell: AICell) {
-//        guard !DiaryManager.shared.diaries.isEmpty else {
-//            showAlertForNoDiary()
-//            return
-//        }
+        guard !DiaryManager.shared.diaries.isEmpty else {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 8
+            paragraphStyle.alignment = .center
+            let attributes = NSAttributedString(string: "歡迎來到AI諮商室，先到新增頁面填寫情緒日記再回來吧!",
+                                                attributes: [NSAttributedString.Key.paragraphStyle:
+                                                                paragraphStyle])
+            AlertView.instance.showAlert(
+                image: "exclamation-mark",
+                title: "哎呀!找不到日記",
+                message: attributes,
+                alertType: .empty)
+                return
+             }
         
         if !isLoading {
             isLoading = true
             cell.callAIBtn.isEnabled = false
-            showLoadingAnimation {
-                self.analyzeEntry {
-                    cell.callAIBtn.isEnabled = true
-                }
+            showLoadingAnimation()
+            analyzeEntry {
+                cell.callAIBtn.isEnabled = true
             }
         }
     }
     
-    func analyzeEntry(completion: @escaping () -> Void) {
-        self.AIResponse = "從您的情緒日記來看，您在工作和日常生活中遇到了一些壓力和挑戰。面對工作中連續出現的bug，感到厭煩是很正常的。建議您嘗試將問題分解成小部分，逐一解決，並適時與同事溝通協助，以減輕壓力。在生活中，您似乎喜歡透過喝紅酒來放鬆，但建議不要過度依賴，可以嘗試其他健康的紓壓方式，如運動或與朋友聊天。對於您在app展示中獲得的成就感，這是非常積極的體驗，應該為自己感到自豪。整體而言，建議您保持正面思維，適當調整休息和工作的平衡。"
-        self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+    func analyzeEntry(completion: @escaping () -> Void)  {
+        let combinedText = latestDiaries.map { entry -> String in
+            let content = entry.content
+            let category = entry.category
+            let emotion = entry.emotion
+            
+            return "Category: \(category), Emotion: \(emotion), Diary: \(content) "
+        }.joined(separator: " ")
+        
+        analyzeDiaryEntries(combinedText, completion: completion)
     }
     
-    
-    private func showLoadingAnimation(completion: @escaping () -> Void) {
-        loadingAnimationView = .init(name: "openAI")
-        loadingAnimationView?.frame = view.bounds
-        loadingAnimationView?.contentMode = .scaleAspectFit
-        loadingAnimationView?.loopMode = .playOnce
-        loadingAnimationView?.animationSpeed = 0.7
-        
-        view.addSubview(loadingAnimationView!)
-        loadingAnimationView?.play { finished in
-            if finished {
-                self.hideLoadingAnimation()
+    func analyzeDiaryEntries(_ content: String, completion: @escaping () -> Void) {
+        OpenAIManager.shared.analyzeDiaryEntry(prompt: content) { [weak self] result in
+            //            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self?.hideLoadingAnimation()
+                
+                switch result {
+                case .success(let analyzedText):
+                    self?.AIResponse = analyzedText
+                    self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+                case .failure(let error):
+                    print("Error analyzing diary entries: \(error.localizedDescription)")
+                }
                 completion()
             }
         }
+    }
+    
+    private func showLoadingAnimation() {
+        loadingAnimationView = .init(name: "openAI")
+        loadingAnimationView?.frame = view.bounds
+        loadingAnimationView?.center.y -= 10
+        loadingAnimationView?.center.x -= 10
+        loadingAnimationView?.contentMode = .scaleAspectFit
+        loadingAnimationView?.loopMode = .loop
+        loadingAnimationView?.animationSpeed = 0.5
+        
+        view.addSubview(loadingAnimationView!)
+        loadingAnimationView?.play()
     }
     
     private func hideLoadingAnimation() {
         loadingAnimationView?.stop()
         loadingAnimationView?.removeFromSuperview()
     }
-    
 }
+
+
 
 
 
