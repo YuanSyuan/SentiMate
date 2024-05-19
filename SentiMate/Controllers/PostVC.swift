@@ -16,14 +16,14 @@ class PostVC: UIViewController {
     private let sceneView = ARSCNView()
     private var model: VNCoreMLModel?
     
-    let titleLbl = UILabel()
-    var emotionLabel = UILabel()
-    var textNode: SCNNode?
-    let confirmEmotionBtn = UIButton()
-    let saveEmotionBtn = UIButton()
-    let containerView = UIView()
-    var currentEmotion: String?
-    var isSessionRunning = true
+    private let titleLbl = UILabel()
+    private var emotionLabel = UILabel()
+    private var textNode: SCNNode?
+    private let confirmEmotionBtn = UIButton()
+    private let saveEmotionBtn = UIButton()
+    private let containerView = UIView()
+    private var currentEmotion: String?
+    private var isSessionRunning = true
     
     private var loadingAnimationView: LottieAnimationView?
     
@@ -137,7 +137,9 @@ class PostVC: UIViewController {
     @objc func saveEmotionTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let pushVC = storyboard.instantiateViewController(withIdentifier: "detail") as? PostDetailVC {
-            pushVC.emotion = currentEmotion
+            let viewModel = PostDetailViewModel(emotion: currentEmotion ?? "")
+            pushVC.viewModel = viewModel
+//            pushVC.emotion = currentEmotion
             self.navigationController?.pushViewController(pushVC, animated: true)
         }
     }
@@ -175,7 +177,6 @@ class PostVC: UIViewController {
 
 // extension: AVCaptureVideoDataOutputSampleBufferDelegate
 extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
     }
     

@@ -323,18 +323,6 @@
                         <outlet property="emotionImg" destination="9qh-aB-GeK" id="LNG-KC-3TI"/>
                         <outlet property="emotionLbl" destination="AnJ-hL-0Cm" id="OXO-CK-zEq"/>
                         <outlet property="textContainerView" destination="xcj-jI-g57" id="WYs-k7-r3w"/>
-                        <outletCollection property="bigConstraints" destination="dXx-dC-dmK" collectionClass="NSMutableArray" id="1oK-zy-7tt"/>
-                        <outletCollection property="bigConstraints" destination="XYT-95-oPZ" collectionClass="NSMutableArray" id="Xwg-Lw-7wG"/>
-                        <outletCollection property="bigConstraints" destination="skd-iP-TWS" collectionClass="NSMutableArray" id="VUm-T2-P6w"/>
-                        <outletCollection property="bigConstraints" destination="xVD-Cm-FY0" collectionClass="NSMutableArray" id="HNi-3A-2Ol"/>
-                        <outletCollection property="smallConstraints" destination="iDL-4W-BVO" collectionClass="NSMutableArray" id="PBX-VF-S3S"/>
-                        <outletCollection property="smallConstraints" destination="rmF-6k-vdz" collectionClass="NSMutableArray" id="dpR-Hu-lTH"/>
-                        <outletCollection property="smallConstraints" destination="nIK-Rc-bWS" collectionClass="NSMutableArray" id="xpk-dn-gHA"/>
-                        <outletCollection property="smallConstraints" destination="FQ2-gH-oBk" collectionClass="NSMutableArray" id="Kki-vV-QoU"/>
-                        <outletCollection property="bigConstraints" destination="k67-sN-YKi" collectionClass="NSMutableArray" id="e8O-Dk-E4P"/>
-                        <outletCollection property="bigConstraints" destination="OHT-ch-efp" collectionClass="NSMutableArray" id="Xbu-Gc-Tn4"/>
-                        <outletCollection property="smallConstraints" destination="Ydm-if-D12" collectionClass="NSMutableArray" id="1Tm-qe-3uD"/>
-                        <outletCollection property="smallConstraints" destination="xvS-ch-pI5" collectionClass="NSMutableArray" id="rd5-sK-51H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxd-F9-B09" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -623,13 +611,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3tA-nb-o8O">
                                                     <rect key="frame" x="88" y="18.333333333333332" width="293" height="33.666666666666671"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Somewhere in The Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSu-rj-biy">
                                                             <rect key="frame" x="0.0" y="0.0" width="293" height="15.666666666666666"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Billy Bauer Quartets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W35-7U-8IT">
                                                             <rect key="frame" x="0.0" y="19.666666666666668" width="293" height="14.000000000000004"/>
                                                             <fontDescription key="fontDescription" name="jf-openhuninn-2.0" family="jf-openhuninn-2.0" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

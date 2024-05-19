@@ -31,11 +31,12 @@ extension HomeVC {
     func editDiaryEntry(at indexPath: IndexPath) {
         let diary = DiaryManager.shared.diaries[indexPath.row]
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
+            let viewModel = PostDetailViewModel(emotion: diary.emotion)
+            viewController.viewModel = viewModel
             viewController.documentID = diary.documentID
-            viewController.emotion = diary.emotion
-            //            viewController.selectedCategoryIndex = diary.category
-            viewController.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime)
-            viewController.userInput = diary.content
+            viewModel.emotion = diary.emotion
+            viewModel.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime) ?? .now
+            viewModel.userInput = diary.content
             navigationController?.pushViewController(viewController, animated: true)
             print(viewController.selectedDate)
         }

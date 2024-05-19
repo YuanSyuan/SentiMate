@@ -8,18 +8,20 @@
 import UIKit
 import Lottie
 import FirebaseAuth
+import Combine
 
 class PostDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var documentID: String?
+    var viewModel: PostDetailViewModel!
+    private var cancellables = Set<AnyCancellable>()
+    
     var emotion: String?
     var selectedDate: Date?
     var selectedCategoryIndex: Int?
     var userInput: String?
-    let dateFormatter = DateFormatter()
-    let musicManager = MusicManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +29,35 @@ class PostDetailVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
+        bindViewModel()
         hideKeyboardWhenTappedAround()
     }
+    
+    private func bindViewModel() {
+        viewModel.$selectedDate
+            .sink { [weak self] date in
+                if let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? DateCell {
+                    cell.setDate(date)
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$emotion
+            .sink { [weak self] emotion in
+                if let cell = self?.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EmotionCell {
+                    cell.configure(withEmotion: emotion)
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$selectedCategoryIndex
+            .sink { [weak self] index in
+                if let cell = self?.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? CategoryCell {
+                    cell.setCategoryIndex(index)
+                }
+            }
+    }
+    
 }
 
 extension PostDetailVC: UITableViewDataSource {
@@ -47,17 +74,19 @@ extension PostDetailVC: UITableViewDataSource {
             }
             
             cell.onDateChanged = { [weak self] date in
-                self?.selectedDate = date
+                self?.viewModel.selectedDate = date
             }
             
-            cell.setDate(selectedDate ?? Date())
+            cell.setDate(viewModel.selectedDate)
             
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "emotion", for: indexPath) as? EmotionCell else {
                 fatalError("Could not dequeue EmotionCell")
             }
-            cell.configure(withEmotion: emotion ?? "")
+            
+            cell.configure(withEmotion: viewModel.emotion)
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as? CategoryCell else {
@@ -65,14 +94,14 @@ extension PostDetailVC: UITableViewDataSource {
             }
             
             cell.onCategorySelected = { [weak self] index in
-                self?.selectedCategoryIndex = index
+                self?.viewModel.selectedCategoryIndex = index
                 
                 if let textFieldCell = tableView.cellForRow(at: IndexPath(row: 3, section: indexPath.section)) as? TextFieldCell {
                     textFieldCell.saveBtn.isEnabled = true
                 }
             }
             
-            cell.setCategoryIndex(selectedCategoryIndex)
+            cell.setCategoryIndex(viewModel.selectedCategoryIndex)
             
             return cell
         default:
@@ -80,49 +109,39 @@ extension PostDetailVC: UITableViewDataSource {
                 fatalError("Could not dequeue TextFieldCell")
             }
             
-            cell.textField.text = userInput
+            cell.configure(withText: viewModel.userInput)
             
             cell.onSave = { [weak self] in
-                self?.userInput = cell.textField.text
-                let userUID = Auth.auth().currentUser?.uid ?? "Unknown UID"
-                var newEntry: [String: Any] = [
-                    "userID": userUID,
-                    "customTime": self?.dateFormatter.string(from: self?.selectedDate ?? .now),
-                    "emotion": self?.emotion,
-                    "category": self?.selectedCategoryIndex,
-                    "content": self?.userInput
-                ]
-                
-                if let docID = self?.documentID {
-                    newEntry["documentID"] = docID
+                self?.viewModel.userInput = cell.textField.text ?? ""
+                self?.viewModel.saveDiaryEntry(documentID: self?.documentID){ result in
+                    self?.handleSaveResult(result)
                 }
-                self?.saveDiaryEntry(newEntry: newEntry)
             }
+            
             return cell
         }
     }
 }
 
 extension PostDetailVC {
-    func saveDiaryEntry(newEntry: [String: Any]) {
-        if let documentID = newEntry["documentID"] as? String {
-            FirebaseManager.shared.updateData(to: "diaries", documentID: documentID , data: newEntry) { result in
-                self.handleSaveResult(result)
-            }
-        } else {
-            FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
-                self.handleSaveResult(result)
-            }
-        }
-    }
+//    func saveDiaryEntry(newEntry: [String: Any]) {
+//        if let documentID = newEntry["documentID"] as? String {
+//            FirebaseManager.shared.updateData(to: "diaries", documentID: documentID , data: newEntry) { result in
+//                self.handleSaveResult(result)
+//            }
+//        } else {
+//            FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
+//                self.handleSaveResult(result)
+//            }
+//        }
+//    }
     
     private func handleSaveResult(_ result: Result<Void, Error>) {
         let dispatchGroup = DispatchGroup()
-        
+        dispatchGroup.enter()
         switch result {
         case .success():
             DispatchQueue.main.async {
-                dispatchGroup.enter()
                 self.showAlert()
                 dispatchGroup.leave()
                 dispatchGroup.notify(queue: .main) {
@@ -135,7 +154,7 @@ extension PostDetailVC {
     }
     
     private func showAlert() {
-        if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self.emotion ?? ""), let emotionEnum = Emotions(rawValue: lastDiary.emotion) {
+        if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(viewModel.emotion), let emotionEnum = Emotions(rawValue: lastDiary.emotion) {
             let mandarinEmotion = Emotions.getMandarinEmotion(emotion: emotionEnum)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 4

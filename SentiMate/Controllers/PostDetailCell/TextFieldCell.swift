@@ -19,7 +19,6 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
         super.awakeFromNib()
         
         textField.delegate = self
-        
         textField.text = "說說今天發生什麼事吧！"
         textField.textColor = UIColor.lightGray
         textField.font = customFontInt
@@ -60,5 +59,9 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     @IBAction func saveBtnTapped(_ sender: Any) {
         onSave?()
     }
+    
+    func configure(withText text: String?) {
+            textField.text = text
+        }
 }
 

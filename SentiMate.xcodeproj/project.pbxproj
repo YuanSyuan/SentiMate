@@ -30,6 +30,7 @@
 		05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */; };
 		05223DAA2BDFDBF20066AD61 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */; };
 		05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */; };
+		052709CC2BF9DACF000959C5 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */; };
 		0538A1762BDE455100796496 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* OnboardingView.swift */; };
 		0538A1782BDE456600796496 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1772BDE456600796496 /* PageView.swift */; };
 		0538A17A2BDE457D00796496 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1792BDE457D00796496 /* PageModel.swift */; };
@@ -149,6 +150,7 @@
 		05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		0538A1752BDE455100796496 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0538A1772BDE456600796496 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0538A1792BDE457D00796496 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
 				05B44C1F2BD263D600798934 /* MusicEntryCell */,
 				05B44C192BD2632000798934 /* MusicEntryVC.swift */,
+				052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */,
 				0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */,
 				0574CA142BC7D54F0075A296 /* PostDetailCell */,
 				059E446B2BC6A7A900184989 /* PostVC.swift */,
@@ -717,6 +720,7 @@
 				053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */,
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
+				052709CC2BF9DACF000959C5 /* PostDetailViewModel.swift in Sources */,
 				0574CA162BC7D5BD0075A296 /* EmotionCell.swift in Sources */,
 				05D366C02BE09F4A004227A3 /* SettingVC.swift in Sources */,
 				0502F34A2BC67B4200B89FE5 /* SentiMate.xcdatamodeld in Sources */,
