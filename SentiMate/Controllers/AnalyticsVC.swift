@@ -27,18 +27,13 @@ class AnalyticsVC: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
         
         firebaseManager.onNewData = { newDiaries in
             DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
         }
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tableView.reloadData()
-//    }
     
     @objc private func diariesDidUpdate() {
         tableView.reloadData()

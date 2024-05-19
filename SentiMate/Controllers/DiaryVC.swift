@@ -11,8 +11,6 @@ class DiaryVC: UIViewController {
     var diary: Diary?
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet var bigConstraints: [NSLayoutConstraint]!
-    @IBOutlet var smallConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var emotionBackground: UIImageView!
     @IBOutlet weak var textContainerView: UIView!
     @IBOutlet weak var emotionImg: UIImageView!
@@ -38,9 +36,7 @@ class DiaryVC: UIViewController {
                                                             paragraphStyle])
         
         if let emotion = diary?.emotion, let emotionEnum =  Emotions(rawValue: emotion) {
-            
             let emojiText = Emotions.getMandarinEmotion(emotion: emotionEnum)
-            
             emotionImg.image = UIImage(named: emotion)
             emotionLbl.text = emojiText
             emotionBackground.image = UIImage(named: "background\(emotion)")
