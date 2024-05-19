@@ -185,13 +185,16 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func updateEmotionLabel(withEmotion emotion: String) {
         currentEmotion = emotion
-        let emojiText = Emotions.getMandarinEmotion(emotion: emotion)
         
-        DispatchQueue.main.async {
-            (self.textNode?.geometry as? SCNText)?.string = emojiText
-            self.confirmEmotionBtn.isEnabled = true
-            self.titleLbl.text = ""
-            self.hideLoadingAnimation()
+        if let emotionEnum = Emotions(rawValue: emotion) {
+            let emojiText = Emotions.getMandarinEmotion(emotion: emotionEnum)
+            
+            DispatchQueue.main.async {
+                (self.textNode?.geometry as? SCNText)?.string = emojiText
+                self.confirmEmotionBtn.isEnabled = true
+                self.titleLbl.text = ""
+                self.hideLoadingAnimation()
+            }
         }
     }
 }

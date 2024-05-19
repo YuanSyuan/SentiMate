@@ -95,16 +95,6 @@ struct UserProfileView: View {
                     }
                 NavigationLink {
                     Form {
-//                        Section {
-//                            Button(role: .cancel, action: signOut) {
-//                                HStack {
-//                                    Spacer()
-//                                    Text("登出")
-//                                        .foregroundColor(Color(backgroundColor))
-//                                    Spacer()
-//                                }
-//                            }
-//                        }
                         Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
                             HStack {
                                 Spacer()
@@ -152,7 +142,6 @@ extension View {
 
 struct SceneKitView: UIViewRepresentable {
     @ObservedObject var diaryManager = DiaryManager.shared
-//    let sceneEmoji: String
     
     func makeUIView(context: Context) -> SCNView {
             let sceneView = SCNView()
@@ -166,9 +155,11 @@ struct SceneKitView: UIViewRepresentable {
 
         private func updateScene(sceneView: SCNView) {
            let emotion = diaryManager.diaries.first?.emotion ?? "Neutral"
-            let sceneEmoji = Emotions.getSceneEmoji(emotion: emotion)
-            sceneView.scene = SCNScene(named: sceneEmoji)
-            sceneView.autoenablesDefaultLighting = true
-            sceneView.allowsCameraControl = true
+            if let emotionEnum = Emotions(rawValue: emotion) {
+                let sceneEmoji = Emotions.getSceneEmoji(emotion: emotionEnum)
+                sceneView.scene = SCNScene(named: sceneEmoji)
+                sceneView.autoenablesDefaultLighting = true
+                sceneView.allowsCameraControl = true
+            }
         }
 }

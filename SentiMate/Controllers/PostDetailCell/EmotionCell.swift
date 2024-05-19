@@ -22,8 +22,10 @@ class EmotionCell: UITableViewCell {
     }
     
     func configure(withEmotion emotion: String) {
-        let emojiText = Emotions.getMandarinEmotion(emotion: emotion)
-        self.emotionLbl.text = emojiText
+        if let emotionEnum = Emotions(rawValue: emotion) {
+            let emojiText = Emotions.getMandarinEmotion(emotion: emotionEnum)
+            self.emotionLbl.text = emojiText
+        }
     }
 }
 

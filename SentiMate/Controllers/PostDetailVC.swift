@@ -135,8 +135,8 @@ extension PostDetailVC {
     }
     
     private func showAlert() {
-        if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self.emotion ?? "") {
-            let mandarinEmotion = Emotions.getMandarinEmotion(emotion: lastDiary.emotion)
+        if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(self.emotion ?? ""), let emotionEnum = Emotions(rawValue: lastDiary.emotion) {
+            let mandarinEmotion = Emotions.getMandarinEmotion(emotion: emotionEnum)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 4
             paragraphStyle.alignment = .center

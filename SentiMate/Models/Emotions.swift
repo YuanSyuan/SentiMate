@@ -19,74 +19,73 @@ enum Emotions: String {
     case angry = "Angry"
     case disgust = "Disgust"
     
-    
-    static func getMandarinEmotion(emotion: String) -> String {
+    static func getMandarinEmotion(emotion: Emotions) -> String {
         switch emotion {
-        case Emotions.surprise.rawValue:
+        case .surprise:
             return "驚喜"
-        case Emotions.happy.rawValue:
+        case .happy:
             return "開心"
-        case Emotions.neutral.rawValue:
+        case .neutral:
             return "普通"
-        case Emotions.fear.rawValue:
+        case .fear:
             return "緊張"
-        case Emotions.sad.rawValue:
+        case .sad:
             return "難過"
-        case Emotions.angry.rawValue:
+        case .angry:
             return "生氣"
-        default:
+        case .disgust:
             return "厭惡"
         }
     }
     
-    static func getSceneEmoji(emotion: String) -> String {
+    static func getSceneEmoji(emotion: Emotions) -> String {
         switch emotion {
-        case Emotions.surprise.rawValue, Emotions.happy.rawValue:
+        case .surprise, .happy:
             return "Emoticon_27.scn"
-        case Emotions.neutral.rawValue:
+        case .neutral:
             return "Emoticon_40.scn"
-        default:
+        case .fear, .sad, .angry, .disgust:
             return "Emoticon_56.scn"
         }
     }
     
-    static func getEmotionColor(emotion: String) -> UIColor {
+    static func getEmotionColor(emotion: Emotions) -> UIColor {
         switch emotion {
-        case Emotions.surprise.rawValue:
+        case .surprise:
             return lightRed
-        case Emotions.happy.rawValue:
+        case .happy:
             return softCoral
-        case Emotions.neutral.rawValue:
+        case .neutral:
             return midOrange
-        case Emotions.fear.rawValue:
+        case .fear:
             return creamyWhite
-        case Emotions.sad.rawValue:
+        case .sad:
             return grayBlue
-        case Emotions.angry.rawValue:
+        case .angry:
             return brick
-        default:
+        case .disgust:
             return newBrown
         }
     }
     
-    static func getEmotionSinger(emotion: String) -> String {
+    static func getEmotionSinger(emotion: Emotions) -> String {
         switch emotion {
-        case Emotions.surprise.rawValue:
+        case .surprise:
             return surpriseSinger.randomElement() ?? ""
-        case Emotions.happy.rawValue:
+        case .happy:
             return happySinger.randomElement() ?? ""
-        case Emotions.neutral.rawValue:
+        case .neutral:
             return neutralSinger.randomElement() ?? ""
-        case Emotions.fear.rawValue:
+        case .fear:
             return fearSinger.randomElement() ?? ""
-        case Emotions.sad.rawValue:
+        case .sad:
             return sadSinger.randomElement() ?? ""
-        case Emotions.angry.rawValue:
+        case .angry:
             return angrySinger.randomElement() ?? ""
-        default:
+        case .disgust:
             return disgustSinger.randomElement() ?? ""
         }
-}
-
+    }
+    
 }
 

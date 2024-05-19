@@ -36,6 +36,7 @@ struct UsernameEditView: View {
 
        private func saveUsername() {
            UserDefaults.standard.set(username, forKey: "username")
-           dismiss() 
+           NotificationCenter.default.post(name: NSNotification.Name("UserNameUpdated"), object: nil, userInfo: ["userName": username])
+           dismiss()
        }
 }

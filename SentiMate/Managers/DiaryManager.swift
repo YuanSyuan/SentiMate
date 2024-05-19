@@ -128,11 +128,11 @@ struct EmotionType: Identifiable, Equatable {
         }
         
         var mandarinName: String {
-            Emotions.getMandarinEmotion(emotion: emotion.rawValue)
+            Emotions.getMandarinEmotion(emotion: emotion)
         }
         
         var color: UIColor {
-            Emotions.getEmotionColor(emotion: emotion.rawValue)
+            Emotions.getEmotionColor(emotion: emotion)
         }
 }
 

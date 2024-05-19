@@ -37,8 +37,9 @@ class DiaryVC: UIViewController {
                                             attributes: [NSAttributedString.Key.paragraphStyle:
                                                             paragraphStyle])
         
-        if let emotion = diary?.emotion {
-            let emojiText = Emotions.getMandarinEmotion(emotion: emotion)
+        if let emotion = diary?.emotion, let emotionEnum =  Emotions(rawValue: emotion) {
+            
+            let emojiText = Emotions.getMandarinEmotion(emotion: emotionEnum)
             
             emotionImg.image = UIImage(named: emotion)
             emotionLbl.text = emojiText
