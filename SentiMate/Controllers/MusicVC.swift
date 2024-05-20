@@ -31,13 +31,17 @@ class MusicVC: UIViewController {
     @IBOutlet weak var timeLbl: UILabel!
     
     let musicManager = MusicManager()
-    var songs: [StoreItem] = []
-    var calmSongs: [SoftMusic] = []
+    var songs: [Playable] = []
+//    var calmSongs: [SoftMusic] = []
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
     var songIndex = 0
     var playerTimeObserver: Any?
     var songDuration: CMTime?
+    
+    // refactor
+//    let viewModel = MusicViewModel()
+    var playerClass = MusicPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +50,7 @@ class MusicVC: UIViewController {
         tableView.delegate = self
         
         configurePlayerView()
-        setupPlayerTimeObserver()
+//        setupPlayerTimeObserver()
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
@@ -55,18 +59,21 @@ class MusicVC: UIViewController {
             print("Failed to set audio session category. Error: \(error)")
         }
         
-        if songs != [] {
-            topTitle.text = playlist[0]
-        } else {
-            topTitle.text = playlist[1]
-        }
+        // 改去 didselectitem 寫
+//        if songs != [] {
+//            topTitle.text = playlist[0]
+//        } else {
+//            topTitle.text = playlist[1]
+//        }
+//        
+//        if songs != [] {
+//            topImage.image = UIImage(named: playlistImage[0])
+//        } else {
+//            topImage.image = UIImage(named: playlistImage[1])
+//        }
         
-        if songs != [] {
-            topImage.image = UIImage(named: playlistImage[0])
-        } else {
-            topImage.image = UIImage(named: playlistImage[1])
-        }
         
+        // 拉下去寫
         playerView.layer.cornerRadius = 8
         playerView.clipsToBounds = false
         playerView.layer.shadowColor = UIColor.black.cgColor
@@ -93,7 +100,7 @@ class MusicVC: UIViewController {
         super.viewWillAppear(true)
         
         configurePlayerView()
-        setupPlayerTimeObserver()
+//        setupPlayerTimeObserver()
         checkMusicIsEnd()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -113,56 +120,45 @@ class MusicVC: UIViewController {
     }
     
     func configurePlayerView() {
-        if songs != [] {
-            let song = songs[0]
-            songLbl.text = song.trackName
-            singerLbl.text = song.artistName
-            albumImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
-            player = AVPlayer(url: song.previewUrl)
-        } else {
-            let calmSong = calmSongs[0]
-            songLbl.text = calmSong.name
-            singerLbl.text = "YuanSyuan Li"
-            albumImg.image = UIImage(named: calmSong.image)
-            
-            guard let url = URL(string: calmSong.url) else { return }
-            player = AVPlayer(url: url)
-        }
+        let song = songs[0]
+        songLbl.text = song.songName
+        singerLbl.text = song.artist
+        albumImg.image = UIImage(named: song.albumImage)
     }
     
     // 還要再調整 call observer 的位置
-    func setupPlayerTimeObserver() {
-        let interval = CMTime(seconds: 1, preferredTimescale: 1)
-        
-        if songs != [] {
-            playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
-                guard let self = self, let currentTime = self.player?.currentTime().seconds else { return }
-                
-                timeSlider.maximumValue = 30
-                timeSlider.minimumValue = 0
-                timeSlider.value = Float(currentTime)
-                timeLbl.text = formatTime(fromSeconds: currentTime)
-                remainTimeLbl.text = "-\(formatTime(fromSeconds: 30 - currentTime))"
-            }
-        } else {
-            playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
-                guard let self = self, let currentTime = self.player?.currentTime().seconds else { return }
-                
-                timeSlider.maximumValue = 120
-                timeSlider.minimumValue = 0
-                timeSlider.value = Float(currentTime)
-                timeLbl.text = formatTime(fromSeconds: currentTime)
-                remainTimeLbl.text = "-\(formatTime(fromSeconds: 120 - currentTime))"
-            }
-        }
-    }
+//    func setupPlayerTimeObserver() {
+//        let interval = CMTime(seconds: 1, preferredTimescale: 1)
+//        
+//        if songs != [] {
+//            playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
+//                guard let self = self, let currentTime = self.player?.currentTime().seconds else { return }
+//                
+//                timeSlider.maximumValue = 30
+//                timeSlider.minimumValue = 0
+//                timeSlider.value = Float(currentTime)
+//                timeLbl.text = formatTime(fromSeconds: currentTime)
+//                remainTimeLbl.text = "-\(formatTime(fromSeconds: 30 - currentTime))"
+//            }
+//        } else {
+//            playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
+//                guard let self = self, let currentTime = self.player?.currentTime().seconds else { return }
+//                
+//                timeSlider.maximumValue = 120
+//                timeSlider.minimumValue = 0
+//                timeSlider.value = Float(currentTime)
+//                timeLbl.text = formatTime(fromSeconds: currentTime)
+//                remainTimeLbl.text = "-\(formatTime(fromSeconds: 120 - currentTime))"
+//            }
+//        }
+//    }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let time = CMTime(value: CMTimeValue(sender.value), timescale: 1)
         player?.seek(to: time)
     }
     
-    @IBAction func playBtn(_ sender: Any) {
+    @IBAction func playBtnTapped(_ sender: Any) {
         if player?.timeControlStatus == .paused {
             player?.play()
             playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
@@ -172,94 +168,90 @@ class MusicVC: UIViewController {
         }
     }
     
-    @IBAction func backBtn(_ sender: Any) {
-        if songs != [] {
-            if songIndex == 0 {
-                songIndex = songs.count - 1
-                playSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            } else {
-                songIndex -= 1
-                playSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            }
-        } else {
-            if songIndex == 0 {
-                songIndex = calmSongs.count - 1
-                playCalmSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            } else {
-                songIndex -= 1
-                playCalmSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            }
-        }
-    }
+//    @IBAction func backBtnTapped(_ sender: Any) {
+//        if songs != [] {
+//            if songIndex == 0 {
+//                songIndex = songs.count - 1
+//                playSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            } else {
+//                songIndex -= 1
+//                playSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            }
+//        } else {
+//            if songIndex == 0 {
+//                songIndex = calmSongs.count - 1
+//                playCalmSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            } else {
+//                songIndex -= 1
+//                playCalmSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            }
+//        }
+//    }
     
     @IBAction func nextBtn(_ sender: Any) {
-        playNextMusic()
+//        playNextMusic()
     }
     
     func playSong(index: Int) {
         player?.pause()
-        playerItem = AVPlayerItem(url: songs[songIndex].previewUrl)
+        playerItem = AVPlayerItem(url: songs[songIndex].trackURL)
         player?.replaceCurrentItem(with: playerItem)
         player?.play()
         playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
-        songLbl.text = songs[songIndex].trackName
-        singerLbl.text = songs[songIndex].artistName
-        albumImg.kf.setImage(with: URL(string: "\(songs[songIndex].artworkUrl500)"))
+        songLbl.text = songs[songIndex].songName
+        singerLbl.text = songs[songIndex].artist
+        albumImg.image = UIImage(named: songs[songIndex].albumImage)
     }
-    
-    func playCalmSong(index: Int) {
-        player?.pause()
-        guard let url = URL(string: calmSongs[index].url) else { return }
-        playerItem = AVPlayerItem(url: url)
-        player?.replaceCurrentItem(with: playerItem)
-        player?.play()
-        playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
-        songLbl.text = calmSongs[songIndex].name
-        albumImg.image = UIImage(named: calmSongs[songIndex].image)
-    }
+//    
+//    func playCalmSong(index: Int) {
+//        player?.pause()
+//        guard let url = URL(string: calmSongs[index].url) else { return }
+//        playerItem = AVPlayerItem(url: url)
+//        player?.replaceCurrentItem(with: playerItem)
+//        player?.play()
+//        playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
+//        songLbl.text = calmSongs[songIndex].name
+//        albumImg.image = UIImage(named: calmSongs[songIndex].image)
+//    }
     
     func checkMusicIsEnd() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { (_) in
-            self.playNextMusic()
+//            self.playNextMusic()
         }
     }
     
-    func playNextMusic() {
-        if songs != [] {
-            if songIndex == songs.count - 1 {
-                songIndex = 0
-                playSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            } else {
-                songIndex += 1
-                playSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            }
-        } else {
-            if songIndex == calmSongs.count - 1 {
-                songIndex = 0
-                playCalmSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            } else {
-                songIndex += 1
-                playCalmSong(index: songIndex)
-                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-            }
-        }
-    }
+//    func playNextMusic() {
+//        if songs != [] {
+//            if songIndex == songs.count - 1 {
+//                songIndex = 0
+//                playSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            } else {
+//                songIndex += 1
+//                playSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            }
+//        } else {
+//            if songIndex == calmSongs.count - 1 {
+//                songIndex = 0
+//                playCalmSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            } else {
+//                songIndex += 1
+//                playCalmSong(index: songIndex)
+//                playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
+//            }
+//        }
+//    }
 }
 
 extension MusicVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if songs != [] {
-            return  songs.count
-        } else {
-            return  calmSongs.count
-        }
+        songs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -267,17 +259,11 @@ extension MusicVC: UITableViewDataSource {
             fatalError("Could not dequeue DateCell")
         }
         
-        if songs != [] {
-            let song = songs[indexPath.row]
-            cell.songLbl.text = song.trackName
-            cell.singerLbl.text = song.artistName
-            cell.songImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
-        } else {
-            let song = calmSongs[indexPath.row]
-            cell.songLbl.text = song.name
-            cell.songImg.image = UIImage(named: song.image)
-            cell.singerLbl.text = "Suno"
-        }
+        let song = songs[indexPath.row]
+        cell.songLbl.text = song.songName
+        cell.singerLbl.text = song.artist
+        cell.songImg.image = UIImage(named: song.albumImage)
+                
         return cell
     }
 }
@@ -294,27 +280,17 @@ extension MusicVC: UITableViewDelegate {
         }
         
         player?.pause()
+       
+        let song = songs[indexPath.row]
+        songLbl.text = song.songName
+        singerLbl.text = song.artist
+        albumImg.image = UIImage(named: song.albumImage)
         
-        if songs != [] {
-            let song = songs[indexPath.row]
-            let previewUrl = song.previewUrl
-            self.songIndex = indexPath.row
-            player = AVPlayer(url: previewUrl)
-            songLbl.text = song.trackName
-            singerLbl.text = song.artistName
-            albumImg.kf.setImage(with: URL(string: "\(song.artworkUrl500)"))
-        } else {
-            let song = calmSongs[indexPath.row]
-            guard let url = URL(string: song.url) else { return }
-            self.songIndex = indexPath.row
-            player = AVPlayer(url: url)
-            songLbl.text = song.name
-            albumImg.image = UIImage(named: song.image)
-        }
+        playSong(index: indexPath.row)
         
         player?.play()
         playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-        setupPlayerTimeObserver()
+//        setupPlayerTimeObserver()
     }
     
     func formatTime(fromSeconds totalSeconds: Double) -> String {

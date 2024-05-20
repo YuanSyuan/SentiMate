@@ -15,31 +15,86 @@ let playlistDescription: [String] = [
 ]
 
 let playlistImage: [String] = [
-"backgroundAngry",
-"backgroundSad",
+    "backgroundAngry",
+    "backgroundSad",
 ]
 
-struct SoftMusic {
-var name: String
-var url: String
-var image: String
+// 整合兩個不同的 struct
+protocol Playable {
+    var songName: String { get }
+    var artist: String { get }
+    var albumImage: String { get }
+    var trackURL: URL { get }
 }
 
-let softMusicPlaylist: [SoftMusic] = [
-SoftMusic(name: "Whispering Winds", url: "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF", image: "musicImg0"),
-SoftMusic(name: "Moonlit Serenade", url: "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF", image: "musicImg1"),
-SoftMusic(name: "Celestial Echoes", url: "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq", image: "musicImg2"),
-SoftMusic(name: "Gentle Embrace", url: "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38", image: "musicImg3"),
-SoftMusic(name: "Silent Reverie", url: "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli", image: "musicImg4"),
-SoftMusic(name: "Ethereal Moments", url: "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld", image: "musicImg5"),
-SoftMusic(name: "Misty Horizons", url: "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO", image: "musicImg6"),
-SoftMusic(name: "Twilight Whispers", url: "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5", image: "musicImg7"),
-SoftMusic(name: "Tranquil Mornings", url: "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z", image: "musicImg8"),
-SoftMusic(name: "Velvet Dreams", url: "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h", image: "musicImg9"),
-SoftMusic(name: "Softly Spoken", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "musicImg10"),
-SoftMusic(name: "Quietude Cascade", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "musicImg11")
-]
+// Apple Music API
+struct SearchResponse: Codable {
+    let resultCount : Int
+    let results: [StoreItem]
+}
+// 歌曲 struct - 情緒特調
+struct StoreItem: Codable, Equatable {
+    let artistName: String
+    let trackName: String
+    let collectionName: String?
+    let previewUrl: URL
+    let artworkUrl100: URL
+    let trackPrice: Double?
+    let releaseDate: Date
+    let isStreamable: Bool?
+    
+    var artworkUrl500: URL {
+        artworkUrl100.deletingLastPathComponent().appendingPathComponent("500x500bb.jpg")
+    }
+}
 
+extension StoreItem: Playable {
+    var songName: String { 
+        return trackName
+    }
+    
+    var artist: String {
+        return artistName
+    }
+    
+    var albumImage: String {
+        return artworkUrl500.absoluteString
+    }
+    
+    var trackURL: URL {
+        return previewUrl
+    }
+    
+}
+
+// 歌曲 struct - 沈澱專區
+struct SoftMusic {
+    var name: String
+    var url: String
+    var image: String
+}
+
+extension SoftMusic: Playable {
+    var songName: String {
+        return name
+    }
+    
+    var artist: String {
+        return "Suno"
+    }
+    
+    var albumImage: String {
+        return image
+    }
+    
+    var trackURL: URL {
+        return URL(string: url)!
+    }
+    
+    
+}
+
+// 歌單 Array - 情緒特調
 let angrySinger: [String] = [
     "Slipknot",
     "RageAgainsttheMachine",
@@ -163,23 +218,18 @@ let surpriseSinger: [String] = [
     "Prince"
 ]
 
-//Json 大分類
-struct SearchResponse: Codable {
-    let resultCount : Int
-    let results: [StoreItem]
-}
-//Json 小分類,名稱需要與Json一樣
-struct StoreItem: Codable, Equatable {
-    let artistName: String
-    let trackName: String
-    let collectionName: String?
-    let previewUrl: URL
-    let artworkUrl100: URL
-    let trackPrice: Double?
-    let releaseDate: Date
-    let isStreamable: Bool?
-    
-    var artworkUrl500: URL {
-        artworkUrl100.deletingLastPathComponent().appendingPathComponent("500x500bb.jpg")
-    }
-}
+// 歌單 Array - 沈澱專區
+let softMusicPlaylist: [SoftMusic] = [
+    SoftMusic(name: "Whispering Winds", url: "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF", image: "musicImg0"),
+    SoftMusic(name: "Moonlit Serenade", url: "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF", image: "musicImg1"),
+    SoftMusic(name: "Celestial Echoes", url: "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq", image: "musicImg2"),
+    SoftMusic(name: "Gentle Embrace", url: "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38", image: "musicImg3"),
+    SoftMusic(name: "Silent Reverie", url: "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli", image: "musicImg4"),
+    SoftMusic(name: "Ethereal Moments", url: "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld", image: "musicImg5"),
+    SoftMusic(name: "Misty Horizons", url: "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO", image: "musicImg6"),
+    SoftMusic(name: "Twilight Whispers", url: "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5", image: "musicImg7"),
+    SoftMusic(name: "Tranquil Mornings", url: "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z", image: "musicImg8"),
+    SoftMusic(name: "Velvet Dreams", url: "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h", image: "musicImg9"),
+    SoftMusic(name: "Softly Spoken", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "musicImg10"),
+    SoftMusic(name: "Quietude Cascade", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "musicImg11")
+]

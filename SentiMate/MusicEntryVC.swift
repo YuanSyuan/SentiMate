@@ -20,6 +20,8 @@ class MusicEntryVC: UIViewController {
     var emotion: String?
     var activityIndicator = UIActivityIndicatorView()
     
+    var viewModel = MusicViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,11 +104,10 @@ class MusicEntryVC: UIViewController {
            let destinationVC = segue.destination as? MusicVC,
            let indexPath = collectionView.indexPathsForSelectedItems?.first {
             destinationVC.songs = []
-            destinationVC.calmSongs = []
             if indexPath.row == 0 {
                 destinationVC.songs = self.songs
             } else {
-                destinationVC.calmSongs = self.calmSongs
+                destinationVC.songs = self.calmSongs
             }
         }
     }
@@ -136,5 +137,18 @@ extension MusicEntryVC: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 40, left: 20, bottom: 20, right: 0)
     }
 }
+//
+//extension MusicEntryVC: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let viewModel = MusicViewModel()
+//        
+//        switch indexPath.row {
+//        case 0:
+//            viewModel.songs = songs
+//        default:
+//            viewModel.songs = calmSongs
+//        }
+//    }
+//}
 
 

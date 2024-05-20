@@ -15,7 +15,6 @@ import Lottie
 class PostVC: UIViewController {
     private let sceneView = ARSCNView()
     private var model: VNCoreMLModel?
-    
     private let titleLbl = UILabel()
     private var emotionLabel = UILabel()
     private var textNode: SCNNode?
@@ -24,7 +23,6 @@ class PostVC: UIViewController {
     private let containerView = UIView()
     private var currentEmotion: String?
     private var isSessionRunning = true
-    
     private var loadingAnimationView: LottieAnimationView?
     
     override func viewDidLoad() {

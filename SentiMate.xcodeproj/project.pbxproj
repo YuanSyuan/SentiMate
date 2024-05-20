@@ -31,6 +31,9 @@
 		05223DAA2BDFDBF20066AD61 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */; };
 		05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */; };
 		052709CC2BF9DACF000959C5 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */; };
+		052709D42BFADF5D000959C5 /* SentiMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709D32BFADF5D000959C5 /* SentiMateTests.swift */; };
+		052709DB2BFB92DC000959C5 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709DA2BFB92DC000959C5 /* MusicPlayer.swift */; };
+		052709DD2BFB932D000959C5 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709DC2BFB932D000959C5 /* MusicViewModel.swift */; };
 		0538A1762BDE455100796496 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* OnboardingView.swift */; };
 		0538A1782BDE456600796496 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1772BDE456600796496 /* PageView.swift */; };
 		0538A17A2BDE457D00796496 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1792BDE457D00796496 /* PageModel.swift */; };
@@ -116,13 +119,23 @@
 		05D366BD2BE093AC004227A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05D366BC2BE093AB004227A3 /* GoogleService-Info.plist */; };
 		05D366C02BE09F4A004227A3 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D366BF2BE09F4A004227A3 /* SettingVC.swift */; };
 		05D366C22BE0A09A004227A3 /* AlertClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D366C12BE0A09A004227A3 /* AlertClass.swift */; };
-		05D549252BF6179300D8F1F5 /* HomeVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549242BF6179300D8F1F5 /* HomeVC+Extension.swift */; };
+		05D549252BF6179300D8F1F5 /* HomeVC+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549242BF6179300D8F1F5 /* HomeVC+ContextMenu.swift */; };
 		05D549272BF61BF100D8F1F5 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */; };
 		05D549292BF6CB9000D8F1F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549282BF6CB9000D8F1F5 /* HomeViewModel.swift */; };
 		05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */; };
 		05EEB6432BF0918200513B2A /* TipKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EEB6422BF0918200513B2A /* TipKit.swift */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		052709D52BFADF5D000959C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0502F3342BC67B4200B89FE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0502F33B2BC67B4200B89FE5;
+			remoteInfo = SentiMate;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0502F33C2BC67B4200B89FE5 /* SentiMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentiMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +164,10 @@
 		05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		052709D12BFADF5D000959C5 /* SentiMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentiMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		052709D32BFADF5D000959C5 /* SentiMateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentiMateTests.swift; sourceTree = "<group>"; };
+		052709DA2BFB92DC000959C5 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		052709DC2BFB932D000959C5 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		0538A1752BDE455100796496 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0538A1772BDE456600796496 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0538A1792BDE457D00796496 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
@@ -210,7 +227,7 @@
 		05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentiMate.entitlements; sourceTree = "<group>"; };
 		05D366BF2BE09F4A004227A3 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = SentiMate/SettingVC.swift; sourceTree = SOURCE_ROOT; };
 		05D366C12BE0A09A004227A3 /* AlertClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertClass.swift; sourceTree = "<group>"; };
-		05D549242BF6179300D8F1F5 /* HomeVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+Extension.swift"; sourceTree = "<group>"; };
+		05D549242BF6179300D8F1F5 /* HomeVC+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+ContextMenu.swift"; sourceTree = "<group>"; };
 		05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		05D549282BF6CB9000D8F1F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChenYuluoyan-Thin.ttf"; sourceTree = "<group>"; };
@@ -256,6 +273,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		052709CE2BFADF5D000959C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -272,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				0502F33E2BC67B4200B89FE5 /* SentiMate */,
+				052709D22BFADF5D000959C5 /* SentiMateTests */,
 				0502F33D2BC67B4200B89FE5 /* Products */,
 				04B81AB2129553DD24DAF1A8 /* Pods */,
 				39F4C3CCA6CB76156DBBC777 /* Frameworks */,
@@ -282,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0502F33C2BC67B4200B89FE5 /* SentiMate.app */,
+				052709D12BFADF5D000959C5 /* SentiMateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,6 +376,14 @@
 			path = Managers/Obj;
 			sourceTree = "<group>";
 		};
+		052709D22BFADF5D000959C5 /* SentiMateTests */ = {
+			isa = PBXGroup;
+			children = (
+				052709D32BFADF5D000959C5 /* SentiMateTests.swift */,
+			);
+			path = SentiMateTests;
+			sourceTree = "<group>";
+		};
 		0538A17B2BDE458600796496 /* WalkThrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +439,7 @@
 				05D366BF2BE09F4A004227A3 /* SettingVC.swift */,
 				0509C1592BCBB169000FB482 /* MusicCell.swift */,
 				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
+				052709DC2BFB932D000959C5 /* MusicViewModel.swift */,
 				05B44C1F2BD263D600798934 /* MusicEntryCell */,
 				05B44C192BD2632000798934 /* MusicEntryVC.swift */,
 				052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */,
@@ -457,8 +492,9 @@
 				05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */,
 				05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */,
 				05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */,
-				05D549242BF6179300D8F1F5 /* HomeVC+Extension.swift */,
+				05D549242BF6179300D8F1F5 /* HomeVC+ContextMenu.swift */,
 				05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */,
+				052709DA2BFB92DC000959C5 /* MusicPlayer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -532,6 +568,24 @@
 			productReference = 0502F33C2BC67B4200B89FE5 /* SentiMate.app */;
 			productType = "com.apple.product-type.application";
 		};
+		052709D02BFADF5D000959C5 /* SentiMateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 052709D72BFADF5D000959C5 /* Build configuration list for PBXNativeTarget "SentiMateTests" */;
+			buildPhases = (
+				052709CD2BFADF5D000959C5 /* Sources */,
+				052709CE2BFADF5D000959C5 /* Frameworks */,
+				052709CF2BFADF5D000959C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				052709D62BFADF5D000959C5 /* PBXTargetDependency */,
+			);
+			name = SentiMateTests;
+			productName = SentiMateTests;
+			productReference = 052709D12BFADF5D000959C5 /* SentiMateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -544,6 +598,10 @@
 				TargetAttributes = {
 					0502F33B2BC67B4200B89FE5 = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					052709D02BFADF5D000959C5 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 0502F33B2BC67B4200B89FE5;
 					};
 				};
 			};
@@ -564,6 +622,7 @@
 			projectRoot = "";
 			targets = (
 				0502F33B2BC67B4200B89FE5 /* SentiMate */,
+				052709D02BFADF5D000959C5 /* SentiMateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -600,6 +659,13 @@
 				050CE07F2BF1E88A00D57B95 /* Indicator_Orange.json in Resources */,
 				0502F3472BC67B4200B89FE5 /* Main.storyboard in Resources */,
 				05223DA22BDFABFE0066AD61 /* openAI.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		052709CF2BFADF5D000959C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +774,7 @@
 				05D549272BF61BF100D8F1F5 /* DateFormatter+Extensions.swift in Sources */,
 				05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */,
 				0574CA132BC7D54A0075A296 /* DateCell.swift in Sources */,
+				052709DB2BFB92DC000959C5 /* MusicPlayer.swift in Sources */,
 				054D94872BE753EB00E4F415 /* AuthenticationViewModel.swift in Sources */,
 				056844802BC81765004604E6 /* FirebaseManager.swift in Sources */,
 				0571E2F32BC7BD1A0049B73E /* PostDetailVC.swift in Sources */,
@@ -718,6 +785,7 @@
 				05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */,
 				05BC62DB2BE27D5B0003E263 /* FontManager.swift in Sources */,
 				053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */,
+				052709DD2BFB932D000959C5 /* MusicViewModel.swift in Sources */,
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				052709CC2BF9DACF000959C5 /* PostDetailViewModel.swift in Sources */,
@@ -750,11 +818,27 @@
 				0584A64C2BEE2093000C0B5C /* UsernameEditView.swift in Sources */,
 				0538A1782BDE456600796496 /* PageView.swift in Sources */,
 				053A5EB32BCD224E00EAC1F2 /* DiaryManager.swift in Sources */,
-				05D549252BF6179300D8F1F5 /* HomeVC+Extension.swift in Sources */,
+				05D549252BF6179300D8F1F5 /* HomeVC+ContextMenu.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		052709CD2BFADF5D000959C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				052709D42BFADF5D000959C5 /* SentiMateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		052709D62BFADF5D000959C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0502F33B2BC67B4200B89FE5 /* SentiMate */;
+			targetProxy = 052709D52BFADF5D000959C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0502F3452BC67B4200B89FE5 /* Main.storyboard */ = {
@@ -966,6 +1050,53 @@
 			};
 			name = Release;
 		};
+		052709D82BFADF5D000959C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DMLVNU9R64;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuansyuan.SentiMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SentiMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SentiMate";
+			};
+			name = Debug;
+		};
+		052709D92BFADF5D000959C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DMLVNU9R64;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuansyuan.SentiMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SentiMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SentiMate";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -983,6 +1114,15 @@
 			buildConfigurations = (
 				0502F3542BC67B4500B89FE5 /* Debug */,
 				0502F3552BC67B4500B89FE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		052709D72BFADF5D000959C5 /* Build configuration list for PBXNativeTarget "SentiMateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				052709D82BFADF5D000959C5 /* Debug */,
+				052709D92BFADF5D000959C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

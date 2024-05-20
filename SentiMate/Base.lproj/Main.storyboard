@@ -688,7 +688,7 @@
                                                     <color key="baseForegroundColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="backBtn:" destination="MLr-BN-X6A" eventType="touchUpInside" id="IK0-X0-lKJ"/>
+                                                    <action selector="backBtnTapped:" destination="MLr-BN-X6A" eventType="touchUpInside" id="IK0-X0-lKJ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulp-gB-j1T">

@@ -1,17 +1,11 @@
 //
-//  HomeVC+Extension.swift
+//  HomeVC+ContextMenu.swift
 //  SentiMate
 //
 //  Created by 李芫萱 on 2024/5/16.
 //
 
 import UIKit
-
-extension HomeVC: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-}
 
 extension HomeVC {
     
