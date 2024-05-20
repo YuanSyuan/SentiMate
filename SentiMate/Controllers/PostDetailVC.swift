@@ -18,10 +18,10 @@ class PostDetailVC: UIViewController {
     var viewModel: PostDetailViewModel!
     private var cancellables = Set<AnyCancellable>()
     
-    var emotion: String?
-    var selectedDate: Date?
-    var selectedCategoryIndex: Int?
-    var userInput: String?
+//    var emotion: String?
+//    var selectedDate: Date?
+//    var selectedCategoryIndex: Int?
+//    var userInput: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,18 +124,6 @@ extension PostDetailVC: UITableViewDataSource {
 }
 
 extension PostDetailVC {
-//    func saveDiaryEntry(newEntry: [String: Any]) {
-//        if let documentID = newEntry["documentID"] as? String {
-//            FirebaseManager.shared.updateData(to: "diaries", documentID: documentID , data: newEntry) { result in
-//                self.handleSaveResult(result)
-//            }
-//        } else {
-//            FirebaseManager.shared.saveData(to: "diaries", data: newEntry) { result in
-//                self.handleSaveResult(result)
-//            }
-//        }
-//    }
-    
     private func handleSaveResult(_ result: Result<Void, Error>) {
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
@@ -154,7 +142,7 @@ extension PostDetailVC {
     }
     
     private func showAlert() {
-        if let lastDiary = DiaryManager.shared.lastDiaryWithEmotion(viewModel.emotion), let emotionEnum = Emotions(rawValue: lastDiary.emotion) {
+        if let lastDiary = viewModel.lastDiaryWithEmotion(viewModel.emotion), let emotionEnum = Emotions(rawValue: lastDiary.emotion) {
             let mandarinEmotion = Emotions.getMandarinEmotion(emotion: emotionEnum)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 4

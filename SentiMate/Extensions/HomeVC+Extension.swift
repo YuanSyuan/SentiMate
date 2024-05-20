@@ -38,7 +38,6 @@ extension HomeVC {
             viewModel.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime) ?? .now
             viewModel.userInput = diary.content
             navigationController?.pushViewController(viewController, animated: true)
-            print(viewController.selectedDate)
         }
     }
     

@@ -22,21 +22,6 @@ class DiaryManager: ObservableObject {
     }
 }
 
-// MARK: - For PostDetailVC, same emotion alert
-extension DiaryManager {
-    func lastDiaryWithEmotion(_ emotion: String) -> Diary? {
-        let sortedDiaries = diaries
-            .filter { $0.emotion == emotion }
-            .sorted { $0.customTime > $1.customTime }
-        
-        if sortedDiaries.count >= 2 {
-            return sortedDiaries[1]
-        } else {
-            return nil
-        }
-    }
-}
-
 // MARK: - For AnalyticsVC, pie chart
 extension DiaryManager {
     func getEmotionTypes(forPeriod period: TimePeriod) -> [EmotionType] {
@@ -90,7 +75,6 @@ extension DiaryManager {
 
 // MARK: - For AnalyticsVC, circles
 extension DiaryManager {
-    
     func topCategories(forEmotion emotion: String) -> [CategoryData] {
         let filteredDiaries = diaries.filter { $0.emotion == emotion }
         let grouped = Dictionary(grouping: filteredDiaries, by: { $0.category })
@@ -108,7 +92,6 @@ struct CategoryData {
     let name: String
     let count: Int
 }
-
 
 enum TimePeriod: String, CaseIterable {
     case last7Days = "7天"

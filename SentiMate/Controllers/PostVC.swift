@@ -139,7 +139,6 @@ class PostVC: UIViewController {
         if let pushVC = storyboard.instantiateViewController(withIdentifier: "detail") as? PostDetailVC {
             let viewModel = PostDetailViewModel(emotion: currentEmotion ?? "")
             pushVC.viewModel = viewModel
-//            pushVC.emotion = currentEmotion
             self.navigationController?.pushViewController(pushVC, animated: true)
         }
     }
