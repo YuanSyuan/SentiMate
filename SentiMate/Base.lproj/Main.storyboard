@@ -699,7 +699,7 @@
                                                     <color key="baseForegroundColor" red="0.93333333330000001" green="0.8862745098" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="playBtn:" destination="MLr-BN-X6A" eventType="touchUpInside" id="YLw-CX-AOB"/>
+                                                    <action selector="playBtnTapped:" destination="MLr-BN-X6A" eventType="touchUpInside" id="qCQ-qX-5am"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy6-1S-tlK">

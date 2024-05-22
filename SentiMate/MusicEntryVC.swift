@@ -20,7 +20,7 @@ class MusicEntryVC: UIViewController {
     var emotion: String?
     var activityIndicator = UIActivityIndicatorView()
     
-    var viewModel = MusicViewModel()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +104,8 @@ class MusicEntryVC: UIViewController {
            let destinationVC = segue.destination as? MusicVC,
            let indexPath = collectionView.indexPathsForSelectedItems?.first {
             destinationVC.songs = []
+            destinationVC.topTitleText = playlist[indexPath.row]
+            destinationVC.topImg = playlistImage[indexPath.row]
             if indexPath.row == 0 {
                 destinationVC.songs = self.songs
             } else {

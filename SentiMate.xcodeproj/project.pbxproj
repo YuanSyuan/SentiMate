@@ -32,8 +32,6 @@
 		05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */; };
 		052709CC2BF9DACF000959C5 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */; };
 		052709D42BFADF5D000959C5 /* SentiMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709D32BFADF5D000959C5 /* SentiMateTests.swift */; };
-		052709DB2BFB92DC000959C5 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709DA2BFB92DC000959C5 /* MusicPlayer.swift */; };
-		052709DD2BFB932D000959C5 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052709DC2BFB932D000959C5 /* MusicViewModel.swift */; };
 		0538A1762BDE455100796496 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1752BDE455100796496 /* OnboardingView.swift */; };
 		0538A1782BDE456600796496 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1772BDE456600796496 /* PageView.swift */; };
 		0538A17A2BDE457D00796496 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538A1792BDE457D00796496 /* PageModel.swift */; };
@@ -166,8 +164,6 @@
 		052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		052709D12BFADF5D000959C5 /* SentiMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentiMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		052709D32BFADF5D000959C5 /* SentiMateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentiMateTests.swift; sourceTree = "<group>"; };
-		052709DA2BFB92DC000959C5 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
-		052709DC2BFB932D000959C5 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		0538A1752BDE455100796496 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0538A1772BDE456600796496 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0538A1792BDE457D00796496 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
@@ -439,7 +435,6 @@
 				05D366BF2BE09F4A004227A3 /* SettingVC.swift */,
 				0509C1592BCBB169000FB482 /* MusicCell.swift */,
 				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
-				052709DC2BFB932D000959C5 /* MusicViewModel.swift */,
 				05B44C1F2BD263D600798934 /* MusicEntryCell */,
 				05B44C192BD2632000798934 /* MusicEntryVC.swift */,
 				052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */,
@@ -494,7 +489,6 @@
 				05223DAB2BDFE3800066AD61 /* UIButton+Extension.swift */,
 				05D549242BF6179300D8F1F5 /* HomeVC+ContextMenu.swift */,
 				05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */,
-				052709DA2BFB92DC000959C5 /* MusicPlayer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -774,7 +768,6 @@
 				05D549272BF61BF100D8F1F5 /* DateFormatter+Extensions.swift in Sources */,
 				05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */,
 				0574CA132BC7D54A0075A296 /* DateCell.swift in Sources */,
-				052709DB2BFB92DC000959C5 /* MusicPlayer.swift in Sources */,
 				054D94872BE753EB00E4F415 /* AuthenticationViewModel.swift in Sources */,
 				056844802BC81765004604E6 /* FirebaseManager.swift in Sources */,
 				0571E2F32BC7BD1A0049B73E /* PostDetailVC.swift in Sources */,
@@ -785,7 +778,6 @@
 				05223DAC2BDFE3800066AD61 /* UIButton+Extension.swift in Sources */,
 				05BC62DB2BE27D5B0003E263 /* FontManager.swift in Sources */,
 				053A5EB52BCD51C700EAC1F2 /* DiaryVC.swift in Sources */,
-				052709DD2BFB932D000959C5 /* MusicViewModel.swift in Sources */,
 				0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */,
 				059E446C2BC6A7A900184989 /* PostVC.swift in Sources */,
 				052709CC2BF9DACF000959C5 /* PostDetailViewModel.swift in Sources */,

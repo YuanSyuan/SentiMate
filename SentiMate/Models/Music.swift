@@ -25,6 +25,7 @@ protocol Playable {
     var artist: String { get }
     var albumImage: String { get }
     var trackURL: URL { get }
+    var duration: Double { get }
 }
 
 // Apple Music API
@@ -65,6 +66,10 @@ extension StoreItem: Playable {
         return previewUrl
     }
     
+    var duration: Double {
+        return 30
+    }
+    
 }
 
 // 歌曲 struct - 沈澱專區
@@ -91,6 +96,9 @@ extension SoftMusic: Playable {
         return URL(string: url)!
     }
     
+    var duration: Double {
+        return 120
+    }
     
 }
 
