@@ -220,16 +220,16 @@ let surpriseSinger: [String] = [
 
 // 歌單 Array - 沈澱專區
 let softMusicPlaylist: [SoftMusic] = [
-    SoftMusic(name: "Whispering Winds", url: "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF", image: "musicImg0"),
-    SoftMusic(name: "Moonlit Serenade", url: "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF", image: "musicImg1"),
-    SoftMusic(name: "Celestial Echoes", url: "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq", image: "musicImg2"),
-    SoftMusic(name: "Gentle Embrace", url: "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38", image: "musicImg3"),
-    SoftMusic(name: "Silent Reverie", url: "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli", image: "musicImg4"),
-    SoftMusic(name: "Ethereal Moments", url: "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld", image: "musicImg5"),
-    SoftMusic(name: "Misty Horizons", url: "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO", image: "musicImg6"),
-    SoftMusic(name: "Twilight Whispers", url: "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5", image: "musicImg7"),
-    SoftMusic(name: "Tranquil Mornings", url: "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z", image: "musicImg8"),
-    SoftMusic(name: "Velvet Dreams", url: "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h", image: "musicImg9"),
-    SoftMusic(name: "Softly Spoken", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "musicImg10"),
-    SoftMusic(name: "Quietude Cascade", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "musicImg11")
+    SoftMusic(name: "Whispering Winds", url: "https://drive.google.com/uc?export=download&id=1vdiQkUHeafUSlaO1chuC8PKBPzkwrEwF", image: "https://drive.usercontent.google.com/download?id=1SPrwzRbVRus5ZMevbMxtP-GOQ8VS0UX0"),
+    SoftMusic(name: "Moonlit Serenade", url: "https://drive.google.com/uc?export=download&id=1APkC88ExN3RS-1s-mBKviyisbRqB7tOF", image: "https://drive.usercontent.google.com/download?id=1F3F7rkDAj2T8cei-QmWQur2JC6_6unyk"),
+    SoftMusic(name: "Celestial Echoes", url: "https://drive.google.com/uc?export=download&id=1cXW0Qp1a4qbUnt7k306GvXYfBQWHsQNq", image: "https://drive.usercontent.google.com/download?id=1DeAf1v8xxZTmKl0Yk7X9XNFoDDohd8Ua"),
+    SoftMusic(name: "Gentle Embrace", url: "https://drive.google.com/uc?export=download&id=1xQZmCFawXZIhPQ8MGuzgAjjR2yGBmt38", image: "https://drive.usercontent.google.com/download?id=1XTbAzK6hqiLi4078eajexZAKdhSFvlMm"),
+    SoftMusic(name: "Silent Reverie", url: "https://drive.google.com/uc?export=download&id=1rH-ZQJL41RrtcONLniqhSLIJYzbPYGli", image: "https://drive.usercontent.google.com/download?id=1C7yMAjbAyNvQQ_I2OhF-KASvcID_3fmH"),
+    SoftMusic(name: "Ethereal Moments", url: "https://drive.google.com/uc?export=download&id=1inf-U2tPdXLLCFMkqHKc2Vt-IdF_YWld", image: "https://drive.usercontent.google.com/download?id=1F7eTfueAYjjrQId-vLN1POSzS1iL78Sc"),
+    SoftMusic(name: "Misty Horizons", url: "https://drive.google.com/uc?export=download&id=1Q89f4_7dER3U2pcG9ZMoeqwsddb4LJyO", image: "https://drive.usercontent.google.com/download?id=1BpPeeNYpDDvPiR1bR2i4AC698s0TMpUw"),
+    SoftMusic(name: "Twilight Whispers", url: "https://drive.google.com/uc?export=download&id=1VyF_RybC_idY8Nm_4iglbIRcNfE8TUT5", image: "https://drive.usercontent.google.com/download?id=1F7eTfueAYjjrQId-vLN1POSzS1iL78Sc"),
+    SoftMusic(name: "Tranquil Mornings", url: "https://drive.google.com/uc?export=download&id=1Cksi2q_N7MHG31ccIJtlk5eykPO1Nq8Z", image: "https://drive.usercontent.google.com/download?id=17n5oe1AzsM--dzWnEMCJaapKFdpLDJlS"),
+    SoftMusic(name: "Velvet Dreams", url: "https://drive.google.com/uc?export=download&id=1wywUEzkmKbWEdorGjM_WLyW_kE4c_K_h", image: "https://drive.usercontent.google.com/download?id=1TzCC__W4D8z5HuF7ktFFL2W34yCGbuVW"),
+    SoftMusic(name: "Softly Spoken", url: "https://drive.google.com/uc?export=download&id=1spi10b4Dg9IqkAbwV1m4Wh_xfpoPiyc5", image: "https://drive.usercontent.google.com/download?id=1og987MP8if7o0uoXof0LN8YQByJFcTgY"),
+    SoftMusic(name: "Quietude Cascade", url: "https://drive.google.com/uc?export=download&id=1ZYIkBn_JSSlwr3cOrmuNhbH70BoVllwz", image: "https://drive.usercontent.google.com/download?id=1KUwrwNEWR9H6y6Fbd10XoMibPDgPa3kF")
 ]

@@ -124,6 +124,7 @@ class MusicVC: UIViewController {
         songLbl.text = song.songName
         singerLbl.text = song.artist
         albumImg.image = UIImage(named: song.albumImage)
+        player = AVPlayer(url: song.trackURL)
     }
     
     // 還要再調整 call observer 的位置
@@ -262,7 +263,7 @@ extension MusicVC: UITableViewDataSource {
         let song = songs[indexPath.row]
         cell.songLbl.text = song.songName
         cell.singerLbl.text = song.artist
-        cell.songImg.image = UIImage(named: song.albumImage)
+        cell.songImg.kf.setImage(with: URL(string: song.albumImage))
                 
         return cell
     }
@@ -285,12 +286,10 @@ extension MusicVC: UITableViewDelegate {
         songLbl.text = song.songName
         singerLbl.text = song.artist
         albumImg.image = UIImage(named: song.albumImage)
-        
-        playSong(index: indexPath.row)
+        player = AVPlayer(url: song.trackURL)
         
         player?.play()
         playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-//        setupPlayerTimeObserver()
     }
     
     func formatTime(fromSeconds totalSeconds: Double) -> String {
