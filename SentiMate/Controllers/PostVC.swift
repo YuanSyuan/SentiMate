@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 import CoreML
-import Vision
+//import Vision
 import ARKit
 import Lottie
 
