@@ -61,7 +61,7 @@ class HomeVC: UIViewController {
         if segue.identifier == "showDiaryVC",
            let destinationVC = segue.destination as? DiaryVC,
            let indexPath = diaryCollectionView.indexPathsForSelectedItems?.first {
-            let diary = DiaryManager.shared.diaries[indexPath.row]
+            let diary = FirebaseManager.shared.diaries[indexPath.row]
             destinationVC.diary = diary
         }
     }

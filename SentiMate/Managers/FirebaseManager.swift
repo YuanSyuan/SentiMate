@@ -14,7 +14,7 @@ struct AudioFile: Equatable {
     let localURL: URL
 }
 
-class FirebaseManager {
+class FirebaseManager: ObservableObject {
     
     static let shared = FirebaseManager()
     @Published private(set) var diaries: [Diary] = []
@@ -49,30 +49,29 @@ class FirebaseManager {
         db.collection("diaries")
             .whereField("userID", isEqualTo: userId)
             .addSnapshotListener { querySnapshot, error in
-                var diaries = [Diary]()
+                
                 if let err = error {
                     print("can't load data \(err)")
                 } else {
+                    var newDiaries = [Diary]()
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
-                            
                             let data = doc.data()
                             if  let emotion = data["emotion"] as? String,
                                 let userID = data["userID"] as? String,
                                 let customTime = data["customTime"] as? String,
                                 let category = data["category"] as? Int,
                                 let content = data["content"] as? String,
-                                let documentID = data["documentID"] as? String{
+                                let documentID = data["documentID"] as? String {
                                 let newEntry = Diary(documentID: documentID, emotion: emotion, content: content, customTime: customTime, category: category, userID: userID)
-                                
-                                diaries.append(newEntry)
+                                newDiaries.append(newEntry)
                             }
                         }
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd"
                         
-                        diaries.sort { firstDiary, secondDiary in
+                        newDiaries.sort { firstDiary, secondDiary in
                             if let firstDate = dateFormatter.date(from: firstDiary.customTime),
                                let secondDate = dateFormatter.date(from: secondDiary.customTime) {
                                 return firstDate > secondDate
@@ -80,9 +79,9 @@ class FirebaseManager {
                             return false
                         }
                     }
-                    
+                    self.diaries = newDiaries
                 }
-                self.diaries = diaries
+                
             }
     }
     

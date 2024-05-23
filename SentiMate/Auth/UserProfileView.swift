@@ -141,7 +141,7 @@ extension View {
 }
 
 struct SceneKitView: UIViewRepresentable {
-    @ObservedObject var diaryManager = DiaryManager.shared
+    @ObservedObject var firebaseManager = FirebaseManager.shared
     
     func makeUIView(context: Context) -> SCNView {
             let sceneView = SCNView()
@@ -154,7 +154,7 @@ struct SceneKitView: UIViewRepresentable {
         }
 
         private func updateScene(sceneView: SCNView) {
-           let emotion = diaryManager.diaries.first?.emotion ?? "Neutral"
+           let emotion = firebaseManager.diaries.first?.emotion ?? "Neutral"
             if let emotionEnum = Emotions(rawValue: emotion) {
                 let sceneEmoji = Emotions.getSceneEmoji(emotion: emotionEnum)
                 sceneView.scene = SCNScene(named: sceneEmoji)

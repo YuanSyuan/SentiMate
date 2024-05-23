@@ -48,7 +48,7 @@ class PostDetailViewModel: ObservableObject {
     
     // for alert use
     func lastDiaryWithEmotion(_ emotion: String) -> Diary? {
-        let sortedDiaries = DiaryManager.shared.diaries
+        let sortedDiaries = FirebaseManager.shared.diaries
             .filter { $0.emotion == emotion }
             .sorted { $0.customTime > $1.customTime }
         

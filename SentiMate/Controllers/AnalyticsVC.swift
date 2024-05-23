@@ -20,19 +20,19 @@ class AnalyticsVC: UIViewController {
     var isLoading = false
     private var loadingAnimationView: LottieAnimationView?
     private var latestDiaries: [Diary] {
-        Array(DiaryManager.shared.diaries.prefix(7))
+        Array(FirebaseManager.shared.diaries.prefix(7))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
-        
-        firebaseManager.onNewData = { newDiaries in
-            DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
-        }
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
+//        
+//        firebaseManager.onNewData = { newDiaries in
+//            DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
+//        }
     }
     
     @objc private func diariesDidUpdate() {
@@ -145,7 +145,7 @@ extension AnalyticsVC: UITableViewDelegate {
 
 extension AnalyticsVC: AICellDelegate {
     func aiButtonTapped(cell: AICell) {
-        guard !DiaryManager.shared.diaries.isEmpty else {
+        guard !FirebaseManager.shared.diaries.isEmpty else {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 8
             paragraphStyle.alignment = .center

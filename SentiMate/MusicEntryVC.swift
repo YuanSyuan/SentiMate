@@ -42,7 +42,7 @@ class MusicEntryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emotion = DiaryManager.shared.diaries.first?.emotion
+        emotion = FirebaseManager.shared.diaries.first?.emotion
         callAppleMusicAPI(with: emotion ?? "Neutral")
     }
     

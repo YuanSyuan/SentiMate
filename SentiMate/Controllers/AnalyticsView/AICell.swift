@@ -78,15 +78,12 @@ class AICell: UITableViewCell {
         NSLayoutConstraint.activate([
             AIResponseLbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             AIResponseLbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-//            AIResponseLbl.bottomAnchor.constraint(equalTo: callAIBtn.topAnchor),
             AIResponseLbl.heightAnchor.constraint(equalToConstant: 340)
         ])
         
         NSLayoutConstraint.activate([
-//            callAIBtn.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
             callAIBtn.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 70),
             callAIBtn.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -70),
-//            callAIBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             callAIBtn.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             callAIBtn.heightAnchor.constraint(equalToConstant: 40)
         ])

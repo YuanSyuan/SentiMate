@@ -9,7 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class TextFieldCell: UITableViewCell, UITextViewDelegate {
-
+    
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var saveBtn: UIButton!
     
@@ -31,10 +31,9 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
         
         IQKeyboardManager.shared.enable = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -53,15 +52,15 @@ class TextFieldCell: UITableViewCell, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.count
-        return numberOfChars < 195 
+        return numberOfChars < 195
     }
-
+    
     @IBAction func saveBtnTapped(_ sender: Any) {
         onSave?()
     }
     
     func configure(withText text: String?) {
-            textField.text = text
-        }
+        textField.text = text
+    }
 }
 

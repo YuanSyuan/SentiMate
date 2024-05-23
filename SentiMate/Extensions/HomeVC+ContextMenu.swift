@@ -8,7 +8,6 @@
 import UIKit
 
 extension HomeVC {
-    
     func configureContextMenu(for indexPath: IndexPath) -> UIContextMenuConfiguration {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
             let edit = UIAction(title: "編輯", image: UIImage(systemName: "square.and.pencil")) { _ in
@@ -23,7 +22,8 @@ extension HomeVC {
     }
     
     func editDiaryEntry(at indexPath: IndexPath) {
-        let diary = DiaryManager.shared.diaries[indexPath.row]
+        let diary = FirebaseManager.shared.diaries[indexPath.row]
+        
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as? PostDetailVC {
             let viewModel = PostDetailViewModel(emotion: diary.emotion)
             viewController.viewModel = viewModel
@@ -31,12 +31,13 @@ extension HomeVC {
             viewModel.emotion = diary.emotion
             viewModel.selectedDate = DateFormatter.diaryEntryFormatter.date(from: diary.customTime) ?? .now
             viewModel.userInput = diary.content
+            
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
     func deleteDiaryEntry(at indexPath: IndexPath) {
-        let diary = DiaryManager.shared.diaries[indexPath.row]
+        let diary = FirebaseManager.shared.diaries[indexPath.row]
         
         firebaseManager.deleteDiaryEntry(documentID: diary.documentID) { success, error in
             if success {
