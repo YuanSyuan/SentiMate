@@ -30,20 +30,16 @@ class MusicVC: UIViewController {
     @IBOutlet weak var remainTimeLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     
-    let musicManager = MusicManager()
-    var songs: [Playable] = []
     var topTitleText = ""
     var topImg = ""
-    //    var calmSongs: [SoftMusic] = []
-    var player: AVPlayer?
-    var playerItem: AVPlayerItem?
-    var songIndex = 0
-    var playerTimeObserver: Any?
-    var songDuration: Double = 0
+    var songs: [Playable] = []
     
-    // refactor
-    //    let viewModel = MusicViewModel()
-    //    var playerClass = MusicPlayer()
+    private let musicManager = MusicManager()
+    private var player: AVPlayer?
+    private var playerItem: AVPlayerItem?
+    private var songIndex = 0
+    private var playerTimeObserver: Any?
+    private var songDuration: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,52 +48,24 @@ class MusicVC: UIViewController {
         tableView.delegate = self
         
         configurePlayerView()
+        configureInitialPlayer()
         setupPlayerTimeObserver()
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("Failed to set audio session category. Error: \(error)")
-        }
-        
-        topTitle.text = topTitleText
-        topImage.image = UIImage(named: topImg)
-        
-        // 拉下去寫
-        playerView.layer.cornerRadius = 8
-        playerView.clipsToBounds = false
-        playerView.layer.shadowColor = UIColor.black.cgColor
-        playerView.layer.shadowOpacity = 0.7
-        playerView.layer.shadowRadius = 5
-        playerView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        playerView.layer.shouldRasterize = true
-        playerView.layer.rasterizationScale = UIScreen.main.scale
-        
-        albumImg.layer.cornerRadius = 8
-        albumImg.clipsToBounds = false
-        albumImg.layer.shadowColor = UIColor.black.cgColor
-        albumImg.layer.shadowOpacity = 0.7
-        albumImg.layer.shadowRadius = 5
-        albumImg.layer.shadowOffset = CGSize(width: 2, height: 2)
-        albumImg.layer.shouldRasterize = true
-        albumImg.layer.rasterizationScale = UIScreen.main.scale
-        
-        let animation = AnimationType.from(direction: .top, offset: 300)
-        tableView.animate(animations: [animation], duration: 1)
+        setupAudioSession()
+        setupTopView()
+        animateTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        configurePlayerView()
+        configureInitialPlayer()
         setupPlayerTimeObserver()
         checkMusicIsEnd()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)
     }
     
@@ -110,7 +78,25 @@ class MusicVC: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    // MARK: - Setup Methods
+    // setup player
     func configurePlayerView() {
+        configureShadowAndCornerRadius(for: playerView)
+        configureShadowAndCornerRadius(for: albumImg)
+    }
+    
+    private func configureShadowAndCornerRadius(for view: UIView) {
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.7
+        view.layer.shadowRadius = 5
+        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        view.layer.shouldRasterize = true
+        view.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func configureInitialPlayer() {
         let song = songs[0]
         songLbl.text = song.songName
         singerLbl.text = song.artist
@@ -118,28 +104,56 @@ class MusicVC: UIViewController {
         player = AVPlayer(url: song.trackURL)
     }
     
-    // 還要再調整 call observer 的位置
+    // setup observer to make slider move
     func setupPlayerTimeObserver() {
         let interval = CMTime(seconds: 1, preferredTimescale: 1)
         playerTimeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
             guard let self = self, let currentTime = self.player?.currentTime().seconds else { return }
-            songDuration = songs[0].duration
-            timeSlider.maximumValue = Float(songDuration)
-            print("timeSlider.maximumValue: \(songDuration)")
-            timeSlider.minimumValue = 0
-            timeSlider.value = Float(currentTime)
-            
-            timeLbl.text = formatTime(fromSeconds: currentTime)
-            remainTimeLbl.text = "-\(formatTime(fromSeconds: songDuration - currentTime))"
+            self.updateTimeUI(currentTime: currentTime)
         }
     }
     
+    func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set audio session category. Error: \(error)")
+        }
+    }
+    
+    private func setupTopView() {
+        topTitle.text = topTitleText
+        topImage.image = UIImage(named: topImg)
+    }
+    
+    private func animateTableView() {
+        let animation = AnimationType.from(direction: .top, offset: 300)
+        tableView.animate(animations: [animation], duration: 1)
+    }
+    
+    // MARK: - Player Control Methods
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let time = CMTime(value: CMTimeValue(sender.value), timescale: 1)
         player?.seek(to: time)
     }
     
+    // setup play & pause
     @IBAction func playBtnTapped(_ sender: Any) {
+        togglePlayPause()
+    }
+    
+    // play previous song
+    @IBAction func backBtnTapped(_ sender: Any) {
+        playPreviousSong()
+    }
+    
+    // play next song
+    @IBAction func nextBtn(_ sender: Any) {
+        playNextSong()
+    }
+    
+    private func togglePlayPause() {
         if player?.timeControlStatus == .paused {
             player?.play()
             playBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
@@ -149,63 +163,53 @@ class MusicVC: UIViewController {
         }
     }
     
-    @IBAction func backBtnTapped(_ sender: Any) {
-        if songIndex == 0 {
-            songIndex = songs.count - 1
-            playSong(index: songIndex)
-            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-        } else {
-            songIndex -= 1
-            playSong(index: songIndex)
-            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-        }
+    private func playPreviousSong() {
+        songIndex = (songIndex == 0) ? songs.count - 1 : songIndex - 1
+        playSong(at: songIndex)
     }
     
-    @IBAction func nextBtn(_ sender: Any) {
-        playNextMusic()
+    private func playNextSong() {
+        songIndex = (songIndex == songs.count - 1) ? 0 : songIndex + 1
+        playSong(at: songIndex)
     }
     
-    func playSong(index: Int) {
+    private func playSong(at index: Int) {
         player?.pause()
-        playerItem = AVPlayerItem(url: songs[songIndex].trackURL)
+        playerItem = AVPlayerItem(url: songs[index].trackURL)
         player?.replaceCurrentItem(with: playerItem)
         player?.play()
-        playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
-        songLbl.text = songs[songIndex].songName
-        singerLbl.text = songs[songIndex].artist
-        albumImg.image = UIImage(named: songs[songIndex].albumImage)
+        
+        // UI updates and index updates
+        songIndex = index
+        playBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        songLbl.text = songs[index].songName
+        singerLbl.text = songs[index].artist
+        albumImg.image = UIImage(named: songs[index].albumImage)
     }
-    //
-    //    func playCalmSong(index: Int) {
-    //        player?.pause()
-    //        guard let url = URL(string: calmSongs[index].url) else { return }
-    //        playerItem = AVPlayerItem(url: url)
-    //        player?.replaceCurrentItem(with: playerItem)
-    //        player?.play()
-    //        playBtn.setImage(UIImage(named: "pause.fill"), for: .normal)
-    //        songLbl.text = calmSongs[songIndex].name
-    //        albumImg.image = UIImage(named: calmSongs[songIndex].image)
-    //    }
     
-    func checkMusicIsEnd() {
+    private func updateTimeUI(currentTime: Double) {
+        songDuration = songs[songIndex].duration
+        timeSlider.maximumValue = Float(songDuration)
+        timeSlider.minimumValue = 0
+        timeSlider.value = Float(currentTime)
+        timeLbl.text = formatTime(fromSeconds: currentTime)
+        remainTimeLbl.text = "-\(formatTime(fromSeconds: songDuration - currentTime))"
+    }
+    
+    private func checkMusicIsEnd() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { (_) in
-            self.playNextMusic()
+            self.playNextSong()
         }
     }
     
-    func playNextMusic() {
-        if songIndex == songs.count - 1 {
-            songIndex = 0
-            playSong(index: songIndex)
-            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-        } else {
-            songIndex += 1
-            playSong(index: songIndex)
-            playBtn.setImage( UIImage(systemName: "pause.fill"), for: .normal)
-        }
+    private func formatTime(fromSeconds totalSeconds: Double) -> String {
+        let seconds: Int = Int(totalSeconds) % 60
+        let minutes: Int = Int(totalSeconds) / 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
 
+// MARK: - playlist tableView - UITableViewDataSource, UITableViewDelegate
 extension MusicVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         songs.count
@@ -236,22 +240,8 @@ extension MusicVC: UITableViewDelegate {
             cell.contentView.animate(animations: [animation], duration: 0.5)
         }
         
-        player?.pause()
-        
-        let song = songs[indexPath.row]
-        songLbl.text = song.songName
-        singerLbl.text = song.artist
-        albumImg.image = UIImage(named: song.albumImage)
-        player?.replaceCurrentItem(with: AVPlayerItem(url: song.trackURL))
-        
-        player?.play()
-        playBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        playSong(at: indexPath.row)
     }
     
-    func formatTime(fromSeconds totalSeconds: Double) -> String {
-        let seconds: Int = Int(totalSeconds) % 60
-        let minutes: Int = Int(totalSeconds) / 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
 }
 

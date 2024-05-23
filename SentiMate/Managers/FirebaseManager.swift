@@ -17,6 +17,8 @@ struct AudioFile: Equatable {
 class FirebaseManager {
     
     static let shared = FirebaseManager()
+    @Published private(set) var diaries: [Diary] = []
+    
     var onNewData: (([Diary]) -> Void)?
     
     private let storageRef = Storage.storage().reference()
@@ -80,7 +82,7 @@ class FirebaseManager {
                     }
                     
                 }
-                self.onNewData?(diaries)
+                self.diaries = diaries
             }
     }
     
