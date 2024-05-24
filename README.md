@@ -15,23 +15,35 @@ expressions.
 </div>
 
 
-## Features
-**Daily Emotion Diary:** By writing an emotion diary, deepen your self-understanding and emotional control through the process of recording in words.
+## Usage
+- **Daily Emotion Diary:** By writing an emotion diary, deepen your self-understanding and emotional control through the process of recording in words.
 
-**AR Facial Expression Tracking**: Using the latest AR technology and AI machine learning, detect your facial expressions in real time, accurately capturing your daily emotions.
+- **AR Facial Expression Tracking**: Using the latest AR technology and AI machine learning, detect your facial expressions in real time, accurately capturing your daily emotions.
 
-**AI Emotion Analysis**: Connect with OpenAI's advanced artificial intelligence technology for in-depth analysis of your emotions, providing suggestions to help you better understand yourself.
+- **AI Emotion Analysis**: Connect with OpenAI's advanced artificial intelligence technology for in-depth analysis of your emotions, providing suggestions to help you better understand yourself.
 
-**Mood Chart**: Easily track your emotional trends with data-driven charts, clearly displaying periodic emotional changes.
+- **Mood Chart**: Easily track your emotional trends with data-driven charts, clearly displaying periodic emotional changes.
 
-**Emotion Playlist**: Based on AI-analyzed emotional results, customize an emotion playlist for you, using music to heal your soul.
+- **Emotion Playlist**: Based on AI-analyzed emotional results, customize an emotion playlist for you, using music to heal your soul.
 
 ## Getting Started
-Follow these steps to set up and run the project on your local machine.
+Follow these steps to set up and run the project on your local machine. The Google plist and OpenAI key chain plist are not included in this repository. If needed, please contact me via Email below.
 
+## Technichal Feature
+- Primarily utilized UIKit and supplemented with SwiftUI for App development.
+- Integrated ARKit, Vision and CoreML for a machine learning model to interpret and
+respond to users' current emotions.
+- Applied SwiftUI Charts for data visualization and user interaction.
+- Integrated Apple Music API and AVFoundation for multimedia features.
+- Incorporated OpenAI API as an AI consultant to read and analyze users' emotion diaries.
+- Used Firebase Database for backend services and implemented Sign in with Apple/
+Firebase Authentication for user authentication.
+- Utilized Closure, and NotificationCenter, Combine for data passing and binding.
+- Used third-party libraries, including Lottie, Alamofire, and IQKeyboardManager.
+
+## Requirements
 - Xcode 15.2
 - A real iOS device running iOS 17 (the AR feature requires a real device and won't work on the simulator)
 
-Missing Files:
-- The Google plist and OpenAI key chain plist are not included in this repository. If needed, please contact me via Email.
+## Contact
 - Email: kelly.yuansyuan@gmail.com
