@@ -29,7 +29,7 @@ expressions.
 ## Getting Started
 Follow these steps to set up and run the project on your local machine. The Google plist and OpenAI key chain plist are not included in this repository. If needed, please contact me via Email below.
 
-## Technichal Feature
+## Technichal Features
 - Primarily utilized UIKit and supplemented with SwiftUI for App development.
 - Integrated ARKit, Vision and CoreML for a machine learning model to interpret and
 respond to users' current emotions.
