@@ -51,5 +51,7 @@ class AnalyticsViewModel:ObservableObject {
             }
         }
     }
+    
 }
+
 

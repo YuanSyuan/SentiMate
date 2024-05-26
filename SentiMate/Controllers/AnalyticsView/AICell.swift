@@ -31,6 +31,7 @@ class AICell: UITableViewCell {
         setupViews()
     }
     
+    // MARK: - initial UI setup
     private func setupViews() {
         contentView.backgroundColor = defaultBackgroundColor
         
@@ -91,6 +92,11 @@ class AICell: UITableViewCell {
         callAIBtn.addTarget(self, action: #selector(callAIBtnTapped), for: .touchUpInside)
     }
     
+    @objc func callAIBtnTapped(_ sender: UIButton) {
+        delegate?.aiButtonTapped(cell: self)
+    }
+    
+    // MARK: - Configurations
     func configureEmojis(with emojiNames: [String]) {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -143,8 +149,5 @@ class AICell: UITableViewCell {
                 }
     }
     
-    @objc func callAIBtnTapped(_ sender: UIButton) {
-        delegate?.aiButtonTapped(cell: self)
-    }
 }
 

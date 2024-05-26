@@ -16,8 +16,8 @@ import Combine
 class AnalyticsVC: UIViewController {
     @ObservedObject private var viewModel = AnalyticsViewModel()
     private var tableView: UITableView!
-    private var hostingController: UIHostingController<DonutChartView>?
-    var isLoading = false
+//    private var hostingController: UIHostingController<DonutChartView>?
+    private var isLoading = false
     private var loadingAnimationView: LottieAnimationView?
     
     override func viewDidLoad() {
@@ -81,30 +81,7 @@ extension AnalyticsVC: UITableViewDataSource {
                 fatalError("Could not dequeue ChartCell") }
             
             let emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: .allTime)
-            let swiftUIView = DonutChartView(emotionTypes: emotionTypes)
-            
-            if let existingHostingController = hostingController {
-                existingHostingController.willMove(toParent: nil)
-                existingHostingController.view.removeFromSuperview()
-                existingHostingController.removeFromParent()
-            }
-            let newHostingController = UIHostingController(rootView: swiftUIView)
-            addChild(newHostingController)
-            cell.contentView.addSubview(newHostingController.view)
-            newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            newHostingController.view.clipsToBounds = true
-            newHostingController.view.layer.cornerRadius = 20
-            
-            NSLayoutConstraint.activate([
-                newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
-                newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
-                newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
-                newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
-            ])
-            
-            newHostingController.didMove(toParent: self)
-            hostingController = newHostingController
+            cell.configureHostingController(with: emotionTypes, parentViewController: self)
             
             return cell
         }

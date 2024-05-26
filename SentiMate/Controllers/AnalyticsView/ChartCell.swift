@@ -9,24 +9,24 @@ import UIKit
 import SwiftUI
 
 class ChartCell: UITableViewCell {
-let chartLbl = UILabel()
-    var hostingController: UIHostingController<AnyView>?
+    let chartLbl = UILabel()
+    private var hostingController: UIHostingController<DonutChartView>?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupViews()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setupViews() {
         contentView.backgroundColor = defaultBackgroundColor
-//
-//        containerView.clipsToBounds = false
-//        containerView.layer.shadowColor = UIColor.black.cgColor
-//        containerView.layer.shadowOpacity = 0.7
-//        containerView.layer.shadowRadius = 5
-//        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
-//
-//        containerView.layer.shouldRasterize = true
-//        containerView.layer.rasterizationScale = UIScreen.main.scale
-//
         contentView.addSubview(chartLbl)
-//
+        
         chartLbl.translatesAutoresizingMaskIntoConstraints = false
         chartLbl.text = "心情圖"
         chartLbl.font = customFontTitle
@@ -36,12 +36,33 @@ let chartLbl = UILabel()
             chartLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             chartLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             chartLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20)
-//            chartLbl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    
+    func configureHostingController(with emotionTypes: [EmotionType], parentViewController: UIViewController) {
+            let swiftUIView = DonutChartView(emotionTypes: emotionTypes)
+            
+            if let existingHostingController = hostingController {
+                existingHostingController.willMove(toParent: nil)
+                existingHostingController.view.removeFromSuperview()
+                existingHostingController.removeFromParent()
+            }
+            
+            let newHostingController = UIHostingController(rootView: swiftUIView)
+            parentViewController.addChild(newHostingController)
+            contentView.addSubview(newHostingController.view)
+            newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                newHostingController.view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 72),
+                newHostingController.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+                newHostingController.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+                newHostingController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            ])
+            
+            newHostingController.didMove(toParent: parentViewController)
+            hostingController = newHostingController
+        }
     
 }

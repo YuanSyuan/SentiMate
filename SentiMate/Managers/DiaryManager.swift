@@ -26,7 +26,7 @@ class DiaryManager: ObservableObject {
 extension DiaryManager {
     func getEmotionTypes(forPeriod period: TimePeriod) -> [EmotionType] {
         let frequencies = emotionFrequencies(forPeriod: period)
-        let totalDiaries = diaries.count
+        let totalDiaries = FirebaseManager.shared.diaries.count
         guard totalDiaries > 0 else { return [] }
         
         return frequencies.map { (emotionRaw, count) -> EmotionType in
@@ -50,7 +50,7 @@ extension DiaryManager {
         switch period {
         case .last7Days:
             let dateBoundary = calendar.date(byAdding: .day, value: -7, to: now)!
-            filteredDiaries = diaries.filter {
+            filteredDiaries = FirebaseManager.shared.diaries.filter {
                 if let diaryDate = dateFormatter.date(from: $0.customTime) {
                     return diaryDate >= dateBoundary
                 }
@@ -58,14 +58,14 @@ extension DiaryManager {
             }
         case .last30Days:
             let dateBoundary = calendar.date(byAdding: .day, value: -30, to: now)!
-            filteredDiaries = diaries.filter {
+            filteredDiaries = FirebaseManager.shared.diaries.filter {
                 if let diaryDate = dateFormatter.date(from: $0.customTime) {
                     return diaryDate >= dateBoundary
                 }
                 return false
             }
         case .allTime:
-            filteredDiaries = diaries
+            filteredDiaries = FirebaseManager.shared.diaries
         }
         
         return Dictionary(grouping: filteredDiaries, by: { $0.emotion })
@@ -76,12 +76,12 @@ extension DiaryManager {
 // MARK: - For AnalyticsVC, circles
 extension DiaryManager {
     func topCategories(forEmotion emotion: String) -> [CategoryData] {
-        let filteredDiaries = diaries.filter { $0.emotion == emotion }
+        let filteredDiaries = FirebaseManager.shared.diaries.filter { $0.emotion == emotion }
         let grouped = Dictionary(grouping: filteredDiaries, by: { $0.category })
         
         let topCategories = grouped.mapValues { $0.count }
             .sorted { $0.value > $1.value }
-            .prefix(3)  // Take the top 3 categories
+            .prefix(3) 
             .map { CategoryData(name: buttonTitles[$0.key] , count: $0.value) }
         
         return Array(topCategories)
