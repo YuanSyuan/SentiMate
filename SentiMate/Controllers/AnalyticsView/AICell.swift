@@ -91,7 +91,7 @@ class AICell: UITableViewCell {
         callAIBtn.addTarget(self, action: #selector(callAIBtnTapped), for: .touchUpInside)
     }
     
-    func configure(with emojiNames: [String]) {
+    func configureEmojis(with emojiNames: [String]) {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -120,6 +120,27 @@ class AICell: UITableViewCell {
             imageViews.append(imageView)
             stackView.addArrangedSubview(imageView)
         }
+    }
+    
+    func updateAIResponse(with response: String?) {
+        if let response = response {
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    paragraphStyle.alignment = .left
+                    
+                    let attributes = NSAttributedString(string: response, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+                    AIResponseLbl.textAlignment = .left
+                    AIResponseLbl.attributedText = attributes
+                } else {
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    paragraphStyle.alignment = .center
+                    
+                    let newAttributes = NSAttributedString(string: "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！",
+                                                           attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+                    AIResponseLbl.textAlignment = .center
+                    AIResponseLbl.attributedText = newAttributes
+                }
     }
     
     @objc func callAIBtnTapped(_ sender: UIButton) {

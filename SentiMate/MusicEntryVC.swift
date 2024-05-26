@@ -20,8 +20,6 @@ class MusicEntryVC: UIViewController {
     var emotion: String?
     var activityIndicator = UIActivityIndicatorView()
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

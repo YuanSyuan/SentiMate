@@ -11,32 +11,33 @@ import Charts
 import FirebaseStorage
 import ViewAnimator
 import Lottie
+import Combine
 
 class AnalyticsVC: UIViewController {
-    var firebaseManager = FirebaseManager.shared
+    @ObservedObject private var viewModel = AnalyticsViewModel()
     private var tableView: UITableView!
     private var hostingController: UIHostingController<DonutChartView>?
-    var AIResponse: String?
     var isLoading = false
     private var loadingAnimationView: LottieAnimationView?
-    private var latestDiaries: [Diary] {
-        Array(FirebaseManager.shared.diaries.prefix(7))
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(diariesDidUpdate), name: NSNotification.Name("DiariesUpdated"), object: nil)
-//        
-//        firebaseManager.onNewData = { newDiaries in
-//            DiaryManager.shared.updateDiaries(newDiaries: newDiaries)
-//        }
-    }
-    
-    @objc private func diariesDidUpdate() {
-        tableView.reloadData()
+        viewModel.$diaries
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.$AIResponse
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                if let cell = self?.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AICell {
+                    cell.updateAIResponse(with: self?.viewModel.AIResponse)
+                }
+            }
+            .store(in: &viewModel.cancellables)
     }
     
     private func setupTableView() {
@@ -59,6 +60,7 @@ class AnalyticsVC: UIViewController {
     }
 }
 
+// MARK: - AnalyticsVC - UITableViewDataSource, UITableViewDelegate
 extension AnalyticsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -69,32 +71,10 @@ extension AnalyticsVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AICell", for: indexPath) as? AICell else {
                 fatalError("Could not dequeue AICell") }
             
-            let emojis = latestDiaries.reversed().map { $0.emotion }
-            cell.configure(with: emojis)
-            
             cell.delegate = self
+            cell.configureEmojis(with: viewModel.latestDiaries.reversed().map { $0.emotion })
+            cell.updateAIResponse(with: viewModel.AIResponse)
             
-            if AIResponse != nil {
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 4
-                paragraphStyle.alignment = .left
-                
-                let attributes = NSAttributedString(string: AIResponse ?? "",
-                                                    attributes: [NSAttributedString.Key.paragraphStyle:
-                                                                    paragraphStyle])
-                cell.AIResponseLbl.textAlignment = .left
-                cell.AIResponseLbl.attributedText = attributes
-            } else {
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 4
-                paragraphStyle.alignment = .center
-                
-                let newAttributes = NSAttributedString(string: "最近七筆日記裡面，情緒有些變動呢\n點擊下方按鈕查看AI分析吧！",
-                                                       attributes: [NSAttributedString.Key.paragraphStyle:
-                                                                        paragraphStyle])
-                cell.AIResponseLbl.textAlignment = .center
-                cell.AIResponseLbl.attributedText = newAttributes
-            }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as? ChartCell else {
@@ -102,29 +82,29 @@ extension AnalyticsVC: UITableViewDataSource {
             
             let emotionTypes = DiaryManager.shared.getEmotionTypes(forPeriod: .allTime)
             let swiftUIView = DonutChartView(emotionTypes: emotionTypes)
-           
+            
             if let existingHostingController = hostingController {
-                    existingHostingController.willMove(toParent: nil)
-                    existingHostingController.view.removeFromSuperview()
-                    existingHostingController.removeFromParent()
-                }
+                existingHostingController.willMove(toParent: nil)
+                existingHostingController.view.removeFromSuperview()
+                existingHostingController.removeFromParent()
+            }
             let newHostingController = UIHostingController(rootView: swiftUIView)
-                addChild(newHostingController)
-                cell.contentView.addSubview(newHostingController.view)
-                newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
-                
+            addChild(newHostingController)
+            cell.contentView.addSubview(newHostingController.view)
+            newHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            
             newHostingController.view.clipsToBounds = true
             newHostingController.view.layer.cornerRadius = 20
             
-                NSLayoutConstraint.activate([
-                    newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
-                    newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
-                    newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
-                    newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
-                ])
-
-                newHostingController.didMove(toParent: self)
-                hostingController = newHostingController
+            NSLayoutConstraint.activate([
+                newHostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 72),
+                newHostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20),
+                newHostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20),
+                newHostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -20)
+            ])
+            
+            newHostingController.didMove(toParent: self)
+            hostingController = newHostingController
             
             return cell
         }
@@ -145,7 +125,7 @@ extension AnalyticsVC: UITableViewDelegate {
 
 extension AnalyticsVC: AICellDelegate {
     func aiButtonTapped(cell: AICell) {
-        guard !FirebaseManager.shared.diaries.isEmpty else {
+        guard !viewModel.diaries.isEmpty else {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 8
             paragraphStyle.alignment = .center
@@ -157,46 +137,17 @@ extension AnalyticsVC: AICellDelegate {
                 title: "哎呀!找不到日記",
                 message: attributes,
                 alertType: .empty)
-                return
-             }
+            return
+        }
         
         if !isLoading {
             isLoading = true
             cell.callAIBtn.isEnabled = false
             showLoadingAnimation()
-            analyzeEntry {
+            viewModel.analyzeEntry {
                 cell.callAIBtn.isEnabled = true
-            }
-        }
-    }
-    
-    func analyzeEntry(completion: @escaping () -> Void)  {
-        let combinedText = latestDiaries.map { entry -> String in
-            let content = entry.content
-            let category = entry.category
-            let emotion = entry.emotion
-            
-            return "Category: \(category), Emotion: \(emotion), Diary: \(content) "
-        }.joined(separator: " ")
-        
-        analyzeDiaryEntries(combinedText, completion: completion)
-    }
-    
-    func analyzeDiaryEntries(_ content: String, completion: @escaping () -> Void) {
-        OpenAIManager.shared.analyzeDiaryEntry(prompt: content) { [weak self] result in
-            //            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
-                self?.hideLoadingAnimation()
-                
-                switch result {
-                case .success(let analyzedText):
-                    self?.AIResponse = analyzedText
-                    self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
-                case .failure(let error):
-                    print("Error analyzing diary entries: \(error.localizedDescription)")
-                }
-                completion()
+                self.hideLoadingAnimation()
+                // 未來可增加 alert 提醒今日已經玩過了，避免重複點按
             }
         }
     }
