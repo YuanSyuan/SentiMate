@@ -7,41 +7,29 @@
 
 import UIKit
 
-class DiaryManager: ObservableObject {
+class DiaryManager {
     static let shared = DiaryManager()
+    var filteredDiaries = [Diary]()
     
     private init() {}
-    
-    @Published var diaries: [Diary] = []
-    
-    func updateDiaries(newDiaries: [Diary]) {
-        DispatchQueue.main.async {
-            self.diaries = newDiaries
-            NotificationCenter.default.post(name: NSNotification.Name("DiariesUpdated"), object: nil)
-        }
-    }
 }
 
 // MARK: - For AnalyticsVC, pie chart
 extension DiaryManager {
     func getEmotionTypes(forPeriod period: TimePeriod) -> [EmotionType] {
         let frequencies = emotionFrequencies(forPeriod: period)
-        let totalDiaries = FirebaseManager.shared.diaries.count
-        guard totalDiaries > 0 else { return [] }
-        
+        guard filteredDiaries.count > 0 else { return [] }
         return frequencies.map { (emotionRaw, count) -> EmotionType in
                    guard let emotion = Emotions(rawValue: emotionRaw) else {
                        fatalError("Invalid emotion type")
                    }
             
-            let percentage = Int((Double(count) / Double(totalDiaries)) * 100.0.rounded())
+            let percentage = Int((Double(count) / Double(filteredDiaries.count)) * 100.0.rounded())
             return EmotionType(emotion: emotion, percentage: percentage)
         }.sorted { $0.percentage > $1.percentage }
     }
     
     func emotionFrequencies(forPeriod period: TimePeriod) -> [String: Int] {
-        var filteredDiaries = [Diary]()
-        
         let now = Date()
         let calendar = Calendar.current
         let dateFormatter = DateFormatter()
