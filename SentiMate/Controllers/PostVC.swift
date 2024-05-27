@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 import CoreML
-//import Vision
+import Vision
 import ARKit
 import Lottie
 
@@ -16,7 +16,6 @@ class PostVC: UIViewController {
     private let sceneView = ARSCNView()
     private var model: VNCoreMLModel?
     private let titleLbl = UILabel()
-    private var emotionLabel = UILabel()
     private var textNode: SCNNode?
     private let confirmEmotionBtn = UIButton()
     private let saveEmotionBtn = UIButton()
@@ -37,26 +36,31 @@ class PostVC: UIViewController {
         confirmEmotionBtn.isEnabled = false
         saveEmotionBtn.addTouchAnimation()
         confirmEmotionBtn.addTouchAnimation()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.alpha = 0
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.alpha = 1
     }
     
+    // Setup ARKit
     private func setupSceneView() {
-            guard ARWorldTrackingConfiguration.isSupported else { return }
-            
-            view.addSubview(sceneView)
-            sceneView.delegate = self
-            sceneView.showsStatistics = false
-            sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
-            
-            model = ModelManager.shared.model
-        }
+        guard ARWorldTrackingConfiguration.isSupported else { return }
+        
+        view.addSubview(sceneView)
+        sceneView.delegate = self
+        sceneView.showsStatistics = false
+        sceneView.session.run(ARFaceTrackingConfiguration(), options: [.resetTracking, .removeExistingAnchors])
+        
+        model = ModelManager.shared.model
+    }
     
+    // Setup UI
     func setupUI() {
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
         titleLbl.text = "識別情緒中"
@@ -64,12 +68,6 @@ class PostVC: UIViewController {
         titleLbl.textAlignment = .center
         titleLbl.font = customFontContent
         sceneView.addSubview(titleLbl)
-        
-        emotionLabel.translatesAutoresizingMaskIntoConstraints = false
-        emotionLabel.textColor = midOrange
-        emotionLabel.textAlignment = .center
-        emotionLabel.font = customFontTitle
-        sceneView.addSubview(emotionLabel)
         
         saveEmotionBtn.translatesAutoresizingMaskIntoConstraints = false
         saveEmotionBtn.setImage(UIImage(named: "Send_Orange"), for: .normal)
@@ -85,11 +83,12 @@ class PostVC: UIViewController {
         view.addSubview(confirmEmotionBtn)
         
         loadingAnimationView = .init(name: "Indicator_Orange")
-        loadingAnimationView?.translatesAutoresizingMaskIntoConstraints = false
-        loadingAnimationView?.contentMode = .scaleAspectFill
-        loadingAnimationView?.loopMode = .loop
-        loadingAnimationView?.animationSpeed = 0.5
-        emotionLabel.addSubview(loadingAnimationView!)
+        guard let loadingAnimationView = loadingAnimationView else { return }
+        loadingAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        loadingAnimationView.contentMode = .scaleAspectFill
+        loadingAnimationView.loopMode = .loop
+        loadingAnimationView.animationSpeed = 0.5
+        sceneView.addSubview(loadingAnimationView)
         
         sceneView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(sceneView, at: 0)
@@ -107,11 +106,11 @@ class PostVC: UIViewController {
             titleLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             titleLbl.heightAnchor.constraint(equalToConstant: 50),
             
-            emotionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emotionLabel.topAnchor.constraint(equalTo: titleLbl.bottomAnchor),
-            emotionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            emotionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
-            emotionLabel.heightAnchor.constraint(equalToConstant: 50),
+//            emotionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            emotionLabel.topAnchor.constraint(equalTo: titleLbl.bottomAnchor),
+//            emotionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+//            emotionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+//            emotionLabel.heightAnchor.constraint(equalToConstant: 50),
             
             saveEmotionBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             saveEmotionBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -123,10 +122,10 @@ class PostVC: UIViewController {
             confirmEmotionBtn.widthAnchor.constraint(equalToConstant: 60),
             confirmEmotionBtn.heightAnchor.constraint(equalToConstant: 60),
             
-            loadingAnimationView!.centerXAnchor.constraint(equalTo: emotionLabel.centerXAnchor),
-            loadingAnimationView!.centerYAnchor.constraint(equalTo: emotionLabel.centerYAnchor),
-            loadingAnimationView!.widthAnchor.constraint(equalTo: emotionLabel.widthAnchor, multiplier: 0.5),
-            loadingAnimationView!.heightAnchor.constraint(equalToConstant: 50)
+            loadingAnimationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingAnimationView.topAnchor.constraint(equalTo: titleLbl.bottomAnchor),
+            loadingAnimationView.widthAnchor.constraint(equalTo: titleLbl.widthAnchor, multiplier: 0.5),
+            loadingAnimationView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         showLoadingAnimation()
@@ -143,7 +142,7 @@ class PostVC: UIViewController {
     
     @objc func confirmEmotionTapped() {
         let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
+        generator.impactOccurred()
         
         if isSessionRunning == true {
             sceneView.session.pause()
@@ -170,12 +169,6 @@ class PostVC: UIViewController {
         loadingAnimationView?.stop()
         loadingAnimationView?.removeFromSuperview()
     }
-}
-
-// extension: AVCaptureVideoDataOutputSampleBufferDelegate
-extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    }
     
     func updateEmotionLabel(withEmotion emotion: String) {
         currentEmotion = emotion
@@ -193,7 +186,7 @@ extension PostVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
 }
 
-// extension: ARSCNViewDelegate
+// MARK: - ARSCNViewDelegate
 extension PostVC: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
