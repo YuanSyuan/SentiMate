@@ -19,13 +19,10 @@
 		0509C1542BCAC91C000FB482 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1532BCAC91C000FB482 /* MusicManager.swift */; };
 		0509C1582BCACA95000FB482 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1572BCACA95000FB482 /* Emotions.swift */; };
 		0509C15A2BCBB169000FB482 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0509C1592BCBB169000FB482 /* MusicCell.swift */; };
-		050CE07B2BF1B93500D57B95 /* Indicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 050CE07A2BF1B93400D57B95 /* Indicator.json */; };
-		050CE07D2BF1D27600D57B95 /* Indicator_Blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 050CE07C2BF1D27600D57B95 /* Indicator_Blue.json */; };
 		050CE07F2BF1E88A00D57B95 /* Indicator_Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */; };
 		052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */ = {isa = PBXBuildFile; fileRef = 052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */; };
 		052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */ = {isa = PBXBuildFile; fileRef = 052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */; };
 		052013082BE3B35600A2A1F5 /* Emoticon_56.scn in Resources */ = {isa = PBXBuildFile; fileRef = 052013072BE3B35600A2A1F5 /* Emoticon_56.scn */; };
-		0520130A2BE3BB6600A2A1F5 /* DraggableFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052013092BE3BB6600A2A1F5 /* DraggableFloatingView.swift */; };
 		05223DA22BDFABFE0066AD61 /* openAI.json in Resources */ = {isa = PBXBuildFile; fileRef = 05223DA12BDFABFD0066AD61 /* openAI.json */; };
 		05223DA82BDFDA820066AD61 /* Keyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */; };
 		05223DAA2BDFDBF20066AD61 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */; };
@@ -121,7 +118,6 @@
 		05D549252BF6179300D8F1F5 /* HomeVC+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549242BF6179300D8F1F5 /* HomeVC+ContextMenu.swift */; };
 		05D549272BF61BF100D8F1F5 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */; };
 		05D549292BF6CB9000D8F1F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D549282BF6CB9000D8F1F5 /* HomeViewModel.swift */; };
-		05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */; };
 		05EEB6432BF0918200513B2A /* TipKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EEB6422BF0918200513B2A /* TipKit.swift */; };
 		61A796334CB49D8E7BD734FA /* Pods_SentiMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */; };
 /* End PBXBuildFile section */
@@ -151,13 +147,10 @@
 		0509C1532BCAC91C000FB482 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		0509C1572BCACA95000FB482 /* Emotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
 		0509C1592BCBB169000FB482 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
-		050CE07A2BF1B93400D57B95 /* Indicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Indicator.json; sourceTree = "<group>"; };
-		050CE07C2BF1D27600D57B95 /* Indicator_Blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Indicator_Blue.json; sourceTree = "<group>"; };
 		050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Indicator_Orange.json; sourceTree = "<group>"; };
 		052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = Emoticon_56.dae; sourceTree = "<group>"; };
 		052013052BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "T_Diffuse_Emoticon 56.png"; sourceTree = "<group>"; };
 		052013072BE3B35600A2A1F5 /* Emoticon_56.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Emoticon_56.scn; sourceTree = "<group>"; };
-		052013092BE3BB6600A2A1F5 /* DraggableFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableFloatingView.swift; sourceTree = "<group>"; };
 		05223DA12BDFABFD0066AD61 /* openAI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openAI.json; sourceTree = "<group>"; };
 		05223DA72BDFDA820066AD61 /* Keyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extension.swift"; sourceTree = "<group>"; };
 		05223DA92BDFDBF20066AD61 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
@@ -196,7 +189,7 @@
 		0568447F2BC81765004604E6 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
-		0574CA122BC7D54A0075A296 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = SentiMate/Controllers/PostDetailCell/DateCell.swift; sourceTree = SOURCE_ROOT; };
+		0574CA122BC7D54A0075A296 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		0574CA152BC7D5BD0075A296 /* EmotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCell.swift; sourceTree = "<group>"; };
 		0574CA172BC7D5D80075A296 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0574CA192BC7DB360075A296 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
@@ -213,7 +206,7 @@
 		05B2507E2BD636EF0073D4AD /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		05B250802BD69BE40073D4AD /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		05B44C172BD2467100798934 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
-		05B44C192BD2632000798934 /* MusicEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicEntryVC.swift; path = SentiMate/MusicEntryVC.swift; sourceTree = SOURCE_ROOT; };
+		05B44C192BD2632000798934 /* MusicEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicEntryVC.swift; path = SentiMate/Controllers/Music/MusicEntryVC.swift; sourceTree = SOURCE_ROOT; };
 		05B44C1D2BD263C900798934 /* CalmMusicEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmMusicEntryCell.swift; sourceTree = "<group>"; };
 		05BC62D82BE27D1E0003E263 /* jf-openhuninn-2.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "jf-openhuninn-2.0.ttf"; sourceTree = "<group>"; };
 		05BC62DA2BE27D5B0003E263 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -223,12 +216,11 @@
 		05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEntryVC.swift; sourceTree = "<group>"; };
 		05D366BC2BE093AB004227A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentiMate.entitlements; sourceTree = "<group>"; };
-		05D366BF2BE09F4A004227A3 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = SentiMate/SettingVC.swift; sourceTree = SOURCE_ROOT; };
+		05D366BF2BE09F4A004227A3 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = SentiMate/Controllers/Setting/SettingVC.swift; sourceTree = SOURCE_ROOT; };
 		05D366C12BE0A09A004227A3 /* AlertClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertClass.swift; sourceTree = "<group>"; };
 		05D549242BF6179300D8F1F5 /* HomeVC+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+ContextMenu.swift"; sourceTree = "<group>"; };
 		05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		05D549282BF6CB9000D8F1F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChenYuluoyan-Thin.ttf"; sourceTree = "<group>"; };
 		05EEB6422BF0918200513B2A /* TipKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipKit.swift; sourceTree = "<group>"; };
 		1E2DF8D8614B3729AF54058A /* Pods-SentiMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentiMate.debug.xcconfig"; path = "Target Support Files/Pods-SentiMate/Pods-SentiMate.debug.xcconfig"; sourceTree = "<group>"; };
 		52DC112692918C5E2064F9FD /* Pods_SentiMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentiMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,30 +306,84 @@
 			isa = PBXGroup;
 			children = (
 				05D366BE2BE09BB9004227A3 /* SentiMate.entitlements */,
-				050CE07A2BF1B93400D57B95 /* Indicator.json */,
-				050CE07C2BF1D27600D57B95 /* Indicator_Blue.json */,
-				050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */,
-				05223DA12BDFABFD0066AD61 /* openAI.json */,
-				052013042BE3B2E700A2A1F5 /* Obj */,
+				0562FBD82C05E6E500283464 /* Resources */,
 				056844812BC8177E004604E6 /* Managers */,
 				059C5AB42BD559FB004E5331 /* Extensions */,
 				0571E2F12BC799000049B73E /* Models */,
 				0571E2EB2BC7979E0049B73E /* Controllers */,
-				0538A17B2BDE458600796496 /* WalkThrough */,
 				0502F33F2BC67B4200B89FE5 /* AppDelegate.swift */,
 				0502F3412BC67B4200B89FE5 /* SceneDelegate.swift */,
 				0502F3452BC67B4200B89FE5 /* Main.storyboard */,
 				0502F34D2BC67B4500B89FE5 /* LaunchScreen.storyboard */,
-				05D8A4BA2BDB572400061340 /* ChenYuluoyan-Thin.ttf */,
-				05BC62D82BE27D1E0003E263 /* jf-openhuninn-2.0.ttf */,
 				0502F34B2BC67B4500B89FE5 /* Assets.xcassets */,
 				05B44C172BD2467100798934 /* APIKey.plist */,
 				0502F3502BC67B4500B89FE5 /* Info.plist */,
 				05D366BC2BE093AB004227A3 /* GoogleService-Info.plist */,
-				0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */,
 				0502F3482BC67B4200B89FE5 /* SentiMate.xcdatamodeld */,
 			);
 			path = SentiMate;
+			sourceTree = "<group>";
+		};
+		050305772C05E0110059E330 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				05A481262BD0F4330073F305 /* AICell.swift */,
+				05A481282BD0F43F0073F305 /* ChartCell.swift */,
+				053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */,
+				05BC75922BFF38840044AB3A /* AnalyticsViewModel.swift */,
+				059E44692BC6A5DF00184989 /* AnalyticsVC.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		050305782C05E05D0059E330 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				05CC58762BC9321B003070EC /* HomeCell.swift */,
+				05D549282BF6CB9000D8F1F5 /* HomeViewModel.swift */,
+				058143692BC9291400C6D111 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		050305792C05E07C0059E330 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		0503057A2C05E0B90059E330 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				054D947B2BE753EB00E4F415 /* Auth */,
+				05D366BF2BE09F4A004227A3 /* SettingVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		0503057B2C05E0C90059E330 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				0509C1592BCBB169000FB482 /* MusicCell.swift */,
+				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
+				05B44C1D2BD263C900798934 /* CalmMusicEntryCell.swift */,
+				05B44C192BD2632000798934 /* MusicEntryVC.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		0503057C2C05E0F60059E330 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				0574CA142BC7D54F0075A296 /* PostDetailCell */,
+				052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */,
+				0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */,
+				059E446B2BC6A7A900184989 /* PostVC.swift */,
+				05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		0506D6172BDA106F0045A8C1 /* AlertView */ = {
@@ -369,8 +415,7 @@
 				052013022BE3B2D400A2A1F5 /* Emoticon_56.dae */,
 				052013072BE3B35600A2A1F5 /* Emoticon_56.scn */,
 			);
-			name = Obj;
-			path = Managers/Obj;
+			path = Obj;
 			sourceTree = "<group>";
 		};
 		052709D22BFADF5D000959C5 /* SentiMateTests */ = {
@@ -408,6 +453,18 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		0562FBD82C05E6E500283464 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				05BC62D82BE27D1E0003E263 /* jf-openhuninn-2.0.ttf */,
+				0571E2E92BC790340049B73E /* CNNEmotions.mlmodel */,
+				052013042BE3B2E700A2A1F5 /* Obj */,
+				050CE07E2BF1E88A00D57B95 /* Indicator_Orange.json */,
+				05223DA12BDFABFD0066AD61 /* openAI.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		056844812BC8177E004604E6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,39 +478,17 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		056FE93B2BE9DEBF0012AFF9 /* AnalyticsView */ = {
-			isa = PBXGroup;
-			children = (
-				05A481282BD0F43F0073F305 /* ChartCell.swift */,
-				05A481262BD0F4330073F305 /* AICell.swift */,
-			);
-			path = AnalyticsView;
-			sourceTree = "<group>";
-		};
 		0571E2EB2BC7979E0049B73E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				054D947B2BE753EB00E4F415 /* Auth */,
-				05D366BF2BE09F4A004227A3 /* SettingVC.swift */,
-				0509C1592BCBB169000FB482 /* MusicCell.swift */,
-				059E446D2BC6A7FE00184989 /* MusicVC.swift */,
-				05B44C1F2BD263D600798934 /* MusicEntryCell */,
-				05B44C192BD2632000798934 /* MusicEntryVC.swift */,
-				052709CB2BF9DACF000959C5 /* PostDetailViewModel.swift */,
-				0571E2F22BC7BD1A0049B73E /* PostDetailVC.swift */,
-				0574CA142BC7D54F0075A296 /* PostDetailCell */,
-				059E446B2BC6A7A900184989 /* PostVC.swift */,
-				05CD0F7C2BD3B1C400242DA8 /* PostEntryVC.swift */,
 				0506D6172BDA106F0045A8C1 /* AlertView */,
-				053A5EB02BCCFB7A00EAC1F2 /* AnalyticsView.swift */,
-				056FE93B2BE9DEBF0012AFF9 /* AnalyticsView */,
-				059E44692BC6A5DF00184989 /* AnalyticsVC.swift */,
-				05BC75922BFF38840044AB3A /* AnalyticsViewModel.swift */,
-				053A5EB42BCD51C700EAC1F2 /* DiaryVC.swift */,
-				05CC58762BC9321B003070EC /* HomeCell.swift */,
-				05D549282BF6CB9000D8F1F5 /* HomeViewModel.swift */,
-				058143692BC9291400C6D111 /* HomeVC.swift */,
-				052013092BE3BB6600A2A1F5 /* DraggableFloatingView.swift */,
+				0503057A2C05E0B90059E330 /* Setting */,
+				0503057B2C05E0C90059E330 /* Music */,
+				0503057C2C05E0F60059E330 /* Post */,
+				050305772C05E0110059E330 /* Analytics */,
+				050305792C05E07C0059E330 /* Diary */,
+				050305782C05E05D0059E330 /* Home */,
+				0538A17B2BDE458600796496 /* WalkThrough */,
 				054D94882BE7736400E4F415 /* TestDeleteVC.swift */,
 			);
 			path = Controllers;
@@ -494,14 +529,6 @@
 				05D549262BF61BF100D8F1F5 /* DateFormatter+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		05B44C1F2BD263D600798934 /* MusicEntryCell */ = {
-			isa = PBXGroup;
-			children = (
-				05B44C1D2BD263C900798934 /* CalmMusicEntryCell.swift */,
-			);
-			path = MusicEntryCell;
 			sourceTree = "<group>";
 		};
 		39F4C3CCA6CB76156DBBC777 /* Frameworks */ = {
@@ -638,10 +665,8 @@
 				054D94682BE4D9A300E4F415 /* Emoticon_40.obj in Resources */,
 				054D94692BE4D9A300E4F415 /* Emoticon_40.dae in Resources */,
 				054D946A2BE4D9A300E4F415 /* Emoticon_27.obj in Resources */,
-				050CE07D2BF1D27600D57B95 /* Indicator_Blue.json in Resources */,
 				054D946B2BE4D9A300E4F415 /* Emoticon_27.dae in Resources */,
 				054D946C2BE4D9A300E4F415 /* Emoticon_40.mtl in Resources */,
-				050CE07B2BF1B93500D57B95 /* Indicator.json in Resources */,
 				052013062BE3B33400A2A1F5 /* T_Diffuse_Emoticon 56.png in Resources */,
 				052013032BE3B2D400A2A1F5 /* Emoticon_56.dae in Resources */,
 				05B44C182BD2467100798934 /* APIKey.plist in Resources */,
@@ -649,7 +674,6 @@
 				0502F34F2BC67B4500B89FE5 /* LaunchScreen.storyboard in Resources */,
 				052013082BE3B35600A2A1F5 /* Emoticon_56.scn in Resources */,
 				05BC62D92BE27D1E0003E263 /* jf-openhuninn-2.0.ttf in Resources */,
-				05D8A4BB2BDB572400061340 /* ChenYuluoyan-Thin.ttf in Resources */,
 				0506D6122BDA0BA90045A8C1 /* AlertView.xib in Resources */,
 				0502F34C2BC67B4500B89FE5 /* Assets.xcassets in Resources */,
 				054D94762BE4DA3400E4F415 /* Emoticon_27.scn in Resources */,
@@ -766,7 +790,6 @@
 				05B2507F2BD636EF0073D4AD /* UIView+Shadow.swift in Sources */,
 				0509C1582BCACA95000FB482 /* Emotions.swift in Sources */,
 				05A4812D2BD119C40073F305 /* OpenAIManager.swift in Sources */,
-				0520130A2BE3BB6600A2A1F5 /* DraggableFloatingView.swift in Sources */,
 				05BC75932BFF38840044AB3A /* AnalyticsViewModel.swift in Sources */,
 				05A4812B2BD119660073F305 /* AIResponse.swift in Sources */,
 				05D549272BF61BF100D8F1F5 /* DateFormatter+Extensions.swift in Sources */,

@@ -22,8 +22,6 @@ class FirebaseManager: ObservableObject {
     var onNewData: (([Diary]) -> Void)?
     
     private let storageRef = Storage.storage().reference()
-    var audioFiles: [AudioFile] = []
-    
     
     private init() {}
     
