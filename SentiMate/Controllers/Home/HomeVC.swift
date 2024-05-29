@@ -57,15 +57,6 @@ class HomeVC: UIViewController {
         performAnimation()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDiaryVC",
-           let destinationVC = segue.destination as? DiaryVC,
-           let indexPath = diaryCollectionView.indexPathsForSelectedItems?.first {
-            let diary = FirebaseManager.shared.diaries[indexPath.row]
-            destinationVC.diary = diary
-        }
-    }
-    
     private func setupUI() {
             navigationController?.navigationBar.isHidden = true
             view.addSubview(sceneView)
